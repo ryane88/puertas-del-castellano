@@ -140,18 +140,8 @@ h1, h2 {
   letter-spacing: 0.12em;
 }
 
-/* Painting */
-.pdd-image {
-  margin: 1rem auto 1.5rem;
-  max-width: 720px;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
-  border: 1px solid #B7A585;
-  border-radius: 10px;
-  background: #DDD1BB;
-}
 
-/* PDD PAINTING — ANTIQUE WOOD FRAME */
+/* PDD PAINTING FRAMES */
 
 .pdd-image {
   margin: 1.5rem auto 2rem;
@@ -162,11 +152,33 @@ h1, h2 {
 
   border: 9px ridge #8B6B3F;
   border-radius: 2px;
-  background: #725133;
 
-  box-shadow:
-    0 8px 16px rgba(50, 35, 20, 0.3),
-    inset 0 0 0 3px #C5A46B;
+  box-shadow: 0 8px 16px rgba(50,35,20,0.3);
+}
+
+.pdd-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dark walnut */
+.pdd-image.frame-0 {
+  border-color: #65452F;
+  background: #493021;
+}
+
+/* Antique bronze */
+.pdd-image.frame-1 {
+  border-color: #A3834D;
+  background: #725733;
+}
+
+/* Weathered oak */
+.pdd-image.frame-2 {
+  border-color: #9A7854;
+  background: #6F563E;
 }
 
 /* Castle inscription */
@@ -245,8 +257,36 @@ a:hover, .link-internal:hover {
   color: #8B6B3F;
 }
 
-</style><script role="script" id="twine-user-script" type="text/twine-javascript"></script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Empieza" tags="" position="100,100" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+/* PUERTAS DEL CASTELLANO — SUPABASE */
+
+setup.supabase = {
+    url: "https://piqrpkzahyjkoytdycdg.supabase.co",
+    key: "sb_publishable_o8s0h6t3P60zn5hLPrtL5Q_hIVrzv_x"
+};
+
+setup.getRoom = async function (pdd) {
+    const endpoint =
+        setup.supabase.url +
+        "/rest/v1/rooms?select=*&pdd=eq." +
+        encodeURIComponent(pdd);
+
+    const response = await fetch(endpoint, {
+        headers: {
+            apikey: setup.supabase.key
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error("Supabase error: " + response.status);
+    }
+
+    const rooms = await response.json();
+    return rooms[0] || null;
+};
+</script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Empieza" tags="" position="100,100" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;h1&gt;PUERTAS DEL CASTELLANO&lt;/h1&gt;
+[[🧪 Laboratorio Supabase|TestSupabase]]
 &lt;p&gt;Estás de nuevo en la sala del castillo. Tres puertas conocidas esperan en la penumbra. Pero ahora hay una cuarta.&lt;/p&gt;
 &lt;p&gt;Está cubierta de libros, pergaminos y símbolos. En su centro, una luz azul se mueve lentamente, como si buscara una palabra.&lt;/p&gt;
 [[Examinar la cuarta puerta-&gt;PuertaPalabras]]
@@ -449,6 +489,72 @@ a:hover, .link-internal:hover {
     &lt;&lt;/capture&gt;&gt;
   &lt;&lt;/for&gt;&gt;
 &lt;&lt;/widget&gt;&gt;
+
+</tw-passagedata><tw-passagedata pid="21" name="TestSupabase" tags="" position="225,475" size="100,100">
+&lt;div class=&quot;room-card&quot;&gt;
+
+    &lt;div class=&quot;pdd-kicker&quot;&gt;
+        LA BIBLIOTECA DEL CASTILLO
+    &lt;/div&gt;
+
+    &lt;h2 id=&quot;test-title&quot;&gt;
+        Consultando los archivos...
+    &lt;/h2&gt;
+
+    &lt;div id=&quot;test-painting&quot; class=&quot;pdd-image frame-1&quot; hidden&gt;
+        &lt;img id=&quot;test-image&quot; alt=&quot;&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;div id=&quot;test-description&quot;&gt;&lt;/div&gt;
+
+&lt;/div&gt;
+
+&lt;&lt;done&gt;&gt;
+    &lt;&lt;run setup.getRoom(385)
+        .then(function(room) {
+
+            if (!room) {
+                $(&quot;#test-title&quot;).text(&quot;Sala no encontrada&quot;);
+                return;
+            }
+
+            // Room title
+            $(&quot;#test-title&quot;).text(room.title || room.word);
+
+            // Frame style based on PDD number
+            const frameNumber = Number(room.pdd) % 3;
+
+            $(&quot;#test-painting&quot;)
+                .removeClass(&quot;frame-0 frame-1 frame-2&quot;)
+                .addClass(&quot;frame-&quot; + frameNumber);
+
+            // Painting and fallback
+            const imagePath = &quot;images/pdd&quot; + room.pdd + &quot;.jpg&quot;;
+            const fallbackPath = &quot;images/pdd-placeholder.jpg&quot;;
+
+            $(&quot;#test-image&quot;)
+                .off(&quot;error&quot;)
+                .one(&quot;error&quot;, function() {
+                    // Avoid an infinite loop if placeholder is missing
+                    $(this).off(&quot;error&quot;);
+                    this.src = fallbackPath;
+                })
+                .attr(&quot;alt&quot;, room.word)
+                .attr(&quot;src&quot;, imagePath);
+
+            // Reveal the painting
+            $(&quot;#test-painting&quot;).prop(&quot;hidden&quot;, false);
+
+            // Room description
+            $(&quot;#test-description&quot;).text(room.description || &quot;&quot;);
+
+        })
+        .catch(function(error) {
+            console.error(&quot;Supabase error:&quot;, error);
+            $(&quot;#test-title&quot;).text(&quot;Error al cargar la sala&quot;);
+        })
+    &gt;&gt;
+&lt;&lt;/done&gt;&gt;
 
 </tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
