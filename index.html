@@ -637,10 +637,45 @@ setup.getPublishedRooms = async function (pddNumbers) {
                     : c.from_pdd;
             });
 
-            const rooms =
-                await setup.getPublishedRooms(destinations);
+  
+const rooms =
+    await setup.getPublishedRooms(destinations);
 
-            container.empty();
+// Match each published room to its corridor.
+const availableDoors = connections
+    .map(function(c) {
+        const destination =
+            c.from_pdd === currentPdd
+                ? c.to_pdd
+                : c.from_pdd;
+
+        const room = rooms.find(function(r) {
+            return r.pdd === destination;
+        });
+
+        return room
+            ? { room: room, connection: c }
+            : null;
+    })
+    .filter(Boolean);
+
+// Always prioritize featured and strong connections.
+// Use PDD number to break ties consistently.
+availableDoors.sort(function(a, b) {
+    return (
+        Number(b.connection.featured) -
+            Number(a.connection.featured) ||
+        Number(b.connection.strength || 0) -
+            Number(a.connection.strength || 0) ||
+        a.room.pdd - b.room.pdd
+    );
+});
+
+// Display at most six doors.
+const visibleDoors = availableDoors.slice(0, 6);
+
+container.empty();
+
 
             if (rooms.length === 0) {
                 container.text(
@@ -649,7 +684,8 @@ setup.getPublishedRooms = async function (pddNumbers) {
                 return;
             }
 
-            rooms.forEach(function(room) {
+          visibleDoors.forEach(function(item) {
+    const room = item.room;
                 const door = $(&quot;&lt;a&gt;&quot;, {
                     href: &quot;#&quot;,
                     text: &quot;🚪 &quot; + room.word
