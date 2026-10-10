@@ -284,6 +284,63 @@ setup.getRoom = async function (pdd) {
     const rooms = await response.json();
     return rooms[0] || null;
 };
+
+/* PUERTAS DEL CASTELLANO — ROOM CONNECTIONS */
+
+setup.getConnections = async function (pdd) {
+    const endpoint =
+        setup.supabase.url +
+        "/rest/v1/room_connections" +
+        "?select=*" +
+        "&enabled=eq.true" +
+        "&or=(from_pdd.eq." + encodeURIComponent(pdd) +
+        ",to_pdd.eq." + encodeURIComponent(pdd) + ")";
+
+    const response = await fetch(endpoint, {
+        headers: {
+            apikey: setup.supabase.key
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(
+            "Connections error: " + response.status
+        );
+    }
+
+    return await response.json();
+};
+
+/* PUERTAS DEL CASTELLANO — PUBLISHED ROOMS */
+
+setup.getPublishedRooms = async function (pddNumbers) {
+    if (!pddNumbers.length) {
+        return [];
+    }
+
+    const endpoint =
+        setup.supabase.url +
+        "/rest/v1/rooms" +
+        "?select=pdd,word,title" +
+        "&published=eq.true" +
+        "&pdd=in.(" +
+        pddNumbers.map(Number).join(",") +
+        ")";
+
+    const response = await fetch(endpoint, {
+        headers: {
+            apikey: setup.supabase.key
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(
+            "Published rooms error: " + response.status
+        );
+    }
+
+    return await response.json();
+};
 </script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Empieza" tags="" position="100,100" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;h1&gt;PUERTAS DEL CASTELLANO&lt;/h1&gt;
 [[🧪 Laboratorio Supabase|TestSupabase]]
@@ -510,7 +567,8 @@ setup.getRoom = async function (pdd) {
 &lt;/div&gt;
 
 &lt;&lt;done&gt;&gt;
-    &lt;&lt;run setup.getRoom(385)
+
+    &lt;&lt;run setup.getRoom(State.variables.currentPdd || 49)
         .then(function(room) {
 
             if (!room) {
@@ -556,6 +614,66 @@ setup.getRoom = async function (pdd) {
     &gt;&gt;
 &lt;&lt;/done&gt;&gt;
 
+
+&lt;div id=&quot;test-connections&quot; class=&quot;paths&quot;&gt;
+    Buscando los pasillos del castillo...
+&lt;/div&gt;
+
+
+&lt;&lt;done&gt;&gt;
+    &lt;&lt;run (async function () {
+        const currentPdd = State.variables.currentPdd || 49;
+        const container = $(&quot;#test-connections&quot;);
+
+        container.text(&quot;Buscando puertas abiertas...&quot;);
+
+        try {
+            const connections =
+                await setup.getConnections(currentPdd);
+
+            const destinations = connections.map(function(c) {
+                return c.from_pdd === currentPdd
+                    ? c.to_pdd
+                    : c.from_pdd;
+            });
+
+            const rooms =
+                await setup.getPublishedRooms(destinations);
+
+            container.empty();
+
+            if (rooms.length === 0) {
+                container.text(
+                    &quot;No hay otras puertas abiertas todavía.&quot;
+                );
+                return;
+            }
+
+            rooms.forEach(function(room) {
+                const door = $(&quot;&lt;a&gt;&quot;, {
+                    href: &quot;#&quot;,
+                    text: &quot;🚪 &quot; + room.word
+                });
+
+                door.on(&quot;click&quot;, function(event) {
+                    event.preventDefault();
+
+                    State.variables.currentPdd = room.pdd;
+                    Engine.play(&quot;TestSupabase&quot;);
+                });
+
+                container.append(door);
+            });
+
+        } catch (error) {
+            console.error(error);
+            container.text(
+                &quot;Error al buscar las puertas.&quot;
+            );
+        }
+    })()
+    &gt;&gt;
+&lt;&lt;/done&gt;&gt;
 </tw-passagedata></tw-storydata>
 	<script id="script-sugarcube" type="text/javascript">
 	/*! SugarCube JS */
