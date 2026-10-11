@@ -272,6 +272,105 @@ a:hover, .link-internal:hover {
     box-sizing: border-box;
 }
 
+
+/* Chronological doors — Las Puertas del Tiempo */
+#circular-door.time-door {
+    background: linear-gradient(
+        135deg,
+        #a68a55,
+        #6f542c,
+        #47351f
+    ) !important;
+
+    border-color: #d4b46c !important;
+    color: #fff0c7 !important;
+
+    box-shadow:
+        inset 0 0 22px rgba(255, 215, 130, 0.18),
+        0 0 16px rgba(183, 139, 55, 0.22);
+}
+
+/* Circular room — 3D turning effect */
+
+#circular-content {
+    perspective: 1100px;
+    perspective-origin: center center;
+}
+
+#circular-content .turn-wall {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+@keyframes castle-turn-out-left {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: rotateY(-55deg) translateX(45px);
+        opacity: 0;
+    }
+}
+
+@keyframes castle-turn-in-left {
+    from {
+        transform: rotateY(55deg) translateX(-45px);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes castle-turn-out-right {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: rotateY(55deg) translateX(-45px);
+        opacity: 0;
+    }
+}
+
+@keyframes castle-turn-in-right {
+    from {
+        transform: rotateY(-55deg) translateX(45px);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+#circular-content.turn-out-left {
+    animation: castle-turn-out-left 220ms ease-in forwards;
+}
+
+#circular-content.turn-in-left {
+    animation: castle-turn-in-left 280ms ease-out both;
+}
+
+#circular-content.turn-out-right {
+    animation: castle-turn-out-right 220ms ease-in forwards;
+}
+
+#circular-content.turn-in-right {
+    animation: castle-turn-in-right 280ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #circular-content.turn-out-left,
+    #circular-content.turn-in-left,
+    #circular-content.turn-out-right,
+    #circular-content.turn-in-right {
+        animation: none;
+    }
+}
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">
 /* PUERTAS DEL CASTELLANO — SUPABASE */
 
@@ -390,10 +489,78 @@ setup.getChronologicalNeighbors = async function(currentPdd) {
 
     return { previous, next };
 };
-</script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Empieza" tags="" position="100,100" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+
+/* PUERTAS DEL CASTELLANO — LATESTPUBLISHED*/
+setup.getLatestPublishedPdd = async function () {
+    const endpoint = setup.supabase.url
+        + "/rest/v1/rooms"
+        + "?select=pdd"
+        + "&published=eq.true"
+        + "&order=pdd.desc"
+        + "&limit=1";
+
+    const response = await fetch(endpoint, {
+        headers: {
+            apikey: setup.supabase.key
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error("Latest PDD lookup failed: " + response.status);
+    }
+
+    const rooms = await response.json();
+
+    return rooms.length ? Number(rooms[0].pdd) : null;
+};
+/* PUERTAS DEL CASTELLANO — DIRECT LINK SESSION RESET */
+
+$(document).one(":storyready", function () {
+    const pdd = new URLSearchParams(window.location.search).get("pdd");
+
+    if (!pdd) return;
+
+    if (sessionStorage.getItem("pddDirectLinkHandled") !== window.location.search) {
+        sessionStorage.setItem("pddDirectLinkHandled", window.location.search);
+        Engine.restart();
+    }
+});
+/* PUERTAS DEL CASTELLANO — DIRECT LINK SESSION PRIORITY */
+
+$(document).one(":storyready", function () {
+    const pdd = new URLSearchParams(window.location.search).get("pdd");
+
+    if (!pdd) return;
+
+    (async function () {
+        let destination = null;
+
+        if (pdd === "today") {
+            destination = await setup.getLatestPublishedPdd();
+        } else if (/^\d+$/.test(pdd) && Number(pdd) > 0) {
+            destination = Number(pdd);
+        }
+
+        if (destination === null) return;
+
+        State.variables.currentPdd = destination;
+        State.variables.enteredFromPdd = 0;
+
+        if (State.passage !== "TestCircularRoom" ||
+            Number(State.variables.currentPdd) !== destination) {
+            Engine.play("TestCircularRoom");
+        } else {
+            Engine.play("TestCircularRoom");
+        }
+    })().catch(function (error) {
+        console.error("Direct PDD link error:", error);
+    });
+});</script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Empieza" tags="" position="100,100" size="100,100">
+
+&lt;div class=&quot;room-card&quot;&gt;
 &lt;h1&gt;PUERTAS DEL CASTELLANO&lt;/h1&gt;
 [[🧪 Laboratorio Supabase|TestSupabase]]
-[[🧪 Laboratorio Supabase|TestCircularRoom]]
+[[🧪 Laboratorio Supabase Circular|TestCircularRoom]]
 &lt;p&gt;Estás de nuevo en la sala del castillo. Tres puertas conocidas esperan en la penumbra. Pero ahora hay una cuarta.&lt;/p&gt;
 &lt;p&gt;Está cubierta de libros, pergaminos y símbolos. En su centro, una luz azul se mueve lentamente, como si buscara una palabra.&lt;/p&gt;
 [[Examinar la cuarta puerta-&gt;PuertaPalabras]]
@@ -404,7 +571,20 @@ setup.getChronologicalNeighbors = async function(currentPdd) {
 &lt;p&gt;Cuando acercas la mano, una de ellas comienza a brillar.&lt;/p&gt;
 &lt;&lt;link &quot;Entrar&quot;&gt;&gt;&lt;&lt;goto $latestPDD&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver a la sala-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryInit" tags="startup" position="50,250" size="100,100">&lt;&lt;set $latestPDD = &quot;PDD383&quot;&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="PDD383" tags="" position="450,80" size="100,100">&lt;&lt;pddroom 383 &quot;Resolana&quot; &quot;PDD49&quot; &quot;PDD264&quot; &quot;PDD43&quot; &quot;PDD384&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="StoryInit" tags="startup" position="50,250" size="100,100">&lt;&lt;set $latestPDD = &quot;PDD383&quot;&gt;&gt;
+
+&lt;&lt;set $requestedPdd = null&gt;&gt;
+
+&lt;&lt;run (() =&gt; {
+    const params = new URLSearchParams(window.location.search);
+    const pdd = params.get(&quot;pdd&quot;);
+
+    if (pdd &amp;&amp; /^\d+$/.test(pdd) &amp;&amp; Number(pdd) &gt; 0) {
+        State.variables.requestedPdd = Number(pdd);
+    }
+})()&gt;&gt;
+
+&lt;&lt;run console.log(&quot;StoryInit executed — requested PDD:&quot;, State.variables.requestedPdd)&gt;&gt;</tw-passagedata><tw-passagedata pid="4" name="PDD383" tags="" position="450,80" size="100,100">&lt;&lt;pddroom 383 &quot;Resolana&quot; &quot;PDD49&quot; &quot;PDD264&quot; &quot;PDD43&quot; &quot;PDD384&quot;&gt;&gt;
   &lt;p&gt;En el patio del castillo hace frío. La escarcha cubre las piedras, pero un viejo banco junto al muro está bañado por el sol. Te sientas. Allí se está sorprendentemente bien.&lt;/p&gt;
 
   &lt;p&gt;&lt;strong&gt;Resolana.&lt;/strong&gt;&lt;/p&gt;
@@ -927,66 +1107,101 @@ Engine.play(&quot;TestSupabase&quot;);
         // Progressive unlocking comes later.
  
         // Add chronological neighbors to the circular room.
+      
+        // Get previous and next published PDDs.
         const chronological =
             await setup.getChronologicalNeighbors(currentPdd);
 
-        // Remove chronological neighbors from ordinary connections
-        // so each destination has only one door.
-        const chronologicalPdds = [
-            chronological.previous?.pdd,
-            chronological.next?.pdd
-        ].filter(pdd =&gt; pdd != null).map(Number);
+        const previous = chronological.previous;
+        const next = chronological.next;
 
+        const enteredFromPdd =
+            Number(State.variables.enteredFromPdd || 0);
+
+        // Keep semantic doors, excluding chronological
+        // neighbors to prevent duplicates.
         const semanticDoors = availableDoors.filter(function(item) {
-            return !chronologicalPdds.includes(Number(item.room.pdd));
+            return Number(item.room.pdd) !== Number(previous?.pdd)
+                &amp;&amp; Number(item.room.pdd) !== Number(next?.pdd);
         });
 
-        // Starting wall: strongest available semantic connection.
-        // If there are none, use a chronological neighbor.
-        const startingDoor = semanticDoors.shift()
-            || (chronological.next
-                ? { room: chronological.next, type: &quot;next&quot; }
-                : { room: chronological.previous, type: &quot;previous&quot; });
+        // Set aside the entrance door, if present.
+        const returnIndex = semanticDoors.findIndex(function(item) {
+            return Number(item.room.pdd) === enteredFromPdd;
+        });
+
+        const returnDoor = returnIndex &gt;= 0
+            ? semanticDoors.splice(returnIndex, 1)[0]
+            : null;
+
+        // Semantic doors are already sorted by featured
+        // status and connection strength.
+        const bestSemantic = semanticDoors.shift() || null;
 
         const circularDoors = [];
 
-        if (startingDoor &amp;&amp; startingDoor.room) {
-            circularDoors.push(startingDoor);
+        if (bestSemantic) {
+            // Front: strongest semantic connection.
+            circularDoors.push(bestSemantic);
+
+            // Right: previous PDD.
+            if (previous) {
+                circularDoors.push({
+                    room: previous,
+                    type: &quot;previous&quot;
+                });
+            }
+
+            // Remaining semantic doors.
+            const midpoint = Math.ceil(semanticDoors.length / 2);
+
+            circularDoors.push(...semanticDoors.slice(0, midpoint));
+
+            // Back: return door.
+            if (returnDoor) {
+                circularDoors.push(returnDoor);
+            }
+
+            circularDoors.push(...semanticDoors.slice(midpoint));
+
+            // Left: next PDD.
+            if (next) {
+                circularDoors.push({
+                    room: next,
+                    type: &quot;next&quot;
+                });
+            }
+
+        } else {
+            // No other semantic connections:
+            // face the next PDD, or previous if next is absent.
+            if (next) {
+                circularDoors.push({
+                    room: next,
+                    type: &quot;next&quot;
+                });
+            }
+
+            if (returnDoor) {
+                circularDoors.push(returnDoor);
+            }
+
+            if (previous) {
+                circularDoors.push({
+                    room: previous,
+                    type: &quot;previous&quot;
+                });
+            }
         }
 
-        // Array order represents turning RIGHT.
-        // Previous PDD immediately right of the starting wall.
-        if (chronological.previous &amp;&amp;
-            Number(startingDoor.room.pdd) !==
-                Number(chronological.previous.pdd)) {
-            circularDoors.push({
-                room: chronological.previous,
-                type: &quot;previous&quot;
-            });
-        }
-
-        // Remaining semantic connections.
-        circularDoors.push(...semanticDoors);
-
-        // Next PDD immediately LEFT of the starting wall.
-        if (chronological.next &amp;&amp;
-            Number(startingDoor.room.pdd) !==
-                Number(chronological.next.pdd)) {
-            circularDoors.push({
-                room: chronological.next,
-                type: &quot;next&quot;
-            });
-        }
-
-        // Replace the original array contents without changing
-        // the rest of the navigation code.
+        // Replace door list without changing navigation handlers.
         availableDoors.splice(
             0,
             availableDoors.length,
             ...circularDoors
         );
 
-        // Start facing a semantic wall.
+        // Always face the first door in the arranged circle.
         let selectedIndex = 0;
 
         function showWall() {
@@ -1003,7 +1218,22 @@ Engine.play(&quot;TestSupabase&quot;);
             const selected = availableDoors[selectedIndex];
             const room = selected.room;
 
-            door.text(&quot;Más allá de esta palabra&quot;);
+           
+            // Distinguish chronological doors.
+            const isTimeDoor =
+                selected.type === &quot;previous&quot; ||
+                selected.type === &quot;next&quot;;
+
+            door.toggleClass(&quot;time-door&quot;, isTimeDoor);
+
+            if (selected.type === &quot;previous&quot;) {
+                door.text(&quot;⌛ La palabra anterior&quot;);
+            } else if (selected.type === &quot;next&quot;) {
+                door.text(&quot;⌛ La palabra siguiente&quot;);
+            } else {
+                door.text(&quot;Más allá de esta palabra&quot;);
+            }
+
             word.text(&quot;PDD &quot; + room.pdd + &quot; — &quot; + room.word);
             description.text(room.description || &quot;&quot;);
 
@@ -1032,25 +1262,53 @@ Engine.play(&quot;TestSupabase&quot;);
             );
         }
 
-        $(&quot;#circular-prev&quot;).on(&quot;click&quot;, function() {
-            if (!availableDoors.length) return;
+        // Animate turning between walls.
+        const circularContent = $(&quot;#circular-content&quot;);
+        let isTurning = false;
 
-            selectedIndex =
-                (selectedIndex - 1 + availableDoors.length) %
-                availableDoors.length;
+        function turnWall(direction) {
+            if (isTurning || availableDoors.length &lt; 2) return;
 
-            showWall();
-        });
+            const outClass = &quot;turn-out-&quot; + direction;
+            const inClass = &quot;turn-in-&quot; + direction;
 
-        $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
-            if (!availableDoors.length) return;
+            isTurning = true;
 
-            selectedIndex =
-                (selectedIndex + 1) % availableDoors.length;
+            circularContent.removeClass(
+                &quot;turn-out-left turn-out-right &quot; +
+                &quot;turn-in-left turn-in-right&quot;
+            );
 
-            showWall();
-        });
+            circularContent.addClass(outClass);
 
+            setTimeout(function() {
+                selectedIndex = direction === &quot;left&quot;
+                    ? (selectedIndex - 1 + availableDoors.length)
+                        % availableDoors.length
+                    : (selectedIndex + 1)
+                        % availableDoors.length;
+
+                showWall();
+
+                circularContent
+                    .removeClass(outClass)
+                    .addClass(inClass);
+
+                setTimeout(function() {
+                    circularContent.removeClass(inClass);
+                    isTurning = false;
+                }, 280);
+
+            }, 220);
+        }
+
+ $(&quot;#circular-prev&quot;).on(&quot;click&quot;, function() {
+    turnWall(&quot;left&quot;);
+});
+
+$(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
+    turnWall(&quot;right&quot;);
+});
         door.on(&quot;click&quot;, function(event) {
             event.preventDefault();
 
