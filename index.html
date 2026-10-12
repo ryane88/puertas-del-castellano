@@ -371,7 +371,307 @@ a:hover, .link-internal:hover {
         animation: none;
     }
 }
-</style><script role="script" id="twine-user-script" type="text/twine-javascript">
+/* PUERTAS DEL CASTELLANO — MANUSCRIPT OVERLAY */
+
+#pdd-manuscript-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(12, 9, 5, 0.82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+#pdd-manuscript-overlay[hidden] {
+    display: none;
+}
+
+#pdd-manuscript-paper {
+    position: relative;
+    width: min(720px, 100%);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 48px 55px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #f1dfb5, #d9bd83);
+    border: 9px double #8a6534;
+    box-shadow: 0 18px 65px rgba(0, 0, 0, 0.7);
+    color: #382513;
+    font-family: Georgia, serif;
+    line-height: 1.8;
+}
+
+#pdd-manuscript-paper h2 {
+    color: #59341c;
+    text-align: center;
+}
+
+.pdd-manuscript-heading {
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 0.85em;
+    color: #805b32;
+}
+
+#pdd-close-manuscript {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: #59341c;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+/* PUERTAS DEL CASTELLANO — MANUSCRIPT VOCABULARY LINKS */
+
+.pdd-manuscript-word {
+    color: #7a321b;
+    font-weight: bold;
+    text-decoration: underline dotted;
+    text-underline-offset: 4px;
+    cursor: pointer;
+}
+
+.pdd-manuscript-word:hover {
+    color: #ad5b24;
+    text-decoration-style: solid;
+}
+/* PUERTAS DEL CASTELLANO — MYST ROOM PROTOTYPE */
+
+/* =========================================================
+   PUERTAS DEL CASTELLANO — MYST ROOM PROTOTYPE
+   Isolated styling for TestMystRoom
+   ========================================================= */
+
+.myst-room {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* PUERTAS DEL CASTELLANO — MYST CHAMBER */
+
+.myst-scene {
+    background: #21170f;
+    border: 5px solid #705333;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+.myst-scene-label {
+    padding: 12px;
+    color: #e8d2a6;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* PUERTAS DEL CASTELLANO — IMAGE LAYERS */
+
+.myst-scene-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+    background: #21170f;
+}
+
+/* Castle foreground, including gold frame */
+
+.myst-background {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* PDD artwork behind transparent opening */
+
+.myst-pdd-painting {
+    position: absolute;
+    z-index: 1;
+
+left: 56.85%;
+top: 28.8%;
+width: 25.3%;
+height: 26.4%;
+object-fit: cover;
+
+ 
+    border: none;
+    transform: none;
+    box-sizing: border-box;
+}
+
+/* PUERTAS DEL CASTELLANO — NAVIGATION */
+
+.myst-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    color: #e8d2a6;
+    gap: 12px;
+}
+
+.myst-controls button {
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 1.3rem;
+}
+
+.myst-controls span {
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* PUERTAS DEL CASTELLANO — PARCHMENT */
+
+.myst-parchment {
+    background: linear-gradient(135deg, #f1dfb5, #d9bd83);
+    border: 5px solid #705333;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 24px;
+    color: #382513;
+    font-family: Georgia, serif;
+}
+
+.myst-parchment h2 {
+    color: #59341c;
+    margin: 8px 0;
+}
+
+.myst-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #805b32;
+}
+
+/* PUERTAS DEL CASTELLANO — DESKTOP */
+
+@media (min-width: 700px) {
+    .myst-parchment {
+        padding: 32px 48px;
+    }
+}
+/* PUERTAS DEL CASTELLANO — MYST LAYER ISOLATION */
+
+.myst-scene-image {
+    isolation: isolate;
+}
+
+.myst-background {
+    position: relative;
+    z-index: 2;
+}
+
+.myst-pdd-painting {
+  
+    position: absolute;
+    z-index: 1;
+}
+/* Mirror the chamber when the destination PDD is odd */
+.myst-scene-image.myst-mirrored .myst-background {
+    transform: scaleX(-1);
+}
+
+/* Move the PDD painting to the opposite side.
+   The painting itself stays readable. */
+.myst-scene-image.myst-mirrored .myst-pdd-painting {
+    left: 17.85%;
+}
+/* Camera-style turning between doors */
+
+.myst-scene-image {
+    transition:
+        opacity 180ms ease-in-out,
+        transform 180ms ease-in-out;
+}
+
+.myst-scene-image.myst-turning-out {
+    opacity: 0;
+    transform: translateX(var(--turn-out, -15%));
+}
+
+.myst-scene-image.myst-turning-in {
+    opacity: 0;
+    transform: translateX(var(--turn-in, 15%));
+}
+.myst-scene-image {
+    position: relative;
+}
+
+.myst-door-hotspot {
+    position: absolute;
+    z-index: 5;
+
+    /* Approximate wooden door position */
+    left: 8%;
+    top: 32%;
+    width: 28%;
+    height: 39%;
+
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Move hotspot when chamber is mirrored */
+.myst-scene-image.myst-mirrored .myst-door-hotspot {
+    left: auto;
+    right: 8%;
+}
+
+/* Subtle indication that the door is interactive */
+.myst-door-hotspot:hover {
+    background: rgba(255, 215, 120, 0.08);
+}
+
+.myst-door-hotspot:focus-visible {
+    outline: 2px solid gold;
+}
+/* PUERTAS DEL CASTELLANO — ROOM TRANSITION */
+
+.myst-room {
+    position: relative;
+}
+
+#myst-loading-curtain {
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+    background: #100d0b;
+    color: #c9ad75;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Georgia, serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    letter-spacing: 0.06em;
+
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.65s ease, visibility 0.65s ease;
+}
+
+#myst-loading-curtain.is-ready {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">
 /* PUERTAS DEL CASTELLANO — SUPABASE */
 
 setup.supabase = {
@@ -555,12 +855,70 @@ $(document).one(":storyready", function () {
     })().catch(function (error) {
         console.error("Direct PDD link error:", error);
     });
-});</script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Empieza" tags="" position="100,100" size="100,100">
+});
+/* PUERTAS DEL CASTELLANO — MANUSCRIPT INTERACTION */
+
+$(document).on("click", "#pdd-open-manuscript", function () {
+    $("#pdd-manuscript-overlay").prop("hidden", false);
+});
+
+$(document).on("click", "#pdd-close-manuscript", function () {
+    $("#pdd-manuscript-overlay").prop("hidden", true);
+});
+
+$(document).on("click", "#pdd-manuscript-overlay", function (event) {
+    if (event.target === this) {
+        $(this).prop("hidden", true);
+    }
+});
+/* PUERTAS DEL CASTELLANO — MANUSCRIPT WORD NAVIGATION */
+
+$(document).on("click", ".pdd-manuscript-word", function (event) {
+    event.preventDefault();
+
+    const destination = Number($(this).attr("data-pdd"));
+
+    if (!destination) return;
+
+    State.variables.enteredFromPdd =
+        Number(State.variables.currentPdd || 0);
+
+    State.variables.currentPdd = destination;
+
+    Engine.play("TestCircularRoom");
+});
+Config.ui.stowBarInitially = true;
+
+/* PUERTAS DEL CASTELLANO — AUDIO */
+setup.audio = setup.audio || {};
+setup.audio.enabled = true;
+setup.audio.music = setup.audio.music || new Audio("audio/chamber0.mp3");
+
+setup.audio.startMusic = function (chamberNumber) {
+    if (!setup.audio.enabled) return;
+
+    const number = Number(chamberNumber) || 0;
+    const path = "audio/chamber" + number + ".mp3";
+
+    if (setup.audio.music.getAttribute("src") !== path) {
+        setup.audio.music.pause();
+        setup.audio.music.src = path;
+        setup.audio.music.load();
+    }
+
+    setup.audio.music.loop = true;
+    setup.audio.music.volume = 0.25;
+
+    setup.audio.music.play().catch(function (error) {
+        console.log("Music playback unavailable:", error);
+    });
+};</script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="Empieza" tags="" position="100,100" size="100,100">
 
 &lt;div class=&quot;room-card&quot;&gt;
 &lt;h1&gt;PUERTAS DEL CASTELLANO&lt;/h1&gt;
 [[🧪 Laboratorio Supabase|TestSupabase]]
 [[🧪 Laboratorio Supabase Circular|TestCircularRoom]]
+[[🏰 Laboratorio|CastleEntrance]]
 &lt;p&gt;Estás de nuevo en la sala del castillo. Tres puertas conocidas esperan en la penumbra. Pero ahora hay una cuarta.&lt;/p&gt;
 &lt;p&gt;Está cubierta de libros, pergaminos y símbolos. En su centro, una luz azul se mueve lentamente, como si buscara una palabra.&lt;/p&gt;
 [[Examinar la cuarta puerta-&gt;PuertaPalabras]]
@@ -588,7 +946,7 @@ $(document).one(":storyready", function () {
   &lt;p&gt;En el patio del castillo hace frío. La escarcha cubre las piedras, pero un viejo banco junto al muro está bañado por el sol. Te sientas. Allí se está sorprendentemente bien.&lt;/p&gt;
 
   &lt;p&gt;&lt;strong&gt;Resolana.&lt;/strong&gt;&lt;/p&gt;
-&lt;&lt;/pddroom&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="PDD49" tags="" position="610,80" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;&lt;/pddroom&gt;&gt;</tw-passagedata><tw-passagedata pid="5" name="PDD49" tags="" position="600,175" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #49&lt;/div&gt;
 &lt;h1&gt;SABOREAR&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd49.jpg&quot; alt=&quot;saborear&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -624,7 +982,7 @@ $(document).one(":storyready", function () {
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[sobremesa-&gt;PDD51]] · [[gozar-&gt;PDD155]] · [[Dar la cara-&gt;PDD268]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="PDD264" tags="" position="610,230" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="PDD264" tags="" position="575,550" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #264&lt;/div&gt;
 &lt;h1&gt;AL MAL TIEMPO, BUENA CARA&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd264.jpg&quot; alt=&quot;Al mal tiempo, buena cara&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -1041,7 +1399,35 @@ Engine.play(&quot;TestSupabase&quot;);
 
     &lt;div id=&quot;circular-status&quot; style=&quot;margin-top:16px;&quot;&gt;&lt;/div&gt;
 &lt;/div&gt;
+&lt;!-- PUERTAS DEL CASTELLANO — MANUSCRIPT PROTOTYPE --&gt;
 
+&lt;div id=&quot;pdd-manuscript-trigger&quot; style=&quot;text-align:center;margin:20px 0;&quot;&gt;
+    &lt;button id=&quot;pdd-open-manuscript&quot; type=&quot;button&quot;&gt;
+        📜 Examinar el manuscrito
+    &lt;/button&gt;
+&lt;/div&gt;
+
+&lt;div id=&quot;pdd-manuscript-overlay&quot; hidden&gt;
+    &lt;div id=&quot;pdd-manuscript-paper&quot;&gt;
+        &lt;button id=&quot;pdd-close-manuscript&quot; type=&quot;button&quot;
+                aria-label=&quot;Cerrar manuscrito&quot;&gt;✕&lt;/button&gt;
+
+        &lt;div class=&quot;pdd-manuscript-heading&quot;&gt;CAPÍTULO 77&lt;/div&gt;
+
+        &lt;h2&gt;La libertad también sabe regresar&lt;/h2&gt;
+
+        &lt;p&gt;En Tarifa, Rosita y Ricardo comenzaron a hacer las maletas.&lt;/p&gt;
+
+        &lt;p&gt;Aquella misma mañana, con el
+&lt;a href=&quot;#&quot; class=&quot;pdd-manuscript-word&quot; data-pdd=&quot;385&quot;&gt;albor&lt;/a&gt;,
+esa primera claridad que anuncia el día antes de que salga
+completamente el sol, abandonaron Tarifa.&lt;/p&gt;
+
+        &lt;p&gt;Pero mientras una historia terminaba, otra comenzaba.&lt;/p&gt;
+
+        &lt;p&gt;En Granada aterrizaban Balance y Cifras...&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
 &lt;&lt;done&gt;&gt;
 &lt;&lt;run (async function () {
@@ -1327,6 +1713,595 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
         console.error(&quot;Circular room error:&quot;, error);
         status.text(&quot;Error al cargar las puertas.&quot;);
     }
+})()&gt;&gt;
+&lt;&lt;/done&gt;&gt;
+</tw-passagedata><tw-passagedata pid="23" name="TestMystRoom" tags="" position="600,675" size="100,100">
+&lt;&lt;nobr&gt;&gt;
+&lt;!-- PUERTAS DEL CASTELLANO — MYST ROOM --&gt;
+
+&lt;div class=&quot;myst-room&quot;&gt;
+
+    &lt;div id=&quot;myst-loading-curtain&quot;&gt;
+        &lt;span&gt;Abriendo las puertas...&lt;/span&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;myst-scene&quot;&gt;
+
+&lt;div class=&quot;myst-scene-label&quot; id=&quot;myst-room-title&quot;&gt;
+    LAS PUERTAS DEL CASTELLANO
+&lt;/div&gt;
+
+
+        &lt;div class=&quot;myst-scene-image&quot;&gt;
+
+            &lt;!-- Painting for the destination behind the door --&gt;
+            &lt;img
+                id=&quot;myst-pdd-image&quot;
+                src=&quot;&quot;
+                alt=&quot;&quot;
+                class=&quot;myst-pdd-painting&quot;
+            &gt;
+
+            &lt;!-- Castle foreground with transparent gold frame --&gt;
+           &lt;img
+    id=&quot;myst-background&quot;
+    src=&quot;&quot;
+    alt=&quot;Cámara circular del castillo&quot;
+    class=&quot;myst-background&quot;
+&gt;
+&lt;button
+    type=&quot;button&quot;
+    id=&quot;myst-door-hotspot&quot;
+    class=&quot;myst-door-hotspot&quot;
+    aria-label=&quot;Entrar por esta puerta&quot;
+    title=&quot;Entrar por esta puerta&quot;
+&gt;&lt;/button&gt;
+
+
+        &lt;/div&gt;
+
+        &lt;div class=&quot;myst-controls&quot;&gt;
+            &lt;button type=&quot;button&quot; id=&quot;myst-left&quot;&gt;◀&lt;/button&gt;
+            &lt;span id=&quot;myst-counter&quot;&gt;Cargando puertas...&lt;/span&gt;
+            &lt;button type=&quot;button&quot; id=&quot;myst-right&quot;&gt;▶&lt;/button&gt;
+        &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;div class=&quot;myst-parchment&quot;&gt;
+        &lt;div class=&quot;myst-kicker&quot; id=&quot;myst-kicker&quot;&gt;Cargando...&lt;/div&gt;
+        &lt;h2 id=&quot;myst-word&quot;&gt;&lt;/h2&gt;
+        &lt;p id=&quot;myst-description&quot;&gt;&lt;/p&gt;
+
+        &lt;button type=&quot;button&quot; id=&quot;myst-enter&quot;&gt;
+            Entrar por esta puerta
+        &lt;/button&gt;
+
+        &lt;p id=&quot;myst-status&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;&lt;/nobr&gt;&gt;
+
+&lt;&lt;done&gt;&gt;
+&lt;&lt;run (async function () {
+
+    const kicker = $(&quot;#myst-kicker&quot;);
+    const word = $(&quot;#myst-word&quot;);
+    const description = $(&quot;#myst-description&quot;);
+    const image = $(&quot;#myst-pdd-image&quot;);
+    const counter = $(&quot;#myst-counter&quot;);
+    const status = $(&quot;#myst-status&quot;);
+    const enterButton = $(&quot;#myst-enter&quot;);
+    
+    const doorHotspot = $(&quot;#myst-door-hotspot&quot;);
+
+doorHotspot.on(&quot;click&quot;, function () {
+    if (!enterButton.prop(&quot;disabled&quot;)) {
+        enterButton.trigger(&quot;click&quot;);
+    }
+});
+    
+
+    const leftButton = $(&quot;#myst-left&quot;);
+    const rightButton = $(&quot;#myst-right&quot;);
+
+    enterButton.prop(&quot;disabled&quot;, true);
+    leftButton.prop(&quot;disabled&quot;, true);
+    rightButton.prop(&quot;disabled&quot;, true);
+
+    try {
+
+        // Select the latest published room only when
+        // no current chamber has already been chosen.
+
+        let currentPdd = Number(State.variables.currentPdd);
+
+        if (!Number.isFinite(currentPdd) || currentPdd &lt;= 0) {
+            currentPdd = Number(
+                await setup.getLatestPublishedPdd()
+            );
+
+            if (!Number.isFinite(currentPdd) || currentPdd &lt;= 0) {
+                throw new Error(&quot;No hay palabras publicadas.&quot;);
+            }
+
+            State.variables.currentPdd = currentPdd;
+        }
+
+        const currentRoom = await setup.getRoom(currentPdd);
+        console.log(&quot;MYST CURRENT CHAMBER:&quot;, currentPdd);
+        // Temporary: alternate between our two chamber backgrounds.
+const chamberNumber = currentPdd % 6;
+
+$(&quot;#myst-background&quot;).attr(
+    &quot;src&quot;,
+    &quot;images/myst-chamber-transparent&quot; + chamberNumber + &quot;.png&quot;
+);
+setup.audio.startMusic(chamberNumber);
+        if (!currentRoom) {
+            throw new Error(&quot;No se encontró la sala PDD &quot; + currentPdd);
+        }
+        
+        $(&quot;#myst-room-title&quot;).text(
+    &quot;LAS PUERTAS DEL CASTELLANO · PDD &quot; +
+    currentPdd +
+    &quot; · &quot; +
+    currentRoom.word
+);
+
+        // Load semantic connections.
+
+        const connections = await setup.getConnections(currentPdd);
+
+        const destinations = connections.map(function (c) {
+            return Number(c.from_pdd) === currentPdd
+                ? Number(c.to_pdd)
+                : Number(c.from_pdd);
+        });
+
+        const rooms = await setup.getPublishedRooms(destinations);
+
+        const availableDoors = connections
+            .map(function (c) {
+
+                const destination =
+                    Number(c.from_pdd) === currentPdd
+                        ? Number(c.to_pdd)
+                        : Number(c.from_pdd);
+
+                const room = rooms.find(function (r) {
+                    return Number(r.pdd) === destination;
+                });
+
+                return room
+                    ? { room: room, connection: c }
+                    : null;
+            })
+            .filter(Boolean);
+
+        // Preserve the circular room&#39;s ranking:
+        // featured first, then strength, then PDD.
+
+        availableDoors.sort(function (a, b) {
+            return (
+                Number(b.connection.featured) -
+                    Number(a.connection.featured) ||
+                Number(b.connection.strength || 0) -
+                    Number(a.connection.strength || 0) ||
+                Number(a.room.pdd) - Number(b.room.pdd)
+            );
+        });
+
+        // Chronological neighbors are published rooms.
+
+        const chronological =
+            await setup.getChronologicalNeighbors(currentPdd);
+
+        const previous = chronological.previous;
+        const next = chronological.next;
+
+        const enteredFromPdd =
+            Number(State.variables.enteredFromPdd || 0);
+
+        // Avoid duplicate chronological and semantic doors.
+
+        const semanticDoors = availableDoors.filter(function (item) {
+            return Number(item.room.pdd) !== Number(previous?.pdd)
+                &amp;&amp; Number(item.room.pdd) !== Number(next?.pdd);
+        });
+
+        // Set aside the entrance door, if present.
+
+        const returnIndex = semanticDoors.findIndex(function (item) {
+            return Number(item.room.pdd) === enteredFromPdd;
+        });
+
+        const returnDoor = returnIndex &gt;= 0
+            ? semanticDoors.splice(returnIndex, 1)[0]
+            : null;
+
+       // CHRONOLOGICAL HALLWAY
+// The door ahead continues our direction of travel.
+
+const circularDoors = [];
+
+const latestPdd = Number(
+    await setup.getLatestPublishedPdd()
+);
+
+// Determine which chronological direction we are travelling.
+// -1 = toward older PDDs
+// +1 = toward newer PDDs
+
+const travelDirection =
+    Number(State.variables.travelDirection) || -1;
+
+// Chronological doors
+const olderDoor = previous
+    ? { room: previous, type: &quot;previous&quot; }
+    : null;
+
+const newerDoor = next
+    ? { room: next, type: &quot;next&quot; }
+    : null;
+
+// The forward-facing door always continues our journey.
+const forwardDoor =
+    travelDirection === -1 ? olderDoor : newerDoor;
+
+const backwardDoor =
+    travelDirection === -1 ? newerDoor : olderDoor;
+
+// Put the forward door first.
+if (forwardDoor) {
+    circularDoors.push(forwardDoor);
+}
+
+// Semantic doors occupy the sides of the chamber.
+const midpoint = Math.ceil(semanticDoors.length / 2);
+
+circularDoors.push(...semanticDoors.slice(0, midpoint));
+
+// Preserve a semantic return door.
+if (returnDoor) {
+    circularDoors.push(returnDoor);
+}
+
+circularDoors.push(...semanticDoors.slice(midpoint));
+
+// The chronological door behind us.
+if (backwardDoor) {
+    circularDoors.push(backwardDoor);
+}
+
+// The castle exit is behind the visitor in the latest PDD.
+if (currentPdd === latestPdd) {
+    circularDoors.push({
+        type: &quot;exit&quot;,
+        room: {
+            pdd: 0,
+            word: &quot;Salir del castillo&quot;,
+            description: &quot;La puerta conduce de regreso a la entrada del castillo.&quot;
+        }
+    });
+}
+
+// Initially face the forward chronological door.
+let selectedIndex = 0;function showWall() {
+console.log(
+    &quot;HALLWAY DEBUG&quot;,
+    &quot;Current:&quot;, currentPdd,
+    &quot;Previous:&quot;, previous?.pdd,
+    &quot;Next:&quot;, next?.pdd,
+    &quot;Direction:&quot;, travelDirection,
+    &quot;Doors:&quot;, circularDoors.map(function (d) {
+        return d.room.pdd + &quot; (&quot; + (d.type || &quot;semantic&quot;) + &quot;)&quot;;
+    })
+);
+            if (!circularDoors.length) {
+                kicker.text(&quot;PDD &quot; + currentPdd);
+                word.text(&quot;No hay puertas disponibles&quot;);
+                description.empty();
+                counter.text(&quot;0 / 0&quot;);
+                image.attr(&quot;src&quot;, &quot;images/pdd-placeholder.jpg&quot;);
+                enterButton.prop(&quot;disabled&quot;, true);
+                return;
+            }
+
+            const selected = circularDoors[selectedIndex];
+            const room = selected.room;
+            // Mirror the chamber based on the destination PDD.
+// Odd = mirrored, even = normal.
+const mirrored =
+    selected.type !== &quot;exit&quot; &amp;&amp;
+    Number(room.pdd) % 2 === 1;
+
+$(&quot;.myst-scene-image&quot;).toggleClass(
+    &quot;myst-mirrored&quot;,
+    mirrored
+);
+if (selected.type === &quot;exit&quot;) {
+    kicker.text(&quot;LA SALIDA&quot;);
+    word.text(&quot;Salir del castillo&quot;);
+    description.text(&quot;Regresar a la entrada del castillo.&quot;);
+
+    image
+        .off(&quot;error&quot;)
+        .attr(&quot;alt&quot;, &quot;Salida del castillo&quot;)
+        .attr(&quot;src&quot;, &quot;images/pdd-placeholder.jpg&quot;);
+
+    counter.text(
+        (selectedIndex + 1) + &quot; / &quot; + circularDoors.length
+    );
+
+    enterButton.prop(&quot;disabled&quot;, false);
+    return;
+}
+            const isTimeDoor =
+                selected.type === &quot;previous&quot; ||
+                selected.type === &quot;next&quot;;
+
+            kicker.text(
+                &quot;PDD &quot; + room.pdd +
+                (isTimeDoor ? &quot; · Puerta del Tiempo&quot; : &quot;&quot;)
+            );
+
+            word.text(room.word);
+            description.text(room.description || &quot;&quot;);
+
+            const imagePath = &quot;images/pdd&quot; + room.pdd + &quot;.jpg&quot;;
+            const fallbackPath = &quot;images/pdd-placeholder.jpg&quot;;
+
+            image
+                .off(&quot;error&quot;)
+                .one(&quot;error&quot;, function () {
+                    $(this).off(&quot;error&quot;);
+                    this.src = fallbackPath;
+                })
+                .attr(&quot;alt&quot;, room.word)
+                .attr(&quot;src&quot;, imagePath);
+
+            counter.text(
+                (selectedIndex + 1) +
+                &quot; / &quot; +
+                circularDoors.length
+            );
+
+            enterButton.prop(&quot;disabled&quot;, false);
+        }
+
+let isTurning = false;
+
+function turnWall(direction) {
+
+    if (circularDoors.length &lt; 2 || isTurning) return;
+
+    isTurning = true;
+
+    const scene = $(&quot;.myst-scene-image&quot;);
+
+    const turningRight = direction === &quot;right&quot;;
+
+    scene.css({
+        &quot;--turn-out&quot;: turningRight ? &quot;-15%&quot; : &quot;15%&quot;,
+        &quot;--turn-in&quot;: turningRight ? &quot;15%&quot; : &quot;-15%&quot;
+    });
+
+    // Slide the current wall out.
+    scene.addClass(&quot;myst-turning-out&quot;);
+
+    setTimeout(function () {
+
+        selectedIndex = turningRight
+            ? (selectedIndex + 1) % circularDoors.length
+            : (selectedIndex - 1 + circularDoors.length)
+                % circularDoors.length;
+
+        // Change the wall while invisible.
+        scene.css(&quot;transition&quot;, &quot;none&quot;);
+        scene.removeClass(&quot;myst-turning-out&quot;);
+        scene.addClass(&quot;myst-turning-in&quot;);
+
+        showWall();
+
+        // Allow the browser to register the new position.
+        requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+
+                scene.css(&quot;transition&quot;, &quot;&quot;);
+                scene.removeClass(&quot;myst-turning-in&quot;);
+
+                setTimeout(function () {
+                    isTurning = false;
+                }, 180);
+
+            });
+        });
+
+    }, 180);
+}
+
+        leftButton.on(&quot;click&quot;, function () {
+            turnWall(&quot;left&quot;);
+        });
+
+        rightButton.on(&quot;click&quot;, function () {
+            turnWall(&quot;right&quot;);
+        });
+
+enterButton.on(&quot;click&quot;, function () {
+   console.log(&quot;CASTLE DOOR CLICKED&quot;);
+    if (!circularDoors.length) return;
+    
+new Audio(&quot;audio/door-open.wav&quot;).play();
+    
+    
+
+    const selected = circularDoors[selectedIndex];
+
+    // Special door: leave the castle.
+    if (selected.type === &quot;exit&quot;) {
+        State.variables.enteredFromPdd = 0;
+        delete State.variables.currentPdd;
+
+        Engine.play(&quot;CastleEntrance&quot;);
+        return;
+    }
+
+    // Normal vocabulary door.
+  // Remember direction when travelling chronologically.
+if (selected.type === &quot;previous&quot;) {
+    State.variables.travelDirection = -1;
+} else if (selected.type === &quot;next&quot;) {
+    State.variables.travelDirection = 1;
+}
+
+State.variables.enteredFromPdd = currentPdd;
+State.variables.currentPdd = Number(selected.room.pdd);
+
+Engine.play(&quot;TestMystRoom&quot;);
+}); // Close the door-click handler
+
+leftButton.prop(&quot;disabled&quot;, circularDoors.length &lt; 2);
+rightButton.prop(&quot;disabled&quot;, circularDoors.length &lt; 2);
+
+showWall();
+
+// Wait for both chamber images to finish loading.
+// Reveal when images are ready, with a safety timeout.
+
+const backgroundImage = document.getElementById(&quot;myst-background&quot;);
+const paintingImage = document.getElementById(&quot;myst-pdd-image&quot;);
+
+function waitForImage(img) {
+    if (!img || img.complete) {
+        return Promise.resolve();
+    }
+
+    return new Promise(function (resolve) {
+        img.addEventListener(&quot;load&quot;, resolve, { once: true });
+        img.addEventListener(&quot;error&quot;, resolve, { once: true });
+    });
+}
+
+// Never keep the visitor behind the curtain indefinitely.
+await Promise.race([
+    Promise.all([
+        waitForImage(backgroundImage),
+        waitForImage(paintingImage)
+    ]),
+    new Promise(function (resolve) {
+        setTimeout(resolve, 1500);
+    })
+]);
+
+$(&quot;#myst-loading-curtain&quot;).addClass(&quot;is-ready&quot;);
+
+} catch (error) {
+    console.error(&quot;Myst room error:&quot;, error);
+    word.text(&quot;Error al cargar la sala&quot;);
+    status.text(error.message || &quot;Error al cargar las puertas.&quot;);
+
+    // Open the curtain even when something goes wrong.
+    $(&quot;#myst-loading-curtain&quot;).addClass(&quot;is-ready&quot;);
+}
+
+})()&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="CastleEntrance" tags="" position="475,700" size="100,100">
+&lt;&lt;nobr&gt;&gt;
+&lt;div class=&quot;myst-room&quot;&gt;
+    &lt;div class=&quot;myst-scene&quot;&gt;
+        &lt;div class=&quot;myst-scene-label&quot;&gt;
+            LA ENTRADA DEL CASTILLO
+        &lt;/div&gt;
+
+        &lt;div class=&quot;myst-scene-image&quot;&gt;
+            &lt;img
+                id=&quot;entrance-image&quot;
+                src=&quot;images/pdd-placeholder.jpg&quot;
+                alt=&quot;&quot;
+                class=&quot;myst-pdd-painting&quot;
+            &gt;
+            &lt;img
+                src=&quot;images/myst-chamber-transparent.png&quot;
+                alt=&quot;Entrada del castillo&quot;
+                class=&quot;myst-background&quot;
+            &gt;
+        &lt;/div&gt;
+
+        &lt;div class=&quot;myst-controls&quot;&gt;
+            &lt;span style=&quot;width:100%;text-align:center;&quot;&gt;
+                Una puerta. Una aventura.
+            &lt;/span&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;myst-parchment&quot;&gt;
+        &lt;div class=&quot;myst-kicker&quot; id=&quot;entrance-kicker&quot;&gt;
+            Buscando la última palabra...
+        &lt;/div&gt;
+
+        &lt;h2 id=&quot;entrance-word&quot;&gt;&lt;/h2&gt;
+        &lt;p id=&quot;entrance-description&quot;&gt;&lt;/p&gt;
+
+        &lt;button type=&quot;button&quot; id=&quot;entrance-enter&quot; disabled&gt;
+            Entrar en el castillo
+        &lt;/button&gt;
+
+        &lt;p id=&quot;entrance-status&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;&lt;/nobr&gt;&gt;
+
+&lt;&lt;done&gt;&gt;
+&lt;&lt;run (async function () {
+
+    try {
+        const latestPdd = Number(
+            await setup.getLatestPublishedPdd()
+        );
+
+        if (!Number.isFinite(latestPdd) || latestPdd &lt;= 0) {
+            throw new Error(&quot;No hay palabras publicadas.&quot;);
+        }
+
+        const room = await setup.getRoom(latestPdd);
+
+        if (!room) {
+            throw new Error(&quot;No se encontró la última sala.&quot;);
+        }
+
+        $(&quot;#entrance-kicker&quot;).text(&quot;PDD &quot; + room.pdd);
+        $(&quot;#entrance-word&quot;).text(room.word);
+        $(&quot;#entrance-description&quot;).text(room.description || &quot;&quot;);
+
+        $(&quot;#entrance-image&quot;)
+            .off(&quot;error&quot;)
+            .one(&quot;error&quot;, function () {
+                $(this).off(&quot;error&quot;);
+                this.src = &quot;images/pdd-placeholder.jpg&quot;;
+            })
+            .attr(&quot;alt&quot;, room.word)
+            .attr(&quot;src&quot;, &quot;images/pdd&quot; + room.pdd + &quot;.jpg&quot;);
+
+        $(&quot;#entrance-enter&quot;)
+            .prop(&quot;disabled&quot;, false)
+            .on(&quot;click&quot;, function () {
+
+                State.variables.currentPdd = latestPdd;
+                State.variables.enteredFromPdd = 0;
+setup.audio.startMusic();
+                Engine.play(&quot;TestMystRoom&quot;);
+            });
+
+    } catch (error) {
+        console.error(&quot;Castle entrance error:&quot;, error);
+        $(&quot;#entrance-status&quot;).text(
+            &quot;No se pudo abrir la entrada del castillo.&quot;
+        );
+    }
+
 })()&gt;&gt;
 &lt;&lt;/done&gt;&gt;
 </tw-passagedata></tw-storydata>
