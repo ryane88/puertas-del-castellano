@@ -671,6 +671,49 @@ object-fit: cover;
     opacity: 0;
     visibility: hidden;
     pointer-events: none;
+}
+/* PDD — Two-column desktop chamber layout */
+
+@media (min-width: 900px) {
+
+    #passages {
+        max-width: 1200px;
+    }
+
+    .myst-room {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+        gap: 18px;
+        align-items: start;
+        max-width: 1200px;
+    }
+
+    .myst-parchment {
+        grid-column: 1;
+        grid-row: 1;
+        border: 5px solid #705333;
+        border-radius: 12px;
+        padding: 24px;
+        min-width: 0;
+    }
+
+    .myst-scene {
+        grid-column: 2;
+        grid-row: 1;
+        border-radius: 12px;
+        min-width: 0;
+    }
+
+}
+/* PDD — Footer spans both desktop columns */
+@media (min-width: 900px) {
+    .myst-room-footer {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">
 /* PUERTAS DEL CASTELLANO — SUPABASE */
 
@@ -697,6 +740,28 @@ setup.getRoom = async function (pdd) {
 
     const rooms = await response.json();
     return rooms[0] || null;
+};
+
+/* PUERTAS DEL CASTELLANO — CHAPTER LOOKUP */
+
+setup.getChapter = async function (chapterId) {
+    const endpoint =
+        setup.supabase.url +
+        "/rest/v1/chapters?select=*&id=eq." +
+        encodeURIComponent(chapterId);
+
+    const response = await fetch(endpoint, {
+        headers: {
+            apikey: setup.supabase.key
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error("Chapter lookup error: " + response.status);
+    }
+
+    const chapters = await response.json();
+    return chapters[0] || null;
 };
 
 /* PUERTAS DEL CASTELLANO — ROOM CONNECTIONS */
@@ -890,6 +955,11 @@ $(document).on("click", ".pdd-manuscript-word", function (event) {
 Config.ui.stowBarInitially = true;
 
 /* PUERTAS DEL CASTELLANO — AUDIO */
+/* Preload the door creak */
+setup.doorSound = new Audio("audio/door-open.wav");
+setup.doorSound.preload = "auto";
+setup.doorSound.load();
+
 setup.audio = setup.audio || {};
 setup.audio.enabled = true;
 setup.audio.music = setup.audio.music || new Audio("audio/chamber0.mp3");
@@ -1727,8 +1797,10 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
 
     &lt;div class=&quot;myst-scene&quot;&gt;
 
-&lt;div class=&quot;myst-scene-label&quot; id=&quot;myst-room-title&quot;&gt;
-    LAS PUERTAS DEL CASTELLANO
+&lt;div class=&quot;myst-controls&quot;&gt;
+    &lt;button type=&quot;button&quot; id=&quot;myst-left&quot;&gt;◀&lt;/button&gt;
+    &lt;button type=&quot;button&quot; id=&quot;myst-enter&quot;&gt;Entrar&lt;/button&gt;
+    &lt;button type=&quot;button&quot; id=&quot;myst-right&quot;&gt;▶&lt;/button&gt;
 &lt;/div&gt;
 
 
@@ -1760,11 +1832,7 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
 
         &lt;/div&gt;
 
-        &lt;div class=&quot;myst-controls&quot;&gt;
-            &lt;button type=&quot;button&quot; id=&quot;myst-left&quot;&gt;◀&lt;/button&gt;
-            &lt;span id=&quot;myst-counter&quot;&gt;Cargando puertas...&lt;/span&gt;
-            &lt;button type=&quot;button&quot; id=&quot;myst-right&quot;&gt;▶&lt;/button&gt;
-        &lt;/div&gt;
+    
 
     &lt;/div&gt;
 
@@ -1773,13 +1841,33 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
         &lt;h2 id=&quot;myst-word&quot;&gt;&lt;/h2&gt;
         &lt;p id=&quot;myst-description&quot;&gt;&lt;/p&gt;
 
-        &lt;button type=&quot;button&quot; id=&quot;myst-enter&quot;&gt;
-            Entrar por esta puerta
-        &lt;/button&gt;
+
+&lt;button type=&quot;button&quot; id=&quot;myst-manuscript&quot; hidden&gt;
+    📜 Examinar el manuscrito
+&lt;/button&gt;
+&lt;button type=&quot;button&quot; id=&quot;myst-codex&quot; hidden&gt;📖 El códice de la sala&lt;/button&gt;
+
+
+
 
         &lt;p id=&quot;myst-status&quot;&gt;&lt;/p&gt;
+        &lt;div id=&quot;pdd-manuscript-overlay&quot; hidden&gt;
+    &lt;div id=&quot;pdd-manuscript-paper&quot;&gt;
+        &lt;button type=&quot;button&quot; id=&quot;pdd-close-manuscript&quot;&gt;✕&lt;/button&gt;
+        &lt;h2 id=&quot;myst-manuscript-title&quot;&gt;&lt;/h2&gt;
+        &lt;div id=&quot;myst-manuscript-content&quot;&gt;&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
     &lt;/div&gt;
 
+    &lt;div class=&quot;myst-room-footer&quot;&gt;
+        &lt;span id=&quot;myst-room-title&quot;&gt;
+            LAS PUERTAS DEL CASTELLANO
+        &lt;/span&gt;
+        &lt;span id=&quot;myst-counter&quot;&gt;
+            Cargando puertas...
+        &lt;/span&gt;
+    &lt;/div&gt;
 &lt;/div&gt;
 &lt;&lt;/nobr&gt;&gt;
 
@@ -1830,7 +1918,66 @@ doorHotspot.on(&quot;click&quot;, function () {
         }
 
         const currentRoom = await setup.getRoom(currentPdd);
-        console.log(&quot;MYST CURRENT CHAMBER:&quot;, currentPdd);
+
+const manuscriptButton = $(&quot;#myst-manuscript&quot;);
+
+
+
+const chapterNumber = currentRoom
+    ? Number(currentRoom.chapter)
+    : 0;
+const codexButton = $(&quot;#myst-codex&quot;);
+
+const hasCodex = Boolean(
+    currentRoom?.whatsapp_description?.trim()
+);
+
+codexButton.prop(&quot;hidden&quot;, !hasCodex);
+codexButton.on(&quot;click&quot;, function () {
+    $(&quot;#myst-manuscript-title&quot;).text(&quot;El códice de la sala&quot;);
+
+    $(&quot;#myst-manuscript-content&quot;)
+        .text(currentRoom.whatsapp_description)
+        .css(&quot;white-space&quot;, &quot;pre-wrap&quot;);
+
+    $(&quot;#pdd-manuscript-overlay&quot;).prop(&quot;hidden&quot;, false);
+});
+
+
+if (chapterNumber &gt; 0) {
+    manuscriptButton.prop(&quot;hidden&quot;, false);
+}
+
+console.log(&quot;MYST CHAPTER:&quot;, chapterNumber);
+
+manuscriptButton.on(&quot;click&quot;, async function () {
+    try {
+        manuscriptButton.prop(&quot;disabled&quot;, true);
+
+        const chapter = await setup.getChapter(chapterNumber);
+
+        if (!chapter) {
+            throw new Error(&quot;No se encontró el capítulo &quot; + chapterNumber);
+        }
+
+        $(&quot;#myst-manuscript-title&quot;).text(
+            &quot;Capítulo &quot; + chapter.id + &quot; — &quot; + (chapter.title || &quot;&quot;)
+        );
+
+        $(&quot;#myst-manuscript-content&quot;)
+            .text(chapter.content || &quot;&quot;)
+            .css(&quot;white-space&quot;, &quot;pre-wrap&quot;);
+
+        $(&quot;#pdd-manuscript-overlay&quot;).prop(&quot;hidden&quot;, false);
+
+    } catch (error) {
+        console.error(&quot;Manuscript error:&quot;, error);
+        status.text(&quot;No se pudo abrir el manuscrito.&quot;);
+    } finally {
+        manuscriptButton.prop(&quot;disabled&quot;, false);
+    }
+});
+console.log(&quot;MYST CURRENT CHAMBER:&quot;, currentPdd);
         // Temporary: alternate between our two chamber backgrounds.
 const chamberNumber = currentPdd % 6;
 
@@ -2134,8 +2281,10 @@ enterButton.on(&quot;click&quot;, function () {
    console.log(&quot;CASTLE DOOR CLICKED&quot;);
     if (!circularDoors.length) return;
     
-new Audio(&quot;audio/door-open.wav&quot;).play();
-    
+setup.doorSound.currentTime = 0;
+setup.doorSound.play().catch(function (error) {
+    console.log(&quot;Door sound unavailable:&quot;, error);
+});    
     
 
     const selected = circularDoors[selectedIndex];
