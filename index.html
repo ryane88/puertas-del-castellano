@@ -1490,18 +1490,7 @@ setup.getLatestPublishedPdd = async function () {
 
     return rooms.length ? Number(rooms[0].pdd) : null;
 };
-/* PUERTAS DEL CASTELLANO — DIRECT LINK SESSION RESET */
 
-$(document).one(":storyready", function () {
-    const pdd = new URLSearchParams(window.location.search).get("pdd");
-
-    if (!pdd) return;
-
-    if (sessionStorage.getItem("pddDirectLinkHandled") !== window.location.search) {
-        sessionStorage.setItem("pddDirectLinkHandled", window.location.search);
-        Engine.restart();
-    }
-});
 /* PUERTAS DEL CASTELLANO — DIRECT LINK SESSION PRIORITY */
 
 $(document).one(":storyready", function () {
@@ -1523,12 +1512,7 @@ $(document).one(":storyready", function () {
         State.variables.currentPdd = destination;
         State.variables.enteredFromPdd = 0;
 
-        if (State.passage !== "TestCircularRoom" ||
-            Number(State.variables.currentPdd) !== destination) {
-            Engine.play("TestCircularRoom");
-        } else {
-            Engine.play("TestCircularRoom");
-        }
+        Engine.play("TestMystRoom");
     })().catch(function (error) {
         console.error("Direct PDD link error:", error);
     });
@@ -1562,7 +1546,7 @@ $(document).on("click", ".pdd-manuscript-word", function (event) {
 
     State.variables.currentPdd = destination;
 
-    Engine.play("TestCircularRoom");
+    Engine.play("TestMystRoom");
 });
 Config.ui.stowBarInitially = true;
 
@@ -1793,12 +1777,10 @@ $(document).one(":storyready", function () {
         State.variables.currentPdd = destination;
         State.variables.enteredFromPdd = 0;
 
-        if (State.passage !== "TestCircularRoom" ||
-            Number(State.variables.currentPdd) !== destination) {
-            Engine.play("TestCircularRoom");
-        } else {
-            Engine.play("TestCircularRoom");
-        }
+       State.variables.currentPdd = destination;
+State.variables.enteredFromPdd = 0;
+
+Engine.play("TestMystRoom");
     })().catch(function (error) {
         console.error("Direct PDD link error:", error);
     });
@@ -1832,7 +1814,7 @@ $(document).on("click", ".pdd-manuscript-word", function (event) {
 
     State.variables.currentPdd = destination;
 
-    Engine.play("TestCircularRoom");
+    Engine.play("TestMystRoom");
 });
 Config.ui.stowBarInitially = true;
 
@@ -1864,7 +1846,49 @@ setup.audio.startMusic = function (chamberNumber) {
     setup.audio.music.play().catch(function (error) {
         console.log("Music playback unavailable:", error);
     });
-};</script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="CastleEntrance" tags="" position="475,700" size="100,100">&lt;&lt;nobr&gt;&gt;
+};
+
+/* PUERTAS DEL CASTELLANO — EXPLORATION MEMORY */
+
+setup.exploration = {};
+
+setup.exploration.storageKey = "pdd-visited-rooms-v1";
+
+setup.exploration.getVisited = function () {
+    try {
+        const saved = localStorage.getItem(
+            setup.exploration.storageKey
+        );
+
+        const rooms = saved ? JSON.parse(saved) : [];
+
+        return Array.isArray(rooms) ? rooms : [];
+    } catch (error) {
+        console.warn("Exploration memory unavailable:", error);
+        return [];
+    }
+};
+
+setup.exploration.visit = function (pdd) {
+    const roomNumber = Number(pdd);
+    if (!Number.isInteger(roomNumber) || roomNumber <= 0) return;
+
+    const visited = setup.exploration.getVisited();
+
+    if (!visited.includes(roomNumber)) {
+        visited.push(roomNumber);
+
+        try {
+            localStorage.setItem(
+                setup.exploration.storageKey,
+                JSON.stringify(visited)
+            );
+        } catch (error) {
+            console.warn("Could not save exploration:", error);
+        }
+    }
+};
+</script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="CastleEntrance" tags="" position="475,700" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;div class=&quot;myst-room&quot;&gt;
     &lt;div class=&quot;myst-scene&quot;&gt;
         &lt;div class=&quot;myst-scene-label&quot;&gt;
@@ -2122,6 +2146,7 @@ setup.audio.startMusic();
 
     if (pdd &amp;&amp; /^\d+$/.test(pdd) &amp;&amp; Number(pdd) &gt; 0) {
         State.variables.requestedPdd = Number(pdd);
+        State.variables.currentPdd = Number(pdd);
     }
 })()&gt;&gt;
 
@@ -2238,6 +2263,7 @@ completamente el sol, abandonaron Tarifa.&lt;/p&gt;
 
     try {
         const currentRoom = await setup.getRoom(currentPdd);
+        
 
         if (!currentRoom) {
             title.text(&quot;Sala no encontrada&quot;);
@@ -2498,7 +2524,7 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
 
 		State.variables.enteredFromPdd = currentPdd;
 		State.variables.currentPdd = Number(selected.room.pdd);
-		Engine.play(&quot;TestCircularRoom&quot;);
+		Engine.play(&quot;TestMystRoom&quot;);
         });
 
         showWall();
@@ -2570,7 +2596,17 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
 &lt;button type=&quot;button&quot; id=&quot;myst-codex&quot; hidden&gt;
   📖 El códice de la sala
 &lt;/button&gt;
-
+&lt;button type=&quot;button&quot; id=&quot;myst-journal&quot;&gt;
+    📜 Diario del Explorador
+&lt;/button&gt;
+&lt;div id=&quot;myst-journal-panel&quot; hidden&gt;
+    &lt;h2&gt;📜 Diario del Explorador&lt;/h2&gt;
+    &lt;p id=&quot;myst-journal-count&quot;&gt;&lt;/p&gt;
+    &lt;p id=&quot;myst-journal-rooms&quot;&gt;&lt;/p&gt;
+    &lt;button type=&quot;button&quot; id=&quot;myst-journal-close&quot;&gt;
+        Cerrar diario
+    &lt;/button&gt;
+&lt;/div&gt;
 
 
         &lt;p id=&quot;myst-status&quot;&gt;&lt;/p&gt;
@@ -2641,6 +2677,56 @@ doorHotspot.on(&quot;click&quot;, function () {
         }
 
         const currentRoom = await setup.getRoom(currentPdd);
+if (currentRoom) {
+    setup.exploration.visit(currentPdd);
+}
+
+const journalButton = document.getElementById(&quot;myst-journal&quot;);
+const journalPanel = document.getElementById(&quot;myst-journal-panel&quot;);
+const journalClose = document.getElementById(&quot;myst-journal-close&quot;);
+
+if (journalButton &amp;&amp; journalPanel &amp;&amp; journalClose) {
+    journalButton.addEventListener(&quot;click&quot;, function () {
+        const visited = setup.exploration.getVisited();
+
+        document.getElementById(&quot;myst-journal-count&quot;).textContent =
+            &quot;Salas descubiertas: &quot; + visited.length;
+
+   
+const roomsList = document.getElementById(&quot;myst-journal-rooms&quot;);
+roomsList.replaceChildren();
+
+if (visited.length === 0) {
+    roomsList.textContent = &quot;Todavía no has descubierto ninguna sala.&quot;;
+} else {
+   visited.sort(function (a, b) {
+    return a - b;
+}).forEach(function (pdd) {
+        const link = document.createElement(&quot;a&quot;);
+        link.href = &quot;#&quot;;
+link.addEventListener(&quot;click&quot;, function (event) {
+    event.preventDefault();
+    State.variables.enteredFromPdd =
+        Number(State.variables.currentPdd || 0);
+    State.variables.currentPdd = Number(pdd);
+    Engine.play(&quot;TestMystRoom&quot;);
+});
+        link.textContent = &quot;🚪 PDD &quot; + pdd;
+
+        const line = document.createElement(&quot;div&quot;);
+        line.appendChild(link);
+        roomsList.appendChild(line);
+    });
+}
+
+
+        journalPanel.hidden = false;
+    });
+
+    journalClose.addEventListener(&quot;click&quot;, function () {
+        journalPanel.hidden = true;
+    });
+}
 
 const manuscriptButton = $(&quot;#myst-manuscript&quot;);
 
