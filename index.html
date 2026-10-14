@@ -2440,8 +2440,19 @@ completamente el sol, abandonaron Tarifa.&lt;/p&gt;
                 door.text(&quot;Más allá de esta palabra&quot;);
             }
 
-            word.text(&quot;PDD &quot; + room.pdd + &quot; — &quot; + room.word);
-            description.text(room.description || &quot;&quot;);
+           // PDD WORD REVEAL — hide the answer on every wall change.
+word.stop(true, true)
+    .text(&quot;¿Qué palabra soy?&quot;)
+    .css(&quot;cursor&quot;, &quot;pointer&quot;)
+    .attr(&quot;title&quot;, &quot;Revelar palabra&quot;)
+    .off(&quot;click.pddReveal&quot;)
+    .one(&quot;click.pddReveal&quot;, function () {
+        word.fadeOut(150, function () {
+            word.text(room.word).fadeIn(350);
+        });
+    });
+
+description.text(room.description || &quot;&quot;);
 
             const frameNumber = Number(room.pdd) % 3;
 
@@ -2780,11 +2791,9 @@ setup.audio.startMusic(chamberNumber);
             throw new Error(&quot;No se encontró la sala PDD &quot; + currentPdd);
         }
         
-        $(&quot;#myst-room-title&quot;).text(
+   $(&quot;#myst-room-title&quot;).text(
     &quot;LAS PUERTAS DEL CASTELLANO · PDD &quot; +
-    currentPdd +
-    &quot; · &quot; +
-    currentRoom.word
+    currentPdd
 );
 
         // Load semantic connections.
@@ -3004,9 +3013,19 @@ if (selected.type === &quot;exit&quot;) {
                 (isTimeDoor ? &quot; · Puerta del Tiempo&quot; : &quot;&quot;)
             );
 
-            word.text(room.word);
-            description.text(room.description || &quot;&quot;);
+            // Hide the word until the player clicks it.
+word.stop(true, true)
+    .text(&quot;¿Qué palabra soy?&quot;)
+    .css(&quot;cursor&quot;, &quot;pointer&quot;)
+    .attr(&quot;title&quot;, &quot;Revelar palabra&quot;)
+    .off(&quot;click.pddReveal&quot;)
+    .one(&quot;click.pddReveal&quot;, function () {
+        word.fadeOut(150, function () {
+            word.text(room.word).fadeIn(350);
+        });
+    });
 
+description.text(room.description || &quot;&quot;);
             const imagePath = &quot;images/pdd&quot; + room.pdd + &quot;.jpg&quot;;
             const fallbackPath = &quot;images/pdd-placeholder.jpg&quot;;
 
