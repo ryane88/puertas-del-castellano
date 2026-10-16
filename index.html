@@ -1327,7 +1327,11 @@ object-fit: cover;
         text-align: center;
     }
 }
-/* PDD automatic build test */</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "StoryScript" */
+/* PDD automatic build test */
+#myst-meaning:not([hidden]) {
+    display: block;
+    margin: 12px auto;
+}</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "StoryScript" */
 /* PUERTAS DEL CASTELLANO — SUPABASE */
 
 setup.supabase = {
@@ -1413,7 +1417,8 @@ setup.getPublishedRooms = async function (pddNumbers) {
     const endpoint =
         setup.supabase.url +
         "/rest/v1/rooms" +
-"?select=pdd,word,title,description,whatsapp_description" +        "&published=eq.true" +
+"?select=pdd,word,title,description,whatsapp_description" +        
+        "&published=eq.true" +
         "&pdd=in.(" +
         pddNumbers.map(Number).join(",") +
         ")";
@@ -1666,7 +1671,7 @@ setup.getPublishedRooms = async function (pddNumbers) {
     const endpoint =
         setup.supabase.url +
         "/rest/v1/rooms" +
-    "?select=pdd,word,title,description,whatsapp_description" +
+        ".select(*)" +
         "&published=eq.true" +
         "&pdd=in.(" +
         pddNumbers.map(Number).join(",") +
@@ -1697,7 +1702,7 @@ setup.getChronologicalNeighbors = async function(currentPdd) {
 
     async function findNeighbor(operator, direction) {
         const endpoint = base
-             + "?select=pdd,word,title,description,whatsapp_description"
+           + "?select=*" 
             + "&published=eq.true"
             + "&pdd=" + operator + "." + Number(currentPdd)
             + "&order=pdd." + direction
@@ -2423,6 +2428,7 @@ completamente el sol, abandonaron Tarifa.&lt;/p&gt;
 
             const selected = availableDoors[selectedIndex];
             const room = selected.room;
+            meaningRoom = selected.type === &quot;exit&quot; ? null : room;
 
            
             // Distinguish chronological doors.
@@ -2560,6 +2566,7 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
     &lt;button type=&quot;button&quot; id=&quot;myst-left&quot;&gt;◀&lt;/button&gt;
     &lt;button type=&quot;button&quot; id=&quot;myst-enter&quot;&gt;Entrar&lt;/button&gt;
     &lt;button type=&quot;button&quot; id=&quot;myst-right&quot;&gt;▶&lt;/button&gt;
+    
 &lt;/div&gt;
 
 
@@ -2597,9 +2604,18 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
 
     &lt;div class=&quot;myst-parchment&quot;&gt;
         &lt;div class=&quot;myst-kicker&quot; id=&quot;myst-kicker&quot;&gt;Cargando...&lt;/div&gt;
-        &lt;h2 id=&quot;myst-word&quot;&gt;&lt;/h2&gt;
-        &lt;p id=&quot;myst-description&quot;&gt;&lt;/p&gt;
+ &lt;h2 id=&quot;myst-word&quot;&gt;&lt;/h2&gt;
 
+&lt;button type=&quot;button&quot; id=&quot;myst-meaning&quot; style=&quot;margin:12px auto;&quot; hidden&gt;
+    ¿Qué significa?
+&lt;/button&gt;
+&lt;div id=&quot;myst-meaning-quiz&quot; hidden&gt;
+    &lt;p&gt;Elige la definición correcta:&lt;/p&gt;
+    &lt;div id=&quot;myst-meaning-choices&quot;&gt;&lt;/div&gt;
+    &lt;p id=&quot;myst-meaning-feedback&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;p id=&quot;myst-description&quot;&gt;&lt;/p&gt;
 
 &lt;button type=&quot;button&quot; id=&quot;myst-manuscript&quot; hidden&gt;
     📜 Examinar el manuscrito
@@ -2609,6 +2625,9 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
 &lt;/button&gt;
 &lt;button type=&quot;button&quot; id=&quot;myst-journal&quot;&gt;
     📜 Diario del Explorador
+&lt;/button&gt;
+&lt;button type=&quot;button&quot; id=&quot;myst-audio-toggle&quot; aria-pressed=&quot;false&quot;&gt;
+    🔊 Música
 &lt;/button&gt;
 &lt;div id=&quot;myst-journal-panel&quot; hidden&gt;
     &lt;h2&gt;📜 Diario del Explorador&lt;/h2&gt;
@@ -2647,6 +2666,106 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
     const kicker = $(&quot;#myst-kicker&quot;);
     const word = $(&quot;#myst-word&quot;);
     const description = $(&quot;#myst-description&quot;);
+const meaningButton = $(&quot;#myst-meaning&quot;);
+const meaningQuiz = $(&quot;#myst-meaning-quiz&quot;);
+const meaningChoices = $(&quot;#myst-meaning-choices&quot;);
+const meaningFeedback = $(&quot;#myst-meaning-feedback&quot;);
+
+let meaningRoom = null;
+
+meaningButton.on(&quot;click&quot;, async function () {
+    if (!meaningRoom) return;
+
+    meaningButton.prop(&quot;hidden&quot;, true);
+    meaningQuiz.prop(&quot;hidden&quot;, false);
+    meaningChoices.empty();
+    meaningFeedback.text(&quot;Buscando definiciones...&quot;);
+
+    try {
+        const correct = (meaningRoom.short_definition || &quot;&quot;).trim();
+
+        if (!correct) {
+            meaningFeedback.text(&quot;Esta palabra todavía no tiene definición.&quot;);
+            return;
+        }
+
+        const endpoint = setup.supabase.url +
+            &quot;/rest/v1/rooms?select=pdd,short_definition&quot; +
+            &quot;&amp;published=eq.true&quot; +
+            &quot;&amp;short_definition=not.is.null&quot; +
+            &quot;&amp;pdd=neq.&quot; + Number(meaningRoom.pdd) +
+            &quot;&amp;limit=1000&quot;;
+
+        const response = await fetch(endpoint, {
+            headers: { apikey: setup.supabase.key }
+        });
+
+        if (!response.ok) {
+            throw new Error(&quot;Definitions error: &quot; + response.status);
+        }
+
+        const otherRooms = await response.json();
+
+        const distractors = otherRooms
+            .map(function (room) {
+                return (room.short_definition || &quot;&quot;).trim();
+            })
+            .filter(function (definition) {
+                return definition &amp;&amp; definition !== correct;
+            });
+
+        // Shuffle the distractors.
+        distractors.sort(function () {
+            return Math.random() - 0.5;
+        });
+
+        const choices = [correct, ...new Set(distractors)].slice(0, 3);
+
+        if (choices.length &lt; 3) {
+            meaningFeedback.text(&quot;Necesitamos tres definiciones para jugar.&quot;);
+            return;
+        }
+
+        // Shuffle the three choices.
+        for (let i = choices.length - 1; i &gt; 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [choices[i], choices[j]] = [choices[j], choices[i]];
+        }
+
+        meaningFeedback.empty();
+
+        choices.forEach(function (definition) {
+            const button = $(&quot;&lt;button&gt;&quot;, {
+                type: &quot;button&quot;,
+                text: definition
+            });
+
+            button.css({
+                display: &quot;block&quot;,
+                width: &quot;100%&quot;,
+                margin: &quot;10px 0&quot;,
+                textAlign: &quot;left&quot;,
+                whiteSpace: &quot;normal&quot;
+            });
+
+            button.on(&quot;click&quot;, function () {
+                if (definition === correct) {
+                    meaningFeedback.text(&quot;¡Correcto!&quot;);
+                    meaningChoices.find(&quot;button&quot;).prop(&quot;disabled&quot;, true);
+                } else {
+                    meaningFeedback.text(&quot;Inténtalo otra vez.&quot;);
+                }
+            });
+
+            meaningChoices.append(button);
+        });
+
+    } catch (error) {
+        console.error(&quot;Meaning quiz error:&quot;, error);
+        meaningFeedback.text(&quot;No se pudieron cargar las definiciones.&quot;);
+    }
+});
+
     const image = $(&quot;#myst-pdd-image&quot;);
     const counter = $(&quot;#myst-counter&quot;);
     const status = $(&quot;#myst-status&quot;);
@@ -2663,7 +2782,29 @@ doorHotspot.on(&quot;click&quot;, function () {
 
     const leftButton = $(&quot;#myst-left&quot;);
     const rightButton = $(&quot;#myst-right&quot;);
+const audioButton = $(&quot;#myst-audio-toggle&quot;);
 
+function updateAudioButton() {
+    audioButton
+        .text(setup.audio.enabled ? &quot;🔊 Música&quot; : &quot;🔇 Silencio&quot;)
+        .attr(&quot;aria-pressed&quot;, String(!setup.audio.enabled));
+}
+
+updateAudioButton();
+
+audioButton.on(&quot;click&quot;, function () {
+    setup.audio.enabled = !setup.audio.enabled;
+
+    if (setup.audio.enabled) {
+        setup.audio.music.play().catch(function (error) {
+            console.log(&quot;Music unavailable:&quot;, error);
+        });
+    } else {
+        setup.audio.music.pause();
+    }
+
+    updateAudioButton();
+});
     enterButton.prop(&quot;disabled&quot;, true);
     leftButton.prop(&quot;disabled&quot;, true);
     rightButton.prop(&quot;disabled&quot;, true);
@@ -2955,10 +3096,15 @@ console.log(
                 enterButton.prop(&quot;disabled&quot;, true);
                 return;
             }
-
+meaningRoom = null;
+meaningButton.prop(&quot;hidden&quot;, true);
+meaningQuiz.prop(&quot;hidden&quot;, true);
+meaningChoices.empty();
+meaningFeedback.empty();
             const selected = circularDoors[selectedIndex];
             const room = selected.room;
 
+meaningRoom = selected.type === &quot;exit&quot; ? null : room;
             const codexButton = $(&quot;#myst-codex&quot;);
 const whatsappText = room.whatsapp_description || &quot;&quot;;
 console.log(&quot;CODEX DEBUG:&quot;, {
@@ -3021,8 +3167,9 @@ word.stop(true, true)
     .off(&quot;click.pddReveal&quot;)
     .one(&quot;click.pddReveal&quot;, function () {
         word.fadeOut(150, function () {
-            word.text(room.word).fadeIn(350);
-        });
+    word.text(room.word).fadeIn(350);
+    $(&quot;#myst-meaning&quot;).prop(&quot;hidden&quot;, false);
+});
     });
 
 description.text(room.description || &quot;&quot;);
@@ -3115,7 +3262,11 @@ setup.doorSound.play().catch(function (error) {
     console.log(&quot;Door sound unavailable:&quot;, error);
 });    
     
-
+meaningRoom = null;
+meaningButton.prop(&quot;hidden&quot;, true);
+meaningQuiz.prop(&quot;hidden&quot;, true);
+meaningChoices.empty();
+meaningFeedback.empty();
     const selected = circularDoors[selectedIndex];
 
     // Special door: leave the castle.
