@@ -1331,6 +1331,41 @@ object-fit: cover;
 #myst-meaning:not([hidden]) {
     display: block;
     margin: 12px auto;
+}
+/* Animated snowfall overlay */
+
+.myst-snow {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.myst-snow[hidden] {
+    display: none;
+}
+.myst-snow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.myst-scene-image .myst-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 3;
+    pointer-events: none;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "StoryScript" */
 /* PUERTAS DEL CASTELLANO — SUPABASE */
 
@@ -1414,15 +1449,14 @@ setup.getPublishedRooms = async function (pddNumbers) {
         return [];
     }
 
-    const endpoint =
-        setup.supabase.url +
-        "/rest/v1/rooms" +
-"?select=pdd,word,title,description,whatsapp_description" +        
-        "&published=eq.true" +
-        "&pdd=in.(" +
-        pddNumbers.map(Number).join(",") +
-        ")";
-
+const endpoint =
+    setup.supabase.url +
+    "/rest/v1/rooms?select=*" +
+    "&published=eq.true" +
+    "&pdd=in.(" +
+    pddNumbers.map(Number).join(",") +
+    ")";
+console.log("PUBLISHED ROOMS URL:", endpoint);
     const response = await fetch(endpoint, {
         headers: {
             apikey: setup.supabase.key
@@ -1671,7 +1705,7 @@ setup.getPublishedRooms = async function (pddNumbers) {
     const endpoint =
         setup.supabase.url +
         "/rest/v1/rooms" +
-        ".select(*)" +
+        "?select=*" +
         "&published=eq.true" +
         "&pdd=in.(" +
         pddNumbers.map(Number).join(",") +
@@ -2323,8 +2357,32 @@ completamente el sol, abandonaron Tarifa.&lt;/p&gt;
         const chronological =
             await setup.getChronologicalNeighbors(currentPdd);
 
-        const previous = chronological.previous;
-        const next = chronological.next;
+let previous = chronological.previous;
+let next = chronological.next;
+
+const latestNumber = Number(
+    await setup.getLatestPublishedPdd()
+);
+
+// Close the chronological loop in both directions.
+if (currentPdd === 1 &amp;&amp; !previous &amp;&amp; latestNumber &gt; 1) {
+    previous = await setup.getRoom(latestNumber);
+}
+
+if (currentPdd === latestNumber &amp;&amp; !next &amp;&amp; latestNumber &gt; 1) {
+    next = await setup.getRoom(1);
+}
+
+// Connect PDD 1 backward to the latest published PDD.
+if (!previous &amp;&amp; currentPdd === 1) {
+    const latestNumber = Number(
+        await setup.getLatestPublishedPdd()
+    );
+
+    if (latestNumber &gt; 1) {
+        previous = await setup.getRoom(latestNumber);
+    }
+}
 
         const enteredFromPdd =
             Number(State.variables.enteredFromPdd || 0);
@@ -2586,6 +2644,12 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
     src=&quot;&quot;
     alt=&quot;Cámara circular del castillo&quot;
     class=&quot;myst-background&quot;
+&gt;
+&lt;img
+    id=&quot;myst-animation&quot;
+    src=&quot;&quot;
+    alt=&quot;&quot;
+    class=&quot;myst-animation&quot;
 &gt;
 &lt;button
     type=&quot;button&quot;
@@ -2921,8 +2985,13 @@ manuscriptButton.on(&quot;click&quot;, async function () {
 });
 console.log(&quot;MYST CURRENT CHAMBER:&quot;, currentPdd);
         // Temporary: alternate between our two chamber backgrounds.
-const chamberNumber = currentPdd % 6;
+const chamberNumber = currentPdd % 10;
+$(&quot;#myst-animation&quot;).attr(
+    &quot;src&quot;,
+    &quot;images/pdd-animation&quot; + chamberNumber + &quot;.webp&quot;
+);
 
+//$(&quot;#myst-snow&quot;).prop(&quot;hidden&quot;, chamberNumber !== 8);
 $(&quot;#myst-background&quot;).attr(
     &quot;src&quot;,
     &quot;images/myst-chamber-transparent&quot; + chamberNumber + &quot;.png&quot;
@@ -2985,8 +3054,32 @@ setup.audio.startMusic(chamberNumber);
         const chronological =
             await setup.getChronologicalNeighbors(currentPdd);
 
-        const previous = chronological.previous;
-        const next = chronological.next;
+        let previous = chronological.previous;
+        let next = chronological.next;
+
+const latestNumber = Number(
+    await setup.getLatestPublishedPdd()
+);
+
+// Close the chronological loop in both directions.
+if (currentPdd === 1 &amp;&amp; !previous &amp;&amp; latestNumber &gt; 1) {
+    previous = await setup.getRoom(latestNumber);
+}
+
+if (currentPdd === latestNumber &amp;&amp; !next &amp;&amp; latestNumber &gt; 1) {
+    next = await setup.getRoom(1);
+}
+
+// Connect PDD 1 backward to the latest published PDD.
+if (!previous &amp;&amp; currentPdd === 1) {
+    const latestNumber = Number(
+        await setup.getLatestPublishedPdd()
+    );
+
+    if (latestNumber &gt; 1) {
+        previous = await setup.getRoom(latestNumber);
+    }
+}
 
         const enteredFromPdd =
             Number(State.variables.enteredFromPdd || 0);
@@ -3034,11 +3127,14 @@ const newerDoor = next
     : null;
 
 // The forward-facing door always continues our journey.
+// At the beginning of the timeline, continue toward newer PDDs.
+const effectiveDirection = travelDirection;
+
 const forwardDoor =
-    travelDirection === -1 ? olderDoor : newerDoor;
+    effectiveDirection === -1 ? olderDoor : newerDoor;
 
 const backwardDoor =
-    travelDirection === -1 ? newerDoor : olderDoor;
+    effectiveDirection === -1 ? newerDoor : olderDoor;
 
 // Put the forward door first.
 if (forwardDoor) {
@@ -3063,16 +3159,9 @@ if (backwardDoor) {
 }
 
 // The castle exit is behind the visitor in the latest PDD.
-if (currentPdd === latestPdd) {
-    circularDoors.push({
-        type: &quot;exit&quot;,
-        room: {
-            pdd: 0,
-            word: &quot;Salir del castillo&quot;,
-            description: &quot;La puerta conduce de regreso a la entrada del castillo.&quot;
-        }
-    });
-}
+// The first vocabulary door is behind the visitor
+// when standing in the latest PDD.
+
 
 // Initially face the forward chronological door.
 let selectedIndex = 0;
