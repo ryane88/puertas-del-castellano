@@ -1366,6 +1366,184 @@ object-fit: cover;
     object-fit: fill;
     z-index: 3;
     pointer-events: none;
+}
+/* PDD painting gallery */
+
+.myst-scene-image {
+    position: relative;
+}
+
+#myst-painting-hotspot {
+    position: absolute;
+    z-index: 5;
+    left: 56.85%;
+    top: 28.8%;
+    width: 25.3%;
+    height: 26.4%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+}
+
+.myst-scene-image.myst-mirrored #myst-painting-hotspot {
+    left: 17.85%;
+}
+
+#myst-gallery[hidden] {
+    display: none !important;
+}
+
+#myst-gallery {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    box-sizing: border-box;
+    padding: 5%;
+    background: #21170f;
+    color: #f1dfbc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+#myst-gallery-close {
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.myst-gallery-frame {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 8px ridge #ad8748;
+    box-sizing: border-box;
+    background: #130e0b;
+}
+
+#myst-gallery-image {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.myst-gallery-details {
+    flex: 0 0 auto;
+    text-align: center;
+    max-width: 90%;
+}
+
+#myst-gallery-pdd {
+    color: #c7a46a;
+    letter-spacing: 0.12em;
+}
+
+#myst-gallery-word {
+    color: #f1dfbc;
+    margin: 6px 0;
+}
+
+#myst-gallery-definition {
+    margin: 6px 0;
+    line-height: 1.4;
+}
+/* PDD — CASTLE LANDING PAGE */
+
+.castle-home {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.castle-home-welcome {
+    text-align: center;
+    padding: 18px 24px;
+    color: #51402b;
+}
+
+.castle-home-welcome h2 {
+    color: #6b4725;
+    margin-bottom: 12px;
+}
+/* CASTLE HOME — DOOR HOTSPOTS */
+
+.castle-home-image {
+    position: relative;
+    width: 100%;
+}
+
+.castle-home-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.castle-home-door {
+    position: absolute;
+    top: 49%;
+    width: 13%;
+    height: 36%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+}
+
+.castle-home-door-left {
+    left: 22%;
+}
+
+.castle-home-door-middle {
+    left: 43.5%;
+}
+
+.castle-home-door-right {
+    left: 65%;
+    cursor: pointer;
+}
+/* Override SugarCube button styles */
+
+button.castle-home-door,
+button.castle-home-door:hover,
+button.castle-home-door:focus,
+button.castle-home-door:disabled {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none;
+    opacity: 1 !important;
+}
+
+button.castle-home-door-right {
+    cursor: pointer;
+}
+
+button.castle-home-door-right:hover {
+    background: rgba(255, 215, 120, 0.12) !important;
+}
+/* Hide disabled door hotspots completely */
+
+button.castle-home-door:disabled {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    cursor: default !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+}
+
+button.castle-home-door:disabled:hover {
+    background: transparent !important;
 }</style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "StoryScript" */
 /* PUERTAS DEL CASTELLANO — SUPABASE */
 
@@ -1927,6 +2105,10 @@ setup.exploration.visit = function (pdd) {
         }
     }
 };
+setup.features = {
+    codex: false,
+    manuscript: false
+};
 </script><tw-tag name="widget" color="purple"></tw-tag><tw-passagedata pid="1" name="CastleEntrance" tags="" position="475,700" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;div class=&quot;myst-room&quot;&gt;
     &lt;div class=&quot;myst-scene&quot;&gt;
@@ -1935,6 +2117,8 @@ setup.exploration.visit = function (pdd) {
         &lt;/div&gt;
 
         &lt;div class=&quot;myst-scene-image&quot;&gt;
+
+
             &lt;img
                 id=&quot;entrance-image&quot;
                 src=&quot;images/pdd-placeholder.jpg&quot;
@@ -2021,24 +2205,48 @@ setup.audio.startMusic();
     }
 
 })()&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Empieza" tags="" position="100,100" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
-&lt;h1&gt;PUERTAS DEL CASTELLANO&lt;/h1&gt;
-[[🧪 Laboratorio Supabase|TestSupabase]]
-[[🧪 Laboratorio Supabase Circular|TestCircularRoom]]
-[[🏰 Laboratorio|CastleEntrance]]
-&lt;p&gt;Estás de nuevo en la sala del castillo. Tres puertas conocidas esperan en la penumbra. Pero ahora hay una cuarta.&lt;/p&gt;
-&lt;p&gt;Está cubierta de libros, pergaminos y símbolos. En su centro, una luz azul se mueve lentamente, como si buscara una palabra.&lt;/p&gt;
-[[Examinar la cuarta puerta-&gt;PuertaPalabras]]
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="3" name="PDD1" tags="" position="610,380" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
-&lt;div class=&quot;pdd-kicker&quot;&gt;PDD #1&lt;/div&gt;
-&lt;h1&gt;RESILIENCIA&lt;/h1&gt;
-&lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd1.jpg&quot; alt=&quot;Resiliencia&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
-&lt;p&gt;Una rama se dobla bajo el peso de la nieve. No se rompe. Cuando la nieve cae, vuelve lentamente hacia la luz.&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Resiliencia.&lt;/strong&gt;&lt;/p&gt;
-&lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
-&lt;div class=&quot;paths&quot;&gt;[[Al mal tiempo, buena cara-&gt;PDD264]] · [[Valentía-&gt;PDD29]] · [[reverdecer-&gt;PDD43]]&lt;/div&gt;
-&lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="4" name="PDD155" tags="" position="930,80" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="2" name="Empieza" tags="" position="100,100" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;div class=&quot;castle-home&quot;&gt;
+
+    &lt;div class=&quot;castle-home-welcome&quot;&gt;
+        &lt;h2&gt;¡Bienvenidos, aventureros, a Puertas del Castellano!&lt;/h2&gt;
+        &lt;p&gt;
+            Tras estos muros os esperan palabras por descubrir,
+            puertas misteriosas y caminos que conectan el español
+            con la imaginación.
+        &lt;/p&gt;
+        &lt;p&gt;
+            Explorad a vuestro ritmo, disfrutad del viaje
+            y recordad: cada palabra abre una nueva puerta.
+        &lt;/p&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;castle-home-image&quot;&gt;
+        &lt;img src=&quot;images/castle-home.png&quot;
+             alt=&quot;Entrada de Puertas del Castellano&quot;&gt;
+
+        &lt;button type=&quot;button&quot;
+                class=&quot;castle-home-door castle-home-door-left&quot;
+                title=&quot;Próximamente&quot;
+                disabled&gt;
+        &lt;/button&gt;
+
+        &lt;button type=&quot;button&quot;
+                class=&quot;castle-home-door castle-home-door-middle&quot;
+                title=&quot;Próximamente&quot;
+                disabled&gt;
+        &lt;/button&gt;
+
+        &lt;button type=&quot;button&quot;
+        class=&quot;castle-home-door castle-home-door-right&quot;
+        id=&quot;castle-home-enter&quot;
+        onclick=&quot;SugarCube.Engine.play(&#39;CastleEntrance&#39;)&quot;
+        title=&quot;Entrar en PDD&quot;&gt;
+&lt;/button&gt;
+    &lt;/div&gt;
+
+&lt;/div&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="3" name="PDD155" tags="" position="930,80" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #155&lt;/div&gt;
 &lt;h1&gt;GOZAR&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd155.jpg&quot; alt=&quot;gozar&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2047,7 +2255,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[saborear-&gt;PDD49]] · [[sobremesa-&gt;PDD51]] · [[hacer buenas migas-&gt;PDD299]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="5" name="PDD16" tags="" position="450,530" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="4" name="PDD16" tags="" position="450,530" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #16&lt;/div&gt;
 &lt;h1&gt;SERENIDAD&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd16.jpg&quot; alt=&quot;Serenidad&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2056,7 +2264,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[Sosiego-&gt;PDD71]] · [[Valentía-&gt;PDD29]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="6" name="PDD264" tags="" position="575,550" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="5" name="PDD264" tags="" position="575,550" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #264&lt;/div&gt;
 &lt;h1&gt;AL MAL TIEMPO, BUENA CARA&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd264.jpg&quot; alt=&quot;Al mal tiempo, buena cara&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2065,7 +2273,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[Resolana-&gt;PDD383]] · [[Dar la cara-&gt;PDD268]] · [[Resiliencia-&gt;PDD1]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="PDD268" tags="" position="770,230" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="6" name="PDD268" tags="" position="770,230" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #268&lt;/div&gt;
 &lt;h1&gt;DAR LA CARA&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd268.jpg&quot; alt=&quot;Dar la cara&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2074,7 +2282,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[Al mal tiempo, buena cara-&gt;PDD264]] · [[Valentía-&gt;PDD29]] · [[audacia-&gt;PDD54]] · [[hacer buenas migas-&gt;PDD299]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="8" name="PDD29" tags="" position="930,230" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="7" name="PDD29" tags="" position="930,230" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #29&lt;/div&gt;
 &lt;h1&gt;VALENTÍA&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd29.jpg&quot; alt=&quot;Valentía&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2083,7 +2291,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[Dar la cara-&gt;PDD268]] · [[audacia-&gt;PDD54]] · [[Resiliencia-&gt;PDD1]] · [[Proeza-&gt;PDD39]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="PDD291" tags="" position="770,530" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="8" name="PDD291" tags="" position="770,530" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #291&lt;/div&gt;
 &lt;h1&gt;HAZAÑA&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd291.jpg&quot; alt=&quot;hazaña&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2092,7 +2300,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[Proeza-&gt;PDD39]] · [[Valentía-&gt;PDD29]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="PDD299" tags="" position="450,230" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="9" name="PDD299" tags="" position="450,230" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #299&lt;/div&gt;
 &lt;h1&gt;HACER BUENAS MIGAS&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd299.jpg&quot; alt=&quot;hacer buenas migas&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2101,11 +2309,11 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[sobremesa-&gt;PDD51]] · [[gozar-&gt;PDD155]] · [[Dar la cara-&gt;PDD268]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="11" name="PDD383" tags="" position="450,80" size="100,100">&lt;&lt;pddroom 383 &quot;Resolana&quot; &quot;PDD49&quot; &quot;PDD264&quot; &quot;PDD43&quot; &quot;PDD384&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="10" name="PDD383" tags="" position="450,80" size="100,100">&lt;&lt;pddroom 383 &quot;Resolana&quot; &quot;PDD49&quot; &quot;PDD264&quot; &quot;PDD43&quot; &quot;PDD384&quot;&gt;&gt;
   &lt;p&gt;En el patio del castillo hace frío. La escarcha cubre las piedras, pero un viejo banco junto al muro está bañado por el sol. Te sientas. Allí se está sorprendentemente bien.&lt;/p&gt;
 
   &lt;p&gt;&lt;strong&gt;Resolana.&lt;/strong&gt;&lt;/p&gt;
-&lt;&lt;/pddroom&gt;&gt;</tw-passagedata><tw-passagedata pid="12" name="PDD39" tags="" position="610,530" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;&lt;/pddroom&gt;&gt;</tw-passagedata><tw-passagedata pid="11" name="PDD39" tags="" position="610,530" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #39&lt;/div&gt;
 &lt;h1&gt;PROEZA&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd39.jpg&quot; alt=&quot;Proeza&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2114,7 +2322,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[Valentía-&gt;PDD29]] · [[audacia-&gt;PDD54]] · [[hazaña-&gt;PDD291]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="PDD43" tags="" position="770,380" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="12" name="PDD43" tags="" position="770,380" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #43&lt;/div&gt;
 &lt;h1&gt;REVERDECER&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd43.jpg&quot; alt=&quot;reverdecer&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2123,7 +2331,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[Resolana-&gt;PDD383]] · [[Resiliencia-&gt;PDD1]] · [[Sosiego-&gt;PDD71]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="PDD49" tags="" position="600,175" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="13" name="PDD49" tags="" position="600,175" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #49&lt;/div&gt;
 &lt;h1&gt;SABOREAR&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd49.jpg&quot; alt=&quot;saborear&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2132,7 +2340,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[Resolana-&gt;PDD383]] · [[sobremesa-&gt;PDD51]] · [[gozar-&gt;PDD155]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="PDD51" tags="" position="770,80" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="14" name="PDD51" tags="" position="770,80" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #51&lt;/div&gt;
 &lt;h1&gt;SOBREMESA&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd51.jpg&quot; alt=&quot;sobremesa&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2141,7 +2349,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[saborear-&gt;PDD49]] · [[hacer buenas migas-&gt;PDD299]] · [[gozar-&gt;PDD155]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="PDD54" tags="" position="450,380" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="15" name="PDD54" tags="" position="450,380" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #54&lt;/div&gt;
 &lt;h1&gt;AUDACIA&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd54.jpg&quot; alt=&quot;audacia&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2150,7 +2358,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[Valentía-&gt;PDD29]] · [[Dar la cara-&gt;PDD268]] · [[Proeza-&gt;PDD39]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="PDD71" tags="" position="930,380" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="16" name="PDD71" tags="" position="930,380" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #71&lt;/div&gt;
 &lt;h1&gt;SOSIEGO&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd71.jpg&quot; alt=&quot;Sosiego&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2159,7 +2367,7 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;[[reverdecer-&gt;PDD43]] · [[Serenidad-&gt;PDD16]]&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="PDD83" tags="" position="930,530" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="17" name="PDD83" tags="" position="930,530" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;div class=&quot;pdd-kicker&quot;&gt;PDD #83&lt;/div&gt;
 &lt;h1&gt;SERENDIPIA&lt;/h1&gt;
 &lt;div class=&quot;pdd-image&quot;&gt;&lt;img src=&quot;images/pdd83.jpg&quot; alt=&quot;serendipia&quot; onerror=&quot;this.onerror=null;this.src=&#39;images/pdd-placeholder.jpg&#39;;&quot;&gt;&lt;/div&gt;
@@ -2168,16 +2376,17 @@ setup.audio.startMusic();
 &lt;div class=&quot;inscription&quot;&gt;Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.&lt;/div&gt;
 &lt;div class=&quot;paths&quot;&gt;&lt;em&gt;Todavía no se ha descubierto ningún camino desde esta sala.&lt;/em&gt;&lt;/div&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver al castillo-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="19" name="PuertaPalabras" tags="" position="250,100" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="18" name="PuertaPalabras" tags="" position="250,100" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 &lt;h2&gt;LA PUERTA DE LAS PALABRAS&lt;/h2&gt;
 &lt;p&gt;La puerta no tiene cerradura.&lt;/p&gt;
 &lt;p&gt;Sobre la piedra aparecen palabras que cambian lentamente, como si el castillo estuviera pensando.&lt;/p&gt;
 &lt;p&gt;Cuando acercas la mano, una de ellas comienza a brillar.&lt;/p&gt;
 &lt;&lt;link &quot;Entrar&quot;&gt;&gt;&lt;&lt;goto $latestPDD&gt;&gt;&lt;&lt;/link&gt;&gt;
 &lt;div class=&quot;castle-return&quot;&gt;[[← Volver a la sala-&gt;Empieza]]&lt;/div&gt;
-&lt;/div&gt;</tw-passagedata><tw-passagedata pid="20" name="StoryInit" tags="startup" position="50,250" size="100,100">&lt;&lt;set $latestPDD = &quot;PDD383&quot;&gt;&gt;
+&lt;/div&gt;</tw-passagedata><tw-passagedata pid="19" name="StoryInit" tags="startup" position="50,250" size="100,100">&lt;&lt;set $latestPDD = &quot;PDD383&quot;&gt;&gt;
 
 &lt;&lt;set $requestedPdd = null&gt;&gt;
+&lt;&lt;set $favoritePdds = recall(&quot;pddFavorites&quot;, [])&gt;&gt;
 
 &lt;&lt;run (() =&gt; {
     const params = new URLSearchParams(window.location.search);
@@ -2189,7 +2398,7 @@ setup.audio.startMusic();
     }
 })()&gt;&gt;
 
-&lt;&lt;run console.log(&quot;StoryInit executed — requested PDD:&quot;, State.variables.requestedPdd)&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="TestCircularRoom" tags="" position="275,325" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;run console.log(&quot;StoryInit executed — requested PDD:&quot;, State.variables.requestedPdd)&gt;&gt;</tw-passagedata><tw-passagedata pid="20" name="TestCircularRoom" tags="" position="275,325" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;div class=&quot;room-card&quot;&gt;
     &lt;div class=&quot;pdd-kicker&quot;&gt;
         LAS PUERTAS DEL CASTILLO
@@ -2259,7 +2468,7 @@ setup.audio.startMusic();
 &lt;/div&gt;
 &lt;!-- PUERTAS DEL CASTELLANO — MANUSCRIPT PROTOTYPE --&gt;
 
-&lt;div id=&quot;pdd-manuscript-trigger&quot; style=&quot;text-align:center;margin:20px 0;&quot;&gt;
+&lt;div id=&quot;pdd-manuscript-trigger&quot; style=&quot;text-align:center;margin:20px 0;&quot; hidden&gt;
     &lt;button id=&quot;pdd-open-manuscript&quot; type=&quot;button&quot;&gt;
         📜 Examinar el manuscrito
     &lt;/button&gt;
@@ -2609,7 +2818,7 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
         status.text(&quot;Error al cargar las puertas.&quot;);
     }
 })()&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="TestMystRoom" tags="" position="600,675" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="21" name="TestMystRoom" tags="" position="600,675" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;!-- PUERTAS DEL CASTELLANO — MYST ROOM --&gt;
 
 &lt;div class=&quot;myst-room&quot;&gt;
@@ -2629,6 +2838,21 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
 
 
         &lt;div class=&quot;myst-scene-image&quot;&gt;
+&lt;div id=&quot;myst-gallery&quot; hidden&gt;
+    &lt;button type=&quot;button&quot; id=&quot;myst-gallery-close&quot;&gt;
+        ✕ Volver al castillo
+    &lt;/button&gt;
+
+    &lt;div class=&quot;myst-gallery-frame&quot;&gt;
+        &lt;img id=&quot;myst-gallery-image&quot; src=&quot;&quot; alt=&quot;&quot;&gt;
+    &lt;/div&gt;
+
+    &lt;div class=&quot;myst-gallery-details&quot;&gt;
+        &lt;div id=&quot;myst-gallery-pdd&quot;&gt;&lt;/div&gt;
+        &lt;h2 id=&quot;myst-gallery-word&quot;&gt;&lt;/h2&gt;
+        &lt;p id=&quot;myst-gallery-definition&quot;&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
 
             &lt;!-- Painting for the destination behind the door --&gt;
             &lt;img
@@ -2657,6 +2881,12 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
     class=&quot;myst-door-hotspot&quot;
     aria-label=&quot;Entrar por esta puerta&quot;
     title=&quot;Entrar por esta puerta&quot;
+&gt;&lt;/button&gt;
+&lt;button
+    type=&quot;button&quot;
+    id=&quot;myst-painting-hotspot&quot;
+    aria-label=&quot;Examinar la pintura&quot;
+    title=&quot;Examinar la pintura&quot;
 &gt;&lt;/button&gt;
 
 
@@ -2695,8 +2925,13 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
 &lt;/button&gt;
 &lt;div id=&quot;myst-journal-panel&quot; hidden&gt;
     &lt;h2&gt;📜 Diario del Explorador&lt;/h2&gt;
-    &lt;p id=&quot;myst-journal-count&quot;&gt;&lt;/p&gt;
-    &lt;p id=&quot;myst-journal-rooms&quot;&gt;&lt;/p&gt;
+&lt;p id=&quot;myst-journal-count&quot;&gt;&lt;/p&gt;
+
+&lt;button type=&quot;button&quot; id=&quot;myst-journal-filter&quot;&gt;
+    ⭐ Mostrar favoritos
+&lt;/button&gt;
+
+&lt;div id=&quot;myst-journal-rooms&quot;&gt;&lt;/div&gt;
     &lt;button type=&quot;button&quot; id=&quot;myst-journal-close&quot;&gt;
         Cerrar diario
     &lt;/button&gt;
@@ -2831,6 +3066,16 @@ meaningButton.on(&quot;click&quot;, async function () {
 });
 
     const image = $(&quot;#myst-pdd-image&quot;);
+    // PDD Painting Gallery
+const gallery = $(&quot;#myst-gallery&quot;);
+
+$(&quot;#myst-gallery-close&quot;).on(&quot;click&quot;, function () {
+    gallery.prop(&quot;hidden&quot;, true);
+});
+$(&quot;#myst-painting-hotspot&quot;).on(&quot;click&quot;, function () {
+    gallery.prop(&quot;hidden&quot;, false);
+});
+
     const counter = $(&quot;#myst-counter&quot;);
     const status = $(&quot;#myst-status&quot;);
     const enterButton = $(&quot;#myst-enter&quot;);
@@ -2902,43 +3147,122 @@ const journalPanel = document.getElementById(&quot;myst-journal-panel&quot;);
 const journalClose = document.getElementById(&quot;myst-journal-close&quot;);
 
 if (journalButton &amp;&amp; journalPanel &amp;&amp; journalClose) {
-    journalButton.addEventListener(&quot;click&quot;, function () {
-        const visited = setup.exploration.getVisited();
+   journalButton.addEventListener(&quot;click&quot;, async function () {
 
-        document.getElementById(&quot;myst-journal-count&quot;).textContent =
-            &quot;Salas descubiertas: &quot; + visited.length;
+    if (!journalPanel.hidden) {
+        journalPanel.hidden = true;
+        return;
+    }
 
-   
-const roomsList = document.getElementById(&quot;myst-journal-rooms&quot;);
-roomsList.replaceChildren();
+    const visited = setup.exploration.getVisited();
 
-if (visited.length === 0) {
-    roomsList.textContent = &quot;Todavía no has descubierto ninguna sala.&quot;;
-} else {
-   visited.sort(function (a, b) {
-    return a - b;
-}).forEach(function (pdd) {
-        const link = document.createElement(&quot;a&quot;);
-        link.href = &quot;#&quot;;
-link.addEventListener(&quot;click&quot;, function (event) {
-    event.preventDefault();
-    State.variables.enteredFromPdd =
-        Number(State.variables.currentPdd || 0);
-    State.variables.currentPdd = Number(pdd);
-    Engine.play(&quot;TestMystRoom&quot;);
-});
-        link.textContent = &quot;🚪 PDD &quot; + pdd;
+    const roomsList = document.getElementById(&quot;myst-journal-rooms&quot;);
+    const filterButton = document.getElementById(&quot;myst-journal-filter&quot;);
 
-        const line = document.createElement(&quot;div&quot;);
-        line.appendChild(link);
-        roomsList.appendChild(line);
-    });
-}
+    document.getElementById(&quot;myst-journal-count&quot;).textContent =
+        &quot;Salas descubiertas: &quot; + visited.length;
 
+    let journalRooms = [];
 
-        journalPanel.hidden = false;
-    });
+    try {
+        journalRooms = await setup.getPublishedRooms(visited);
+    } catch (error) {
+        console.error(&quot;Journal vocabulary error:&quot;, error);
+    }
 
+    if (!Array.isArray(State.variables.favoritePdds)) {
+        State.variables.favoritePdds = [];
+    }
+
+    let favoritesOnly = false;
+
+    function renderJournal() {
+        roomsList.replaceChildren();
+
+        const favorites = State.variables.favoritePdds;
+
+        filterButton.textContent = favoritesOnly
+            ? &quot;📜 Mostrar todas&quot;
+            : &quot;⭐ Mostrar favoritos&quot;;
+
+        const displayed = visited
+            .map(Number)
+            .sort(function (a, b) {
+                return a - b;
+            })
+            .filter(function (pdd) {
+                return !favoritesOnly || favorites.includes(pdd);
+            });
+
+        if (displayed.length === 0) {
+            roomsList.textContent = favoritesOnly
+                ? &quot;Todavía no tienes palabras favoritas.&quot;
+                : &quot;Todavía no has descubierto ninguna sala.&quot;;
+            return;
+        }
+
+        displayed.forEach(function (pdd) {
+            const journalRoom = journalRooms.find(function (room) {
+                return Number(room.pdd) === pdd;
+            });
+
+            const line = document.createElement(&quot;div&quot;);
+            line.style.display = &quot;flex&quot;;
+            line.style.alignItems = &quot;center&quot;;
+            line.style.gap = &quot;10px&quot;;
+            line.style.margin = &quot;8px 0&quot;;
+
+            const star = document.createElement(&quot;button&quot;);
+            star.type = &quot;button&quot;;
+            star.textContent = favorites.includes(pdd) ? &quot;★&quot; : &quot;☆&quot;;
+            star.title = favorites.includes(pdd)
+                ? &quot;Quitar de favoritos&quot;
+                : &quot;Añadir a favoritos&quot;;
+
+            star.addEventListener(&quot;click&quot;, function () {
+                const updated = [...State.variables.favoritePdds];
+                const index = updated.indexOf(pdd);
+
+                if (index &gt;= 0) {
+                    updated.splice(index, 1);
+                } else {
+                    updated.push(pdd);
+                }
+
+State.variables.favoritePdds = updated;
+memorize(&quot;pddFavorites&quot;, updated);
+renderJournal();
+            });
+
+            const link = document.createElement(&quot;a&quot;);
+            link.href = &quot;#&quot;;
+            link.textContent = &quot;🚪 PDD &quot; + pdd +
+                (journalRoom ? &quot; — &quot; + journalRoom.word : &quot;&quot;);
+
+            link.addEventListener(&quot;click&quot;, function (event) {
+                event.preventDefault();
+
+                State.variables.enteredFromPdd =
+                    Number(State.variables.currentPdd || 0);
+
+                State.variables.currentPdd = pdd;
+                Engine.play(&quot;TestMystRoom&quot;);
+            });
+
+            line.appendChild(star);
+            line.appendChild(link);
+            roomsList.appendChild(line);
+        });
+    }
+
+    filterButton.onclick = function () {
+        favoritesOnly = !favoritesOnly;
+        renderJournal();
+    };
+
+    renderJournal();
+    journalPanel.hidden = false;
+}); 
     journalClose.addEventListener(&quot;click&quot;, function () {
         journalPanel.hidden = true;
     });
@@ -2950,7 +3274,7 @@ const chapterNumber = currentRoom
     ? Number(currentRoom.chapter)
     : 0;
 
-if (chapterNumber &gt; 0) {
+if (setup.features.manuscript &amp;&amp; chapterNumber &gt; 0) {
     manuscriptButton.prop(&quot;hidden&quot;, false);
 }
 
@@ -3192,6 +3516,24 @@ meaningChoices.empty();
 meaningFeedback.empty();
             const selected = circularDoors[selectedIndex];
             const room = selected.room;
+            // Update the painting gallery for the selected door.
+gallery.prop(&quot;hidden&quot;, true);
+
+$(&quot;#myst-gallery-image&quot;).attr(
+    &quot;src&quot;,
+    &quot;images/pdd&quot; + room.pdd + &quot;.jpg&quot;
+);
+
+$(&quot;#myst-gallery-pdd&quot;).text(&quot;PDD &quot; + room.pdd);
+$(&quot;#myst-gallery-word&quot;).text(room.word || &quot;&quot;);
+$(&quot;#myst-gallery-definition&quot;).text(
+    room.short_definition || &quot;&quot;
+);
+
+$(&quot;#myst-painting-hotspot&quot;).prop(
+    &quot;hidden&quot;,
+    selected.type === &quot;exit&quot;
+);
 
 meaningRoom = selected.type === &quot;exit&quot; ? null : room;
             const codexButton = $(&quot;#myst-codex&quot;);
@@ -3201,8 +3543,10 @@ console.log(&quot;CODEX DEBUG:&quot;, {
     word: room.word,
     whatsapp_description: room.whatsapp_description
 });
-codexButton.prop(&quot;hidden&quot;, !whatsappText.trim());
-
+codexButton.prop(
+    &quot;hidden&quot;,
+    !setup.features.codex || !whatsappText.trim()
+);
 codexButton.off(&quot;click&quot;).on(&quot;click&quot;, function () {
     $(&quot;#myst-manuscript-title&quot;).text(&quot;El códice — PDD &quot; + room.pdd);
 
@@ -3346,10 +3690,12 @@ enterButton.on(&quot;click&quot;, function () {
    console.log(&quot;CASTLE DOOR CLICKED&quot;);
     if (!circularDoors.length) return;
     
-setup.doorSound.currentTime = 0;
-setup.doorSound.play().catch(function (error) {
-    console.log(&quot;Door sound unavailable:&quot;, error);
-});    
+if (setup.audio.enabled) {
+    setup.doorSound.currentTime = 0;
+    setup.doorSound.play().catch(function (error) {
+        console.log(&quot;Door sound unavailable:&quot;, error);
+    });
+}  
     
 meaningRoom = null;
 meaningButton.prop(&quot;hidden&quot;, true);
@@ -3426,7 +3772,7 @@ $(&quot;#myst-loading-curtain&quot;).addClass(&quot;is-ready&quot;);
 }
 
 })()&gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="TestSupabase" tags="" position="225,475" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="22" name="TestSupabase" tags="" position="225,475" size="100,100">&lt;div class=&quot;room-card&quot;&gt;
 
     &lt;div class=&quot;pdd-kicker&quot;&gt;
         LA BIBLIOTECA DEL CASTILLO
@@ -3620,7 +3966,7 @@ Engine.play(&quot;TestSupabase&quot;);
         }
     })()
     &gt;&gt;
-&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="24" name="Untitled Passage" tags="widget" position="125,375" size="100,100">&lt;&lt;widget &quot;pddroom&quot; container&gt;&gt;
+&lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="23" name="Untitled Passage" tags="widget" position="125,375" size="100,100">&lt;&lt;widget &quot;pddroom&quot; container&gt;&gt;
   &lt;&lt;set _pddNumber = $args[0]&gt;&gt;
   &lt;&lt;set _pddWord = $args[1]&gt;&gt;
   &lt;&lt;set _pddImage = &quot;images/pdd&quot; + _pddNumber + &quot;.jpg&quot;&gt;&gt;
