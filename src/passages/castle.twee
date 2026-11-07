@@ -1,0 +1,4260 @@
+:: StoryTitle
+Puertas del Castellano - Palabras V2
+
+
+:: StoryData
+{
+  "ifid": "D6C7C8C0-8B5D-4E47-9B6A-3C7846E8F2A1",
+  "format": "SugarCube",
+  "format-version": "2.37.3",
+  "start": "Empieza",
+  "tag-colors": {
+    "widget": "purple"
+  },
+  "zoom": 1
+}
+
+
+:: CastleDoorWidgets [widget]
+<<widget "castleDoorTitle">><h1 class="castle-door-title" @data-door-destination="$args[1] || ''"><<print $args[0]>></h1><</widget>>
+<<widget "castleDoorReturn">><div class="castle-return castle-door-footer">[[← Volver al castillo->Empieza]]</div><</widget>>
+
+:: CastleEntrance {"position":"475,700","size":"100,100"}
+
+<<nobr>>
+<<castleDoorTitle "Palabra del Día">>
+<div class="myst-room">
+    <div class="myst-scene">
+        <div class="myst-scene-label">
+            LA ENTRADA DEL CASTILLO
+        </div>
+
+        <div class="myst-scene-image">
+
+
+            <img
+                id="entrance-image"
+                src="images/pdd-placeholder.jpg"
+                alt=""
+                class="myst-pdd-painting"
+            >
+            <img
+                src="images/myst-chamber-transparent0.png"
+                alt="Entrada del castillo"
+                class="myst-background"
+            >
+        </div>
+
+        <div class="myst-controls">
+            <span style="width:100%;text-align:center;">
+                Una puerta. Una aventura.
+            </span>
+        </div>
+    </div>
+
+    <div class="myst-parchment">
+        <div class="myst-kicker" id="entrance-kicker">
+            Buscando la última palabra...
+        </div>
+
+        <h2 id="entrance-word"></h2>
+        <p id="entrance-description"></p>
+
+        <button type="button" id="entrance-enter" disabled>
+            Entrar en el castillo
+        </button>
+
+        <p id="entrance-status"></p>
+    </div>
+</div>
+<<castleDoorReturn>>
+<</nobr>>
+
+<<done>>
+<<run (async function () {
+
+    try {
+        const latestPdd = Number(
+            await setup.getLatestPublishedPdd()
+        );
+
+        if (!Number.isFinite(latestPdd) || latestPdd <= 0) {
+            throw new Error("No hay palabras publicadas.");
+        }
+
+        const room = await setup.getRoom(latestPdd);
+
+        if (!room) {
+            throw new Error("No se encontró la última sala.");
+        }
+
+        $("#entrance-kicker").text("PDD " + room.pdd);
+        $("#entrance-word").text(room.word);
+        $("#entrance-description").text(room.description || "");
+
+        $("#entrance-image")
+            .off("error")
+            .one("error", function () {
+                $(this).off("error");
+                this.src = "images/pdd-placeholder.jpg";
+            })
+            .attr("alt", room.word)
+            .attr("src", "images/pdd" + room.pdd + ".jpg");
+
+        $("#entrance-enter")
+            .prop("disabled", false)
+            .on("click", function () {
+
+                State.variables.currentPdd = latestPdd;
+                State.variables.enteredFromPdd = 0;
+setup.audio.startMusic();
+                Engine.play("TestMystRoom");
+            });
+
+    } catch (error) {
+        console.error("Castle entrance error:", error);
+        $("#entrance-status").text(
+            "No se pudo abrir la entrada del castillo."
+        );
+    }
+
+})()>>
+<</done>>
+
+
+
+:: Empieza {"position":"100,100","size":"100,100"}
+
+<<nobr>>
+<div class="castle-home">
+
+    <div class="castle-home-welcome">
+        <h2>¡Bienvenidos, aventureros, a Puertas del Castellano!</h2>
+        <p>
+            Tras estos muros os esperan palabras por descubrir,
+            puertas misteriosas y caminos que conectan el español
+            con la imaginación.
+        </p>
+        <p>
+            Explorad a vuestro ritmo, disfrutad del viaje
+            y recordad: cada palabra abre una nueva puerta.
+        </p>
+    </div>
+
+    <div id="castle-wall">
+
+    <section class="wall-window" id="wall-window" aria-label="Vista panorámica del muro">
+      <div class="wall-track" id="wall-track"></div>
+        <button id="enter-door" type="button" hidden>Entrar</button>
+      <div class="edge-shade left" aria-hidden="true"></div>
+      <div class="edge-shade right" aria-hidden="true"></div>
+      <div class="wall-caption" aria-hidden="true">27 puertas · una sola muralla</div>
+    </section>
+
+    <nav class="travel-controls" aria-label="Navegación de prueba">
+      <button class="travel-button" id="previous-door" type="button" aria-label="Puerta anterior">
+        <span class="arrow">←</span> Anterior
+      </button>
+      <div class="selection" aria-live="polite" aria-atomic="true">
+        <span class="selection-count" id="selection-count"></span>
+        <strong class="selection-name" id="selection-name"></strong>
+        <span class="selection-hint" id="selection-hint"></span>
+      </div>
+      <button class="travel-button" id="next-door" type="button" aria-label="Puerta siguiente">
+        Siguiente <span class="arrow">→</span>
+      </button>
+    </nav>
+
+    <div class="key-guide" aria-label="Atajos de teclado">
+      <span><kbd>B</kbd> <span id="shortcut-B">Solo en el Castillo</span></span>
+      <span><kbd>C</kbd> <span id="shortcut-C">Poemas</span></span>
+      <span><kbd>D</kbd> <span id="shortcut-D">Palabra del Día</span></span>
+      <span hidden><kbd>H</kbd> <span id="shortcut-H">Pasadizo de Hipervínculos</span></span>
+      <span><kbd>L</kbd> <span id="shortcut-L">Pila de Letras</span></span>
+      <span><kbd>O</kbd> <span id="shortcut-O">Palacio de Obras</span></span>
+      <span><kbd>Q</kbd> <span id="shortcut-Q">Pruebas de Don Quijote</span></span>
+      <span><kbd>T</kbd> <span id="shortcut-T">Puerta de prueba</span></span>
+      <span><kbd>←</kbd><kbd>→</kbd> Recorrer el muro</span>
+    </div>
+    <p class="prototype-note" id="data-status" role="status">
+      Cargando puertas…
+    </p>
+  
+    </div>
+</div>
+<</nobr>>
+
+
+
+
+:: PDD155 {"position":"930,80","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #155</div>
+<h1>GOZAR</h1>
+<div class="pdd-image"><img src="images/pdd155.jpg" alt="gozar" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>Desde una ventana abierta llega música. Alguien ríe en el patio. No necesitas poseer el momento. Basta con vivirlo.</p>
+<p><strong>gozar.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[saborear->PDD49]] · [[sobremesa->PDD51]] · [[hacer buenas migas->PDD299]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD16 {"position":"450,530","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #16</div>
+<h1>SERENIDAD</h1>
+<div class="pdd-image"><img src="images/pdd16.jpg" alt="Serenidad" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>En una pequeña torre, una vela permanece encendida aunque afuera sople el viento. La llama se mueve, pero no se apaga.</p>
+<p><strong>Serenidad.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[Sosiego->PDD71]] · [[Valentía->PDD29]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD264 {"position":"575,550","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #264</div>
+<h1>AL MAL TIEMPO, BUENA CARA</h1>
+<div class="pdd-image"><img src="images/pdd264.jpg" alt="Al mal tiempo, buena cara" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>La lluvia golpea las almenas. Un guardia mira el cielo, se encoge de hombros y sonríe. No puede cambiar la tormenta; sí puede decidir cómo recibirla.</p>
+<p><strong>Al mal tiempo, buena cara.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[Resolana->PDD383]] · [[Dar la cara->PDD268]] · [[Resiliencia->PDD1]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD268 {"position":"770,230","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #268</div>
+<h1>DAR LA CARA</h1>
+<div class="pdd-image"><img src="images/pdd268.jpg" alt="Dar la cara" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>Sería fácil desaparecer por otro pasillo. En cambio, avanzas y respondes por lo que has hecho.</p>
+<p><strong>Dar la cara.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[Al mal tiempo, buena cara->PDD264]] · [[Valentía->PDD29]] · [[audacia->PDD54]] · [[hacer buenas migas->PDD299]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD29 {"position":"930,230","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #29</div>
+<h1>VALENTÍA</h1>
+<div class="pdd-image"><img src="images/pdd29.jpg" alt="Valentía" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>La puerta delante de ti está abierta, pero el corredor está oscuro. Tener miedo no la cierra. Das un paso.</p>
+<p><strong>Valentía.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[Dar la cara->PDD268]] · [[audacia->PDD54]] · [[Resiliencia->PDD1]] · [[Proeza->PDD39]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD291 {"position":"770,530","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #291</div>
+<h1>HAZAÑA</h1>
+<div class="pdd-image"><img src="images/pdd291.jpg" alt="hazaña" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>Una vieja inscripción recuerda a alguien que consiguió lo que parecía imposible. El nombre casi se ha borrado. La historia, no.</p>
+<p><strong>hazaña.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[Proeza->PDD39]] · [[Valentía->PDD29]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD299 {"position":"450,230","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #299</div>
+<h1>HACER BUENAS MIGAS</h1>
+<div class="pdd-image"><img src="images/pdd299.jpg" alt="hacer buenas migas" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>Dos viajeros que no se conocían comparten pan junto al fuego. Al poco rato hablan como si hubieran recorrido juntos medio mundo.</p>
+<p><strong>hacer buenas migas.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[sobremesa->PDD51]] · [[gozar->PDD155]] · [[Dar la cara->PDD268]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD383 {"position":"450,80","size":"100,100"}
+<<pddroom 383 "Resolana" "PDD49" "PDD264" "PDD43" "PDD384">>
+  <p>En el patio del castillo hace frío. La escarcha cubre las piedras, pero un viejo banco junto al muro está bañado por el sol. Te sientas. Allí se está sorprendentemente bien.</p>
+
+  <p><strong>Resolana.</strong></p>
+<</pddroom>>
+
+
+:: PDD39 {"position":"610,530","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #39</div>
+<h1>PROEZA</h1>
+<div class="pdd-image"><img src="images/pdd39.jpg" alt="Proeza" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>En la pared hay un tapiz que recuerda una acción extraordinaria. No fue fácil. Precisamente por eso todavía se cuenta.</p>
+<p><strong>Proeza.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[Valentía->PDD29]] · [[audacia->PDD54]] · [[hazaña->PDD291]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD43 {"position":"770,380","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #43</div>
+<h1>REVERDECER</h1>
+<div class="pdd-image"><img src="images/pdd43.jpg" alt="reverdecer" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>Durante meses, el jardín pareció dormido. Ahora aparecen pequeños brotes verdes entre las piedras. Algo empieza de nuevo.</p>
+<p><strong>reverdecer.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[Resolana->PDD383]] · [[Resiliencia->PDD1]] · [[Sosiego->PDD71]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD49 {"position":"600,175","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #49</div>
+<h1>SABOREAR</h1>
+<div class="pdd-image"><img src="images/pdd49.jpg" alt="saborear" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>Hay una taza caliente sobre una mesa de piedra. Un sorbo. Una pausa. Otro sorbo. A veces disfrutar significa prestar atención.</p>
+<p><strong>saborear.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[Resolana->PDD383]] · [[sobremesa->PDD51]] · [[gozar->PDD155]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD51 {"position":"770,80","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #51</div>
+<h1>SOBREMESA</h1>
+<div class="pdd-image"><img src="images/pdd51.jpg" alt="sobremesa" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>La comida ha terminado, pero nadie se levanta. Los platos siguen sobre la mesa mientras continúan las historias, las risas y la conversación.</p>
+<p><strong>sobremesa.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[saborear->PDD49]] · [[hacer buenas migas->PDD299]] · [[gozar->PDD155]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD54 {"position":"450,380","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #54</div>
+<h1>AUDACIA</h1>
+<div class="pdd-image"><img src="images/pdd54.jpg" alt="audacia" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>El puente parece demasiado estrecho. El salto parece demasiado largo. Alguien tiene que intentarlo primero.</p>
+<p><strong>audacia.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[Valentía->PDD29]] · [[Dar la cara->PDD268]] · [[Proeza->PDD39]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD71 {"position":"930,380","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #71</div>
+<h1>SOSIEGO</h1>
+<div class="pdd-image"><img src="images/pdd71.jpg" alt="Sosiego" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>Aquí el castillo casi no hace ruido. Solo escuchas el fuego, tu respiración y, muy lejos, el agua de una fuente.</p>
+<p><strong>Sosiego.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths">[[reverdecer->PDD43]] · [[Serenidad->PDD16]]</div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PDD83 {"position":"930,530","size":"100,100"}
+<div class="room-card">
+<div class="pdd-kicker">PDD #83</div>
+<h1>SERENDIPIA</h1>
+<div class="pdd-image"><img src="images/pdd83.jpg" alt="serendipia" onerror="this.onerror=null;this.src='images/pdd-placeholder.jpg';"></div>
+<p>Encuentras algo valioso que no estabas buscando. Por ahora, esta sala no tiene ningún corredor descubierto.</p>
+<p><strong>serendipia.</strong></p>
+<div class="inscription">Todas las palabras, frases e ideas están conectadas. Solo tienes que encontrar el camino.</div>
+<div class="paths"><em>Todavía no se ha descubierto ningún camino desde esta sala.</em></div>
+<div class="castle-return">[[← Volver al castillo->Empieza]]</div>
+</div>
+
+
+:: PuertaPalabras {"position":"250,100","size":"100,100"}
+<div class="room-card">
+<h2>LA PUERTA DE LAS PALABRAS</h2>
+<p>La puerta no tiene cerradura.</p>
+<p>Sobre la piedra aparecen palabras que cambian lentamente, como si el castillo estuviera pensando.</p>
+<p>Cuando acercas la mano, una de ellas comienza a brillar.</p>
+<<link "Entrar">><<goto $latestPDD>><</link>>
+<div class="castle-return">[[← Volver a la sala->Empieza]]</div>
+</div>
+
+
+:: StoryInit [startup] {"position":"50,250","size":"100,100"}
+<<set $latestPDD = "PDD383">>
+
+<<set $requestedPdd = null>>
+<<set $favoritePdds = recall("pddFavorites", [])>>
+
+<<run (() => {
+    const params = new URLSearchParams(window.location.search);
+    const pdd = params.get("pdd");
+
+    if (pdd && /^\d+$/.test(pdd) && Number(pdd) > 0) {
+        State.variables.requestedPdd = Number(pdd);
+        State.variables.currentPdd = Number(pdd);
+    }
+})()>>
+
+<<run console.log("StoryInit executed — requested PDD:", State.variables.requestedPdd)>>
+
+
+:: TestCircularRoom {"position":"275,325","size":"100,100"}
+<<nobr>>
+<div class="room-card">
+    <div class="pdd-kicker">
+        LAS PUERTAS DEL CASTILLO
+    </div>
+
+    <h2 id="circular-room-title">
+        Explorando el castillo...
+    </h2>
+
+    <div id="circular-content" style="
+        display:grid;
+        grid-template-columns:minmax(0, 1fr) minmax(0, 1fr);
+        gap:24px;
+        align-items:start;
+        margin-top:24px;
+        width:100%;
+    ">
+
+        <!-- LEFT: painting and description -->
+        <div style="min-width:0;">
+            <div id="circular-painting" class="pdd-image frame-1" hidden>
+                <img id="circular-image" alt="">
+            </div>
+
+            <h3 id="circular-word"></h3>
+            <div id="circular-description"></div>
+        </div>
+
+        <!-- RIGHT: doorway -->
+        <div style="min-width:0; text-align:center;">
+            <a id="circular-door" href="#" style="
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                min-height:560px;
+                padding:24px 15px;
+                box-sizing:border-box;
+                border:6px ridge #94734d;
+                border-radius:75px 75px 8px 8px;
+                background:linear-gradient(135deg,#65472d,#352417);
+                color:#f6e5bf;
+                font-size:1.25em;
+                font-weight:bold;
+                text-decoration:none;
+                overflow-wrap:anywhere;
+                text-align:center;
+            ">
+                Cargando puerta...
+            </a>
+        </div>
+
+    </div>
+
+    <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        gap:18px;
+        margin-top:24px;
+    ">
+        <button id="circular-prev" type="button">←</button>
+        <span id="circular-counter"></span>
+        <button id="circular-next" type="button">→</button>
+    </div>
+
+    <div id="circular-status" style="margin-top:16px;"></div>
+</div>
+<!-- PUERTAS DEL CASTELLANO — MANUSCRIPT PROTOTYPE -->
+
+<div id="pdd-manuscript-trigger" style="text-align:center;margin:20px 0;" hidden>
+    <button id="pdd-open-manuscript" type="button">
+        📜 Examinar el manuscrito
+    </button>
+</div>
+
+<div id="pdd-manuscript-overlay" hidden>
+    <div id="pdd-manuscript-paper">
+        <button id="pdd-close-manuscript" type="button"
+                aria-label="Cerrar manuscrito">✕</button>
+
+        <div class="pdd-manuscript-heading">CAPÍTULO 77</div>
+
+        <h2>La libertad también sabe regresar</h2>
+
+        <p>En Tarifa, Rosita y Ricardo comenzaron a hacer las maletas.</p>
+
+        <p>Aquella misma mañana, con el
+<a href="#" class="pdd-manuscript-word" data-pdd="385">albor</a>,
+esa primera claridad que anuncia el día antes de que salga
+completamente el sol, abandonaron Tarifa.</p>
+
+        <p>Pero mientras una historia terminaba, otra comenzaba.</p>
+
+        <p>En Granada aterrizaban Balance y Cifras...</p>
+    </div>
+</div>
+<</nobr>>
+<<done>>
+<<run (async function () {
+    const currentPdd = Number(State.variables.currentPdd || 49);
+
+    const title = $("#circular-room-title");
+    const door = $("#circular-door");
+    const painting = $("#circular-painting");
+    const image = $("#circular-image");
+    const word = $("#circular-word");
+    const description = $("#circular-description");
+    const counter = $("#circular-counter");
+    const status = $("#circular-status");
+
+    try {
+        const currentRoom = await setup.getRoom(currentPdd);
+        
+
+        if (!currentRoom) {
+            title.text("Sala no encontrada");
+            return;
+        }
+
+    title.text("Sala PDD " + currentPdd + " — " + currentRoom.word);
+
+        const connections = await setup.getConnections(currentPdd);
+
+        const destinations = connections.map(function(c) {
+            return Number(c.from_pdd) === currentPdd
+                ? Number(c.to_pdd)
+                : Number(c.from_pdd);
+        });
+
+        const rooms = await setup.getPublishedRooms(destinations);
+
+        const availableDoors = connections
+            .map(function(c) {
+                const destination =
+                    Number(c.from_pdd) === currentPdd
+                        ? Number(c.to_pdd)
+                        : Number(c.from_pdd);
+
+                const room = rooms.find(function(r) {
+                    return Number(r.pdd) === destination;
+                });
+
+                return room
+                    ? { room: room, connection: c }
+                    : null;
+            })
+            .filter(Boolean);
+
+        availableDoors.sort(function(a, b) {
+            return (
+                Number(b.connection.featured) -
+                    Number(a.connection.featured) ||
+                Number(b.connection.strength || 0) -
+                    Number(a.connection.strength || 0) ||
+                Number(a.room.pdd) - Number(b.room.pdd)
+            );
+        });
+
+        // For now, show every published connection.
+        // Progressive unlocking comes later.
+ 
+        // Add chronological neighbors to the circular room.
+      
+        // Get previous and next published PDDs.
+        const chronological =
+            await setup.getChronologicalNeighbors(currentPdd);
+
+let previous = chronological.previous;
+let next = chronological.next;
+
+const latestNumber = Number(
+    await setup.getLatestPublishedPdd()
+);
+
+// Close the chronological loop in both directions.
+if (currentPdd === 1 && !previous && latestNumber > 1) {
+    previous = await setup.getRoom(latestNumber);
+}
+
+if (currentPdd === latestNumber && !next && latestNumber > 1) {
+    next = await setup.getRoom(1);
+}
+
+// Connect PDD 1 backward to the latest published PDD.
+if (!previous && currentPdd === 1) {
+    const latestNumber = Number(
+        await setup.getLatestPublishedPdd()
+    );
+
+    if (latestNumber > 1) {
+        previous = await setup.getRoom(latestNumber);
+    }
+}
+
+        const enteredFromPdd =
+            Number(State.variables.enteredFromPdd || 0);
+
+        // Keep semantic doors, excluding chronological
+        // neighbors to prevent duplicates.
+        const semanticDoors = availableDoors.filter(function(item) {
+            return Number(item.room.pdd) !== Number(previous?.pdd)
+                && Number(item.room.pdd) !== Number(next?.pdd);
+        });
+
+        // Set aside the entrance door, if present.
+        const returnIndex = semanticDoors.findIndex(function(item) {
+            return Number(item.room.pdd) === enteredFromPdd;
+        });
+
+        const returnDoor = returnIndex >= 0
+            ? semanticDoors.splice(returnIndex, 1)[0]
+            : null;
+
+        // Semantic doors are already sorted by featured
+        // status and connection strength.
+        const bestSemantic = semanticDoors.shift() || null;
+
+        const circularDoors = [];
+
+        if (bestSemantic) {
+            // Front: strongest semantic connection.
+            circularDoors.push(bestSemantic);
+
+            // Right: previous PDD.
+            if (previous) {
+                circularDoors.push({
+                    room: previous,
+                    type: "previous"
+                });
+            }
+
+            // Remaining semantic doors.
+            const midpoint = Math.ceil(semanticDoors.length / 2);
+
+            circularDoors.push(...semanticDoors.slice(0, midpoint));
+
+            // Back: return door.
+            if (returnDoor) {
+                circularDoors.push(returnDoor);
+            }
+
+            circularDoors.push(...semanticDoors.slice(midpoint));
+
+            // Left: next PDD.
+            if (next) {
+                circularDoors.push({
+                    room: next,
+                    type: "next"
+                });
+            }
+
+        } else {
+            // No other semantic connections:
+            // face the next PDD, or previous if next is absent.
+            if (next) {
+                circularDoors.push({
+                    room: next,
+                    type: "next"
+                });
+            }
+
+            if (returnDoor) {
+                circularDoors.push(returnDoor);
+            }
+
+            if (previous) {
+                circularDoors.push({
+                    room: previous,
+                    type: "previous"
+                });
+            }
+        }
+
+        // Replace door list without changing navigation handlers.
+        availableDoors.splice(
+            0,
+            availableDoors.length,
+            ...circularDoors
+        );
+
+        // Always face the first door in the arranged circle.
+        let selectedIndex = 0;
+
+        function showWall() {
+            if (!availableDoors.length) {
+                door.text("No hay puertas disponibles");
+                door.removeAttr("href");
+                painting.prop("hidden", true);
+                word.empty();
+                description.empty();
+                counter.text("0 / 0");
+                return;
+            }
+
+            const selected = availableDoors[selectedIndex];
+            const room = selected.room;
+            meaningRoom = selected.type === "exit" ? null : room;
+
+           
+            // Distinguish chronological doors.
+            const isTimeDoor =
+                selected.type === "previous" ||
+                selected.type === "next";
+
+            door.toggleClass("time-door", isTimeDoor);
+
+            if (selected.type === "previous") {
+                door.text("⌛ La palabra anterior");
+            } else if (selected.type === "next") {
+                door.text("⌛ La palabra siguiente");
+            } else {
+                door.text("Más allá de esta palabra");
+            }
+
+           // PDD WORD REVEAL — hide the answer on every wall change.
+word.stop(true, true)
+    .text("¿Qué palabra soy?")
+    .css("cursor", "pointer")
+    .attr("title", "Revelar palabra")
+    .off("click.pddReveal")
+    .one("click.pddReveal", function () {
+        word.fadeOut(150, function () {
+            word.text(room.word).fadeIn(350);
+        });
+    });
+
+description.text(room.description || "");
+
+            const frameNumber = Number(room.pdd) % 3;
+
+            painting
+                .removeClass("frame-0 frame-1 frame-2")
+                .addClass("frame-" + frameNumber);
+
+            const imagePath = "images/pdd" + room.pdd + ".jpg";
+            const fallbackPath = "images/pdd-placeholder.jpg";
+
+            image
+                .off("error")
+                .one("error", function() {
+                    $(this).off("error");
+                    this.src = fallbackPath;
+                })
+                .attr("alt", room.word)
+                .attr("src", imagePath);
+
+            painting.prop("hidden", false);
+
+            counter.text(
+                (selectedIndex + 1) + " / " + availableDoors.length
+            );
+        }
+
+        // Animate turning between walls.
+        const circularContent = $("#circular-content");
+        let isTurning = false;
+
+        function turnWall(direction) {
+            if (isTurning || availableDoors.length < 2) return;
+
+            const outClass = "turn-out-" + direction;
+            const inClass = "turn-in-" + direction;
+
+            isTurning = true;
+
+            circularContent.removeClass(
+                "turn-out-left turn-out-right " +
+                "turn-in-left turn-in-right"
+            );
+
+            circularContent.addClass(outClass);
+
+            setTimeout(function() {
+                selectedIndex = direction === "left"
+                    ? (selectedIndex - 1 + availableDoors.length)
+                        % availableDoors.length
+                    : (selectedIndex + 1)
+                        % availableDoors.length;
+
+                showWall();
+
+                circularContent
+                    .removeClass(outClass)
+                    .addClass(inClass);
+
+                setTimeout(function() {
+                    circularContent.removeClass(inClass);
+                    isTurning = false;
+                }, 280);
+
+            }, 220);
+        }
+
+ $("#circular-prev").on("click", function() {
+    turnWall("left");
+});
+
+$("#circular-next").on("click", function() {
+    turnWall("right");
+});
+        door.on("click", function(event) {
+            event.preventDefault();
+
+            if (!availableDoors.length) return;
+
+            const selected = availableDoors[selectedIndex];
+
+		State.variables.enteredFromPdd = currentPdd;
+		State.variables.currentPdd = Number(selected.room.pdd);
+		Engine.play("TestMystRoom");
+        });
+
+        showWall();
+
+    } catch (error) {
+        console.error("Circular room error:", error);
+        status.text("Error al cargar las puertas.");
+    }
+})()>>
+<</done>>
+
+
+
+:: TestMystRoom {"position":"600,675","size":"100,100"}
+
+<<nobr>>
+<<castleDoorTitle "Palabra del Día" "CastleEntrance">>
+<!-- PUERTAS DEL CASTELLANO — MYST ROOM -->
+
+<div class="myst-room">
+
+    <div id="myst-loading-curtain">
+        <span>Abriendo las puertas...</span>
+    </div>
+
+    <div class="myst-scene">
+
+<div class="myst-controls">
+    <button type="button" id="myst-left">◀</button>
+    <button type="button" id="myst-enter">Entrar</button>
+    <button type="button" id="myst-right">▶</button>
+    
+</div>
+
+
+        <div class="myst-scene-image">
+<div id="myst-gallery" hidden>
+    <button type="button" id="myst-gallery-close">
+        ✕ Cerrar galería
+    </button>
+
+    <div class="myst-gallery-frame">
+        <img id="myst-gallery-image" src="" alt="">
+    </div>
+
+    <div class="myst-gallery-details">
+        <div id="myst-gallery-pdd"></div>
+        <h2 id="myst-gallery-word"></h2>
+        <p id="myst-gallery-definition"></p>
+    </div>
+</div>
+
+            <!-- Painting for the destination behind the door -->
+            <img
+                id="myst-pdd-image"
+                src=""
+                alt=""
+                class="myst-pdd-painting"
+            >
+
+            <!-- Castle foreground with transparent gold frame -->
+           <img
+    id="myst-background"
+    src=""
+    alt="Cámara circular del castillo"
+    class="myst-background"
+>
+<img
+    id="myst-animation"
+    src=""
+    alt=""
+    class="myst-animation"
+>
+<button
+    type="button"
+    id="myst-door-hotspot"
+    class="myst-door-hotspot"
+    aria-label="Entrar por esta puerta"
+    title="Entrar por esta puerta"
+></button>
+<button
+    type="button"
+    id="myst-painting-hotspot"
+    aria-label="Examinar la pintura"
+    title="Examinar la pintura"
+></button>
+<button
+    type="button"
+    id="myst-stairs-hotspot"
+    aria-label="Explorar la Escalera del Infinito"
+    title="Explorar la Escalera del Infinito"
+    hidden
+></button>
+
+        </div>
+
+    
+
+    </div>
+
+    <div class="myst-parchment">
+        <div class="myst-kicker" id="myst-kicker">Cargando...</div>
+ <h2 id="myst-word"></h2>
+
+<button type="button" id="myst-meaning" style="margin:12px auto;" hidden>
+    ¿Qué significa?
+</button>
+<div id="myst-meaning-quiz" hidden>
+    <p>Elige la definición correcta:</p>
+    <div id="myst-meaning-choices"></div>
+    <p id="myst-meaning-feedback" aria-live="polite"></p>
+</div>
+
+<p id="myst-description"></p>
+
+<button type="button" id="myst-manuscript" hidden>
+    📜 Examinar el manuscrito
+</button>
+<button type="button" id="myst-codex" hidden>
+  📖 El códice de la sala
+</button>
+<button type="button" id="myst-journal">
+    📜 Diario del Explorador
+</button>
+<button type="button" id="myst-audio-toggle" aria-pressed="false">
+    🔊 Música
+</button>
+<div id="myst-journal-panel" hidden>
+    <h2>📜 Diario del Explorador</h2>
+<p id="myst-journal-count"></p>
+
+<button type="button" id="myst-journal-filter">
+    ⭐ Mostrar favoritos
+</button>
+
+<div id="myst-journal-rooms"></div>
+    <button type="button" id="myst-journal-close">
+        Cerrar diario
+    </button>
+</div>
+
+
+        <p id="myst-status"></p>
+        <div id="pdd-manuscript-overlay" hidden>
+    <div id="pdd-manuscript-paper">
+        <button type="button" id="pdd-close-manuscript">✕</button>
+        <h2 id="myst-manuscript-title"></h2>
+        <div id="myst-manuscript-content"></div>
+    </div>
+</div>
+    </div>
+
+    <div class="myst-room-footer">
+        <span id="myst-room-title">
+            LAS PUERTAS DEL CASTELLANO
+        </span>
+        <span id="myst-counter">
+            Cargando puertas...
+        </span>
+    </div>
+</div>
+<<castleDoorReturn>>
+<</nobr>>
+
+<<done>>
+<<run (async function () {
+
+    const kicker = $("#myst-kicker");
+    const word = $("#myst-word");
+    const description = $("#myst-description");
+const meaningButton = $("#myst-meaning");
+const meaningQuiz = $("#myst-meaning-quiz");
+const meaningChoices = $("#myst-meaning-choices");
+const meaningFeedback = $("#myst-meaning-feedback");
+
+let meaningRoom = null;
+
+meaningButton.on("click", async function () {
+    if (!meaningRoom) return;
+
+    meaningButton.prop("hidden", true);
+    meaningQuiz.prop("hidden", false);
+    meaningChoices.empty();
+    meaningFeedback.text("Buscando definiciones...");
+
+    try {
+        const correct = (meaningRoom.short_definition || "").trim();
+
+        if (!correct) {
+            meaningFeedback.text("Esta palabra todavía no tiene definición.");
+            return;
+        }
+
+        const endpoint = setup.supabase.url +
+            "/rest/v1/rooms?select=pdd,short_definition" +
+            "&published=eq.true" +
+            "&short_definition=not.is.null" +
+            "&pdd=neq." + Number(meaningRoom.pdd) +
+            "&limit=1000";
+
+        const response = await fetch(endpoint, {
+            headers: { apikey: setup.supabase.key }
+        });
+
+        if (!response.ok) {
+            throw new Error("Definitions error: " + response.status);
+        }
+
+        const otherRooms = await response.json();
+
+        const distractors = otherRooms
+            .map(function (room) {
+                return (room.short_definition || "").trim();
+            })
+            .filter(function (definition) {
+                return definition && definition !== correct;
+            });
+
+        // Shuffle the distractors.
+        distractors.sort(function () {
+            return Math.random() - 0.5;
+        });
+
+        const choices = [correct, ...new Set(distractors)].slice(0, 3);
+
+        if (choices.length < 3) {
+            meaningFeedback.text("Necesitamos tres definiciones para jugar.");
+            return;
+        }
+
+        // Shuffle the three choices.
+        for (let i = choices.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [choices[i], choices[j]] = [choices[j], choices[i]];
+        }
+
+        meaningFeedback.empty();
+
+        choices.forEach(function (definition) {
+            const button = $("<button>", {
+                type: "button",
+                text: definition
+            });
+
+            button.css({
+                display: "block",
+                width: "100%",
+                margin: "10px 0",
+                textAlign: "left",
+                whiteSpace: "normal"
+            });
+
+            button.on("click", function () {
+                if (definition === correct) {
+                    meaningFeedback.text("¡Correcto!");
+                    meaningChoices.find("button").prop("disabled", true);
+                } else {
+                    meaningFeedback.text("Inténtalo otra vez.");
+                }
+            });
+
+            meaningChoices.append(button);
+        });
+
+    } catch (error) {
+        console.error("Meaning quiz error:", error);
+        meaningFeedback.text("No se pudieron cargar las definiciones.");
+    }
+});
+
+    const image = $("#myst-pdd-image");
+    // PDD Painting Gallery
+const gallery = $("#myst-gallery");
+
+$("#myst-gallery-close").on("click", function () {
+    gallery.prop("hidden", true);
+});
+$("#myst-painting-hotspot").on("click", function () {
+    gallery.prop("hidden", false);
+});
+
+    const counter = $("#myst-counter");
+    const status = $("#myst-status");
+    const enterButton = $("#myst-enter");
+    
+    const doorHotspot = $("#myst-door-hotspot");
+
+doorHotspot.on("click", function () {
+    if (!enterButton.prop("disabled")) {
+        enterButton.trigger("click");
+    }
+});
+    
+
+    const leftButton = $("#myst-left");
+    const rightButton = $("#myst-right");
+const audioButton = $("#myst-audio-toggle");
+
+function updateAudioButton() {
+    audioButton
+        .text(setup.audio.enabled ? "🔊 Música" : "🔇 Silencio")
+        .attr("aria-pressed", String(!setup.audio.enabled));
+}
+
+updateAudioButton();
+
+audioButton.on("click", function () {
+    setup.audio.enabled = !setup.audio.enabled;
+
+    if (setup.audio.enabled) {
+        setup.audio.music.play().catch(function (error) {
+            console.log("Music unavailable:", error);
+        });
+    } else {
+        setup.audio.music.pause();
+    }
+
+    updateAudioButton();
+});
+    enterButton.prop("disabled", true);
+    leftButton.prop("disabled", true);
+    rightButton.prop("disabled", true);
+
+    try {
+
+        // Select the latest published room only when
+        // no current chamber has already been chosen.
+
+        let currentPdd = Number(State.variables.currentPdd);
+
+        if (!Number.isFinite(currentPdd) || currentPdd <= 0) {
+            currentPdd = Number(
+                await setup.getLatestPublishedPdd()
+            );
+
+            if (!Number.isFinite(currentPdd) || currentPdd <= 0) {
+                throw new Error("No hay palabras publicadas.");
+            }
+
+            State.variables.currentPdd = currentPdd;
+        }
+
+        const currentRoom = await setup.getRoom(currentPdd);
+if (currentRoom) {
+    setup.exploration.visit(currentPdd);
+}
+
+const journalButton = document.getElementById("myst-journal");
+const journalPanel = document.getElementById("myst-journal-panel");
+const journalClose = document.getElementById("myst-journal-close");
+
+if (journalButton && journalPanel && journalClose) {
+   journalButton.addEventListener("click", async function () {
+
+    if (!journalPanel.hidden) {
+        journalPanel.hidden = true;
+        return;
+    }
+
+    const visited = setup.exploration.getVisited();
+
+    const roomsList = document.getElementById("myst-journal-rooms");
+    const filterButton = document.getElementById("myst-journal-filter");
+
+    document.getElementById("myst-journal-count").textContent =
+        "Salas descubiertas: " + visited.length;
+
+    let journalRooms = [];
+
+    try {
+        journalRooms = await setup.getPublishedRooms(visited);
+    } catch (error) {
+        console.error("Journal vocabulary error:", error);
+    }
+
+    if (!Array.isArray(State.variables.favoritePdds)) {
+        State.variables.favoritePdds = [];
+    }
+
+    let favoritesOnly = false;
+
+    function renderJournal() {
+        roomsList.replaceChildren();
+
+        const favorites = State.variables.favoritePdds;
+
+        filterButton.textContent = favoritesOnly
+            ? "📜 Mostrar todas"
+            : "⭐ Mostrar favoritos";
+
+        const displayed = visited
+            .map(Number)
+            .sort(function (a, b) {
+                return a - b;
+            })
+            .filter(function (pdd) {
+                return !favoritesOnly || favorites.includes(pdd);
+            });
+
+        if (displayed.length === 0) {
+            roomsList.textContent = favoritesOnly
+                ? "Todavía no tienes palabras favoritas."
+                : "Todavía no has descubierto ninguna sala.";
+            return;
+        }
+
+        displayed.forEach(function (pdd) {
+            const journalRoom = journalRooms.find(function (room) {
+                return Number(room.pdd) === pdd;
+            });
+
+            const line = document.createElement("div");
+            line.style.display = "flex";
+            line.style.alignItems = "center";
+            line.style.gap = "10px";
+            line.style.margin = "8px 0";
+
+            const star = document.createElement("button");
+            star.type = "button";
+            star.textContent = favorites.includes(pdd) ? "★" : "☆";
+            star.title = favorites.includes(pdd)
+                ? "Quitar de favoritos"
+                : "Añadir a favoritos";
+
+            star.addEventListener("click", function () {
+                const updated = [...State.variables.favoritePdds];
+                const index = updated.indexOf(pdd);
+
+                if (index >= 0) {
+                    updated.splice(index, 1);
+                } else {
+                    updated.push(pdd);
+                }
+
+State.variables.favoritePdds = updated;
+memorize("pddFavorites", updated);
+renderJournal();
+            });
+
+            const link = document.createElement("a");
+            link.href = "#";
+            link.textContent = "🚪 PDD " + pdd +
+                (journalRoom ? " — " + journalRoom.word : "");
+
+            link.addEventListener("click", function (event) {
+                event.preventDefault();
+
+                State.variables.enteredFromPdd =
+                    Number(State.variables.currentPdd || 0);
+
+                State.variables.currentPdd = pdd;
+                Engine.play("TestMystRoom");
+            });
+
+            line.appendChild(star);
+            line.appendChild(link);
+            roomsList.appendChild(line);
+        });
+    }
+
+    filterButton.onclick = function () {
+        favoritesOnly = !favoritesOnly;
+        renderJournal();
+    };
+
+    renderJournal();
+    journalPanel.hidden = false;
+}); 
+    journalClose.addEventListener("click", function () {
+        journalPanel.hidden = true;
+    });
+}
+
+const manuscriptButton = $("#myst-manuscript");
+
+const chapterNumber = currentRoom
+    ? Number(currentRoom.chapter)
+    : 0;
+
+if (setup.features.manuscript && chapterNumber > 0) {
+    manuscriptButton.prop("hidden", false);
+}
+
+console.log("MYST CHAPTER:", chapterNumber);
+
+manuscriptButton.on("click", async function () {
+    try {
+        manuscriptButton.prop("disabled", true);
+
+        const chapter = await setup.getChapter(chapterNumber);
+
+        if (!chapter) {
+            throw new Error("No se encontró el capítulo " + chapterNumber);
+        }
+
+        $("#myst-manuscript-title").text(
+            "Capítulo " + chapter.id + " — " + (chapter.title || "")
+        );
+
+        $("#myst-manuscript-content")
+            .text(chapter.content || "")
+            .css("white-space", "pre-wrap");
+
+        $("#pdd-manuscript-overlay").prop("hidden", false);
+
+    } catch (error) {
+        console.error("Manuscript error:", error);
+        status.text("No se pudo abrir el manuscrito.");
+    } finally {
+        manuscriptButton.prop("disabled", false);
+    }
+});
+console.log("MYST CURRENT CHAMBER:", currentPdd);
+        // Temporary: alternate between our two chamber backgrounds.
+
+const chamberNumber = currentPdd % 10;
+
+// 20% chance of finding La Escalera del Infinito.
+const hasStairwell = Math.random() < 0.20;
+
+$("#myst-stairs-hotspot")
+    .prop("hidden", !hasStairwell)
+    .off("click")
+   .on("click", async function () {
+    const visited = [...new Set(
+        setup.exploration.getVisited().map(Number)
+    )].filter(Number.isFinite).sort((a, b) => a - b);
+
+    let largestGap = 0;
+    let midpoint = null;
+
+    for (let i = 1; i < visited.length; i++) {
+        const gap = visited[i] - visited[i - 1];
+
+        if (gap > largestGap && gap > 1) {
+            largestGap = gap;
+            midpoint = Math.round(
+                (visited[i - 1] + visited[i]) / 2
+            );
+        }
+    }
+
+if (midpoint !== null) {
+    try {
+        const candidates = [];
+
+        for (let distance = 0; distance <= 10; distance++) {
+            candidates.push(midpoint - distance);
+
+            if (distance > 0) {
+                candidates.push(midpoint + distance);
+            }
+        }
+
+        const unvisited = candidates.filter(pdd =>
+            pdd > 0 && !visited.includes(pdd)
+        );
+
+        const published = await setup.getPublishedRooms(unvisited);
+
+        const destination = unvisited.find(pdd =>
+            published.some(room => Number(room.pdd) === pdd)
+        );
+
+        $("#myst-status").text(
+            destination
+                ? "La Escalera del Infinito conduce hacia la sala " +
+                  destination + "..."
+                : "No se encontró una sala publicada cerca del destino."
+        );
+
+        console.log("ESCALERA DESTINO PUBLICADO:", destination);
+        if (destination) {
+    State.variables.enteredFromPdd = currentPdd;
+    State.variables.currentPdd = destination;
+    Engine.play("TestMystRoom");
+}
+
+    } catch (error) {
+        console.error("Escalera error:", error);
+        $("#myst-status").text(
+            "No se pudo encontrar el destino de la escalera."
+        );
+    }
+        console.log("ESCALERA DESTINO:", midpoint);
+    } else {
+        $("#myst-status").text(
+            "No quedan grandes distancias por explorar."
+        );
+    }
+});
+    
+//const hasStairwell = true;
+// Choose the appropriate chamber background.
+const backgroundFile = hasStairwell
+    ? "images/myst-chamber-stairs" + chamberNumber + ".png"
+    : "images/myst-chamber-transparent" + chamberNumber + ".png";
+
+$("#myst-background").attr("src", backgroundFile);
+
+$("#myst-animation").attr(
+    "src",
+    "images/pdd-animation" + chamberNumber + ".webp"
+);
+
+setup.audio.startMusic(chamberNumber);
+
+console.log(
+    "ESCALERA:",
+    hasStairwell ? "APARECE" : "NO APARECE",
+    backgroundFile
+);
+        if (!currentRoom) {
+            throw new Error("No se encontró la sala PDD " + currentPdd);
+        }
+        
+   $("#myst-room-title").text(
+    "LAS PUERTAS DEL CASTELLANO · PDD " +
+    currentPdd
+);
+
+        // Load semantic connections.
+
+        const connections = await setup.getConnections(currentPdd);
+
+        const destinations = connections.map(function (c) {
+            return Number(c.from_pdd) === currentPdd
+                ? Number(c.to_pdd)
+                : Number(c.from_pdd);
+        });
+
+        const rooms = await setup.getPublishedRooms(destinations);
+
+        const availableDoors = connections
+            .map(function (c) {
+
+                const destination =
+                    Number(c.from_pdd) === currentPdd
+                        ? Number(c.to_pdd)
+                        : Number(c.from_pdd);
+
+                const room = rooms.find(function (r) {
+                    return Number(r.pdd) === destination;
+                });
+
+                return room
+                    ? { room: room, connection: c }
+                    : null;
+            })
+            .filter(Boolean);
+
+        // Preserve the circular room's ranking:
+        // featured first, then strength, then PDD.
+
+        availableDoors.sort(function (a, b) {
+            return (
+                Number(b.connection.featured) -
+                    Number(a.connection.featured) ||
+                Number(b.connection.strength || 0) -
+                    Number(a.connection.strength || 0) ||
+                Number(a.room.pdd) - Number(b.room.pdd)
+            );
+        });
+
+        // Chronological neighbors are published rooms.
+
+        const chronological =
+            await setup.getChronologicalNeighbors(currentPdd);
+
+        let previous = chronological.previous;
+        let next = chronological.next;
+
+const latestNumber = Number(
+    await setup.getLatestPublishedPdd()
+);
+
+// Close the chronological loop in both directions.
+if (currentPdd === 1 && !previous && latestNumber > 1) {
+    previous = await setup.getRoom(latestNumber);
+}
+
+if (currentPdd === latestNumber && !next && latestNumber > 1) {
+    next = await setup.getRoom(1);
+}
+
+// Connect PDD 1 backward to the latest published PDD.
+if (!previous && currentPdd === 1) {
+    const latestNumber = Number(
+        await setup.getLatestPublishedPdd()
+    );
+
+    if (latestNumber > 1) {
+        previous = await setup.getRoom(latestNumber);
+    }
+}
+
+        const enteredFromPdd =
+            Number(State.variables.enteredFromPdd || 0);
+
+        // Avoid duplicate chronological and semantic doors.
+
+        const semanticDoors = availableDoors.filter(function (item) {
+            return Number(item.room.pdd) !== Number(previous?.pdd)
+                && Number(item.room.pdd) !== Number(next?.pdd);
+        });
+
+        // Set aside the entrance door, if present.
+
+        const returnIndex = semanticDoors.findIndex(function (item) {
+            return Number(item.room.pdd) === enteredFromPdd;
+        });
+
+        const returnDoor = returnIndex >= 0
+            ? semanticDoors.splice(returnIndex, 1)[0]
+            : null;
+
+       // CHRONOLOGICAL HALLWAY
+// The door ahead continues our direction of travel.
+
+const circularDoors = [];
+
+const latestPdd = Number(
+    await setup.getLatestPublishedPdd()
+);
+
+// Determine which chronological direction we are travelling.
+// -1 = toward older PDDs
+// +1 = toward newer PDDs
+
+const travelDirection =
+    Number(State.variables.travelDirection) || -1;
+
+// Chronological doors
+const olderDoor = previous
+    ? { room: previous, type: "previous" }
+    : null;
+
+const newerDoor = next
+    ? { room: next, type: "next" }
+    : null;
+
+// The forward-facing door always continues our journey.
+// At the beginning of the timeline, continue toward newer PDDs.
+const effectiveDirection = travelDirection;
+
+const forwardDoor =
+    effectiveDirection === -1 ? olderDoor : newerDoor;
+
+const backwardDoor =
+    effectiveDirection === -1 ? newerDoor : olderDoor;
+
+// Put the forward door first.
+if (forwardDoor) {
+    circularDoors.push(forwardDoor);
+}
+
+// Semantic doors occupy the sides of the chamber.
+const midpoint = Math.ceil(semanticDoors.length / 2);
+
+circularDoors.push(...semanticDoors.slice(0, midpoint));
+
+// Preserve a semantic return door.
+if (returnDoor) {
+    circularDoors.push(returnDoor);
+}
+
+circularDoors.push(...semanticDoors.slice(midpoint));
+
+// The chronological door behind us.
+if (backwardDoor) {
+    circularDoors.push(backwardDoor);
+}
+
+// The castle exit is behind the visitor in the latest PDD.
+// The first vocabulary door is behind the visitor
+// when standing in the latest PDD.
+
+
+// Initially face the forward chronological door.
+let selectedIndex = 0;
+function showWall() {
+console.log(
+    "HALLWAY DEBUG",
+    "Current:", currentPdd,
+    "Previous:", previous?.pdd,
+    "Next:", next?.pdd,
+    "Direction:", travelDirection,
+    "Doors:", circularDoors.map(function (d) {
+        return d.room.pdd + " (" + (d.type || "semantic") + ")";
+    })
+);
+            if (!circularDoors.length) {
+                kicker.text("PDD " + currentPdd);
+                word.text("No hay puertas disponibles");
+                description.empty();
+                counter.text("0 / 0");
+                image.attr("src", "images/pdd-placeholder.jpg");
+                enterButton.prop("disabled", true);
+                return;
+            }
+meaningRoom = null;
+meaningButton.prop("hidden", true);
+meaningQuiz.prop("hidden", true);
+meaningChoices.empty();
+meaningFeedback.empty();
+            const selected = circularDoors[selectedIndex];
+            const room = selected.room;
+            // Update the painting gallery for the selected door.
+gallery.prop("hidden", true);
+
+$("#myst-gallery-image").attr(
+    "src",
+    "images/pdd" + room.pdd + ".jpg"
+);
+
+$("#myst-gallery-pdd").text("PDD " + room.pdd);
+$("#myst-gallery-word").text(room.word || "");
+$("#myst-gallery-definition").text(
+    room.short_definition || ""
+);
+
+$("#myst-painting-hotspot").prop(
+    "hidden",
+    selected.type === "exit"
+);
+
+meaningRoom = selected.type === "exit" ? null : room;
+            const codexButton = $("#myst-codex");
+const whatsappText = room.whatsapp_description || "";
+console.log("CODEX DEBUG:", {
+    pdd: room.pdd,
+    word: room.word,
+    whatsapp_description: room.whatsapp_description
+});
+codexButton.prop(
+    "hidden",
+    !setup.features.codex || !whatsappText.trim()
+);
+codexButton.off("click").on("click", function () {
+    $("#myst-manuscript-title").text("El códice — PDD " + room.pdd);
+
+    $("#myst-manuscript-content")
+        .text(whatsappText)
+        .css("white-space", "pre-wrap");
+
+    $("#pdd-manuscript-overlay").prop("hidden", false);
+});
+            // Mirror the chamber based on the destination PDD.
+// Odd = mirrored, even = normal.
+const mirrored =
+    selected.type !== "exit" &&
+    Number(room.pdd) % 2 === 1;
+
+$(".myst-scene-image").toggleClass(
+    "myst-mirrored",
+    mirrored
+);
+if (selected.type === "exit") {
+    kicker.text("LA SALIDA");
+    word.text("Salir del castillo");
+    description.text("Regresar a la entrada del castillo.");
+
+    image
+        .off("error")
+        .attr("alt", "Salida del castillo")
+        .attr("src", "images/pdd-placeholder.jpg");
+
+    counter.text(
+        (selectedIndex + 1) + " / " + circularDoors.length
+    );
+
+    enterButton.prop("disabled", false);
+    return;
+}
+            const isTimeDoor =
+                selected.type === "previous" ||
+                selected.type === "next";
+
+            kicker.text(
+                "PDD " + room.pdd +
+                (isTimeDoor ? " · Puerta del Tiempo" : "")
+            );
+
+            // Hide the word until the player clicks it.
+word.stop(true, true)
+    .text("¿Qué palabra soy?")
+    .css("cursor", "pointer")
+    .attr("title", "Revelar palabra")
+    .off("click.pddReveal")
+    .one("click.pddReveal", function () {
+        word.fadeOut(150, function () {
+    word.text(room.word).fadeIn(350);
+    $("#myst-meaning").prop("hidden", false);
+});
+    });
+
+description.text(room.description || "");
+            const imagePath = "images/pdd" + room.pdd + ".jpg";
+            const fallbackPath = "images/pdd-placeholder.jpg";
+
+            image
+                .off("error")
+                .one("error", function () {
+                    $(this).off("error");
+                    this.src = fallbackPath;
+                })
+                .attr("alt", room.word)
+                .attr("src", imagePath);
+
+            counter.text(
+                (selectedIndex + 1) +
+                " / " +
+                circularDoors.length
+            );
+
+            enterButton.prop("disabled", false);
+        }
+
+let isTurning = false;
+
+function turnWall(direction) {
+
+    if (circularDoors.length < 2 || isTurning) return;
+
+    isTurning = true;
+
+    const scene = $(".myst-scene-image");
+
+    const turningRight = direction === "right";
+
+    scene.css({
+        "--turn-out": turningRight ? "-15%" : "15%",
+        "--turn-in": turningRight ? "15%" : "-15%"
+    });
+
+    // Slide the current wall out.
+    scene.addClass("myst-turning-out");
+
+    setTimeout(function () {
+
+        selectedIndex = turningRight
+            ? (selectedIndex + 1) % circularDoors.length
+            : (selectedIndex - 1 + circularDoors.length)
+                % circularDoors.length;
+
+        // Change the wall while invisible.
+        scene.css("transition", "none");
+        scene.removeClass("myst-turning-out");
+        scene.addClass("myst-turning-in");
+
+        showWall();
+
+        // Allow the browser to register the new position.
+        requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+
+                scene.css("transition", "");
+                scene.removeClass("myst-turning-in");
+
+                setTimeout(function () {
+                    isTurning = false;
+                }, 180);
+
+            });
+        });
+
+    }, 180);
+}
+
+        leftButton.on("click", function () {
+            turnWall("left");
+        });
+
+        rightButton.on("click", function () {
+            turnWall("right");
+        });
+
+enterButton.on("click", function () {
+   console.log("CASTLE DOOR CLICKED");
+    if (!circularDoors.length) return;
+    
+if (setup.audio.enabled) {
+    setup.doorSound.currentTime = 0;
+    setup.doorSound.play().catch(function (error) {
+        console.log("Door sound unavailable:", error);
+    });
+}  
+    
+meaningRoom = null;
+meaningButton.prop("hidden", true);
+meaningQuiz.prop("hidden", true);
+meaningChoices.empty();
+meaningFeedback.empty();
+    const selected = circularDoors[selectedIndex];
+
+    // Special door: leave the castle.
+    if (selected.type === "exit") {
+        State.variables.enteredFromPdd = 0;
+        delete State.variables.currentPdd;
+
+        Engine.play("CastleEntrance");
+        return;
+    }
+
+    // Normal vocabulary door.
+  // Remember direction when travelling chronologically.
+if (selected.type === "previous") {
+    State.variables.travelDirection = -1;
+} else if (selected.type === "next") {
+    State.variables.travelDirection = 1;
+}
+
+State.variables.enteredFromPdd = currentPdd;
+State.variables.currentPdd = Number(selected.room.pdd);
+
+Engine.play("TestMystRoom");
+}); // Close the door-click handler
+
+leftButton.prop("disabled", circularDoors.length < 2);
+rightButton.prop("disabled", circularDoors.length < 2);
+
+showWall();
+
+// Wait for both chamber images to finish loading.
+// Reveal when images are ready, with a safety timeout.
+
+const backgroundImage = document.getElementById("myst-background");
+const paintingImage = document.getElementById("myst-pdd-image");
+
+function waitForImage(img) {
+    if (!img || img.complete) {
+        return Promise.resolve();
+    }
+
+    return new Promise(function (resolve) {
+        img.addEventListener("load", resolve, { once: true });
+        img.addEventListener("error", resolve, { once: true });
+    });
+}
+
+// Never keep the visitor behind the curtain indefinitely.
+await Promise.race([
+    Promise.all([
+        waitForImage(backgroundImage),
+        waitForImage(paintingImage)
+    ]),
+    new Promise(function (resolve) {
+        setTimeout(resolve, 1500);
+    })
+]);
+
+$("#myst-loading-curtain").addClass("is-ready");
+
+} catch (error) {
+    console.error("Myst room error:", error);
+    word.text("Error al cargar la sala");
+    status.text(error.message || "Error al cargar las puertas.");
+
+    // Open the curtain even when something goes wrong.
+    $("#myst-loading-curtain").addClass("is-ready");
+}
+
+})()>>
+<</done>>
+
+
+:: TestSupabase {"position":"225,475","size":"100,100"}
+
+<div class="room-card">
+
+    <div class="pdd-kicker">
+        LA BIBLIOTECA DEL CASTILLO
+    </div>
+
+    <h2 id="test-title">
+        Consultando los archivos...
+    </h2>
+
+    <div id="test-painting" class="pdd-image frame-1" hidden>
+        <img id="test-image" alt="">
+    </div>
+
+    <div id="test-description"></div>
+
+</div>
+
+<<done>>
+
+    <<run setup.getRoom(State.variables.currentPdd || 49)
+        .then(function(room) {
+
+            if (!room) {
+                $("#test-title").text("Sala no encontrada");
+                return;
+            }
+
+            // Room title
+            $("#test-title").text(room.title || room.word);
+
+            // Frame style based on PDD number
+            const frameNumber = Number(room.pdd) % 3;
+
+            $("#test-painting")
+                .removeClass("frame-0 frame-1 frame-2")
+                .addClass("frame-" + frameNumber);
+
+            // Painting and fallback
+            const imagePath = "images/pdd" + room.pdd + ".jpg";
+            const fallbackPath = "images/pdd-placeholder.jpg";
+
+            $("#test-image")
+                .off("error")
+                .one("error", function() {
+                    // Avoid an infinite loop if placeholder is missing
+                    $(this).off("error");
+                    this.src = fallbackPath;
+                })
+                .attr("alt", room.word)
+                .attr("src", imagePath);
+
+            // Reveal the painting
+            $("#test-painting").prop("hidden", false);
+
+            // Room description
+            $("#test-description").text(room.description || "");
+
+        })
+        .catch(function(error) {
+            console.error("Supabase error:", error);
+            $("#test-title").text("Error al cargar la sala");
+        })
+    >>
+<</done>>
+
+
+<div id="test-connections" class="paths">
+    Buscando los pasillos del castillo...
+</div>
+
+
+<<done>>
+    <<run (async function () {
+        const currentPdd = State.variables.currentPdd || 49;
+        const container = $("#test-connections");
+
+        container.text("Buscando puertas abiertas...");
+
+        try {
+            const connections =
+                await setup.getConnections(currentPdd);
+
+            const destinations = connections.map(function(c) {
+                return c.from_pdd === currentPdd
+                    ? c.to_pdd
+                    : c.from_pdd;
+            });
+
+  
+const rooms =
+    await setup.getPublishedRooms(destinations);
+
+// Match each published room to its corridor.
+const availableDoors = connections
+    .map(function(c) {
+        const destination =
+            c.from_pdd === currentPdd
+                ? c.to_pdd
+                : c.from_pdd;
+
+        const room = rooms.find(function(r) {
+            return r.pdd === destination;
+        });
+
+        return room
+            ? { room: room, connection: c }
+            : null;
+    })
+    .filter(Boolean);
+
+// Always prioritize featured and strong connections.
+// Use PDD number to break ties consistently.
+availableDoors.sort(function(a, b) {
+    return (
+        Number(b.connection.featured) -
+            Number(a.connection.featured) ||
+        Number(b.connection.strength || 0) -
+            Number(a.connection.strength || 0) ||
+        a.room.pdd - b.room.pdd
+    );
+});
+
+// Display at most six doors.
+const visibleDoors = availableDoors.slice(0, 6);
+
+container.empty();
+
+
+if (rooms.length === 0) {
+    container.text(
+        "No hay otras puertas abiertas todavía."
+    );
+}
+
+          visibleDoors.forEach(function(item) {
+    const room = item.room;
+                const door = $("<a>", {
+                    href: "#",
+                    text: "🚪 " + room.word
+                });
+                
+ 
+
+                door.on("click", function(event) {
+                    event.preventDefault();
+
+               
+if (!Array.isArray(State.variables.roomHistory)) {
+    State.variables.roomHistory = [];
+}
+
+State.variables.roomHistory.push(currentPdd);
+State.variables.currentPdd = room.pdd;
+Engine.play("TestSupabase");
+
+                });
+
+  
+                container.append(door);
+            });
+
+            // Return to the previous room
+            const history = State.variables.roomHistory || [];
+
+            if (history.length > 0) {
+                const backDoor = $("<a>", {
+                    href: "#",
+                    class: "return-door",
+                    text: "↩ Volver"
+                });
+
+                backDoor.on("click", function(event) {
+                    event.preventDefault();
+
+                    const previousPdd =
+                        State.variables.roomHistory.pop();
+
+                    State.variables.currentPdd = previousPdd;
+                    Engine.play("TestSupabase");
+                });
+
+                container.append(backDoor);
+            }
+
+        } catch (error) {
+
+            console.error(error);
+            container.text(
+                "Error al buscar las puertas."
+            );
+        }
+    })()
+    >>
+<</done>>
+
+
+
+:: Untitled Passage [widget] {"position":"125,375","size":"100,100"}
+
+<<widget "pddroom" container>>
+  <<set _pddNumber = $args[0]>>
+  <<set _pddWord = $args[1]>>
+  <<set _pddImage = "images/pdd" + _pddNumber + ".jpg">>
+
+  <div class="room-card">
+
+    <div class="pdd-kicker">
+      PDD #<<print _pddNumber>>
+    </div>
+
+    <h1><<print _pddWord>></h1>
+
+  <div @class="'pdd-image frame-' + (_pddNumber % 3)">
+      <img @src="_pddImage" @alt="_pddWord">
+    </div>
+
+    <div class="room-text">
+     <<= _contents >>
+    </div>
+
+    <div class="inscription">
+      Todas las palabras, frases e ideas están conectadas.
+      Solo tienes que encontrar el camino.
+    </div>
+
+
+<div class="paths">
+  <<for _i = 2; _i < $args.length; _i++>>
+    <<caminos $args[_i]>>
+  <</for>>
+</div>
+
+
+ 
+
+    <div class="castle-return">
+      [[← Volver al castillo->Empieza]]
+    </div>
+
+  </div>
+<</widget>>
+
+/% This is the caminos section %/
+
+<<widget "caminos">>
+  <<for _destino range $args>>
+    <<capture _destino>>
+      <<link _destino _destino>><</link>>
+    <</capture>>
+  <</for>>
+<</widget>>
+
+
+
+
+:: StoryScript [script]
+
+/* PUERTAS DEL CASTELLANO — SUPABASE */
+
+setup.supabase = {
+    url: "https://piqrpkzahyjkoytdycdg.supabase.co",
+    key: "sb_publishable_o8s0h6t3P60zn5hLPrtL5Q_hIVrzv_x"
+};
+
+setup.getRoom = async function (pdd) {
+    const endpoint =
+        setup.supabase.url +
+        "/rest/v1/rooms?select=*&pdd=eq." +
+        encodeURIComponent(pdd);
+
+    const response = await fetch(endpoint, {
+        headers: {
+            apikey: setup.supabase.key
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error("Supabase error: " + response.status);
+    }
+
+    const rooms = await response.json();
+    return rooms[0] || null;
+};
+
+/* PUERTAS DEL CASTELLANO — CHAPTER LOOKUP */
+
+setup.getChapter = async function (chapterId) {
+    const endpoint =
+        setup.supabase.url +
+        "/rest/v1/chapters?select=*&id=eq." +
+        encodeURIComponent(chapterId);
+
+    const response = await fetch(endpoint, {
+        headers: {
+            apikey: setup.supabase.key
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error("Chapter lookup error: " + response.status);
+    }
+
+    const chapters = await response.json();
+    return chapters[0] || null;
+};
+
+/* PUERTAS DEL CASTELLANO — ROOM CONNECTIONS */
+
+setup.getConnections = async function (pdd) {
+    const endpoint =
+        setup.supabase.url +
+        "/rest/v1/room_connections" +
+        "?select=*" +
+        "&enabled=eq.true" +
+        "&or=(from_pdd.eq." + encodeURIComponent(pdd) +
+        ",to_pdd.eq." + encodeURIComponent(pdd) + ")";
+
+    const response = await fetch(endpoint, {
+        headers: {
+            apikey: setup.supabase.key
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(
+            "Connections error: " + response.status
+        );
+    }
+
+    return await response.json();
+};
+
+/* PUERTAS DEL CASTELLANO — PUBLISHED ROOMS */
+
+setup.getPublishedRooms = async function (pddNumbers) {
+    if (!pddNumbers.length) {
+        return [];
+    }
+
+const endpoint =
+    setup.supabase.url +
+    "/rest/v1/rooms?select=*" +
+    "&published=eq.true" +
+    "&pdd=in.(" +
+    pddNumbers.map(Number).join(",") +
+    ")";
+console.log("PUBLISHED ROOMS URL:", endpoint);
+    const response = await fetch(endpoint, {
+        headers: {
+            apikey: setup.supabase.key
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(
+            "Published rooms error: " + response.status
+        );
+    }
+
+    return await response.json();
+};
+
+
+/* PUERTAS DEL CASTELLANO — NEIGHBOURS */
+setup.getChronologicalNeighbors = async function(currentPdd) {
+    const base = setup.supabase.url + "/rest/v1/rooms";
+    const headers = {
+        apikey: setup.supabase.key
+    };
+
+    async function findNeighbor(operator, direction) {
+        const endpoint = base
+            + "?select=pdd,word,title,description"
+            + "&published=eq.true"
+            + "&pdd=" + operator + "." + Number(currentPdd)
+            + "&order=pdd." + direction
+            + "&limit=1";
+
+        const response = await fetch(endpoint, { headers });
+
+        if (!response.ok) {
+            throw new Error("Chronological neighbor error: " + response.status);
+        }
+
+        const rooms = await response.json();
+        return rooms[0] || null;
+    }
+
+    const [previous, next] = await Promise.all([
+        findNeighbor("lt", "desc"),
+        findNeighbor("gt", "asc")
+    ]);
+
+    return { previous, next };
+};
+
+/* PUERTAS DEL CASTELLANO — LATESTPUBLISHED*/
+setup.getLatestPublishedPdd = async function () {
+    const endpoint = setup.supabase.url
+        + "/rest/v1/rooms"
+        + "?select=pdd"
+        + "&published=eq.true"
+        + "&order=pdd.desc"
+        + "&limit=1";
+
+    const response = await fetch(endpoint, {
+        headers: {
+            apikey: setup.supabase.key
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error("Latest PDD lookup failed: " + response.status);
+    }
+
+    const rooms = await response.json();
+
+    return rooms.length ? Number(rooms[0].pdd) : null;
+};
+
+/* PUERTAS DEL CASTELLANO — DIRECT LINK SESSION PRIORITY */
+
+$(document).one(":storyready", function () {
+    const pdd = new URLSearchParams(window.location.search).get("pdd");
+
+    if (!pdd) return;
+
+    (async function () {
+        let destination = null;
+
+        if (pdd === "today") {
+            destination = await setup.getLatestPublishedPdd();
+        } else if (/^\d+$/.test(pdd) && Number(pdd) > 0) {
+            destination = Number(pdd);
+        }
+
+        if (destination === null) return;
+
+        State.variables.currentPdd = destination;
+        State.variables.enteredFromPdd = 0;
+
+        Engine.play("TestMystRoom");
+    })().catch(function (error) {
+        console.error("Direct PDD link error:", error);
+    });
+});
+/* PUERTAS DEL CASTELLANO — MANUSCRIPT INTERACTION */
+
+$(document).on("click", "#pdd-open-manuscript", function () {
+    $("#pdd-manuscript-overlay").prop("hidden", false);
+});
+
+$(document).on("click", "#pdd-close-manuscript", function () {
+    $("#pdd-manuscript-overlay").prop("hidden", true);
+});
+
+$(document).on("click", "#pdd-manuscript-overlay", function (event) {
+    if (event.target === this) {
+        $(this).prop("hidden", true);
+    }
+});
+/* PUERTAS DEL CASTELLANO — MANUSCRIPT WORD NAVIGATION */
+
+$(document).on("click", ".pdd-manuscript-word", function (event) {
+    event.preventDefault();
+
+    const destination = Number($(this).attr("data-pdd"));
+
+    if (!destination) return;
+
+    State.variables.enteredFromPdd =
+        Number(State.variables.currentPdd || 0);
+
+    State.variables.currentPdd = destination;
+
+    Engine.play("TestMystRoom");
+});
+Config.ui.stowBarInitially = true;
+
+/* PUERTAS DEL CASTELLANO — AUDIO */
+/* Preload the door creak */
+setup.doorSound = new Audio("audio/door-open.wav");
+setup.doorSound.preload = "auto";
+setup.doorSound.load();
+
+setup.audio = setup.audio || {};
+setup.audio.enabled = true;
+setup.audio.music = setup.audio.music || new Audio("audio/chamber0.mp3");
+
+setup.audio.startMusic = function (chamberNumber) {
+    if (!setup.audio.enabled) return;
+
+    const number = Number(chamberNumber) || 0;
+    const path = "audio/chamber" + number + ".mp3";
+
+    if (setup.audio.music.getAttribute("src") !== path) {
+        setup.audio.music.pause();
+        setup.audio.music.src = path;
+        setup.audio.music.load();
+    }
+
+    setup.audio.music.loop = true;
+    setup.audio.music.volume = 0.25;
+
+    setup.audio.music.play().catch(function (error) {
+        console.log("Music playback unavailable:", error);
+    });
+};
+
+:: StoryStylesheet [stylesheet]
+
+/* PUERTAS DEL CASTELLANO — LIGHT THEME */
+
+body {
+  background: #E8DDC8;
+  color: #514839;
+  font-family: Georgia, serif;
+}
+
+#passages {
+  max-width: 900px;
+}
+
+h1, h2 {
+  color: #514839;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+
+/* Main room panel */
+.room-card {
+  padding: 1.4rem 1.6rem;
+  border: 1px solid #B7A585;
+  border-radius: 12px;
+  background: rgba(245, 235, 217, 0.96);
+  box-shadow: 0 4px 18px rgba(81, 72, 57, 0.10);
+}
+
+/* PDD number */
+.pdd-kicker {
+  text-align: center;
+  color: #8B6B3F;
+  font-size: 0.9em;
+  letter-spacing: 0.12em;
+}
+
+
+/* PDD PAINTING FRAMES */
+
+.pdd-image {
+  margin: 1.5rem auto 2rem;
+  max-width: 720px;
+  aspect-ratio: 4 / 3;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  border: 9px ridge #8B6B3F;
+  border-radius: 2px;
+
+  box-shadow: 0 8px 16px rgba(50,35,20,0.3);
+}
+
+.pdd-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dark walnut */
+.pdd-image.frame-0 {
+  border-color: #65452F;
+  background: #493021;
+}
+
+/* Antique bronze */
+.pdd-image.frame-1 {
+  border-color: #A3834D;
+  background: #725733;
+}
+
+/* Weathered oak */
+.pdd-image.frame-2 {
+  border-color: #9A7854;
+  background: #6F563E;
+}
+
+/* Castle inscription */
+.inscription {
+  margin-top: 1.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid #C9B99A;
+  color: #76634A;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Semantic corridors */
+
+/* SEMANTIC CORRIDORS — MEDIEVAL DOORS */
+
+.paths {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+.paths a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100px;
+  min-height: 145px;
+  box-sizing: border-box;
+  padding: 0.8rem;
+
+  background: #D9C6A4;
+  color: #514839;
+
+  border: 3px solid #8B6B3F;
+  border-radius: 4px;
+
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+
+  box-shadow: inset 0 0 0 3px #E8DDC8,
+              2px 4px 6px rgba(81,72,57,0.2);
+
+  transition: background 0.2s, transform 0.2s;
+}
+
+.paths a:hover {
+  background: #B8C4AF;
+  color: #514839;
+  transform: translateY(-4px);
+}
+
+
+
+/* Return to castle */
+.castle-return {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+/* SugarCube links */
+a, .link-internal {
+  color: #647568;
+}
+
+a:hover, .link-internal:hover {
+  color: #8B6B3F;
+}
+
+
+/* PDD — Return door */
+#test-connections a.return-door {
+    display: flex !important;
+    visibility: visible !important;
+    grid-column: 1 / -1;
+    width: 100%;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
+    margin-top: 12px;
+    box-sizing: border-box;
+}
+
+
+/* Chronological doors — Las Puertas del Tiempo */
+#circular-door.time-door {
+    background: linear-gradient(
+        135deg,
+        #a68a55,
+        #6f542c,
+        #47351f
+    ) !important;
+
+    border-color: #d4b46c !important;
+    color: #fff0c7 !important;
+
+    box-shadow:
+        inset 0 0 22px rgba(255, 215, 130, 0.18),
+        0 0 16px rgba(183, 139, 55, 0.22);
+}
+
+/* Circular room — 3D turning effect */
+
+#circular-content {
+    perspective: 1100px;
+    perspective-origin: center center;
+}
+
+#circular-content .turn-wall {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+@keyframes castle-turn-out-left {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: rotateY(-55deg) translateX(45px);
+        opacity: 0;
+    }
+}
+
+@keyframes castle-turn-in-left {
+    from {
+        transform: rotateY(55deg) translateX(-45px);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes castle-turn-out-right {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: rotateY(55deg) translateX(-45px);
+        opacity: 0;
+    }
+}
+
+@keyframes castle-turn-in-right {
+    from {
+        transform: rotateY(-55deg) translateX(45px);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+#circular-content.turn-out-left {
+    animation: castle-turn-out-left 220ms ease-in forwards;
+}
+
+#circular-content.turn-in-left {
+    animation: castle-turn-in-left 280ms ease-out both;
+}
+
+#circular-content.turn-out-right {
+    animation: castle-turn-out-right 220ms ease-in forwards;
+}
+
+#circular-content.turn-in-right {
+    animation: castle-turn-in-right 280ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #circular-content.turn-out-left,
+    #circular-content.turn-in-left,
+    #circular-content.turn-out-right,
+    #circular-content.turn-in-right {
+        animation: none;
+    }
+}
+/* PUERTAS DEL CASTELLANO — MANUSCRIPT OVERLAY */
+
+#pdd-manuscript-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(12, 9, 5, 0.82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+#pdd-manuscript-overlay[hidden] {
+    display: none;
+}
+
+#pdd-manuscript-paper {
+    position: relative;
+    width: min(720px, 100%);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 48px 55px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #f1dfb5, #d9bd83);
+    border: 9px double #8a6534;
+    box-shadow: 0 18px 65px rgba(0, 0, 0, 0.7);
+    color: #382513;
+    font-family: Georgia, serif;
+    line-height: 1.8;
+}
+
+#pdd-manuscript-paper h2 {
+    color: #59341c;
+    text-align: center;
+}
+
+.pdd-manuscript-heading {
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 0.85em;
+    color: #805b32;
+}
+
+#pdd-close-manuscript {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: #59341c;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+/* PUERTAS DEL CASTELLANO — MANUSCRIPT VOCABULARY LINKS */
+
+.pdd-manuscript-word {
+    color: #7a321b;
+    font-weight: bold;
+    text-decoration: underline dotted;
+    text-underline-offset: 4px;
+    cursor: pointer;
+}
+
+.pdd-manuscript-word:hover {
+    color: #ad5b24;
+    text-decoration-style: solid;
+}
+/* PUERTAS DEL CASTELLANO — MYST ROOM PROTOTYPE */
+
+/* =========================================================
+   PUERTAS DEL CASTELLANO — MYST ROOM PROTOTYPE
+   Isolated styling for TestMystRoom
+   ========================================================= */
+
+.myst-room {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* PUERTAS DEL CASTELLANO — MYST CHAMBER */
+
+.myst-scene {
+    background: #21170f;
+    border: 5px solid #705333;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+.myst-scene-label {
+    padding: 12px;
+    color: #e8d2a6;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* PUERTAS DEL CASTELLANO — IMAGE LAYERS */
+
+.myst-scene-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+    background: #21170f;
+}
+
+/* Castle foreground, including gold frame */
+
+.myst-background {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* PDD artwork behind transparent opening */
+
+.myst-pdd-painting {
+    position: absolute;
+    z-index: 1;
+
+left: 56.85%;
+top: 28.8%;
+width: 25.3%;
+height: 26.4%;
+object-fit: cover;
+
+ 
+    border: none;
+    transform: none;
+    box-sizing: border-box;
+}
+
+/* PUERTAS DEL CASTELLANO — NAVIGATION */
+
+.myst-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    color: #e8d2a6;
+    gap: 12px;
+}
+
+.myst-controls button {
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 1.3rem;
+}
+
+.myst-controls span {
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* PUERTAS DEL CASTELLANO — PARCHMENT */
+
+.myst-parchment {
+    background: linear-gradient(135deg, #f1dfb5, #d9bd83);
+    border: 5px solid #705333;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 24px;
+    color: #382513;
+    font-family: Georgia, serif;
+}
+
+.myst-parchment h2 {
+    color: #59341c;
+    margin: 8px 0;
+}
+
+.myst-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #805b32;
+}
+
+/* PUERTAS DEL CASTELLANO — DESKTOP */
+
+@media (min-width: 700px) {
+    .myst-parchment {
+        padding: 32px 48px;
+    }
+}
+/* PUERTAS DEL CASTELLANO — MYST LAYER ISOLATION */
+
+.myst-scene-image {
+    isolation: isolate;
+}
+
+.myst-background {
+    position: relative;
+    z-index: 2;
+}
+
+.myst-pdd-painting {
+  
+    position: absolute;
+    z-index: 1;
+}
+/* Mirror the chamber when the destination PDD is odd */
+.myst-scene-image.myst-mirrored .myst-background {
+    transform: scaleX(-1);
+}
+
+/* Move the PDD painting to the opposite side.
+   The painting itself stays readable. */
+.myst-scene-image.myst-mirrored .myst-pdd-painting {
+    left: 17.85%;
+}
+/* Camera-style turning between doors */
+
+.myst-scene-image {
+    transition:
+        opacity 180ms ease-in-out,
+        transform 180ms ease-in-out;
+}
+
+.myst-scene-image.myst-turning-out {
+    opacity: 0;
+    transform: translateX(var(--turn-out, -15%));
+}
+
+.myst-scene-image.myst-turning-in {
+    opacity: 0;
+    transform: translateX(var(--turn-in, 15%));
+}
+.myst-scene-image {
+    position: relative;
+}
+
+.myst-door-hotspot {
+    position: absolute;
+    z-index: 5;
+
+    /* Approximate wooden door position */
+    left: 8%;
+    top: 32%;
+    width: 28%;
+    height: 39%;
+
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Move hotspot when chamber is mirrored */
+.myst-scene-image.myst-mirrored .myst-door-hotspot {
+    left: auto;
+    right: 8%;
+}
+
+/* Subtle indication that the door is interactive */
+.myst-door-hotspot:hover {
+    background: rgba(255, 215, 120, 0.08);
+}
+
+.myst-door-hotspot:focus-visible {
+    outline: 2px solid gold;
+}
+/* PUERTAS DEL CASTELLANO — ROOM TRANSITION */
+
+.myst-room {
+    position: relative;
+}
+
+#myst-loading-curtain {
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+    background: #100d0b;
+    color: #c9ad75;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Georgia, serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    letter-spacing: 0.06em;
+
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.65s ease, visibility 0.65s ease;
+}
+
+#myst-loading-curtain.is-ready {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+/* PDD — Two-column desktop chamber layout */
+
+@media (min-width: 900px) {
+
+    #passages {
+        max-width: 1200px;
+    }
+
+    .myst-room {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+        gap: 18px;
+        align-items: start;
+        max-width: 1200px;
+    }
+
+    .myst-parchment {
+        grid-column: 1;
+        grid-row: 1;
+        border: 5px solid #705333;
+        border-radius: 12px;
+        padding: 24px;
+        min-width: 0;
+    }
+
+    .myst-scene {
+        grid-column: 2;
+        grid-row: 1;
+        border-radius: 12px;
+        min-width: 0;
+    }
+
+}
+/* PDD — Footer spans both desktop columns */
+@media (min-width: 900px) {
+    .myst-room-footer {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+
+:: SoloCastleRoom
+
+<<nobr>>
+<<castleDoorTitle "Páginas de la Bitácora">>
+
+<div class="myst-room">
+
+   <div class="solo-scene" id="solo-scene" hidden>
+        <img
+            id="solo-image"
+            src="images/solo-intro.jpg"
+            alt="Un castillo misterioso al atardecer"
+        >
+    </div>
+
+    <div class="myst-parchment">
+
+        <h2 id="solo-title">Cargando...</h2>
+        <p id="solo-prompt"></p>
+        <div class="solo-journal">
+    <h3>Mi diario</h3>
+
+    <textarea
+        id="solo-entry"
+        rows="7"
+        placeholder="Escribe aquí tu historia..."
+    ></textarea>
+
+    <button id="solo-save" type="button">
+        Guardar en el diario
+    </button>
+    <button id="solo-view-diary" type="button">
+    Ver diario
+</button>
+
+<div id="solo-diary-view" hidden>
+    <h3>Mis aventuras</h3>
+    <div id="solo-diary-entries"></div>
+    <button id="solo-close-diary" type="button">
+        Cerrar diario
+    </button>
+</div>
+</div>
+        <p id="solo-status"></p>
+
+
+<div class="solo-dice">
+    <button id="solo-roll" type="button">
+        Continuar →
+    </button>
+
+    <div id="solo-roll-result" aria-live="polite"></div>
+    <div id="solo-next-prompt" aria-live="polite"></div>
+</div>
+
+
+
+        <div class="solo-memories">
+
+
+    <h3>Mis recuerdos <small id="solo-memory-count">(0 de 3)</small></h3>
+    <div id="solo-memory-list"></div>
+</div>
+
+    </div>
+</div>
+<<castleDoorReturn>>
+<</nobr>>
+
+
+<<done>>
+<<run (async function () {
+    try {
+        const currentPrompt = Number(
+            localStorage.getItem("soloCastleCurrentPrompt") || 0
+        );
+
+        const currentVisit = Number(
+            localStorage.getItem("soloCastleCurrentVisit") || 1
+        );
+
+        // Database has a maximum of three visits per prompt.
+        const promptVisit = currentPrompt === 0
+            ? 1
+            : Math.min(currentVisit, 3);
+
+        const url = setup.supabase.url +
+            "/rest/v1/solo_prompts" +
+            "?prompt_id=eq." + currentPrompt +
+            "&visit=eq." + promptVisit +
+            "&select=*";
+
+        const response = await fetch(url, {
+            headers: {
+                apikey: setup.supabase.key
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error("HTTP " + response.status);
+        }
+
+        const prompts = await response.json();
+        const prompt = prompts[0];
+
+        if (!prompt) {
+            throw new Error("Prompt not found");
+        }
+
+        $("#solo-title").text(
+    "Prompt " + currentPrompt +
+    " — " + prompt.title +
+    " (Visita " + currentVisit + ")"
+);
+
+        $("#solo-prompt")
+            .text(prompt.prompt_text)
+            .css("white-space", "pre-line");
+
+        // Display the painting assigned in Supabase.
+        if (prompt.image) {
+            $("#solo-image").attr("src", "images/" + prompt.image);
+            $("#solo-scene").prop("hidden", false);
+        } else {
+            $("#solo-scene").prop("hidden", true);
+        }
+
+    } catch (error) {
+        console.error("Solo castle error:", error);
+        $("#solo-status").text(
+            "No se pudo cargar la aventura."
+        );
+    }
+})()>>
+
+
+
+<</done>>
+<<done>>
+<<run (function () {
+
+    $("#solo-view-diary").on("click", function () {
+
+        const journal = JSON.parse(
+            localStorage.getItem("soloCastleJournal") || "[]"
+        );
+
+        const container = $("#solo-diary-entries");
+        container.empty();
+
+        if (journal.length === 0) {
+            container.text("Todavía no hay recuerdos.");
+        }
+
+        journal.forEach(function (entry, index) {
+            const section = $("<div>").addClass("solo-diary-entry");
+
+            $("<h4>")
+                .text((index + 1) + ". " + entry.title)
+                .appendTo(section);
+
+            $("<p>")
+                .text(entry.text)
+                .css("white-space", "pre-line")
+                .appendTo(section);
+
+            container.append(section);
+        });
+
+        $("#solo-diary-view").prop("hidden", false);
+    });
+
+    $("#solo-close-diary").on("click", function () {
+        $("#solo-diary-view").prop("hidden", true);
+    });
+
+})()>>
+<</done>>
+
+
+<<done>>
+<<run (function () {
+    const v = State.variables;
+    const storageKey = "soloCastleIntro";
+    const memoryKey = "soloCastleMemories";
+
+const journalKey = "soloCastleJournal";
+
+
+    let memories = [];
+
+    // Restore the saved introduction.
+    try {
+        const savedEntry = localStorage.getItem(storageKey);
+        const savedMemories = localStorage.getItem(memoryKey);
+
+        if (savedEntry !== null) {
+            v.soloIntroEntry = savedEntry;
+            
+if (Number(localStorage.getItem("soloCastleCurrentPrompt") || 0) === 0) {
+    $("#solo-entry").val(savedEntry);
+} else {
+    const journal = JSON.parse(
+        localStorage.getItem(journalKey) || "[]"
+    );
+
+    const currentPrompt = Number(
+        localStorage.getItem("soloCastleCurrentPrompt")
+    );
+
+    const savedPage = journal.find(
+        item => item.promptId === currentPrompt && item.visit === 1
+    );
+
+    $("#solo-entry").val(savedPage ? savedPage.text : "");
+}
+
+        }
+
+        if (savedMemories) {
+            const parsed = JSON.parse(savedMemories);
+            if (Array.isArray(parsed)) {
+                memories = parsed.slice(0, 3);
+            }
+        }
+
+        // Migrate an introduction saved in our previous test.
+        if (savedEntry && memories.length === 0) {
+            memories = [{
+                title: "El viajero",
+                text: savedEntry
+            }];
+            localStorage.setItem(memoryKey, JSON.stringify(memories));
+        }
+    } catch (error) {
+        console.error("Memory loading error:", error);
+    }
+
+    function renderMemories() {
+        const list = $("#solo-memory-list");
+        list.empty();
+
+        $("#solo-memory-count").text(
+            "(" + memories.length + " de 3)"
+        );
+
+        for (let i = 0; i < 3; i++) {
+            const memory = memories[i];
+            const card = $("<div>").addClass("solo-memory-card");
+
+            if (memory) {
+                $("<strong>")
+                    .text("Recuerdo " + (i + 1) + " — " + memory.title)
+                    .appendTo(card);
+
+                $("<p>")
+                    .text(memory.text)
+                    .appendTo(card);
+            } else {
+                card.addClass("solo-memory-empty");
+                card.text("Recuerdo " + (i + 1) + " — Vacío");
+            }
+
+            list.append(card);
+        }
+    }
+
+    renderMemories();
+
+    $("#solo-save").on("click", function () {
+        const entry = $("#solo-entry").val().trim();
+
+        if (!entry) {
+            $("#solo-status").text(
+                "Escribe unas palabras antes de guardar."
+            );
+            return;
+        }
+
+        try {
+            // Save the complete introduction.
+         
+const currentPrompt = Number(
+    localStorage.getItem("soloCastleCurrentPrompt") || 0
+);
+
+const currentVisit = Number(
+    localStorage.getItem("soloCastleCurrentVisit") || 1
+);
+
+const currentTitle =
+    $("#solo-title").text().trim() || "El viajero";
+
+// Only update the introduction when we're at Prompt 0.
+if (currentPrompt === 0) {
+    localStorage.setItem(storageKey, entry);
+    v.soloIntroEntry = entry;
+}
+
+
+let journal = JSON.parse(
+    localStorage.getItem(journalKey) || "[]"
+);
+
+// For now, save or update the introduction.
+// This avoids duplicate entries when saving again.
+
+const entryIndex = journal.findIndex(
+    item =>
+        item.promptId === currentPrompt &&
+        item.visit === currentVisit
+);
+
+
+
+const journalEntry = {
+    promptId: currentPrompt,
+    visit: currentVisit,
+    title: currentTitle,
+    text: entry
+};
+
+if (entryIndex >= 0) {
+    journal[entryIndex] = journalEntry;
+} else {
+    journal.push(journalEntry);
+}
+localStorage.setItem(
+    journalKey,
+    JSON.stringify(journal)
+);
+
+
+
+ // Keep the three most recent journal entries as memories.
+memories = journal.slice(-3).map(function (item) {
+    return {
+        title: item.title,
+        text: item.text
+    };
+});
+
+localStorage.setItem(
+    memoryKey,
+    JSON.stringify(memories)
+);
+
+
+            renderMemories();
+
+            $("#solo-status").text("¡Guardado en el diario!");
+           $("#solo-save").text("Guardado en el diario");
+
+        } catch (error) {
+            console.error("Solo save error:", error);
+            $("#solo-status").text(
+                "No se pudo guardar el recuerdo."
+            );
+        }
+    });
+})()>>
+<</done>>
+
+
+<<done>>
+<<run (function () {
+    const rollButton = $("#solo-roll");
+    const resultBox = $("#solo-roll-result");
+    const previewBox = $("#solo-next-prompt");
+
+    rollButton.on("click", async function () {
+        // Require the introductory memory first.
+        const savedIntro = localStorage.getItem("soloCastleIntro");
+
+        if (!savedIntro || !savedIntro.trim()) {
+            resultBox.text(
+                "Primero debes guardar tu primer recuerdo."
+            );
+            return;
+        }
+
+const entry = $("#solo-entry").val().trim();
+
+if (!entry) {
+    resultBox.text(
+        "Escribe una entrada en tu diario antes de continuar."
+    );
+    return;
+}
+
+// Save using our existing journal button.
+$("#solo-save").trigger("click");
+
+// Stop if saving failed.
+if (!$("#solo-status").text().toLowerCase().includes("guardado")) {
+    resultBox.text("No se pudo guardar el diario.");
+    return;
+}
+
+        rollButton.prop("disabled", true);
+        resultBox.text("Lanzando los dados...");
+        previewBox.empty();
+
+        try {
+            const d10 = Math.floor(Math.random() * 10) + 1;
+            const d6 = Math.floor(Math.random() * 6) + 1;
+            const movement = d10 - d6;
+
+            // Temporary starting point: introduction.
+         
+const currentPrompt = Number(
+    localStorage.getItem("soloCastleCurrentPrompt") || 0
+);
+
+const nextPrompt = Math.max(
+    1,
+    Math.min(20, currentPrompt + movement)
+);
+
+const visits = JSON.parse(
+    localStorage.getItem("soloCastleVisits") || "{}"
+);
+
+const nextVisit = (visits[nextPrompt] || 0) + 1;
+const promptVisit = nextPrompt >= 15
+    ? 1
+    : Math.min(nextVisit, 3);
+
+
+            const url = setup.supabase.url +
+                "/rest/v1/solo_prompts" +
+                "?prompt_id=eq." + nextPrompt +
+                "&visit=eq." + promptVisit +
+                "&select=*";
+
+            const response = await fetch(url, {
+                headers: {
+                    apikey: setup.supabase.key
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("HTTP " + response.status);
+            }
+
+            const prompts = await response.json();
+
+            if (!prompts.length) {
+                throw new Error("Prompt not found");
+            }
+
+     
+
+
+const prompt = prompts[0];
+
+// Record the successful visit.
+visits[nextPrompt] = nextVisit;
+
+localStorage.setItem(
+    "soloCastleVisits",
+    JSON.stringify(visits)
+);
+
+localStorage.setItem(
+    "soloCastleCurrentVisit",
+    String(nextVisit)
+);
+
+localStorage.setItem(
+    "soloCastleCurrentPrompt",
+    String(nextPrompt)
+);
+if (nextPrompt >= 15) {
+    rollButton.hide();
+    resultBox.text("Has llegado al final de tu aventura.");
+}
+
+
+
+
+
+$("#solo-title").text(
+    "Prompt " + nextPrompt +
+    " — " + prompt.title +
+    " (Visita " + nextVisit + ")"
+);
+
+
+if (prompt.image) {
+    $("#solo-image").attr("src", "images/" + prompt.image);
+    $("#solo-scene").prop("hidden", false);
+} else {
+    $("#solo-scene").prop("hidden", true);
+}
+
+$("#solo-prompt")
+    .text(prompt.prompt_text)
+    .css("white-space", "pre-line");
+
+// Prepare a fresh journal entry for this room.
+$("#solo-entry").val("");
+$("#solo-save").text("Guardar en el diario");
+$("#solo-status").empty();
+
+// Clear the old preview area.
+previewBox.empty();
+resultBox.text("Has llegado al Prompt " + nextPrompt);
+
+
+            if (prompt.prompt_type === "ending") {
+                $("<p>")
+                    .text("Has llegado al final del castillo.")
+                    .appendTo(previewBox);
+            }
+
+        } catch (error) {
+            console.error("Solo dice error:", error);
+            resultBox.text(
+                "No se pudo cargar el siguiente descubrimiento."
+            );
+        } finally {
+            rollButton.prop("disabled", false);
+        }
+    });
+})()>>
+<</done>>
+
+
+
+
+
+
+:: SalaPoemas
+
+<<castleDoorTitle "Poemas de la Conjugación">>
+<div class="poema-scene">
+
+    <img
+        id="poema-image"
+        src="images/poema-0.jpg"
+        class="poema-background"
+        alt="Paisaje del poema"
+    ><<script>>
+(function () {
+    const now = new Date();
+
+    // Número del día: domingo = 0, lunes = 1...
+    const landscape = now.getDay();
+
+    $("#poema-image").attr(
+        "src",
+        "images/poema-" + landscape + ".jpg"
+    );
+})();
+<</script>> 
+
+    <div class="poema-overlay">
+        <h2 id="poema-title">Cargando poema...</h2>
+        <p id="poema-verses"></p>
+    </div>
+
+</div>
+
+<div class="poema-controls">
+    <h3 id="poema-focus"></h3>
+    <p id="poema-explanation"></p>
+
+    <button type="button" id="poema-diary">
+        📖 Diario de los Poemas
+    </button>
+
+    <p id="poema-status"></p>
+
+</div>
+<<castleDoorReturn>>
+
+<<done>>
+<<run (async function () {
+
+    const today = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "America/Toronto",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    }).format(new Date());
+
+    try {
+        const endpoint = setup.supabase.url +
+            "/rest/v1/poemas?select=*" +
+            "&fecha_publicacion=eq." + today +
+            "&publicado=eq.true&limit=1";
+
+        const response = await fetch(endpoint, {
+            headers: { apikey: setup.supabase.key }
+        });
+
+        if (!response.ok) {
+            throw new Error("Supabase: " + response.status);
+        }
+
+        const poems = await response.json();
+
+        if (!poems.length) {
+            $("#poema-title").text("Todavía no hay poema para hoy");
+            return;
+        }
+
+        const poem = poems[0];
+
+        $("#poema-title").text(poem.titulo);
+        $("#poema-verses").text(poem.poema);
+        $("#poema-focus").text(poem.enfoque || "");
+        $("#poema-explanation").text(poem.explicacion || "");
+
+        // Elegir uno de los siete paisajes
+        const landscape = Number(poem.id || 0) % 7;
+
+        $("#poema-image").attr(
+            "src",
+            "images/poema-" + landscape + ".jpg"
+        );
+
+    } catch (error) {
+        console.error("Poem error:", error);
+        $("#poema-status").text("No se pudo cargar el poema.");
+    }
+
+})()>>
+<</done>>
+
+<<done>>
+<<run (async function () {
+
+    const today = new Intl.DateTimeFormat("en-CA", {
+        timeZone: "America/Toronto",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit"
+    }).format(new Date());
+
+    try {
+
+        const endpoint = setup.supabase.url +
+            "/rest/v1/poemas?select=*" +
+            "&fecha_publicacion=eq." + today +
+            "&publicado=eq.true&limit=1";
+
+        const response = await fetch(endpoint, {
+            headers: {
+                apikey: setup.supabase.key
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error("Supabase: " + response.status);
+        }
+
+        const poems = await response.json();
+
+        if (!poems.length) {
+            $("#poema-title").text(
+                "Todavía no hay poema para hoy"
+            );
+            return;
+        }
+
+        const poem = poems[0];
+
+        $("#poema-title").text(poem.titulo);
+        $("#poema-verses").text(poem.poema);
+        $("#poema-focus").text(poem.enfoque);
+        $("#poema-explanation").text(poem.explicacion);
+
+        // Imagen asociada a la fecha del poema.
+        // Ejemplo: 2026-10-27 -> p20261027.jpg
+
+        
+
+$("#poema-image").attr("src", "images/" + filename);
+
+    } catch (error) {
+
+        console.error("Poem error:", error);
+
+        $("#poema-status").text(
+            "No se pudo cargar el poema."
+        );
+    }
+
+})()>>
+
+<<run $("#poema-diary").on("click", function () {
+    alert("El Diario de los Poemas estará disponible pronto.");
+})>>
+<</done>>
+
+
+:: TavernRoom
+<<nobr>>
+<<castleDoorTitle "Puerta de prueba">>
+<div class="room-card pdt-tavern">
+    <div class="pdt-intro">
+        <div class="pdt-tavern-art pdt-illustration">
+            <span id="pdt-art-fallback">Una luz cálida te recibe junto al fuego.</span>
+            <img id="pdt-art" alt="Taberna medieval con una barra de madera y una chimenea" hidden>
+        </div>
+        <p><em>Entras en una antigua taberna. El fuego de la chimenea ilumina las paredes de piedra. Detrás de la barra, el tabernero levanta la mirada y te sonríe.</em></p>
+        <p><strong>Baldomero:</strong> ¡Bienvenido a la Posada de los Cuentos! Soy Baldomero, el posadero. ¿Cómo te llamas y qué te trae por aquí?</p>
+    </div>
+    <div id="pdt-history" role="log" aria-label="Conversación con Baldomero"></div>
+    <section id="pdt-potion" hidden aria-label="La poción de Baldomero">
+        <p><strong>Baldomero:</strong> «Dos pociones, dos maneras de viajar: una aventura libre o una aventura gramatical. Tú eliges.»</p>
+        <form id="pdt-potion-form">
+            <label for="pdt-adventure-type">Elige tu poción</label>
+            <select id="pdt-adventure-type">
+                <option value="open">Aventura libre</option>
+                <option value="grammar">Aventura gramatical</option>
+            </select>
+            <div id="pdt-grammar-options" hidden>
+                <p id="pdt-catalog-status" role="status"></p>
+                <label for="pdt-grammar-adventure">Elige una aventura gramatical</label>
+                <select id="pdt-grammar-adventure" disabled></select>
+                <p id="pdt-grammar-focus"></p>
+                <button id="pdt-catalog-retry" type="button">Volver a cargar el catálogo</button>
+            </div>
+            <label for="pdt-player-name">Tu nombre en la aventura</label>
+            <input id="pdt-player-name" type="text" maxlength="60" required>
+            <label for="pdt-background">¿Qué te trae hasta aquí? (opcional)</label>
+            <input id="pdt-background" type="text" maxlength="300">
+            <button type="submit">Beber la poción</button>
+            <button id="pdt-decline" type="button">Ahora no</button>
+        </form>
+    </section>
+    <button id="pdt-reoffer" type="button" hidden>Preguntar por la poción</button>
+    <p id="pdt-location" hidden></p>
+    <form id="pdt-form">
+        <label for="pdt-response">Tu mensaje</label>
+        <textarea id="pdt-response" rows="3" maxlength="800" required></textarea>
+        <p id="pdt-status" role="status"></p>
+        <p id="pdt-error" role="alert"></p>
+        <button type="submit">Hablar</button>
+    </form>
+    <p id="pdt-memory-status" role="status"></p>
+    <button id="pdt-reset" type="button">Nueva conversación</button>
+    <button id="pdt-finish" type="button" hidden>Terminar la aventura</button>
+</div>
+<<castleDoorReturn>>
+<</nobr>>
+
+<<done>>
+<<run (() => {
+    const room = document.querySelector(".pdt-tavern");
+    if (!room) return;
+    const form = room.querySelector("#pdt-form");
+    const response = room.querySelector("#pdt-response");
+    const status = room.querySelector("#pdt-status");
+    const error = room.querySelector("#pdt-error");
+    const history = room.querySelector("#pdt-history");
+    const submit = form.querySelector("button");
+    const reset = room.querySelector("#pdt-reset");
+    const memoryStatus = room.querySelector("#pdt-memory-status");
+    const potion = room.querySelector("#pdt-potion");
+    const potionForm = room.querySelector("#pdt-potion-form");
+    const name = room.querySelector("#pdt-player-name");
+    const adventureType = room.querySelector("#pdt-adventure-type");
+    const grammarOptions = room.querySelector("#pdt-grammar-options");
+    const grammarSelect = room.querySelector("#pdt-grammar-adventure");
+    const grammarFocus = room.querySelector("#pdt-grammar-focus");
+    const catalogStatus = room.querySelector("#pdt-catalog-status");
+    const catalogRetry = room.querySelector("#pdt-catalog-retry");
+    const drink = potionForm.querySelector('button[type="submit"]');
+    let catalog = [];
+    let catalogLoading = false;
+    const background = room.querySelector("#pdt-background");
+    const decline = room.querySelector("#pdt-decline");
+    const reoffer = room.querySelector("#pdt-reoffer");
+    const location = room.querySelector("#pdt-location");
+    const finish = room.querySelector("#pdt-finish");
+    const v = State.variables;
+    const lifetime = new AbortController();
+    $(document).one(":passageinit", () => lifetime.abort());
+
+    // Convert the original one-turn introduction when opening an older save.
+    if (!Array.isArray(v.pdtConversation)) {
+        v.pdtConversation = v.pdtIntroCompleted && v.pdtResponse
+            ? [
+                { role: "user", content: v.pdtResponse },
+                { role: "assistant", content: "¡Muchas gracias, aventurero! Espero que encuentres lo que buscas en tu viaje. Descansa un poco. Aquí siempre tendrás un lugar junto al fuego." }
+            ]
+            : [];
+    }
+
+    function appendMessage(message, active, isLatest, illustrationSide) {
+        const line = document.createElement("p");
+        if (active && message.role === "assistant") {
+            if (illustrationSide) {
+                line.className = "pdt-illustrated-reply";
+                const image = document.createElement("img");
+                image.className = "pdt-illustration pdt-illustration-" + illustrationSide;
+                image.alt = message.image.altText;
+                image.loading = "lazy";
+                image.addEventListener("error", () => image.remove(), { once: true });
+                image.src = message.image.path;
+                line.append(image);
+            }
+            const narration = document.createElement("em");
+            narration.textContent = message.content;
+            if (isLatest) {
+                const emphasis = document.createElement("strong");
+                emphasis.append(narration);
+                line.append(emphasis);
+            } else {
+                line.append(narration);
+            }
+        } else {
+            const speaker = document.createElement("strong");
+            speaker.textContent = message.role === "user" ? "Tú:" : "Baldomero:";
+            line.append(speaker, " " + message.content);
+        }
+        history.append(line);
+    }
+
+    const restored = setup.tavernMemory.restore(v.pdtConversation);
+    v.pdtConversation = restored.messages;
+    const restoredAdventure = setup.tavernAdventureMemory.restore({ status: "not_started" });
+    v.pdtAdventure = restoredAdventure.messages;
+    memoryStatus.textContent = restoredAdventure.warning || restored.warning;
+
+    let offerDismissed = v.pdtAdventure.potionDeclined === true || v.pdtAdventure.status === "completed";
+    let offerReady = v.pdtAdventure.potionOffered === true || v.pdtConversation.length >= 8;
+    let busy = false;
+    const isActive = () => v.pdtAdventure.status === "active";
+    const isCurrent = () => !lifetime.signal.aborted && room.isConnected && State.variables === v;
+
+    function render() {
+        const active = isActive();
+        history.replaceChildren();
+        history.setAttribute("aria-label", active ? "Diálogo de la aventura" : "Conversación con Baldomero");
+        const messages = active ? v.pdtAdventure.dialogue : v.pdtConversation;
+        let illustrationCount = 0;
+        messages.forEach((message, index) => {
+            const side = active && message.role === "assistant" && setup.isTavernSceneImage(message.image)
+                ? (illustrationCount++ % 2 === 0 ? "right" : "left") : undefined;
+            appendMessage(message, active, index === messages.length - 1, side);
+        });
+        location.hidden = !active;
+        location.textContent = active ? "Lugar: " + v.pdtAdventure.location +
+            (v.pdtAdventure.situation ? " · " + v.pdtAdventure.situation : "") : "";
+        submit.textContent = active ? "Actuar" : "Hablar";
+        reset.hidden = active;
+        finish.hidden = !active;
+        potion.hidden = active || !offerReady || offerDismissed;
+        reoffer.hidden = active || !offerDismissed;
+    }
+
+    function updateCatalogControls() {
+        const grammar = adventureType.value === "grammar";
+        grammarOptions.hidden = !grammar;
+        grammarSelect.disabled = busy || catalogLoading || !catalog.length;
+        catalogRetry.disabled = busy || catalogLoading;
+        drink.disabled = busy || (grammar && (catalogLoading || !catalog.length));
+        const selected = catalog.find(entry => entry.slug === grammarSelect.value);
+        grammarFocus.textContent = selected ? selected.grammar_focus + " " + selected.premise : "";
+    }
+
+    async function loadCatalog() {
+        if (busy || catalogLoading) return;
+        catalogLoading = true;
+        catalogStatus.textContent = "Cargando aventuras…";
+        updateCatalogControls();
+        try {
+            const entries = await setup.getGrammarAdventures(lifetime.signal);
+            if (!isCurrent()) return;
+            catalog = entries;
+            grammarSelect.replaceChildren();
+            for (const entry of entries) {
+                const option = document.createElement("option");
+                option.value = entry.slug;
+                option.textContent = entry.title;
+                grammarSelect.append(option);
+            }
+            catalogStatus.textContent = entries.length ? "" :
+                "No hay aventuras gramaticales disponibles. Puedes elegir Aventura libre.";
+        } catch {
+            if (isCurrent()) catalogStatus.textContent =
+                "No se pudo cargar el catálogo. Vuelve a intentarlo o elige Aventura libre.";
+        } finally {
+            catalogLoading = false;
+            if (isCurrent()) updateCatalogControls();
+        }
+    }
+
+    adventureType.addEventListener("change", () => {
+        updateCatalogControls();
+        if (adventureType.value === "grammar" && !catalog.length) loadCatalog();
+    });
+    catalogRetry.addEventListener("click", loadCatalog);
+    grammarSelect.addEventListener("change", updateCatalogControls);
+
+    function setBusy(value) {
+        busy = value;
+        submit.disabled = reset.disabled = finish.disabled = reoffer.disabled = value;
+        for (const field of potionForm.elements) field.disabled = value;
+        response.readOnly = value;
+        updateCatalogControls();
+    }
+
+    render();
+    updateCatalogControls();
+
+    reset.addEventListener("click", async () => {
+        if (busy || isActive() || !window.confirm("¿Quieres borrar esta conversación e iniciar otra?")) return;
+        setBusy(true);
+        try {
+            const warning = await setup.tavernMemory.save([], true);
+            if (lifetime.signal.aborted || State.variables !== v) return;
+            memoryStatus.textContent = warning;
+            if (warning) return;
+            v.pdtConversation = [];
+            offerReady = false;
+            render();
+            response.value = "";
+            error.textContent = "";
+            response.focus();
+        } finally {
+            setBusy(false);
+        }
+    });
+
+    const art = room.querySelector("#pdt-art");
+    art.addEventListener("load", () => {
+        art.hidden = false;
+        room.querySelector("#pdt-art-fallback").hidden = true;
+    }, { once: true });
+    art.src = "images/pdt-tavern.jpg";
+
+    async function playTurn(message, adventure) {
+        setBusy(true);
+        error.textContent = "";
+        status.textContent = adventure ? "La aventura continúa…" : "Baldomero está pensando…";
+        try {
+            const messages = adventure ? adventure.dialogue : v.pdtConversation;
+            const context = adventure ? setup.getTavernAdventureContext(adventure) : undefined;
+            const introducePotion = !adventure && !offerReady && !offerDismissed &&
+                (messages.length >= 6 || /\bpoci[oó]n\b/i.test(message.content));
+            const result = await setup.getBaldomeroReply(
+                [...messages, message],
+                AbortSignal.any([lifetime.signal, AbortSignal.timeout(25000)]),
+                context,
+                introducePotion
+            );
+            if (!isCurrent()) return;
+
+            const answer = { role: "assistant", content: adventure ? result.reply : result };
+            if (adventure && setup.isTavernSceneImage(result.sceneImage)) answer.image = result.sceneImage;
+            const dialogue = [...messages, message, answer];
+            let save;
+            if (adventure) {
+                const scene = result.adventure;
+                v.pdtAdventure = {
+                    ...context,
+                    ...scene,
+                    id: adventure.id,
+                    playerName: adventure.playerName,
+                    background: adventure.background ?? "",
+                    adventureType: adventure.adventureType ?? "open",
+                    ...(adventure.adventureType === "grammar" ? {
+                        grammarAdventure: adventure.grammarAdventure,
+                        puzzleState: scene.puzzleState
+                    } : {}),
+                    mode: "adventure",
+                    status: "active",
+                    dialogue
+                };
+                save = setup.tavernAdventureMemory.save(v.pdtAdventure);
+            } else {
+                v.pdtConversation = dialogue;
+                save = setup.tavernMemory.save(dialogue);
+                if (introducePotion) {
+                    offerReady = true;
+                    v.pdtAdventure = { ...v.pdtAdventure, mode: "tavern", potionOffered: true };
+                    const offerSave = setup.tavernAdventureMemory.save(v.pdtAdventure);
+                    save = Promise.all([save, offerSave]).then(warnings => warnings.find(Boolean));
+                }
+            }
+
+            render();
+            response.value = "";
+            status.textContent = "";
+            memoryStatus.textContent = (await save) || "";
+        } catch (failure) {
+            if (isCurrent()) {
+                error.textContent = failure.message === "La posada está muy concurrida. Inténtalo más tarde."
+                    ? failure.message
+                    : "No se pudo continuar. Inténtalo de nuevo.";
+            }
+        } finally {
+            status.textContent = "";
+            setBusy(false);
+            if (isCurrent() && (!adventure || isActive())) response.focus();
+        }
+    }
+
+    decline.addEventListener("click", async () => {
+        offerDismissed = true;
+        v.pdtAdventure = { ...v.pdtAdventure, mode: "tavern", potionDeclined: true };
+        const save = setup.tavernAdventureMemory.save(v.pdtAdventure);
+        render();
+        response.focus();
+        const warning = await save;
+        if (isCurrent()) memoryStatus.textContent = warning;
+    });
+
+    reoffer.addEventListener("click", () => {
+        offerDismissed = false;
+        offerReady = true;
+        potion.hidden = false;
+        reoffer.hidden = true;
+        name.focus();
+    });
+
+    potionForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (busy || isActive()) return;
+        const selectedGrammar = catalog.find(entry => entry.slug === grammarSelect.value);
+        if (adventureType.value === "grammar" && (catalogLoading || !selectedGrammar)) {
+            catalogStatus.textContent = "Selecciona una aventura o elige Aventura libre.";
+            return;
+        }
+        const playerName = name.value.trim();
+        if (!playerName) {
+            name.focus();
+            return;
+        }
+        if (v.pdtAdventure.status === "completed" &&
+            !window.confirm("¿Quieres reemplazar la aventura terminada por una nueva?")) return;
+
+        return playTurn({ role: "user", content: "Acepto y bebo la poción de Baldomero." }, {
+            id: crypto.randomUUID(),
+            adventureType: adventureType.value,
+            ...(adventureType.value === "grammar" ? {
+                grammarAdventure: selectedGrammar,
+                puzzleState: { turnsSincePuzzle: 0, pending: null }
+            } : {}),
+            playerName,
+            background: background.value.trim(),
+            status: "not_started",
+            location: "La Posada de los Cuentos",
+            summary: "",
+            characters: [],
+            inventory: [],
+            dialogue: []
+        });
+    });
+
+    finish.addEventListener("click", async () => {
+        if (busy || !isActive() || !window.confirm("¿Quieres terminar la aventura y volver a hablar con Baldomero?")) return;
+        setBusy(true);
+        try {
+            const completed = { ...v.pdtAdventure, mode: "tavern", status: "completed" };
+            const warning = await setup.tavernAdventureMemory.save(completed);
+            if (!isCurrent()) return;
+            v.pdtAdventure = completed;
+            offerDismissed = true;
+            memoryStatus.textContent = warning;
+            response.value = "";
+            render();
+        } finally {
+            setBusy(false);
+        }
+    });
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        if (busy) return;
+        const content = response.value.trim();
+        if (!content) {
+            error.textContent = "Escribe un mensaje antes de continuar.";
+            response.focus();
+            return;
+        }
+        return playTurn({ role: "user", content }, isActive() ? v.pdtAdventure : undefined);
+    });
+})()>>
+<</done>>
+
+
+:: PruebasDonQuijote
+<<nobr>>
+<<castleDoorTitle "Pruebas de Don Quijote">>
+<div class="room-card pdq-room">
+    <img class="pdq-intro" src="images/pdq-intro.png" width="1086" height="1448"
+        alt="Don Quijote alza una pluma junto a Sancho Panza y Rocinante.">
+    <p>¡Bienvenido, caminante! Don Quijote y Sancho te invitan a poner a prueba tu ingenio con las palabras.</p>
+    <h3 class="pdq-stage" hidden></h3>
+    <div class="pdq-history" role="log" aria-label="Conversación de la prueba"></div>
+    <p class="pdq-status" role="status"></p>
+    <form class="pdq-answer" hidden>
+        <label for="pdq-message">Tu respuesta</label>
+        <textarea id="pdq-message" rows="2" maxlength="800" required></textarea>
+        <button type="submit">Responder</button>
+    </form>
+    <button class="pdq-next" type="button" disabled>Comenzar una prueba</button>
+    <section class="pdq-diploma" aria-labelledby="pdq-diploma-title" hidden>
+        <h3 id="pdq-diploma-title" class="pdq-diploma-title">Diploma de la Orden de las Palabras</h3>
+        <img class="pdq-diploma-art" width="1536" height="1024" alt="" hidden>
+        <div class="pdq-diploma-overlay" tabindex="0" role="group" aria-label="Palabra de la prueba">
+            <div class="pdq-diploma-text">
+                <p class="pdq-diploma-number"></p>
+                <p class="pdq-diploma-word"></p>
+                <p class="pdq-diploma-definition"></p>
+            </div>
+        </div>
+    </section>
+    <button class="pdq-diary-toggle" type="button" aria-expanded="false" aria-controls="pdq-diary">
+        📜 Diario de diplomas
+    </button>
+    <section id="pdq-diary" aria-labelledby="pdq-diary-title" hidden>
+        <h3 id="pdq-diary-title">Diario de diplomas</h3>
+        <p class="pdq-diary-status" role="status"></p>
+        <ul class="pdq-diary-entries"></ul>
+    </section>
+</div>
+<<castleDoorReturn>>
+<</nobr>>
+
+<<done>>
+<<run setup.mountPdq(document.querySelector(".pdq-room"))>>
+<</done>>
+
+:: PasadizoHipervinculos
+<<nobr>>
+<<castleDoorTitle "Pasadizo de Hipervínculos">>
+<div class="room-card pdh-room">
+    <p>Bienvenido al Pasadizo de Hipervínculos. Aquí encontrarás caminos hacia otros rincones del mundo hispanohablante.</p>
+    <p id="pdh-status" role="status">Cargando enlaces…</p>
+    <ul id="pdh-links" hidden></ul>
+</div>
+<<castleDoorReturn>>
+<</nobr>>
+
+<<done>>
+<<run (async () => {
+    const room = document.querySelector(".pdh-room");
+    if (!room) return;
+    const list = room.querySelector("#pdh-links");
+    const status = room.querySelector("#pdh-status");
+    const lifetime = new AbortController();
+    $(document).one(":passageinit", () => lifetime.abort());
+
+    try {
+        const links = await setup.getPublishedLinks(lifetime.signal);
+        if (lifetime.signal.aborted || !room.isConnected) return;
+
+        for (const link of links) {
+            if (typeof link?.title !== "string" || !link.title.trim() ||
+                typeof link.url !== "string" || !/^https?:\/\/[^\s]+$/i.test(link.url)) continue;
+
+            let url;
+            try {
+                url = new URL(link.url);
+            } catch {
+                continue;
+            }
+            if (url.protocol !== "https:" && url.protocol !== "http:") continue;
+
+            const item = document.createElement("li");
+            const anchor = document.createElement("a");
+            anchor.href = url.href;
+            anchor.target = "_blank";
+            anchor.rel = "noopener noreferrer";
+            anchor.textContent = link.title;
+            item.append(anchor);
+
+            if (typeof link.description === "string" && link.description.trim()) {
+                const description = document.createElement("p");
+                description.textContent = link.description;
+                item.append(description);
+            }
+            list.append(item);
+        }
+
+        list.hidden = list.childElementCount === 0;
+        status.textContent = list.hidden ? "Todavía no hay enlaces publicados. Vuelve pronto." : "";
+    } catch {
+        if (!lifetime.signal.aborted && room.isConnected) {
+            status.textContent = "No se pudieron cargar los enlaces. Vuelve al castillo e inténtalo de nuevo.";
+        }
+    }
+})()>>
+<</done>>
+
+
+:: PalacioDeObras
+
+<<nobr>>
+<<castleDoorTitle "Palacio de Obras">>
+<section class="room-card pdo-room" lang="es">
+    <p>Un misterio teatral para leer en voz alta · B1–B2 · 3–6 jugadores</p>
+    <form class="pdo-start">
+        <label for="pdo-scenario">Obra</label>
+        <select id="pdo-scenario" name="scenario" required disabled></select>
+        <label for="pdo-players">Número de jugadores</label>
+        <select id="pdo-players" name="players">
+            <option value="3" selected>3</option><option value="4">4</option>
+            <option value="5">5</option><option value="6">6</option>
+        </select>
+        <button type="submit" disabled>Repartir los papeles</button>
+        <button class="pdo-catalog-retry" type="button" hidden>Volver a cargar las obras</button>
+    </form>
+    <div class="pdo-play" hidden></div>
+    <p class="pdo-status" role="status"></p>
+    <button class="pdo-reset" type="button" hidden>Empezar otra partida</button>
+</section>
+<<castleDoorReturn>>
+<</nobr>>
+
+<<done>>
+<<run setup.mountPdo(document.querySelector(".pdo-room"))>>
+<</done>>
+
+
+:: PilaDeLetras
+
+<<nobr>>
+<<castleDoorTitle "Pila de Letras">>
+<section class="room-card pdl-room" lang="es">
+    <p>Ordena las letras para descubrir la palabra. Juega a tu ritmo.</p>
+    <div class="pdl-puzzle" hidden>
+        <img class="pdl-art" alt="Ilustración de la palabra">
+        <p class="pdl-letters" aria-live="polite"></p>
+        <p><strong>Definición:</strong> <span class="pdl-definition"></span></p>
+        <form>
+            <label for="pdl-answer">Tu respuesta</label>
+            <input id="pdl-answer" name="answer" type="text" autocomplete="off" autocapitalize="none" spellcheck="false">
+            <div class="pdl-actions">
+                <button type="submit">Comprobar</button>
+                <button class="pdl-hint" type="button">Pista</button>
+                <button class="pdl-visit" type="button">Visitar la sala</button>
+            </div>
+        </form>
+    </div>
+    <p class="pdl-status" role="status"></p>
+    <button class="pdl-next" type="button" disabled>¿Otra?</button>
+</section>
+<<castleDoorReturn>>
+<</nobr>>

@@ -1,0 +1,1735 @@
+
+/* PUERTAS DEL CASTELLANO — LIGHT THEME */
+
+body {
+  background: #E8DDC8;
+  color: #514839;
+  font-family: Georgia, serif;
+}
+
+#passages {
+  max-width: 900px;
+}
+
+h1, h2 {
+  color: #514839;
+  text-align: center;
+  letter-spacing: 0.06em;
+}
+
+/* Main room panel */
+.room-card {
+  padding: 1.4rem 1.6rem;
+  border: 1px solid #B7A585;
+  border-radius: 12px;
+  background: rgba(245, 235, 217, 0.96);
+  box-shadow: 0 4px 18px rgba(81, 72, 57, 0.10);
+}
+
+/* PDD number */
+.pdd-kicker {
+  text-align: center;
+  color: #8B6B3F;
+  font-size: 0.9em;
+  letter-spacing: 0.12em;
+}
+
+
+/* PDD PAINTING FRAMES */
+
+.pdd-image {
+  margin: 1.5rem auto 2rem;
+  max-width: 720px;
+  aspect-ratio: 4 / 3;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  border: 9px ridge #8B6B3F;
+  border-radius: 2px;
+
+  box-shadow: 0 8px 16px rgba(50,35,20,0.3);
+}
+
+.pdd-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Dark walnut */
+.pdd-image.frame-0 {
+  border-color: #65452F;
+  background: #493021;
+}
+
+/* Antique bronze */
+.pdd-image.frame-1 {
+  border-color: #A3834D;
+  background: #725733;
+}
+
+/* Weathered oak */
+.pdd-image.frame-2 {
+  border-color: #9A7854;
+  background: #6F563E;
+}
+
+/* Castle inscription */
+.inscription {
+  margin-top: 1.8rem;
+  padding-top: 1rem;
+  border-top: 1px solid #C9B99A;
+  color: #76634A;
+  font-style: italic;
+  text-align: center;
+}
+
+/* Semantic corridors */
+
+/* SEMANTIC CORRIDORS — MEDIEVAL DOORS */
+
+.paths {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0.8rem;
+  margin: 1.5rem 0;
+}
+
+.paths a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100px;
+  min-height: 145px;
+  box-sizing: border-box;
+  padding: 0.8rem;
+
+  background: #D9C6A4;
+  color: #514839;
+
+  border: 3px solid #8B6B3F;
+  border-radius: 4px;
+
+  text-align: center;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.9rem;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+
+  box-shadow: inset 0 0 0 3px #E8DDC8,
+              2px 4px 6px rgba(81,72,57,0.2);
+
+  transition: background 0.2s, transform 0.2s;
+}
+
+.paths a:hover {
+  background: #B8C4AF;
+  color: #514839;
+  transform: translateY(-4px);
+}
+
+
+
+.passage .castle-door-title {
+  margin: 0 0 1.25rem;
+  font: bold clamp(1.5rem, 4vw, 2.25rem)/1.2 Georgia, serif;
+  letter-spacing: 0.04em;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.castle-door-footer a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 0.75rem;
+}
+
+/* Return to castle */
+.castle-return {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+/* SugarCube links */
+a, .link-internal {
+  color: #647568;
+}
+
+a:hover, .link-internal:hover {
+  color: #8B6B3F;
+}
+
+
+/* PDD — Return door */
+#test-connections a.return-door {
+    display: flex !important;
+    visibility: visible !important;
+    grid-column: 1 / -1;
+    width: 100%;
+    min-height: 52px;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
+    margin-top: 12px;
+    box-sizing: border-box;
+}
+
+
+/* Chronological doors — Las Puertas del Tiempo */
+#circular-door.time-door {
+    background: linear-gradient(
+        135deg,
+        #a68a55,
+        #6f542c,
+        #47351f
+    ) !important;
+
+    border-color: #d4b46c !important;
+    color: #fff0c7 !important;
+
+    box-shadow:
+        inset 0 0 22px rgba(255, 215, 130, 0.18),
+        0 0 16px rgba(183, 139, 55, 0.22);
+}
+
+/* Circular room — 3D turning effect */
+
+#circular-content {
+    perspective: 1100px;
+    perspective-origin: center center;
+}
+
+#circular-content .turn-wall {
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+}
+
+@keyframes castle-turn-out-left {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: rotateY(-55deg) translateX(45px);
+        opacity: 0;
+    }
+}
+
+@keyframes castle-turn-in-left {
+    from {
+        transform: rotateY(55deg) translateX(-45px);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+@keyframes castle-turn-out-right {
+    from {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+    to {
+        transform: rotateY(55deg) translateX(-45px);
+        opacity: 0;
+    }
+}
+
+@keyframes castle-turn-in-right {
+    from {
+        transform: rotateY(-55deg) translateX(45px);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0deg);
+        opacity: 1;
+    }
+}
+
+#circular-content.turn-out-left {
+    animation: castle-turn-out-left 220ms ease-in forwards;
+}
+
+#circular-content.turn-in-left {
+    animation: castle-turn-in-left 280ms ease-out both;
+}
+
+#circular-content.turn-out-right {
+    animation: castle-turn-out-right 220ms ease-in forwards;
+}
+
+#circular-content.turn-in-right {
+    animation: castle-turn-in-right 280ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #circular-content.turn-out-left,
+    #circular-content.turn-in-left,
+    #circular-content.turn-out-right,
+    #circular-content.turn-in-right {
+        animation: none;
+    }
+}
+/* PUERTAS DEL CASTELLANO — MANUSCRIPT OVERLAY */
+
+#pdd-manuscript-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    background: rgba(12, 9, 5, 0.82);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+}
+
+#pdd-manuscript-overlay[hidden] {
+    display: none;
+}
+
+#pdd-manuscript-paper {
+    position: relative;
+    width: min(720px, 100%);
+    max-height: 85vh;
+    overflow-y: auto;
+    padding: 48px 55px;
+    box-sizing: border-box;
+    background: linear-gradient(135deg, #f1dfb5, #d9bd83);
+    border: 9px double #8a6534;
+    box-shadow: 0 18px 65px rgba(0, 0, 0, 0.7);
+    color: #382513;
+    font-family: Georgia, serif;
+    line-height: 1.8;
+}
+
+#pdd-manuscript-paper h2 {
+    color: #59341c;
+    text-align: center;
+}
+
+.pdd-manuscript-heading {
+    text-align: center;
+    letter-spacing: 3px;
+    font-size: 0.85em;
+    color: #805b32;
+}
+
+#pdd-close-manuscript {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: transparent;
+    border: none;
+    color: #59341c;
+    font-size: 1.5em;
+    cursor: pointer;
+}
+/* PUERTAS DEL CASTELLANO — MANUSCRIPT VOCABULARY LINKS */
+
+.pdd-manuscript-word {
+    color: #7a321b;
+    font-weight: bold;
+    text-decoration: underline dotted;
+    text-underline-offset: 4px;
+    cursor: pointer;
+}
+
+.pdd-manuscript-word:hover {
+    color: #ad5b24;
+    text-decoration-style: solid;
+}
+/* PUERTAS DEL CASTELLANO — MYST ROOM PROTOTYPE */
+
+/* =========================================================
+   PUERTAS DEL CASTELLANO — MYST ROOM PROTOTYPE
+   Isolated styling for TestMystRoom
+   ========================================================= */
+
+.myst-room {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* PUERTAS DEL CASTELLANO — MYST CHAMBER */
+
+.myst-scene {
+    background: #21170f;
+    border: 5px solid #705333;
+    border-radius: 12px 12px 0 0;
+    overflow: hidden;
+}
+
+.myst-scene-label {
+    padding: 12px;
+    color: #e8d2a6;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+/* PUERTAS DEL CASTELLANO — IMAGE LAYERS */
+
+.myst-scene-image {
+    position: relative;
+    display: block;
+    width: 100%;
+    min-height: 0;
+    aspect-ratio: auto;
+    background: #21170f;
+}
+
+/* Castle foreground, including gold frame */
+
+.myst-background {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: auto;
+    pointer-events: none;
+}
+
+/* PDD artwork behind transparent opening */
+
+.myst-pdd-painting {
+    position: absolute;
+    z-index: 1;
+
+left: 56.85%;
+top: 28.8%;
+width: 25.3%;
+height: 26.4%;
+object-fit: cover;
+
+ 
+    border: none;
+    transform: none;
+    box-sizing: border-box;
+}
+
+/* PUERTAS DEL CASTELLANO — NAVIGATION */
+
+.myst-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px;
+    color: #e8d2a6;
+    gap: 12px;
+}
+
+.myst-controls button {
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 1.3rem;
+}
+
+.myst-controls span {
+    text-align: center;
+    font-size: 0.85rem;
+}
+
+/* PUERTAS DEL CASTELLANO — PARCHMENT */
+
+.myst-parchment {
+    background: linear-gradient(135deg, #f1dfb5, #d9bd83);
+    border: 5px solid #705333;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    padding: 24px;
+    color: #382513;
+    font-family: Georgia, serif;
+}
+
+.myst-parchment h2 {
+    color: #59341c;
+    margin: 8px 0;
+}
+
+.myst-kicker {
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    color: #805b32;
+}
+
+/* PUERTAS DEL CASTELLANO — DESKTOP */
+
+@media (min-width: 700px) {
+    .myst-parchment {
+        padding: 32px 48px;
+    }
+}
+/* PUERTAS DEL CASTELLANO — MYST LAYER ISOLATION */
+
+.myst-scene-image {
+    isolation: isolate;
+}
+
+.myst-background {
+    position: relative;
+    z-index: 2;
+}
+
+.myst-pdd-painting {
+  
+    position: absolute;
+    z-index: 1;
+}
+/* Mirror the chamber when the destination PDD is odd */
+.myst-scene-image.myst-mirrored .myst-background {
+    transform: scaleX(-1);
+}
+
+/* Move the PDD painting to the opposite side.
+   The painting itself stays readable. */
+.myst-scene-image.myst-mirrored .myst-pdd-painting {
+    left: 17.85%;
+}
+/* Camera-style turning between doors */
+
+.myst-scene-image {
+    transition:
+        opacity 180ms ease-in-out,
+        transform 180ms ease-in-out;
+}
+
+.myst-scene-image.myst-turning-out {
+    opacity: 0;
+    transform: translateX(var(--turn-out, -15%));
+}
+
+.myst-scene-image.myst-turning-in {
+    opacity: 0;
+    transform: translateX(var(--turn-in, 15%));
+}
+.myst-scene-image {
+    position: relative;
+}
+
+.myst-door-hotspot {
+    position: absolute;
+    z-index: 5;
+
+    /* Approximate wooden door position */
+    left: 8%;
+    top: 32%;
+    width: 28%;
+    height: 39%;
+
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+/* Move hotspot when chamber is mirrored */
+.myst-scene-image.myst-mirrored .myst-door-hotspot {
+    left: auto;
+    right: 8%;
+}
+
+/* Subtle indication that the door is interactive */
+.myst-door-hotspot:hover {
+    background: rgba(255, 215, 120, 0.08);
+}
+
+.myst-door-hotspot:focus-visible {
+    outline: 2px solid gold;
+}
+/* PUERTAS DEL CASTELLANO — ROOM TRANSITION */
+
+.myst-room {
+    position: relative;
+}
+
+#myst-loading-curtain {
+    position: absolute;
+    inset: 0;
+    z-index: 100;
+    background: #100d0b;
+    color: #c9ad75;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-family: Georgia, serif;
+    font-size: 1.15rem;
+    font-style: italic;
+    letter-spacing: 0.06em;
+
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.65s ease, visibility 0.65s ease;
+}
+
+#myst-loading-curtain.is-ready {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+/* PDD — Two-column desktop chamber layout */
+
+@media (min-width: 900px) {
+
+    #passages {
+        max-width: 1200px;
+    }
+
+    .myst-room {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.7fr);
+        gap: 18px;
+        align-items: start;
+        max-width: 1200px;
+    }
+
+    .myst-parchment {
+        grid-column: 1;
+        grid-row: 1;
+        border: 5px solid #705333;
+        border-radius: 12px;
+        padding: 24px;
+        min-width: 0;
+    }
+
+    .myst-scene {
+        grid-column: 2;
+        grid-row: 1;
+        border-radius: 12px;
+        min-width: 0;
+    }
+
+}
+/* PDD — Footer spans both desktop columns */
+@media (min-width: 900px) {
+    .myst-room-footer {
+        grid-column: 1 / -1;
+        grid-row: 2;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+    }
+}
+/* PDD automatic build test */
+#myst-meaning:not([hidden]) {
+    display: block;
+    margin: 12px auto;
+}
+/* Animated snowfall overlay */
+
+.myst-snow {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.myst-snow[hidden] {
+    display: none;
+}
+.myst-snow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 3;
+    pointer-events: none;
+}
+
+.myst-scene-image .myst-animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    z-index: 3;
+    pointer-events: none;
+}
+/* PDD painting gallery */
+
+.myst-scene-image {
+    position: relative;
+}
+
+#myst-painting-hotspot {
+    position: absolute;
+    z-index: 5;
+    left: 56.85%;
+    top: 28.8%;
+    width: 25.3%;
+    height: 26.4%;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: zoom-in;
+}
+
+.myst-scene-image.myst-mirrored #myst-painting-hotspot {
+    left: 17.85%;
+}
+
+#myst-gallery[hidden] {
+    display: none !important;
+}
+
+#myst-gallery {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    box-sizing: border-box;
+    padding: 5%;
+    background: #21170f;
+    color: #f1dfbc;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    overflow-y: auto;
+}
+
+#myst-gallery-close {
+    align-self: flex-end;
+    cursor: pointer;
+}
+
+.myst-gallery-frame {
+    flex: 1 1 auto;
+    min-height: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 8px ridge #ad8748;
+    box-sizing: border-box;
+    background: #130e0b;
+}
+
+#myst-gallery-image {
+    display: block;
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.myst-gallery-details {
+    flex: 0 0 auto;
+    text-align: center;
+    max-width: 90%;
+}
+
+#myst-gallery-pdd {
+    color: #c7a46a;
+    letter-spacing: 0.12em;
+}
+
+#myst-gallery-word {
+    color: #f1dfbc;
+    margin: 6px 0;
+}
+
+#myst-gallery-definition {
+    margin: 6px 0;
+    line-height: 1.4;
+}
+/* PDD — CASTLE LANDING PAGE */
+
+.castle-home {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.castle-home-welcome {
+    text-align: center;
+    padding: 18px 24px;
+    color: #51402b;
+}
+
+.castle-home-welcome h2 {
+    color: #6b4725;
+    margin-bottom: 12px;
+}
+/* CASTLE HOME — DOOR HOTSPOTS */
+
+.castle-home-image {
+    position: relative;
+    width: 100%;
+}
+
+.castle-home-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.castle-home-door {
+    position: absolute;
+    top: 49%;
+    width: 13%;
+    height: 36%;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: transparent;
+}
+
+.castle-home-door-left {
+    left: 22%;
+}
+
+.castle-home-door-middle {
+    left: 43.5%;
+}
+
+.castle-home-door-right {
+    left: 65%;
+    cursor: pointer;
+}
+/* Override SugarCube button styles */
+
+button.castle-home-door,
+button.castle-home-door:hover,
+button.castle-home-door:focus,
+button.castle-home-door:disabled {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none;
+    opacity: 1 !important;
+}
+
+button.castle-home-door-right {
+    cursor: pointer;
+}
+
+button.castle-home-door-right:hover {
+    background: rgba(255, 215, 120, 0.12) !important;
+}
+/* Hide disabled door hotspots completely */
+
+button.castle-home-door:disabled {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    cursor: default !important;
+    appearance: none !important;
+    -webkit-appearance: none !important;
+}
+
+button.castle-home-door:disabled:hover {
+    background: transparent !important;
+}
+/* Solo en el Castillo — Journal */
+.solo-journal {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.solo-journal textarea {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    resize: vertical;
+}
+/* Solo en el Castillo — prevent journal overflow */
+.myst-parchment .solo-journal,
+.myst-parchment #solo-entry {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0;
+    box-sizing: border-box !important;
+}
+
+.myst-parchment #solo-entry {
+    display: block;
+}
+
+/* Solo en el Castillo — Active memories */
+
+.solo-memories {
+    margin-top: 24px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.solo-memories h3 {
+    margin-bottom: 12px;
+}
+
+#solo-memory-count {
+    font-size: 0.8em;
+    font-weight: normal;
+}
+
+.solo-memory-card {
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid #9b8468;
+    border-radius: 6px;
+    background: rgba(255, 248, 225, 0.5);
+    overflow-wrap: anywhere;
+}
+
+.solo-memory-card p {
+    margin: 8px 0 0;
+    white-space: pre-wrap;
+}
+
+.solo-memory-empty {
+    opacity: 0.55;
+    font-style: italic;
+}
+
+/* Solo en el Castillo — Dice */
+
+.solo-dice {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding: 16px;
+    border: 1px solid #9b8468;
+    border-radius: 8px;
+    background: rgba(255, 248, 225, 0.35);
+}
+
+#solo-roll-result {
+    margin-top: 14px;
+}
+
+#solo-roll-result p {
+    margin: 5px 0;
+}
+
+#solo-roll-result strong {
+    display: block;
+    margin-top: 10px;
+}
+
+/* SOLO EN EL CASTILLO — SCENE */
+
+.solo-scene {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border: 5px ridge #94734d;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+
+.solo-scene img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+#myst-stairs-hotspot {
+    position: absolute;
+    left: 28%;
+    top: 62%;
+    width: 44%;
+    height: 30%;
+    z-index: 10;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+#myst-stairs-hotspot[hidden] {
+    display: none !important;
+}
+
+/* ===== PDC: Fondos para poemas ===== */
+
+.poema-paisaje {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  aspect-ratio: 2 / 3;
+  margin: 20px auto;
+  background-size: cover;
+  background-position: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.poema-panel {
+  position: absolute;
+  top: 12%;
+  left: 15%;
+  width: 70%;
+  height: 76%;
+
+  background: rgba(245, 235, 210, 0.30);
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 18px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.poema-titulo {
+  color: #30271e;
+  font-family: Georgia, serif;
+  font-size: clamp(18px, 4vw, 26px);
+  margin-bottom: 20px;
+}
+
+.poema-versos {
+  color: #30271e;
+  font-family: Georgia, serif;
+  font-size: clamp(16px, 3.5vw, 22px);
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.poema-scene {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin: 20px auto;
+}
+
+.poema-background {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.poema-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 76%;
+    box-sizing: border-box;
+
+    padding: 24px 18px;
+    background: rgba(248, 238, 215, 0.82);
+    border-radius: 8px;
+    text-align: center;
+    color: #342719;
+}
+
+.poema-overlay h2 {
+    margin: 0 0 16px;
+    font-family: Georgia, serif;
+}
+
+.poema-overlay p {
+    margin: 0;
+    line-height: 1.8;
+    font-family: Georgia, serif;
+    white-space: pre-line;
+}
+/* Controles debajo del paisaje */
+.poema-controls {
+    width: 100%;
+    max-width: 480px;
+    margin: 20px auto 35px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Enfoque gramatical */
+#poema-focus {
+    margin: 8px 0 0;
+    font-family: Georgia, serif;
+    font-size: 1.25rem;
+    color: #6b472b;
+}
+
+/* Explicación */
+#poema-explanation {
+    margin: 0 0 12px;
+    line-height: 1.6;
+    max-width: 420px;
+}
+
+/* Botón del diario */
+#poema-diary {
+    display: block;
+    margin: 12px auto;
+    padding: 12px 24px;
+    border-radius: 8px;
+}
+
+/* Enlace de regreso */
+.poema-controls a {
+    display: inline-block;
+    margin-top: 8px;
+}
+/* Empieza: continuous castle wall */
+#castle-wall { --gold: #efc779; --muted: #c2ad8c; }
+    #castle-wall .wall-window {
+      position: relative;
+      width: min(100%, 1600px, calc(68svh * 1.7779));
+      aspect-ratio: 1672 / 941;
+      margin: 0 auto;
+      overflow: hidden;
+      border: 1px solid rgba(239, 199, 121, 0.38);
+      background: #211710;
+      box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.55),
+        0 0 34px rgba(224, 142, 54, 0.13);
+      isolation: isolate;
+    }
+
+    #castle-wall #enter-door {
+      position: absolute;
+      z-index: 4;
+      top: 50.5%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      min-height: 36px;
+      padding: 4px 12px;
+      border: 1px solid #bb9356;
+      border-radius: 4px;
+      background: rgba(28, 17, 12, 0.88);
+      color: #fff0d3;
+      font: 600 clamp(0.78rem, 1.5vw, 0.95rem) Georgia, serif;
+      cursor: pointer;
+    }
+
+    #castle-wall #enter-door[hidden] {
+      display: none;
+    }
+
+    #castle-wall #enter-door:disabled {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #castle-wall #enter-door:focus-visible {
+      outline: 2px solid #ffe6a9;
+      outline-offset: 3px;
+    }
+
+    #castle-wall .wall-track {
+      position: absolute;
+      inset: 0 auto 0 0;
+      display: flex;
+      height: 100%;
+      will-change: transform;
+      transition: transform 650ms cubic-bezier(0.2, 0.78, 0.24, 1);
+    }
+
+    #castle-wall .wall-panel {
+      position: relative;
+      flex: 0 0 auto;
+      height: 100%;
+      background-repeat: no-repeat;
+      user-select: none;
+    }
+
+    #castle-wall .door-hit {
+      position: absolute;
+      top: 17%;
+      left: 15%;
+      z-index: 1;
+      width: 70%;
+      height: 67%;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #fff3d4;
+      cursor: pointer;
+    }
+
+    #castle-wall .door-hit::before {
+      position: absolute;
+      inset: 0;
+      border: 2px solid transparent;
+      border-radius: 50% 50% 3px 3px / 27% 27% 3px 3px;
+      background: transparent;
+      content: "";
+      transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    #castle-wall .door-hit:hover::before {
+      border-color: rgba(255, 223, 153, 0.72);
+      background: rgba(255, 213, 127, 0.08);
+    }
+
+    #castle-wall .door-hit[aria-current="true"]::before {
+      border-color: rgba(255, 225, 160, 0.95);
+      background: rgba(255, 213, 127, 0.12);
+      box-shadow: inset 0 0 25px rgba(255, 197, 89, 0.15), 0 0 17px rgba(255, 197, 89, 0.45);
+    }
+
+    #castle-wall .door-badge {
+      position: absolute;
+      top: 14%;
+      left: 50%;
+      display: inline-flex;
+      min-width: 2em;
+      min-height: 2em;
+      align-items: center;
+      justify-content: center;
+      padding: 0.2em 0.48em;
+      border: 1px solid rgba(255, 221, 151, 0.7);
+      border-radius: 999px;
+      background: rgba(32, 18, 11, 0.78);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+      color: #ffedc8;
+      font: 700 clamp(0.62rem, 1vw, 0.88rem)/1 Arial, sans-serif;
+      transform: translate(-50%, -50%);
+      white-space: nowrap;
+    }
+
+    #castle-wall .door-hit:focus-visible::before {
+      outline: 3px solid #fff0c8;
+      outline-offset: -6px;
+    }
+
+    #castle-wall .edge-shade {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      bottom: 0;
+      width: min(7vw, 90px);
+      pointer-events: none;
+    }
+
+    #castle-wall .edge-shade.left {
+      left: 0;
+      background: linear-gradient(90deg, rgba(16, 10, 7, 0.46), transparent);
+    }
+
+    #castle-wall .edge-shade.right {
+      right: 0;
+      background: linear-gradient(270deg, rgba(16, 10, 7, 0.46), transparent);
+    }
+
+    #castle-wall .wall-caption {
+      position: absolute;
+      z-index: 3;
+      right: 12px;
+      bottom: 11px;
+      padding: 6px 9px;
+      border: 1px solid rgba(239, 199, 121, 0.3);
+      background: rgba(23, 16, 13, 0.74);
+      color: #f2dfbd;
+      font: 0.65rem/1.2 Arial, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      pointer-events: none;
+    }
+
+    #castle-wall .travel-controls {
+      display: grid;
+      grid-template-columns: minmax(105px, 1fr) minmax(0, 2fr) minmax(105px, 1fr);
+      gap: 12px;
+      align-items: center;
+      width: min(100%, 840px);
+      margin: 18px auto 0;
+    }
+
+    #castle-wall .travel-button {
+      min-height: 46px;
+      padding: 9px 14px;
+      border: 1px solid rgba(239, 199, 121, 0.56);
+      border-radius: 4px;
+      background: linear-gradient(180deg, #60401f, #362315);
+      box-shadow: inset 0 1px rgba(255, 255, 255, 0.08), 0 4px 12px rgba(0, 0, 0, 0.28);
+      color: #fff0d3;
+      cursor: pointer;
+      font: 600 0.88rem Georgia, serif;
+      transition: background 160ms ease, transform 160ms ease, opacity 160ms ease;
+    }
+
+    #castle-wall .travel-button:hover:not(:disabled) {
+      background: linear-gradient(180deg, #805528, #493019);
+      transform: translateY(-1px);
+    }
+
+    #castle-wall .travel-button:focus-visible {
+      outline: 3px solid #ffe6a9;
+      outline-offset: 3px;
+    }
+
+    #castle-wall .travel-button:disabled {
+      cursor: default;
+      opacity: 0.42;
+    }
+
+    #castle-wall .selection {
+      min-height: 48px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    #castle-wall .selection-count {
+      display: block;
+      margin-bottom: 3px;
+      color: var(--gold);
+      font: 700 0.68rem Arial, sans-serif;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    #castle-wall .selection-name {
+      display: block;
+      color: #fff1d8;
+      font-size: clamp(0.95rem, 1.7vw, 1.18rem);
+    }
+
+    #castle-wall .selection-hint {
+      display: block;
+      margin-top: 3px;
+      font: 0.72rem Arial, sans-serif;
+    }
+
+    #castle-wall .key-guide {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px 18px;
+      margin: 14px auto 0;
+      color: var(--muted);
+      font: 0.78rem Arial, sans-serif;
+    }
+
+    #castle-wall .key-guide span:not([hidden]) {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    #castle-wall kbd {
+      display: inline-flex;
+      width: 1.65em;
+      height: 1.65em;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(239, 199, 121, 0.48);
+      border-radius: 3px;
+      background: rgba(239, 199, 121, 0.1);
+      color: #ffe7b5;
+      font: 700 0.78rem Arial, sans-serif;
+    }
+
+    #castle-wall .prototype-note {
+      margin: 12px 0 0;
+      color: #9d8b72;
+      font: 0.72rem/1.5 Arial, sans-serif;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+
+
+      #castle-wall .intro {
+        margin-bottom: 16px;
+      }
+
+      #castle-wall .travel-controls {
+        grid-template-columns: 48px minmax(0, 1fr) 48px;
+        gap: 7px;
+        margin-top: 13px;
+      }
+
+      #castle-wall .travel-button {
+        min-height: 44px;
+        padding: 8px;
+        font-size: 0;
+      }
+
+      #castle-wall .travel-button .arrow {
+        font-size: 1.2rem;
+      }
+
+      #castle-wall .selection-hint {
+        font-size: 0.65rem;
+      }
+
+      #castle-wall .wall-caption {
+        right: 6px;
+        bottom: 6px;
+        padding: 4px 6px;
+        font-size: 0.55rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #castle-wall *,
+      #castle-wall *::before,
+      #castle-wall *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  
+/* Room artwork sits behind the transparent opening in the wall frame. */
+#castle-wall .door-artwork {
+  position: absolute;
+  top: 32%;
+  left: 23%;
+  width: 54%;
+  height: 34%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+#castle-wall .door-artwork[hidden] {
+  display: none;
+}
+
+#castle-wall .wall-frame {
+  position: absolute;
+  inset: 0;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* PDT artwork wraps within the introduction or the reply it illustrates. */
+.pdt-tavern .pdt-intro,
+.pdt-tavern .pdt-illustrated-reply {
+  display: flow-root;
+}
+
+.pdt-tavern .pdt-illustration {
+  float: left;
+  width: min(38%, 15rem);
+  height: auto;
+  margin: 0 1rem 0.5rem 0;
+  border-radius: 6px;
+}
+
+.pdt-tavern .pdt-illustration-right {
+  float: right;
+  margin: 0 0 0.5rem 1rem;
+}
+
+/* PDT tavern introduction */
+.pdt-tavern .pdt-tavern-art {
+  overflow: hidden;
+  border-radius: 6px;
+  background: radial-gradient(ellipse at bottom, #694024, #241813 75%);
+  color: #f5e9d1;
+}
+
+.pdt-tavern #pdt-art-fallback {
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.pdt-tavern #pdt-art-fallback:not([hidden]),
+.pdt-tavern #pdt-art:not([hidden]) {
+  display: block;
+}
+
+.pdt-tavern #pdt-art,
+.pdt-tavern #pdt-response {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.pdt-tavern :is(input[type="text"], textarea, select) {
+  color: #30251d;
+  background-color: #fff6e8;
+}
+
+.pdt-tavern :is(input[type="text"], textarea, select):focus {
+  color: #30251d;
+  background-color: #fffdf7;
+  outline: 2px solid #795235;
+  outline-offset: 2px;
+}
+
+.pdt-tavern #pdt-response {
+  display: block;
+  resize: vertical;
+}
+
+.pdt-tavern #pdt-history p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.pdq-room .pdq-intro {
+  display: block;
+  width: 100%;
+  max-width: 360px;
+  height: auto;
+  margin: 0 auto;
+  border-radius: 6px;
+}
+
+/* PDH resource list */
+.pdh-room #pdh-links {
+  list-style: none;
+  margin: 1.2rem 0 0;
+  padding: 0;
+  overflow-wrap: anywhere;
+}
+
+.pdh-room #pdh-links li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #B7A585;
+}
+
+.pdh-room #pdh-links a {
+  color: #455a49;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+.pdh-room #pdh-links p {
+  margin: 0.35rem 0 0;
+  font-size: 0.92em;
+}
+
+.pdq-room .pdq-answer:not([hidden]) {
+    display: grid;
+    gap: 0.5rem;
+    justify-items: start;
+}
+
+.pdq-room .pdq-answer textarea {
+    box-sizing: border-box;
+    width: 100%;
+    font: inherit;
+    color: #30251d;
+    background-color: #fff6e8;
+    caret-color: #30251d;
+}
+
+.pdq-room .pdq-answer textarea:focus {
+    background-color: #fffdf7;
+    outline: 3px solid #69462c;
+    outline-offset: 2px;
+}
+
+.pdq-room .pdq-answer textarea::selection {
+    color: #fffdf7;
+    background-color: #56351f;
+}
+
+.pdq-room .pdq-history p {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.pdq-room .pdq-diploma {
+    position: relative;
+    max-width: 48rem;
+    margin: 1rem auto;
+    container-type: inline-size;
+}
+
+.pdq-room .pdq-diploma-art:not([hidden]) {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.pdq-room .pdq-diploma-overlay {
+    display: flex;
+    flex-direction: column;
+    padding: 0.2em 0.4em;
+    color: #302015;
+    background: #fff6e8;
+    font-family: Georgia, serif;
+    font-size: clamp(0.75rem, 3cqi, 1.25rem);
+    line-height: 1.2;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+
+.pdq-room .pdq-diploma-art:not([hidden]) ~ .pdq-diploma-overlay {
+    position: absolute;
+    /* Inside the parchment, between the title and seal. */
+    inset: 40% 27% 24%;
+    overflow-y: auto;
+    background: transparent;
+}
+
+.pdq-room .pdq-diploma:has(.pdq-diploma-art:not([hidden])) .pdq-diploma-title {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.pdq-room .pdq-diploma-overlay:focus-visible {
+    outline: 2px solid #69462c;
+    outline-offset: -2px;
+}
+
+.pdq-room .pdq-diploma-text {
+    flex: none;
+    margin-block: auto;
+}
+
+.pdq-room .pdq-diploma-text p {
+    margin: 0;
+}
+
+.pdq-room .pdq-diploma-text .pdq-diploma-word {
+    margin-block: 0.15em;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+
+.pdo-room {
+    overflow-wrap: anywhere;
+}
+
+.pdo-room form:not([hidden]),
+.pdo-room .pdo-actions {
+    display: grid;
+    gap: 0.65rem;
+    justify-items: start;
+}
+
+.pdo-room .pdo-illustrated {
+    display: flow-root;
+}
+
+.pdo-room .pdo-illustrated img {
+    display: block;
+    float: right;
+    width: min(42%, 320px);
+    height: auto;
+    margin: 0 0 0.85rem 1.25rem;
+    border-radius: 6px;
+}
+
+@media (max-width: 620px) {
+    .pdo-room .pdo-illustrated img {
+        float: none;
+        width: 100%;
+        margin: 0 0 0.85rem;
+    }
+}
+
+.pdo-room .pdo-scene-description {
+    font-style: italic;
+}
+
+.pdo-room .pdo-script {
+    list-style: none;
+    padding-left: 0;
+}
+
+.pdo-room .pdo-script li {
+    margin-block: 0.85em;
+}
+
+.pdo-room button,
+.pdo-room select {
+    min-height: 44px;
+    max-width: 100%;
+    font: inherit;
+}
+
+.pdo-room select {
+    color-scheme: light;
+    color: #30251d;
+    background-color: #fff6e8;
+    border: 1px solid #795235;
+    border-radius: 4px;
+    padding-inline: 0.55rem;
+}
+
+.pdo-room select:disabled {
+    color: #514839;
+    -webkit-text-fill-color: currentColor;
+    background-color: #f1e6d5;
+    opacity: 1;
+}
+
+.pdo-room :is(button, select, summary, [tabindex]):focus-visible {
+    outline: 3px solid #69462c;
+    outline-offset: 3px;
+}
+
+.pdl-room {
+    overflow-wrap: anywhere;
+}
+
+.pdl-room .pdl-art:not([hidden]) {
+    display: block;
+    width: auto;
+    max-width: 100%;
+    max-height: 16rem;
+    margin-inline: auto;
+    border-radius: 6px;
+}
+
+.pdl-room .pdl-letters {
+    font: bold clamp(1.35rem, 4vw, 2rem)/1.4 Georgia, serif;
+    letter-spacing: 0.1em;
+    text-align: center;
+}
+
+.pdl-room label {
+    display: block;
+}
+
+.pdl-room :is(input, button) {
+    box-sizing: border-box;
+    min-height: 44px;
+    max-width: 100%;
+    font: inherit;
+}
+
+#pdl-answer {
+    width: 100%;
+    color-scheme: light;
+    color: #30251d;
+    background-color: #fff6e8;
+    border: 1px solid #795235;
+    border-radius: 4px;
+    padding-inline: 0.55rem;
+}
+
+.pdl-room .pdl-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 0.65rem;
+}
+
+.pdl-room :is(input, button):focus-visible {
+    outline: 3px solid #795235;
+    outline-offset: 3px;
+}

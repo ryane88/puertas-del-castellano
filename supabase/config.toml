@@ -1,0 +1,11 @@
+[functions.tavern-chat]
+# The castle has no player login. This function enforces its own shared quotas.
+verify_jwt = false
+
+[functions.pdq-chat]
+# Public castle, with an explicit origin allowlist and the shared database quota.
+verify_jwt = false
+
+[functions.pdo-mystery]
+# Public castle. Only the function can open or issue authenticated case tokens.
+verify_jwt = false
