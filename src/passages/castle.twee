@@ -107,7 +107,6 @@ Puertas del Castellano - Palabras V2
 
                 State.variables.currentPdd = latestPdd;
                 State.variables.enteredFromPdd = 0;
-setup.audio.startMusic();
                 Engine.play("TestMystRoom");
             });
 
@@ -172,8 +171,10 @@ setup.audio.startMusic();
       <span hidden><kbd>H</kbd> <span id="shortcut-H">Pasadizo de Hipervínculos</span></span>
       <span><kbd>L</kbd> <span id="shortcut-L">Pila de Letras</span></span>
       <span><kbd>O</kbd> <span id="shortcut-O">Palacio de Obras</span></span>
+      <span hidden><kbd>P</kbd> <span id="shortcut-P">Puentes de Principiante</span></span>
       <span><kbd>Q</kbd> <span id="shortcut-Q">Pruebas de Don Quijote</span></span>
-      <span><kbd>T</kbd> <span id="shortcut-T">Puerta de prueba</span></span>
+      <span><kbd>T</kbd> <span id="shortcut-T">Posada de los Cuentos</span></span>
+      <span hidden><kbd>X</kbd> <span id="shortcut-X">¿Puedes Descubrir la X?</span></span>
       <span><kbd>←</kbd><kbd>→</kbd> Recorrer el muro</span>
     </div>
     <p class="prototype-note" id="data-status" role="status">
@@ -943,9 +944,6 @@ $("#circular-next").on("click", function() {
 <button type="button" id="myst-journal">
     📜 Diario del Explorador
 </button>
-<button type="button" id="myst-audio-toggle" aria-pressed="false">
-    🔊 Música
-</button>
 <div id="myst-journal-panel" hidden>
     <h2>📜 Diario del Explorador</h2>
 <p id="myst-journal-count"></p>
@@ -1115,29 +1113,6 @@ doorHotspot.on("click", function () {
 
     const leftButton = $("#myst-left");
     const rightButton = $("#myst-right");
-const audioButton = $("#myst-audio-toggle");
-
-function updateAudioButton() {
-    audioButton
-        .text(setup.audio.enabled ? "🔊 Música" : "🔇 Silencio")
-        .attr("aria-pressed", String(!setup.audio.enabled));
-}
-
-updateAudioButton();
-
-audioButton.on("click", function () {
-    setup.audio.enabled = !setup.audio.enabled;
-
-    if (setup.audio.enabled) {
-        setup.audio.music.play().catch(function (error) {
-            console.log("Music unavailable:", error);
-        });
-    } else {
-        setup.audio.music.pause();
-    }
-
-    updateAudioButton();
-});
     enterButton.prop("disabled", true);
     leftButton.prop("disabled", true);
     rightButton.prop("disabled", true);
@@ -1154,11 +1129,14 @@ audioButton.on("click", function () {
                 await setup.getLatestPublishedPdd()
             );
 
+            if (!word[0]?.isConnected) return;
+
             if (!Number.isFinite(currentPdd) || currentPdd <= 0) {
                 throw new Error("No hay palabras publicadas.");
             }
 
             State.variables.currentPdd = currentPdd;
+            setup.audio.setTrack(setup.audio.pddTrack(currentPdd));
         }
 
         const currentRoom = await setup.getRoom(currentPdd);
@@ -1423,8 +1401,6 @@ $("#myst-animation").attr(
     "src",
     "images/pdd-animation" + chamberNumber + ".webp"
 );
-
-setup.audio.startMusic(chamberNumber);
 
 console.log(
     "ESCALERA:",
@@ -2365,38 +2341,6 @@ $(document).on("click", ".pdd-manuscript-word", function (event) {
 
     Engine.play("TestMystRoom");
 });
-Config.ui.stowBarInitially = true;
-
-/* PUERTAS DEL CASTELLANO — AUDIO */
-/* Preload the door creak */
-setup.doorSound = new Audio("audio/door-open.wav");
-setup.doorSound.preload = "auto";
-setup.doorSound.load();
-
-setup.audio = setup.audio || {};
-setup.audio.enabled = true;
-setup.audio.music = setup.audio.music || new Audio("audio/chamber0.mp3");
-
-setup.audio.startMusic = function (chamberNumber) {
-    if (!setup.audio.enabled) return;
-
-    const number = Number(chamberNumber) || 0;
-    const path = "audio/chamber" + number + ".mp3";
-
-    if (setup.audio.music.getAttribute("src") !== path) {
-        setup.audio.music.pause();
-        setup.audio.music.src = path;
-        setup.audio.music.load();
-    }
-
-    setup.audio.music.loop = true;
-    setup.audio.music.volume = 0.25;
-
-    setup.audio.music.play().catch(function (error) {
-        console.log("Music playback unavailable:", error);
-    });
-};
-
 :: StoryStylesheet [stylesheet]
 
 /* PUERTAS DEL CASTELLANO — LIGHT THEME */
@@ -3044,6 +2988,9 @@ object-fit: cover;
     <button id="solo-view-diary" type="button">
     Ver diario
 </button>
+    <button id="solo-restart" type="button">
+        Nueva aventura
+    </button>
 
 <div id="solo-diary-view" hidden>
     <h3>Mis aventuras</h3>
@@ -3710,7 +3657,7 @@ $("#poema-image").attr("src", "images/" + filename);
 
 :: TavernRoom
 <<nobr>>
-<<castleDoorTitle "Puerta de prueba">>
+<<castleDoorTitle "Posada de los Cuentos">>
 <div class="room-card pdt-tavern">
     <div class="pdt-intro">
         <div class="pdt-tavern-art pdt-illustration">

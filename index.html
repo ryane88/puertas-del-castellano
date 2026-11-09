@@ -715,7 +715,463 @@ object-fit: cover;
         text-align: center;
     }
 }
-/* twine-user-stylesheet #2: "story.css" */
+/* twine-user-stylesheet #2: "pdp.css" */
+.pdp-room {
+    --pdp-ink: #243e32;
+    --pdp-green: #23613e;
+    width: min(100%, 45rem);
+    margin: 0 auto;
+    padding: clamp(0.6rem, 2.8vw, 1.25rem);
+    box-sizing: border-box;
+    border: 1px solid #b7caba;
+    border-radius: 0.8rem;
+    background: #f8f5e8;
+    color: var(--pdp-ink);
+    text-align: center;
+}
+
+.pdp-room [hidden] {
+    display: none !important;
+}
+
+.pdp-view {
+    position: relative;
+    overflow: hidden;
+    aspect-ratio: 720 / 350;
+    border: 1px solid #78b3cf;
+    border-radius: 0.7rem;
+    background: linear-gradient(#4eb5ed, #b9ebff 72%, #e3f7fa);
+}
+
+.pdp-scene {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.pdp-destination {
+    position: absolute;
+    bottom: 71%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: 73%;
+    box-sizing: border-box;
+    padding: 0.25em 0.7em;
+    border: 1px solid #78a8bd;
+    border-radius: 0.8em;
+    background: #fffdf5;
+    color: #193f57;
+    box-shadow: 0 0.16em 0 #367d9f48;
+    font: 700 clamp(0.9rem, 3.6vw, 1.6rem)/1.15 system-ui, sans-serif;
+    overflow-wrap: anywhere;
+}
+
+.pdp-room .pdp-sentence {
+    margin: 0 0 0.75rem;
+    padding: 0.5rem;
+    border: 1px solid #b9caa6;
+    border-radius: 0.5rem;
+    background: #eaf4d9;
+    color: var(--pdp-ink);
+    font: bold clamp(1.15rem, 4vw, 1.6rem)/1.35 Georgia, serif;
+}
+
+.pdp-turns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.4rem;
+    margin: 0.65rem 0;
+}
+
+.pdp-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0.65rem 0;
+}
+
+.pdp-room .pdp-facing {
+    margin: 0;
+    font-weight: bold;
+}
+
+.pdp-room button {
+    min-height: 44px;
+    padding: 0.4em 0.75em;
+    border: 1px solid #799d88;
+    border-radius: 0.5rem;
+    background: #fffdf5;
+    color: var(--pdp-ink);
+}
+
+.pdp-room button:hover:not(:disabled) {
+    background: #e0efda;
+}
+
+.pdp-room [data-pdp-action="cross"] {
+    border-color: var(--pdp-green);
+    background: var(--pdp-green);
+    color: #fffdf5;
+}
+
+.pdp-room button[data-pdp-action="cross"]:hover:not(:disabled) {
+    background: #184a2e;
+}
+
+.pdp-room :is(button, .pdp-sentence):focus-visible {
+    outline: 2px solid #225d87;
+    outline-offset: 2px;
+}
+
+.pdp-room button:disabled {
+    opacity: 0.55;
+}
+
+.pdp-room .pdp-complete {
+    color: var(--pdp-green);
+    font-weight: bold;
+}
+
+@media (max-width: 420px) {
+    .pdp-room .pdp-turns button {
+        padding-inline: 0.35rem;
+        font-size: 0.85rem;
+    }
+
+    .pdp-room .pdp-facing {
+        font-size: 0.9rem;
+        line-height: 1.35;
+    }
+}
+/* twine-user-stylesheet #3: "pdx.css" */
+/* PDX — a fixed viewpoint. Only the graph opens the three visible walls. */
+.pdx-room {
+    max-width: 46rem;
+    margin-inline: auto;
+}
+
+.pdx-room [hidden],
+.pdx-room .pdx-status:empty {
+    display: none;
+}
+
+.pdx-room .pdx-status,
+.pdx-room .pdx-location {
+    font-weight: bold;
+}
+
+.pdx-room .pdx-view {
+    --pdx-wall-tone: #6e5b48;
+    --pdx-mortar: #46392e;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 2px solid #413225;
+    border-radius: .5rem;
+    background: #241b15;
+    color: #fff1cc;
+    box-sizing: border-box;
+}
+
+.pdx-room .pdx-view[data-scene="pizarra"] {
+    --pdx-wall-tone: #585a64;
+    --pdx-mortar: #383841;
+}
+
+.pdx-room :is(.pdx-facet, .pdx-objects) {
+    position: absolute;
+    inset: 0;
+}
+
+.pdx-room .pdx-ceiling {
+    clip-path: polygon(0 0, 100% 0, 72% 28%, 28% 28%);
+    background: linear-gradient(#211a17, var(--pdx-mortar));
+}
+
+.pdx-room .pdx-floor {
+    clip-path: polygon(0 100%, 28% 72%, 72% 72%, 100% 100%);
+    background:
+        repeating-linear-gradient(0deg, transparent 0 9%, #241b15a6 9% 10%),
+        linear-gradient(#51463e 65%, #817065);
+}
+
+.pdx-room .pdx-wall {
+    background:
+        radial-gradient(ellipse at 50% 42%, #e4ad6026, #14101886),
+        var(--pdx-texture,
+            repeating-linear-gradient(0deg, transparent 0 10%, var(--pdx-mortar) 10% 11%),
+            repeating-linear-gradient(90deg, transparent 0 12%, var(--pdx-mortar) 12% 12.5%)),
+        var(--pdx-wall-tone);
+    background-size: cover;
+}
+
+.pdx-room .pdx-wall-left {
+    clip-path: polygon(0 0, 28% 28%, 28% 72%, 0 100%);
+}
+
+.pdx-room .pdx-wall-right {
+    clip-path: polygon(100% 0, 72% 28%, 72% 72%, 100% 100%);
+}
+
+.pdx-room .pdx-wall-front {
+    clip-path: polygon(28% 28%, 72% 28%, 72% 72%, 28% 72%);
+    box-shadow: inset 0 0 5rem #241b15;
+}
+
+.pdx-room .pdx-view.pdx-has-backdrop {
+    background: #241b15 var(--pdx-backdrop) center / cover no-repeat;
+}
+
+.pdx-room .pdx-has-backdrop .pdx-facet {
+    background: none;
+    box-shadow: none;
+}
+
+.pdx-room .pdx-object {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    transform: translate(-50%, -50%);
+    font-size: clamp(1.2rem, 6vw, 3rem);
+    line-height: 1;
+    text-shadow: 0 2px 3px #140e09;
+}
+
+.pdx-room .pdx-object img {
+    width: clamp(1.6rem, 8vw, 4rem);
+    max-height: 3.75rem;
+    object-fit: contain;
+}
+
+.pdx-room .pdx-object small {
+    padding: .15em .35em;
+    border-radius: .2em;
+    background: #211811;
+    font-size: clamp(.66rem, 2.5vw, .9rem);
+    white-space: nowrap;
+}
+
+.pdx-room .pdx-slot-left { left: 24%; top: 47%; }
+.pdx-room .pdx-slot-center { left: 50%; top: 82%; }
+.pdx-room .pdx-slot-right { left: 76%; top: 49%; }
+.pdx-room .pdx-slot-back { left: 50%; top: 42%; }
+
+.pdx-room .pdx-door {
+    top: auto;
+    bottom: 8.5%;
+    width: 16%;
+    height: 78%;
+    transform: none;
+    pointer-events: none;
+}
+
+.pdx-room .pdx-door.pdx-slot-left { left: 7%; }
+
+.pdx-room .pdx-door.pdx-slot-right {
+    left: auto;
+    right: 7%;
+    transform: scaleX(-1);
+}
+
+.pdx-room .pdx-door.pdx-slot-back {
+    bottom: 28%;
+    height: 42%;
+    transform: translateX(-50%);
+}
+
+.pdx-room .pdx-door.pdx-slot-back:not(.pdx-has-art) {
+    border-radius: 50% 50% 0 0 / 32% 32% 0 0;
+    background: radial-gradient(ellipse at 50% 105%, #4b392b, #130f10 68%);
+    box-shadow: 0 0 0 .35em #584334;
+    font-size: clamp(.7rem, 2vw, 1.1rem);
+}
+
+.pdx-room .pdx-door:not(.pdx-slot-back):not(.pdx-has-art) {
+    clip-path: polygon(0 0, 100% 18%, 100% 81%, 0 100%);
+    background: linear-gradient(90deg, #352a23, #100e11 45%, #221a18);
+}
+
+.pdx-room .pdx-door img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-position: left bottom;
+}
+
+.pdx-room .pdx-door.pdx-slot-back img {
+    object-position: center bottom;
+}
+
+.pdx-room .pdx-door:not(.pdx-slot-back) img {
+    /* Match the threshold to the wall-floor seam before mirroring. */
+    transform: skewY(27deg);
+    transform-origin: left bottom;
+}
+
+.pdx-room .pdx-has-backdrop .pdx-door.pdx-slot-back {
+    bottom: 26%;
+}
+
+.pdx-room .pdx-ladder {
+    --pdx-ladder-inset: 34%;
+    top: auto;
+    bottom: 18%;
+    width: 24%;
+    height: 76%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.pdx-room .pdx-ladder.pdx-slot-left { left: var(--pdx-ladder-inset); }
+.pdx-room .pdx-ladder.pdx-slot-right { left: calc(100% - var(--pdx-ladder-inset)); }
+
+.pdx-room .pdx-ladder-down {
+    bottom: 6%;
+    height: 46%;
+}
+
+.pdx-room .pdx-open-front .pdx-ladder {
+    --pdx-ladder-inset: 33%;
+}
+
+.pdx-room .pdx-open-front .pdx-ladder-down {
+    --pdx-ladder-inset: 31%;
+    width: 20%;
+}
+
+.pdx-room .pdx-ladder img {
+    flex: none;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.pdx-room .pdx-ladder.pdx-has-art small {
+    display: none;
+}
+
+.pdx-room .pdx-ladder:not(.pdx-has-art) > span {
+    width: clamp(2rem, 10vw, 5rem);
+    height: clamp(1rem, 5vw, 2.4rem);
+    clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%);
+    background: repeating-linear-gradient(0deg, #503929 0 18%, #c5a879 18% 35%);
+    font-size: 0;
+}
+
+.pdx-room .pdx-ladder-down:not(.pdx-has-art) > span {
+    background: repeating-linear-gradient(0deg, #b08f66 0 18%, #29201a 18% 35%);
+}
+
+.pdx-room .pdx-found {
+    left: 66%;
+    color: #ffd379;
+}
+
+.pdx-room .pdx-placeholder {
+    margin: .35rem 0 .7rem;
+    font-size: .9rem;
+}
+
+.pdx-room .pdx-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-block: .75rem;
+}
+
+.pdx-room .pdx-heading {
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    min-height: 2rem;
+    align-self: center;
+    color: #ffefce;
+    background: #241b15;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.pdx-room .pdx-choice {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-block: .75rem;
+}
+
+.pdx-room .pdx-picker {
+    min-height: 44px;
+    max-width: 100%;
+    padding: .4rem .65rem;
+    color: #302318;
+    background: #fff2d8;
+    border: 1px solid #705940;
+    border-radius: .25rem;
+}
+
+.pdx-room button {
+    min-height: 44px;
+    padding: .4rem .65rem;
+    color: #ffefce;
+    background: #4c3929;
+    border: 1px solid #4c3929;
+    border-radius: .25rem;
+}
+
+.pdx-room button:hover:not(:disabled) {
+    background: #624930;
+}
+
+.pdx-room button:disabled {
+    color: #514839;
+    background: #d8c9ae;
+    border-color: #a1947d;
+    cursor: default;
+}
+
+.pdx-room :is(button, summary, select):focus-visible {
+    outline: 2px solid #54370f;
+    outline-offset: 3px;
+}
+
+.pdx-room .pdx-journal {
+    margin-top: .75rem;
+    border-top: 1px solid #a1947d;
+    padding-top: .4rem;
+}
+
+.pdx-room summary {
+    padding-block: .55rem;
+    cursor: pointer;
+}
+
+.pdx-room .pdx-verses h2 {
+    margin-bottom: .2rem;
+    font-size: 1.05rem;
+}
+
+.pdx-room .pdx-poem {
+    margin-top: 0;
+    white-space: pre-line;
+    font-style: italic;
+}
+
+.pdx-room .pdx-verses > section:first-child .pdx-poem {
+    font-weight: bold;
+}
+/* twine-user-stylesheet #4: "story.css" */
 
 /* PUERTAS DEL CASTELLANO — LIGHT THEME */
 
@@ -727,6 +1183,67 @@ body {
 
 #passages {
   max-width: 900px;
+}
+
+#menu-item-saves,
+#menu-item-restart,
+#menu-core:not(:has(> li:not(#menu-item-saves, #menu-item-restart))) {
+  display: none;
+}
+
+#castle-sidebar-controls {
+  position: absolute;
+  top: 2.5em;
+  right: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr);
+  gap: 0.25em 0.5em;
+  padding: 0 1.5em;
+}
+
+#castle-sidebar-controls button {
+  min-height: 2em;
+  padding: 0;
+  color: #eee;
+  background: transparent;
+  border: 1px solid #444;
+}
+
+#castle-sidebar-controls button:hover {
+  background: #444;
+  border-color: #eee;
+}
+
+#castle-sidebar-home {
+  grid-column: 1 / -1;
+}
+
+#castle-sidebar-controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: #eee;
+}
+
+#castle-sidebar-volume {
+  width: 100%;
+  min-width: 0;
+}
+
+#ui-bar-body {
+  height: calc(100% - 7.5em);
+  margin-top: 7.5em;
+}
+
+#ui-bar.stowed #castle-sidebar-controls {
+  left: auto;
+  grid-template-columns: 2em;
+  padding: 0;
+}
+
+#ui-bar.stowed .castle-sidebar-expanded {
+  display: none;
 }
 
 h1, h2 {
@@ -2672,38 +3189,536 @@ $(document).on("click", ".pdd-manuscript-word", function (event) {
 
     Engine.play("TestMystRoom");
 });
-Config.ui.stowBarInitially = true;
+/* twine-user-script #2: "pdp.js" */
+/* PDP — Puentes de Principiante */
+(() => {
+    "use strict";
 
-/* PUERTAS DEL CASTELLANO — AUDIO */
-/* Preload the door creak */
-setup.doorSound = new Audio("audio/door-open.wav");
-setup.doorSound.preload = "auto";
-setup.doorSound.load();
-
-setup.audio = setup.audio || {};
-setup.audio.enabled = true;
-setup.audio.music = setup.audio.music || new Audio("audio/chamber0.mp3");
-
-setup.audio.startMusic = function (chamberNumber) {
-    if (!setup.audio.enabled) return;
-
-    const number = Number(chamberNumber) || 0;
-    const path = "audio/chamber" + number + ".mp3";
-
-    if (setup.audio.music.getAttribute("src") !== path) {
-        setup.audio.music.pause();
-        setup.audio.music.src = path;
-        setup.audio.music.load();
+    async function readPublished(table, columns, signal) {
+        const response = await fetch(
+            setup.supabase.url + "/rest/v1/" + table + "?select=" + columns + "&published=eq.true",
+            { headers: { apikey: setup.supabase.key }, signal }
+        );
+        if (!response.ok) throw new Error("PDP content unavailable");
+        const rows = await response.json();
+        if (!Array.isArray(rows)) throw new Error("Invalid PDP response");
+        return rows;
     }
 
-    setup.audio.music.loop = true;
-    setup.audio.music.volume = 0.25;
+    async function loadGraph(signal) {
+        const [islands, bridges] = await Promise.all([
+            readPublished("pdp_islands", "slug,level,label", signal),
+            readPublished("pdp_bridges", "from_slug,to_slug,sort_order", signal)
+        ]);
+        const bySlug = new Map(islands.map(island => [island.slug, { ...island, exits: [] }]));
+        bridges.sort((a, b) => a.sort_order - b.sort_order);
+        for (const bridge of bridges) {
+            const from = bySlug.get(bridge.from_slug);
+            const to = bySlug.get(bridge.to_slug);
+            if (from && to && to.level === from.level + 1) from.exits.push(to);
+        }
+        const start = bySlug.get("yo");
+        if (start?.level !== 1 || start.label !== "Yo") throw new Error("PDP starting island unavailable");
 
-    setup.audio.music.play().catch(function (error) {
-        console.log("Music playback unavailable:", error);
+        // A verb is navigable only if it still has a published complement.
+        start.exits = start.exits.filter(verb => verb.exits.length > 0);
+        if (!start.exits.length) throw new Error("No complete PDP routes");
+        return start;
+    }
+
+    function mount(room) {
+        const lifetime = new AbortController();
+        const { signal } = lifetime;
+        $(document).one(":passageinit", () => lifetime.abort());
+
+        const game = room.querySelector(".pdp-game");
+        const destinationLabel = room.querySelector(".pdp-destination");
+        const status = room.querySelector(".pdp-status");
+        const retry = room.querySelector(".pdp-retry");
+        const sentence = room.querySelector(".pdp-sentence");
+        const choices = room.querySelector(".pdp-choices");
+        const facing = room.querySelector(".pdp-facing");
+        const span = room.querySelector(".pdp-span");
+        const complete = room.querySelector(".pdp-complete");
+        const buttons = Object.fromEntries(
+            Array.from(room.querySelectorAll("[data-pdp-action]"), button => [button.dataset.pdpAction, button])
+        );
+        const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let path;
+        let turnAnimation;
+
+        function showBridge() {
+            const { island, selected } = path.at(-1);
+            const destination = island.exits[selected];
+            if (!destination) return;
+            destinationLabel.textContent = destination.label;
+            facing.textContent = `Puente ${selected + 1} de ${island.exits.length}`;
+            buttons.cross.setAttribute("aria-label", `Cruzar el puente a «${destination.label}»`);
+        }
+
+        function showIsland(moveFocus = true) {
+            const { island } = path.at(-1);
+            const finished = island.level === 3;
+            turnAnimation?.cancel();
+            sentence.textContent = path.map(({ island }) => island.label).join(" ") + (finished ? "." : "…");
+            choices.hidden = destinationLabel.hidden = finished;
+            span.style.display = finished ? "none" : "";
+            complete.hidden = !finished;
+            buttons.back.disabled = buttons.restart.disabled = path.length === 1;
+            buttons.left.disabled = buttons.right.disabled = island.exits.length < 2;
+            showBridge();
+            if (moveFocus) sentence.focus();
+        }
+
+        function turn(direction) {
+            const frame = path.at(-1);
+            const count = frame.island.exits.length;
+            frame.selected = (frame.selected + direction + count) % count;
+            showBridge();
+            if (motion.matches) return;
+            turnAnimation?.cancel();
+            turnAnimation = span.animate([
+                { transform: `translateX(${direction * 45}px)`, opacity: 0.45 },
+                { transform: "translateX(0)", opacity: 1 }
+            ], { duration: 220, easing: "ease-out" });
+        }
+
+        async function load(moveFocus = false) {
+            retry.hidden = true;
+            status.hidden = false;
+            status.textContent = "Cargando las islas…";
+            try {
+                const start = await loadGraph(signal);
+                if (signal.aborted) return;
+                path = [{ island: start, selected: 0 }];
+                status.hidden = true;
+                game.hidden = false;
+                showIsland(moveFocus);
+            } catch {
+                if (signal.aborted) return;
+                status.textContent = "No se pudieron cargar las islas.";
+                retry.hidden = false;
+                if (moveFocus) retry.focus();
+            }
+        }
+
+        const actions = {
+            left: () => turn(-1),
+            right: () => turn(1),
+            cross: () => {
+                const { island, selected } = path.at(-1);
+                path.push({ island: island.exits[selected], selected: 0 });
+                showIsland();
+            },
+            back: () => {
+                path.pop();
+                showIsland();
+            },
+            restart: () => {
+                path.length = 1;
+                path[0].selected = 0;
+                showIsland();
+            }
+        };
+        for (const [action, button] of Object.entries(buttons)) {
+            button.addEventListener("click", actions[action], { signal });
+        }
+        retry.addEventListener("click", () => load(true), { signal });
+        load();
+    }
+
+    $(document).on(":passagedisplay", event => {
+        if (event.passage.title !== "PDP") return;
+        const room = event.content.querySelector(".pdp-room");
+        if (room) mount(room);
     });
-};
-/* twine-user-script #2: "story.js" */
+})();
+/* twine-user-script #3: "pdx.js" */
+/* PDX — El laberinto de la X */
+(() => {
+    const progressKeys = { "pdx-v1": "pdx", "pdx-v2": "pdxV2" };
+    const headings = ["norte", "este", "sur", "oeste"];
+    const offsets = [[0, -1], [1, 0], [0, 1], [-1, 0]];
+    const turn = (facing, amount) => (facing + amount + headings.length) % headings.length;
+    const positions = ["left", "center", "right", "back"];
+    const symbols = { sol: "☀", torre: "♜", puerta: "", escalones: "▟", piedra: "◆", x: "✕" };
+    const mazeCache = new Map();
+
+    async function getMaze(slug, signal) {
+        if (mazeCache.has(slug)) return mazeCache.get(slug);
+
+        async function read(table, query) {
+            const response = await fetch(setup.supabase.url + "/rest/v1/" + table + "?" + query, {
+                headers: { apikey: setup.supabase.key },
+                signal
+            });
+            if (!response.ok) throw new Error(table + ": " + response.status);
+            const rows = await response.json();
+            if (!Array.isArray(rows)) throw new Error("Invalid " + table + " response");
+            return rows;
+        }
+
+        const filter = "&maze_slug=eq." + slug;
+        const [[maze], cells, connections, clues, assets] = await Promise.all([
+            read("pdx_mazes", "select=start_cell,start_facing,goal_cell,goal_facing&slug=eq." + slug + "&published=eq.true"),
+            read("pdx_cells", "select=id,floor,x,y,scene_asset,objects" + filter),
+            read("pdx_connections", "select=cell_a,cell_b,kind,asset" + filter),
+            read("pdx_clues", "select=sequence,cell_id,facing,verses&order=sequence.asc" + filter),
+            read("pdx_assets", "select=slug,kind,label,image_url")
+        ]);
+        const library = new Map(assets.map(asset => [asset.slug, asset]));
+        const byId = new Map(cells.map(cell => [cell.id, { ...cell, exits: new Map() }]));
+
+        if (!maze || !byId.has(maze.start_cell) || !byId.has(maze.goal_cell) ||
+            !headings[maze.start_facing] || !headings[maze.goal_facing] ||
+            clues.length !== 3 || clues[0].cell_id !== maze.start_cell ||
+            clues.some((clue, i) => clue.sequence !== i + 1 || !byId.has(clue.cell_id) ||
+                !headings[clue.facing] || !Array.isArray(clue.verses) || clue.verses.length !== 4)) {
+            throw new Error("Incomplete PDX maze or clues");
+        }
+        for (const cell of cells) {
+            if (!Array.isArray(cell.objects) ||
+                cell.objects.some(object => library.get(object.asset)?.kind !== "object" ||
+                    !headings[object.facing] || !positions.includes(object.position))) {
+                throw new Error("Invalid PDX object");
+            }
+        }
+        for (const { cell_a, cell_b, kind, asset } of connections) {
+            const a = byId.get(cell_a);
+            const b = byId.get(cell_b);
+            if (!a || !b || library.get(asset)?.kind !== "object") throw new Error("Invalid PDX connection");
+            const dx = b.x - a.x;
+            const dy = b.y - a.y;
+            const df = b.floor - a.floor;
+            const direction = offsets.findIndex(([x, y]) => x === dx && y === dy);
+            const isStair = kind === "stairs" && dx === 0 && dy === 0 && Math.abs(df) === 1;
+            const isDoor = kind === "door" && df === 0 && direction >= 0;
+            if (!isStair && !isDoor) throw new Error("Invalid PDX connection geometry");
+
+            const from = isDoor ? direction : df > 0 ? "up" : "down";
+            const to = isDoor ? turn(direction, 2) : df > 0 ? "down" : "up";
+            if (a.exits.has(from) || b.exits.has(to)) throw new Error("Duplicate PDX exit");
+            a.exits.set(from, { cell: b.id, asset });
+            b.exits.set(to, { cell: a.id, asset });
+        }
+        const content = { maze, byId, clues, library };
+        if (!signal.aborted) mazeCache.set(slug, content);
+        return content;
+    }
+
+    function imageUrl(asset) {
+        if (!asset?.image_url) return "";
+        try {
+            const url = new URL(asset.image_url);
+            return url.protocol === "https:" ? url.href : "";
+        } catch {
+            return "";
+        }
+    }
+
+    function overlay(asset, position, door = false, url = imageUrl(asset)) {
+        const item = document.createElement("div");
+        item.classList.add("pdx-object", "pdx-slot-" + position);
+        if (door) item.classList.add("pdx-door");
+        const fallback = document.createElement("span");
+        fallback.textContent = door ? "" : symbols[asset.slug] ?? "◇";
+        item.append(fallback);
+
+        if (url) {
+            const img = document.createElement("img");
+            img.alt = "";
+            img.hidden = true;
+            img.addEventListener("load", () => {
+                img.hidden = false;
+                fallback.hidden = true;
+                item.classList.add("pdx-has-art");
+            }, { once: true });
+            img.src = url;
+            item.append(img);
+        }
+        if (!door) {
+            const label = document.createElement("small");
+            label.textContent = asset.label;
+            item.append(label);
+        }
+        return item;
+    }
+
+    function mount(room) {
+        const lifetime = new AbortController();
+        let request;
+        $(document).one(":passageinit", () => {
+            request?.abort();
+            lifetime.abort();
+        });
+        const { signal } = lifetime;
+        const find = selector => room.querySelector(selector);
+        const picker = find(".pdx-picker");
+        const game = find(".pdx-game");
+        let slug = State.variables.pdxSelected === "pdx-v2" ? "pdx-v2" : "pdx-v1";
+        picker.value = slug;
+        const status = find(".pdx-status");
+        const location = find(".pdx-location");
+        const heading = find(".pdx-heading");
+        const view = find(".pdx-view");
+        const objects = find(".pdx-objects");
+        const journal = find(".pdx-journal");
+        const buttons = new Map(Array.from(room.querySelectorAll("[data-pdx-action]"),
+            button => [button.dataset.pdxAction, button]));
+        let content;
+        let progress;
+        let renderedClues = -1;
+        let renderedCell;
+
+        function renderScene(cell) {
+            if (renderedCell === cell) return;
+            renderedCell = cell;
+
+            const asset = content.library.get(cell.scene_asset);
+            const scene = asset?.kind === "scene" ? asset : null;
+            const sceneSlug = scene?.slug ?? "";
+
+            const placeholder = find(".pdx-placeholder");
+            view.dataset.scene = sceneSlug;
+            view.style.removeProperty("--pdx-backdrop");
+            view.style.removeProperty("--pdx-texture");
+            view.classList.remove("pdx-has-backdrop");
+            placeholder.textContent = scene
+                ? `Escenario esquemático · ${scene.label}`
+                : "Escenario esquemático · Imagen no disponible";
+            placeholder.hidden = false;
+
+            // The original catalog entry keeps showing the original image until it moves to 00.
+            const legacyScene = sceneSlug === "pasillo-pdd-01" &&
+                scene.label === "Pasillo de piedra" && !scene.image_url;
+            const backdropSlug = legacyScene ? "pasillo-pdd-00" : sceneSlug;
+            const backdrop = /^pasillo-pdd-0[0-9]$/.test(backdropSlug)
+                ? `images/pdx-${backdropSlug}.jpg` : "";
+            const sceneUrl = slug === "pdx-v2" ? imageUrl(scene) || backdrop : backdrop || imageUrl(scene);
+            const sceneSignal = request.signal;
+            const variant = (cell.id % 10 + 10) % 10;
+            const fallbackUrl = `images/pdx-pasillo-pdd-0${variant}.jpg`;
+
+            function loadImage(url, isBackdrop) {
+                const image = new Image();
+                image.onload = () => {
+                    if (sceneSignal.aborted || renderedCell !== cell) return;
+                    view.style.setProperty(isBackdrop ? "--pdx-backdrop" : "--pdx-texture",
+                        `url(${JSON.stringify(url)})`);
+                    view.classList.toggle("pdx-has-backdrop", isBackdrop);
+                    placeholder.hidden = true;
+                };
+                image.onerror = () => {
+                    if (sceneSignal.aborted || renderedCell !== cell || url === fallbackUrl) return;
+                    loadImage(fallbackUrl, true);
+                };
+                image.src = url;
+            }
+
+            loadImage(sceneUrl || fallbackUrl, slug === "pdx-v2" || Boolean(backdrop) || !sceneUrl);
+        }
+
+        function renderJournal() {
+            const count = progress.clues.length;
+            if (count === renderedClues) return;
+            const verses = find(".pdx-verses");
+            verses.replaceChildren();
+            find(".pdx-journal-title").textContent = `Cuaderno de pistas · ${count}/3`;
+            for (const clue of content.clues.slice(0, count).reverse()) {
+                const poem = document.createElement("section");
+                const title = document.createElement("h2");
+                title.textContent = `Poema ${clue.sequence} · Mira al ${headings[clue.facing]}`;
+                const lines = document.createElement("p");
+                lines.className = "pdx-poem";
+                lines.textContent = clue.verses.join("\n");
+                poem.append(title, lines);
+                verses.append(poem);
+            }
+            renderedClues = count;
+        }
+
+        function discoverClue() {
+            const { cellId, facing } = progress;
+            const nextClue = content.clues[progress.clues.length];
+            if (nextClue?.cell_id === cellId) {
+                progress.clues.push(nextClue.sequence);
+                progress.lastClue = { cellId, facing };
+                journal.open = true;
+                status.textContent = `Has encontrado el poema ${nextClue.sequence}.`;
+            }
+        }
+
+        function returnToLastClue() {
+            progress.cellId = progress.lastClue.cellId;
+            progress.facing = progress.lastClue.facing;
+            journal.open = true;
+        }
+
+        function startAdventure() {
+            const { start_cell, start_facing } = content.maze;
+            progress = State.variables[progressKeys[slug]] = {
+                slug, cellId: start_cell, facing: start_facing, clues: [], found: false
+            };
+        }
+
+        function render() {
+            const { maze, byId, clues, library } = content;
+            const { cellId, facing, found } = progress;
+            const cell = byId.get(cellId);
+            if (found) status.textContent = "¡Has descubierto la X! El laberinto guarda tu hallazgo.";
+
+            const forward = cell.exits.get(facing);
+            const left = cell.exits.get(turn(facing, -1));
+            const right = cell.exits.get(turn(facing, 1));
+            const atGoal = cellId === maze.goal_cell && facing === maze.goal_facing;
+            const props = cell.objects.filter(object => object.facing === facing);
+            const openings = [left && "izquierda", forward && "frente", right && "derecha"].filter(Boolean);
+            const features = props.map(object => library.get(object.asset).label);
+
+            view.classList.toggle("pdx-open-front", Boolean(forward));
+
+            renderScene(cell);
+
+            objects.replaceChildren();
+            if (forward) {
+                objects.append(overlay(library.get(forward.asset), "back", true, "images/door_front.png"));
+            }
+            if (left) {
+                objects.append(overlay(library.get(left.asset), "left", true, "images/door_perspective.png"));
+            }
+            if (right) {
+                objects.append(overlay(library.get(right.asset), "right", true, "images/door_perspective.png"));
+            }
+            // Vertical exits are directly accessible from every heading.
+            for (const direction of ["up", "down"]) {
+                const exit = cell.exits.get(direction);
+                buttons.get(direction).hidden = !exit;
+                if (!exit) continue;
+
+                const isUp = direction === "up";
+                const position = (facing < 2) === isUp ? "left" : "right";
+                const label = isUp ? "Escalera de subida" : "Escalera de bajada";
+                const ladder = overlay({ ...library.get(exit.asset), label }, position, false,
+                    `images/ladder_${direction}_front.png`);
+                ladder.classList.add("pdx-ladder", "pdx-ladder-" + direction);
+                features.push(label);
+                objects.append(ladder);
+            }
+            for (const object of props) {
+                objects.append(overlay(library.get(object.asset), object.position));
+            }
+            if (found && atGoal) {
+                const mark = overlay({ slug: "x", label: "X descubierta" }, "right");
+                mark.classList.add("pdx-found");
+                objects.append(mark);
+            }
+
+            location.textContent = [
+                `Piso ${cell.floor} · Mirando al ${headings[facing]}`,
+                openings.length ? "Salidas a la vista · " + openings.join(", ") : "Paredes a la vista",
+                ...features
+            ].join(". ") + ".";
+            heading.textContent = headings[facing][0].toUpperCase();
+            buttons.get("forward").disabled = !forward;
+            buttons.get("inspect").hidden = !atGoal || found || progress.clues.length !== clues.length;
+            buttons.get("return-clue").disabled = !progress.lastClue;
+            find(".pdx-return-help").hidden = Boolean(progress.lastClue);
+            renderJournal();
+        }
+
+        let reenter = true;
+        async function load() {
+            request?.abort();
+            request = new AbortController();
+            const { signal } = request;
+            const requestedSlug = slug;
+            progress = undefined;
+            renderedClues = -1;
+            renderedCell = undefined;
+            journal.open = false;
+            game.hidden = true;
+            buttons.get("retry").hidden = true;
+            status.textContent = "Cargando el laberinto…";
+            try {
+                const loaded = await getMaze(requestedSlug, signal);
+                if (signal.aborted) return;
+
+                content = loaded;
+                const { byId, clues } = content;
+                const saved = State.variables[progressKeys[slug]];
+                if (saved?.slug === slug && byId.has(saved.cellId) && headings[saved.facing] &&
+                    Array.isArray(saved.clues) && saved.clues.length <= clues.length &&
+                    saved.clues.every((sequence, index) => sequence === clues[index].sequence)) {
+                    progress = saved;
+                } else {
+                    startAdventure();
+                }
+                status.textContent = "";
+                const latest = clues[progress.clues.length - 1];
+                if (latest) {
+                    if (progress.lastClue?.cellId !== latest.cell_id || !headings[progress.lastClue?.facing]) {
+                        // Older saves kept the poem number but not the discovery heading.
+                        progress.lastClue = { cellId: latest.cell_id, facing: latest.facing };
+                    }
+                    if (reenter && slug === "pdx-v1") returnToLastClue();
+                    else journal.open = true;
+                } else {
+                    discoverClue();
+                }
+                game.hidden = false;
+                render();
+                reenter = false;
+            } catch (error) {
+                if (signal.aborted) return;
+                console.error("PDX:", error);
+                game.hidden = true;
+                status.textContent = "No se pudo cargar el laberinto.";
+                buttons.get("retry").hidden = false;
+            }
+        }
+
+        picker.addEventListener("change", () => {
+            slug = picker.value;
+            State.variables.pdxSelected = slug;
+            reenter = false;
+            load();
+        }, { signal });
+
+        for (const [action, button] of buttons) {
+            button.addEventListener("click", () => {
+                if (action === "retry") return load();
+                if (!progress || button.hidden || button.disabled) return;
+                if (action === "left" || action === "right") {
+                    progress.facing = turn(progress.facing, action === "left" ? -1 : 1);
+                } else if (action === "inspect") {
+                    progress.found = true;
+                } else if (action === "return-clue") {
+                    returnToLastClue();
+                } else if (action === "new-adventure") {
+                    if (!window.confirm("¿Empezar una nueva aventura? Se reiniciará tu progreso en este laberinto.")) return;
+                    startAdventure();
+                } else {
+                    const cell = content.byId.get(progress.cellId);
+                    const exit = cell.exits.get(action === "forward" ? progress.facing : action);
+                    if (!exit) return;
+                    progress.cellId = exit.cell;
+                }
+                status.textContent = "";
+                if (action !== "return-clue") discoverClue();
+                render();
+                if (button.hidden || button.disabled) buttons.get("left").focus();
+            }, { signal });
+        }
+        load();
+    }
+
+    $(document).on(":passagedisplay", event => {
+        if (event.passage.title !== "PDX") return;
+        const room = event.content.querySelector(".pdx-room");
+        if (room) mount(room);
+    });
+})();
+/* twine-user-script #4: "story.js" */
 
 /* PUERTAS DEL CASTELLANO — SUPABASE */
 
@@ -3004,34 +4019,102 @@ setup.doorSound = new Audio("audio/door-open.wav");
 setup.doorSound.preload = "auto";
 setup.doorSound.load();
 
-setup.audio = setup.audio || {};
-setup.audio.enabled = true;
+setup.audio = { enabled: true, music: new Audio() };
+setup.audio.music.loop = true;
+setup.audio.music.volume = 0.25;
 try {
     setup.audio.enabled = localStorage.getItem("pdd-music-enabled") !== "false";
+    const volume = localStorage.getItem("castle-music-volume");
+    if (volume !== null && Number(volume) >= 0 && Number(volume) <= 1) {
+        setup.audio.music.volume = Number(volume);
+    }
 } catch (error) {
     console.warn("Music preference unavailable:", error);
 }
-setup.audio.music = setup.audio.music || new Audio("audio/chamber0.mp3");
 
-setup.audio.startMusic = function (chamberNumber) {
-    const number = Number(chamberNumber) || 0;
-    const path = "audio/chamber" + number + ".mp3";
+setup.audio.playMusic = function () {
+    const { enabled, music } = setup.audio;
+    if (!enabled || !music.hasAttribute("src") || !music.paused) return;
 
-    if (setup.audio.music.getAttribute("src") !== path) {
-        setup.audio.music.pause();
-        setup.audio.music.src = path;
-        setup.audio.music.load();
-    }
-
-    setup.audio.music.loop = true;
-    setup.audio.music.volume = 0.25;
-
-    if (!setup.audio.enabled) return;
-
-    return setup.audio.music.play().catch(function (error) {
-        console.log("Music playback unavailable:", error);
+    return music.play().catch(function (error) {
+        if (error.name !== "AbortError") console.log("Music playback unavailable:", error);
     });
 };
+
+setup.audio.setTrack = function (path) {
+    const { music } = setup.audio;
+    if (music.getAttribute("src") !== path) {
+        music.pause();
+        if (path === null) music.removeAttribute("src");
+        else music.src = path;
+        music.load();
+    }
+    setup.audio.playMusic();
+};
+
+setup.audio.pddTrack = function (pdd) {
+    const number = Number(pdd);
+    return Number.isInteger(number) && number > 0
+        ? "audio/chamber" + (number % 10) + ".mp3"
+        : null;
+};
+
+// Each passage can resolve its own track. Unlisted passages are silent.
+const castleMusic = new Map([
+    ["TestMystRoom", () => setup.audio.pddTrack(State.variables.currentPdd)]
+]);
+
+$(document).on(":passagedisplay", function (event) {
+    setup.audio.setTrack(castleMusic.get(event.passage.title)?.() ?? null);
+});
+
+$(document).one(":storyready", function () {
+    const $controls = $(`
+        <div id="castle-sidebar-controls">
+            <button type="button" id="castle-sidebar-home" aria-label="Volver a las puertas" title="Volver a las puertas">
+                <span aria-hidden="true">🏠</span>
+                <span class="castle-sidebar-expanded">Volver a las puertas</span>
+            </button>
+            <button type="button" id="castle-sidebar-mute" aria-label="Silenciar música" title="Silenciar música">
+                <span aria-hidden="true"></span>
+            </button>
+            <label class="castle-sidebar-expanded" for="castle-sidebar-volume">
+                Volumen
+                <input type="range" id="castle-sidebar-volume" min="0" max="1" step="0.01">
+            </label>
+        </div>
+    `).insertAfter("#ui-bar-tray");
+    const $mute = $controls.find("#castle-sidebar-mute");
+
+    function updateMute() {
+        $mute.attr("aria-pressed", String(!setup.audio.enabled))
+            .children("span").text(setup.audio.enabled ? "🔊" : "🔇");
+    }
+
+    function saveAudioPreference(key, value) {
+        try {
+            localStorage.setItem(key, String(value));
+        } catch (error) {
+            console.warn("Could not save music preference:", error);
+        }
+    }
+
+    $controls.find("#castle-sidebar-home").on("click", function () {
+        if (State.passage !== "Empieza") Engine.play("Empieza");
+    });
+    $mute.on("click", function () {
+        setup.audio.enabled = !setup.audio.enabled;
+        if (setup.audio.enabled) setup.audio.playMusic();
+        else setup.audio.music.pause();
+        saveAudioPreference("pdd-music-enabled", setup.audio.enabled);
+        updateMute();
+    });
+    $controls.find("#castle-sidebar-volume").val(setup.audio.music.volume).on("input", function () {
+        setup.audio.music.volume = Number(this.value);
+        saveAudioPreference("castle-music-volume", this.value);
+    });
+    updateMute();
+});
 
 /* PUERTAS DEL CASTELLANO — EXPLORATION MEMORY */
 
@@ -3078,34 +4161,24 @@ setup.features = {
     manuscript: false
 };
 
-$(document).one(":storyready", function () {
-    const $item = $('<li id="menu-solo-restart"></li>');
-    const $button = $('<a href="#">Nueva aventura</a>');
+$(document).on("click", "#solo-restart", function () {
+    if (!confirm(
+        "¿Quieres comenzar una nueva aventura? " +
+        "Se borrarán tu diario, tus recuerdos y tu progreso."
+    )) {
+        return;
+    }
 
-    $button.on("click", function (event) {
-        event.preventDefault();
+    [
+        "soloCastleCurrentPrompt",
+        "soloCastleCurrentVisit",
+        "soloCastleVisits",
+        "soloCastleIntro",
+        "soloCastleMemories",
+        "soloCastleJournal"
+    ].forEach(key => localStorage.removeItem(key));
 
-        if (!confirm(
-            "¿Quieres comenzar una nueva aventura? " +
-            "Se borrarán tu diario, tus recuerdos y tu progreso."
-        )) {
-            return;
-        }
-
-[
-    "soloCastleCurrentPrompt",
-    "soloCastleCurrentVisit",
-    "soloCastleVisits",
-    "soloCastleIntro",
-    "soloCastleMemories",
-    "soloCastleJournal"
-].forEach(key => localStorage.removeItem(key));
-
-        Engine.play("SoloCastleRoom");
-    });
-
-    $item.append($button);
-    $("#menu-core").append($item);
+    Engine.play("SoloCastleRoom");
 });
 
 
@@ -3133,8 +4206,10 @@ $(document).on(":passagedisplay", (event) => {
         { key: "H", badge: "PDH", name: "Pasadizo de Hipervínculos", destination: "PasadizoHipervinculos" },
         { key: "L", badge: "PDL", name: "Pila de Letras", destination: "PilaDeLetras" },
         { key: "O", badge: "PDO", name: "Palacio de Obras", destination: "PalacioDeObras" },
+        { key: "P", badge: "PDP", name: "Puentes de Principiante", destination: "PDP" },
         { key: "Q", badge: "PDQ", name: "Pruebas de Don Quijote", destination: "PruebasDonQuijote" },
-        { key: "T", badge: "PDT", name: "Puerta de prueba", destination: "TavernRoom" }
+        { key: "T", badge: "PDT", name: "Posada de los Cuentos", destination: "TavernRoom" },
+        { key: "X", badge: "PDX", name: "¿Puedes Descubrir la X?", destination: "PDX" }
       ];
       const keyTargets = {};
       const placeholders = Array.from(alphabet, (_, index) => {
@@ -4273,7 +5348,6 @@ $(document).on(":passagedisplay", (event) => {
 
                 State.variables.currentPdd = latestPdd;
                 State.variables.enteredFromPdd = 0;
-setup.audio.startMusic();
                 Engine.play(&quot;TestMystRoom&quot;);
             });
 
@@ -4332,8 +5406,10 @@ setup.audio.startMusic();
       &lt;span hidden&gt;&lt;kbd&gt;H&lt;/kbd&gt; &lt;span id=&quot;shortcut-H&quot;&gt;Pasadizo de Hipervínculos&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;L&lt;/kbd&gt; &lt;span id=&quot;shortcut-L&quot;&gt;Pila de Letras&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;O&lt;/kbd&gt; &lt;span id=&quot;shortcut-O&quot;&gt;Palacio de Obras&lt;/span&gt;&lt;/span&gt;
+      &lt;span hidden&gt;&lt;kbd&gt;P&lt;/kbd&gt; &lt;span id=&quot;shortcut-P&quot;&gt;Puentes de Principiante&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;Q&lt;/kbd&gt; &lt;span id=&quot;shortcut-Q&quot;&gt;Pruebas de Don Quijote&lt;/span&gt;&lt;/span&gt;
-      &lt;span&gt;&lt;kbd&gt;T&lt;/kbd&gt; &lt;span id=&quot;shortcut-T&quot;&gt;Puerta de prueba&lt;/span&gt;&lt;/span&gt;
+      &lt;span&gt;&lt;kbd&gt;T&lt;/kbd&gt; &lt;span id=&quot;shortcut-T&quot;&gt;Posada de los Cuentos&lt;/span&gt;&lt;/span&gt;
+      &lt;span hidden&gt;&lt;kbd&gt;X&lt;/kbd&gt; &lt;span id=&quot;shortcut-X&quot;&gt;¿Puedes Descubrir la X?&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;←&lt;/kbd&gt;&lt;kbd&gt;→&lt;/kbd&gt; Recorrer el muro&lt;/span&gt;
     &lt;/div&gt;
     &lt;p class=&quot;prototype-note&quot; id=&quot;data-status&quot; role=&quot;status&quot;&gt;
@@ -5023,9 +6099,6 @@ $(&quot;#circular-next&quot;).on(&quot;click&quot;, function() {
 &lt;button type=&quot;button&quot; id=&quot;myst-journal&quot;&gt;
     📜 Diario del Explorador
 &lt;/button&gt;
-&lt;button type=&quot;button&quot; id=&quot;myst-audio-toggle&quot; aria-pressed=&quot;false&quot;&gt;
-    🔊 Música
-&lt;/button&gt;
 &lt;div id=&quot;myst-journal-panel&quot; hidden&gt;
     &lt;h2&gt;📜 Diario del Explorador&lt;/h2&gt;
 &lt;p id=&quot;myst-journal-count&quot;&gt;&lt;/p&gt;
@@ -5195,29 +6268,6 @@ doorHotspot.on(&quot;click&quot;, function () {
 
     const leftButton = $(&quot;#myst-left&quot;);
     const rightButton = $(&quot;#myst-right&quot;);
-const audioButton = $(&quot;#myst-audio-toggle&quot;);
-
-function updateAudioButton() {
-    audioButton
-        .text(setup.audio.enabled ? &quot;🔊 Música&quot; : &quot;🔇 Silencio&quot;)
-        .attr(&quot;aria-pressed&quot;, String(!setup.audio.enabled));
-}
-
-updateAudioButton();
-
-audioButton.on(&quot;click&quot;, function () {
-    setup.audio.enabled = !setup.audio.enabled;
-
-    if (setup.audio.enabled) {
-        setup.audio.music.play().catch(function (error) {
-            console.log(&quot;Music unavailable:&quot;, error);
-        });
-    } else {
-        setup.audio.music.pause();
-    }
-
-    updateAudioButton();
-});
     enterButton.prop(&quot;disabled&quot;, true);
     leftButton.prop(&quot;disabled&quot;, true);
     rightButton.prop(&quot;disabled&quot;, true);
@@ -5234,11 +6284,14 @@ audioButton.on(&quot;click&quot;, function () {
                 await setup.getLatestPublishedPdd()
             );
 
+            if (!word[0]?.isConnected) return;
+
             if (!Number.isFinite(currentPdd) || currentPdd &lt;= 0) {
                 throw new Error(&quot;No hay palabras publicadas.&quot;);
             }
 
             State.variables.currentPdd = currentPdd;
+            setup.audio.setTrack(setup.audio.pddTrack(currentPdd));
         }
 
         const currentRoom = await setup.getRoom(currentPdd);
@@ -5503,8 +6556,6 @@ $(&quot;#myst-animation&quot;).attr(
     &quot;src&quot;,
     &quot;images/pdd-animation&quot; + chamberNumber + &quot;.webp&quot;
 );
-
-setup.audio.startMusic(chamberNumber);
 
 console.log(
     &quot;ESCALERA:&quot;,
@@ -6239,6 +7290,9 @@ Engine.play(&quot;TestSupabase&quot;);
     &lt;button id=&quot;solo-view-diary&quot; type=&quot;button&quot;&gt;
     Ver diario
 &lt;/button&gt;
+    &lt;button id=&quot;solo-restart&quot; type=&quot;button&quot;&gt;
+        Nueva aventura
+    &lt;/button&gt;
 
 &lt;div id=&quot;solo-diary-view&quot; hidden&gt;
     &lt;h3&gt;Mis aventuras&lt;/h3&gt;
@@ -6892,7 +7946,7 @@ $(&quot;#poema-image&quot;).attr(&quot;src&quot;, &quot;images/&quot; + filename
     alert(&quot;El Diario de los Poemas estará disponible pronto.&quot;);
 })&gt;&gt;
 &lt;&lt;/done&gt;&gt;</tw-passagedata><tw-passagedata pid="27" name="TavernRoom" tags="" position="850,350" size="100,100">&lt;&lt;nobr&gt;&gt;
-&lt;&lt;castleDoorTitle &quot;Puerta de prueba&quot;&gt;&gt;
+&lt;&lt;castleDoorTitle &quot;Posada de los Cuentos&quot;&gt;&gt;
 &lt;div class=&quot;room-card pdt-tavern&quot;&gt;
     &lt;div class=&quot;pdt-intro&quot;&gt;
         &lt;div class=&quot;pdt-tavern-art pdt-illustration&quot;&gt;
@@ -7420,6 +8474,101 @@ $(&quot;#poema-image&quot;).attr(&quot;src&quot;, &quot;images/&quot; + filename
     &lt;/div&gt;
     &lt;p class=&quot;pdl-status&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
     &lt;button class=&quot;pdl-next&quot; type=&quot;button&quot; disabled&gt;¿Otra?&lt;/button&gt;
+&lt;/section&gt;
+&lt;&lt;castleDoorReturn&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="PDP" tags="" position="225,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;castleDoorTitle &quot;Puentes de Principiante&quot;&gt;&gt;
+&lt;section class=&quot;pdp-room&quot; aria-label=&quot;Puentes de Principiante&quot;&gt;
+    &lt;p class=&quot;pdp-status&quot; role=&quot;status&quot;&gt;Cargando las islas…&lt;/p&gt;
+    &lt;button type=&quot;button&quot; class=&quot;pdp-retry&quot; hidden&gt;Reintentar&lt;/button&gt;
+    &lt;div class=&quot;pdp-game&quot; hidden&gt;
+        &lt;p class=&quot;pdp-sentence&quot; tabindex=&quot;-1&quot;&gt;&lt;/p&gt;
+        &lt;div class=&quot;pdp-view&quot;&gt;
+            &lt;svg class=&quot;pdp-scene&quot; viewBox=&quot;0 0 720 350&quot; aria-hidden=&quot;true&quot; focusable=&quot;false&quot;&gt;
+                &lt;g fill=&quot;#fffdf7&quot; stroke=&quot;#d2effb&quot; stroke-width=&quot;3&quot;&gt;
+                    &lt;path d=&quot;M35 83a15 15 0 0 1 13-15 21 21 0 0 1 39-8 23 23 0 0 1 44 8 15 15 0 0 1-2 30H50a15 15 0 0 1-15-15z&quot;/&gt;
+                    &lt;path d=&quot;M540 57a14 14 0 0 1 16-14 20 20 0 0 1 38-5 23 23 0 0 1 40 13 14 14 0 0 1-2 28h-76a14 14 0 0 1-16-22z&quot;/&gt;
+                    &lt;path d=&quot;M602 129a10 10 0 0 1 11-10 15 15 0 0 1 28-5 16 16 0 0 1 28 10 10 10 0 0 1-2 20h-53a12 12 0 0 1-12-15z&quot;/&gt;
+                &lt;/g&gt;
+                &lt;path fill=&quot;#79bbd6&quot; d=&quot;M0 218q46-64 68-92 12-15 25 0l58 70 79-90q15-16 31 2l79 91 61-73q13-16 27 0l64 81 74-62q15-13 30 1l43 39 54-73q14-18 27 0v143H0z&quot;/&gt;
+                &lt;path fill=&quot;#a4d3de&quot; d=&quot;M0 236q59-29 119-29 40 0 103 30 33-36 99-37 49 1 105 41 61-25 108-23 43 2 79 25 55-31 107-28v135H0z&quot;/&gt;
+                &lt;g class=&quot;pdp-span&quot; stroke-linecap=&quot;round&quot; stroke-linejoin=&quot;round&quot;&gt;
+                    &lt;path fill=&quot;#a7663e&quot; stroke=&quot;#714329&quot; stroke-width=&quot;3&quot; d=&quot;M221 155q0-24 41-35 90-22 186-4 47 10 52 33l-21 52-41 18-39 5-37 18-42-21-43-9-34-22z&quot;/&gt;
+                    &lt;path fill=&quot;#c1844d&quot; d=&quot;M246 172l65 5 36 16 57-7 72-19-12 23-33 14-45 8-27 14-36-17-39-10z&quot;/&gt;
+                    &lt;path fill=&quot;#8b532f&quot; d=&quot;M261 189l24 6 9 10-15-2zM410 207l19-12 17 1-7 8zM338 210l14-6 12 10-15 5z&quot;/&gt;
+                    &lt;path fill=&quot;#39852f&quot; d=&quot;M222 152q48 18 95 12 24 12 58 7 30 5 56-8 33 2 69-15l-5 15q-34 20-66 14-28 13-56 6-35 7-58-5-52 7-88-12z&quot;/&gt;
+                    &lt;path fill=&quot;#90d742&quot; stroke=&quot;#417b32&quot; stroke-width=&quot;3&quot; d=&quot;M221 152q0-20 41-32 90-22 186-4 47 10 52 33-37 17-70 14-27 12-57 7-34 5-57-7-52 7-95-11z&quot;/&gt;
+                    &lt;path fill=&quot;#c6ec75&quot; d=&quot;M245 139q26-15 73-16-25 5-35 16-23-2-38 0zM412 125q42 0 65 17-34-5-48 1 0-10-17-18z&quot;/&gt;
+                    &lt;path fill=&quot;#d9a05e&quot; stroke=&quot;#74472a&quot; stroke-width=&quot;3&quot; d=&quot;M338 146h44l124 157H214z&quot;/&gt;
+                    &lt;path fill=&quot;none&quot; stroke=&quot;#a16b3f&quot; stroke-width=&quot;3&quot; d=&quot;M325 163h70m-84 18h98m-114 19h130m-148 22h166m-188 26h210m-236 30h262&quot;/&gt;
+                    &lt;path fill=&quot;none&quot; stroke=&quot;#74472a&quot; stroke-width=&quot;5&quot; d=&quot;M335 140L200 289m185-149 135 149M325 167v-15m-29 45v-19m-36 57v-22m-41 66v-23m176-89v-15m29 45v-19m36 57v-22m41 66v-23&quot;/&gt;
+                &lt;/g&gt;
+                &lt;path fill=&quot;#a7653b&quot; stroke=&quot;#714329&quot; stroke-width=&quot;3&quot; d=&quot;M36 326q39-32 99-25 26-15 65-8 29-22 77-17 82-13 154 0 63-5 99 17 39-6 67 8 53-6 88 25l-27 24H62z&quot;/&gt;
+                &lt;path fill=&quot;#ce8c54&quot; d=&quot;M65 333q56 7 97-4 68 10 130-1 86 12 145 0 60 10 118 0 52 13 101 3l-14 19H78z&quot;/&gt;
+                &lt;path fill=&quot;#438b30&quot; d=&quot;M36 326q74 4 112-12 48 12 101-7 67 14 111 3 68 12 117-3 48 19 99 8 51 16 109 11l-14 13q-54 5-96-10-48 11-101-7-47 14-114 1-47 12-111-2-50 21-101 8-37 15-98 10z&quot;/&gt;
+                &lt;path fill=&quot;#94d64a&quot; stroke=&quot;#417b32&quot; stroke-width=&quot;3&quot; d=&quot;M36 326q39-32 99-25 26-15 65-8 29-22 77-17 82-13 154 0 63-5 99 17 39-6 67 8 53-6 88 25-58 5-109-11-51 11-99-8-49 15-117 3-44 11-111-3-53 19-101 7-38 16-112 12z&quot;/&gt;
+                &lt;path fill=&quot;#c4ea76&quot; d=&quot;M146 307q37-10 59-8 15-10 47-12-21 6-28 17-33-4-78 3zM504 293q26 0 41 10 30-3 60 7-44-5-69 1-14-11-32-18z&quot;/&gt;
+            &lt;/svg&gt;
+            &lt;span class=&quot;pdp-destination&quot; aria-live=&quot;polite&quot; aria-atomic=&quot;true&quot;&gt;&lt;/span&gt;
+        &lt;/div&gt;
+        &lt;div class=&quot;pdp-choices&quot; role=&quot;group&quot; aria-label=&quot;Puentes de esta isla&quot;&gt;
+            &lt;div class=&quot;pdp-turns&quot;&gt;
+                &lt;button type=&quot;button&quot; data-pdp-action=&quot;left&quot; aria-label=&quot;Girar a la izquierda&quot;&gt;↶ Izquierda&lt;/button&gt;
+                &lt;button type=&quot;button&quot; data-pdp-action=&quot;cross&quot;&gt;Cruzar&lt;/button&gt;
+                &lt;button type=&quot;button&quot; data-pdp-action=&quot;right&quot; aria-label=&quot;Girar a la derecha&quot;&gt;Derecha ↷&lt;/button&gt;
+            &lt;/div&gt;
+            &lt;p class=&quot;pdp-facing&quot;&gt;&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;pdp-complete&quot; hidden&gt;¡Frase completa!&lt;/p&gt;
+        &lt;div class=&quot;pdp-actions&quot; role=&quot;group&quot; aria-label=&quot;Recorrido de la frase&quot;&gt;
+            &lt;button type=&quot;button&quot; data-pdp-action=&quot;back&quot;&gt;← Volver a la isla anterior&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-pdp-action=&quot;restart&quot;&gt;Empezar de nuevo en Yo&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+&lt;&lt;castleDoorReturn&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="PDX" tags="" position="350,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;castleDoorTitle &quot;¿Puedes Descubrir la X?&quot;&gt;&gt;
+&lt;section class=&quot;pdx-room&quot; aria-label=&quot;Laberinto de la X&quot;&gt;
+    &lt;p&gt;Busca tres poemas y sigue sus versos hasta la X. Cada vez que avances darás un paso.&lt;/p&gt;
+    &lt;label class=&quot;pdx-choice&quot;&gt;Laberinto
+        &lt;select class=&quot;pdx-picker&quot;&gt;
+            &lt;option value=&quot;pdx-v1&quot;&gt;1 · El laberinto de la X&lt;/option&gt;
+            &lt;option value=&quot;pdx-v2&quot;&gt;2 · El secreto de la torre&lt;/option&gt;
+        &lt;/select&gt;
+    &lt;/label&gt;
+    &lt;p class=&quot;pdx-status&quot; role=&quot;status&quot;&gt;Cargando el laberinto…&lt;/p&gt;
+    &lt;button type=&quot;button&quot; data-pdx-action=&quot;retry&quot; hidden&gt;Reintentar&lt;/button&gt;
+    &lt;div class=&quot;pdx-game&quot; hidden&gt;
+        &lt;p class=&quot;pdx-location&quot; aria-live=&quot;polite&quot;&gt;&lt;/p&gt;
+        &lt;div class=&quot;pdx-view&quot; aria-hidden=&quot;true&quot;&gt;
+            &lt;div class=&quot;pdx-facet pdx-ceiling&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;pdx-facet pdx-floor&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;pdx-facet pdx-wall pdx-wall-left&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;pdx-facet pdx-wall pdx-wall-right&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;pdx-facet pdx-wall pdx-wall-front&quot;&gt;&lt;/div&gt;
+            &lt;div class=&quot;pdx-objects&quot;&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;pdx-placeholder&quot;&gt;&lt;/p&gt;
+        &lt;div class=&quot;pdx-controls&quot; role=&quot;group&quot; aria-label=&quot;Controles del laberinto&quot;&gt;
+            &lt;span class=&quot;pdx-heading&quot; aria-hidden=&quot;true&quot;&gt;&lt;/span&gt;
+            &lt;button type=&quot;button&quot; data-pdx-action=&quot;left&quot;&gt;↶ Girar a la izquierda&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-pdx-action=&quot;forward&quot;&gt;↑ Avanzar&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-pdx-action=&quot;right&quot;&gt;↷ Girar a la derecha&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-pdx-action=&quot;up&quot; hidden&gt;Subir escaleras&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-pdx-action=&quot;down&quot; hidden&gt;Bajar escaleras&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-pdx-action=&quot;inspect&quot; hidden&gt;Examinar la piedra suelta&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;p class=&quot;pdx-return-help&quot;&gt;Primero tienes que descubrir un poema.&lt;/p&gt;
+        &lt;div class=&quot;pdx-controls&quot; role=&quot;group&quot; aria-label=&quot;Acciones de la aventura&quot;&gt;
+            &lt;button type=&quot;button&quot; data-pdx-action=&quot;return-clue&quot; disabled&gt;Volver a la última pista&lt;/button&gt;
+            &lt;button type=&quot;button&quot; data-pdx-action=&quot;new-adventure&quot;&gt;Nueva aventura&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;details class=&quot;pdx-journal&quot;&gt;
+            &lt;summary class=&quot;pdx-journal-title&quot;&gt;Cuaderno de pistas&lt;/summary&gt;
+            &lt;div class=&quot;pdx-verses&quot;&gt;&lt;/div&gt;
+        &lt;/details&gt;
+    &lt;/div&gt;
 &lt;/section&gt;
 &lt;&lt;castleDoorReturn&gt;&gt;
 &lt;&lt;/nobr&gt;&gt;</tw-passagedata></tw-storydata>

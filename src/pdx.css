@@ -1,0 +1,324 @@
+/* PDX — a fixed viewpoint. Only the graph opens the three visible walls. */
+.pdx-room {
+    max-width: 46rem;
+    margin-inline: auto;
+}
+
+.pdx-room [hidden],
+.pdx-room .pdx-status:empty {
+    display: none;
+}
+
+.pdx-room .pdx-status,
+.pdx-room .pdx-location {
+    font-weight: bold;
+}
+
+.pdx-room .pdx-view {
+    --pdx-wall-tone: #6e5b48;
+    --pdx-mortar: #46392e;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 2px solid #413225;
+    border-radius: .5rem;
+    background: #241b15;
+    color: #fff1cc;
+    box-sizing: border-box;
+}
+
+.pdx-room .pdx-view[data-scene="pizarra"] {
+    --pdx-wall-tone: #585a64;
+    --pdx-mortar: #383841;
+}
+
+.pdx-room :is(.pdx-facet, .pdx-objects) {
+    position: absolute;
+    inset: 0;
+}
+
+.pdx-room .pdx-ceiling {
+    clip-path: polygon(0 0, 100% 0, 72% 28%, 28% 28%);
+    background: linear-gradient(#211a17, var(--pdx-mortar));
+}
+
+.pdx-room .pdx-floor {
+    clip-path: polygon(0 100%, 28% 72%, 72% 72%, 100% 100%);
+    background:
+        repeating-linear-gradient(0deg, transparent 0 9%, #241b15a6 9% 10%),
+        linear-gradient(#51463e 65%, #817065);
+}
+
+.pdx-room .pdx-wall {
+    background:
+        radial-gradient(ellipse at 50% 42%, #e4ad6026, #14101886),
+        var(--pdx-texture,
+            repeating-linear-gradient(0deg, transparent 0 10%, var(--pdx-mortar) 10% 11%),
+            repeating-linear-gradient(90deg, transparent 0 12%, var(--pdx-mortar) 12% 12.5%)),
+        var(--pdx-wall-tone);
+    background-size: cover;
+}
+
+.pdx-room .pdx-wall-left {
+    clip-path: polygon(0 0, 28% 28%, 28% 72%, 0 100%);
+}
+
+.pdx-room .pdx-wall-right {
+    clip-path: polygon(100% 0, 72% 28%, 72% 72%, 100% 100%);
+}
+
+.pdx-room .pdx-wall-front {
+    clip-path: polygon(28% 28%, 72% 28%, 72% 72%, 28% 72%);
+    box-shadow: inset 0 0 5rem #241b15;
+}
+
+.pdx-room .pdx-view.pdx-has-backdrop {
+    background: #241b15 var(--pdx-backdrop) center / cover no-repeat;
+}
+
+.pdx-room .pdx-has-backdrop .pdx-facet {
+    background: none;
+    box-shadow: none;
+}
+
+.pdx-room .pdx-object {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    transform: translate(-50%, -50%);
+    font-size: clamp(1.2rem, 6vw, 3rem);
+    line-height: 1;
+    text-shadow: 0 2px 3px #140e09;
+}
+
+.pdx-room .pdx-object img {
+    width: clamp(1.6rem, 8vw, 4rem);
+    max-height: 3.75rem;
+    object-fit: contain;
+}
+
+.pdx-room .pdx-object small {
+    padding: .15em .35em;
+    border-radius: .2em;
+    background: #211811;
+    font-size: clamp(.66rem, 2.5vw, .9rem);
+    white-space: nowrap;
+}
+
+.pdx-room .pdx-slot-left { left: 24%; top: 47%; }
+.pdx-room .pdx-slot-center { left: 50%; top: 82%; }
+.pdx-room .pdx-slot-right { left: 76%; top: 49%; }
+.pdx-room .pdx-slot-back { left: 50%; top: 42%; }
+
+.pdx-room .pdx-door {
+    top: auto;
+    bottom: 8.5%;
+    width: 16%;
+    height: 78%;
+    transform: none;
+    pointer-events: none;
+}
+
+.pdx-room .pdx-door.pdx-slot-left { left: 7%; }
+
+.pdx-room .pdx-door.pdx-slot-right {
+    left: auto;
+    right: 7%;
+    transform: scaleX(-1);
+}
+
+.pdx-room .pdx-door.pdx-slot-back {
+    bottom: 28%;
+    height: 42%;
+    transform: translateX(-50%);
+}
+
+.pdx-room .pdx-door.pdx-slot-back:not(.pdx-has-art) {
+    border-radius: 50% 50% 0 0 / 32% 32% 0 0;
+    background: radial-gradient(ellipse at 50% 105%, #4b392b, #130f10 68%);
+    box-shadow: 0 0 0 .35em #584334;
+    font-size: clamp(.7rem, 2vw, 1.1rem);
+}
+
+.pdx-room .pdx-door:not(.pdx-slot-back):not(.pdx-has-art) {
+    clip-path: polygon(0 0, 100% 18%, 100% 81%, 0 100%);
+    background: linear-gradient(90deg, #352a23, #100e11 45%, #221a18);
+}
+
+.pdx-room .pdx-door img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    max-height: none;
+    object-position: left bottom;
+}
+
+.pdx-room .pdx-door.pdx-slot-back img {
+    object-position: center bottom;
+}
+
+.pdx-room .pdx-door:not(.pdx-slot-back) img {
+    /* Match the threshold to the wall-floor seam before mirroring. */
+    transform: skewY(27deg);
+    transform-origin: left bottom;
+}
+
+.pdx-room .pdx-has-backdrop .pdx-door.pdx-slot-back {
+    bottom: 26%;
+}
+
+.pdx-room .pdx-ladder {
+    --pdx-ladder-inset: 34%;
+    top: auto;
+    bottom: 18%;
+    width: 24%;
+    height: 76%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    transform: translateX(-50%);
+    pointer-events: none;
+}
+
+.pdx-room .pdx-ladder.pdx-slot-left { left: var(--pdx-ladder-inset); }
+.pdx-room .pdx-ladder.pdx-slot-right { left: calc(100% - var(--pdx-ladder-inset)); }
+
+.pdx-room .pdx-ladder-down {
+    bottom: 6%;
+    height: 46%;
+}
+
+.pdx-room .pdx-open-front .pdx-ladder {
+    --pdx-ladder-inset: 33%;
+}
+
+.pdx-room .pdx-open-front .pdx-ladder-down {
+    --pdx-ladder-inset: 31%;
+    width: 20%;
+}
+
+.pdx-room .pdx-ladder img {
+    flex: none;
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.pdx-room .pdx-ladder.pdx-has-art small {
+    display: none;
+}
+
+.pdx-room .pdx-ladder:not(.pdx-has-art) > span {
+    width: clamp(2rem, 10vw, 5rem);
+    height: clamp(1rem, 5vw, 2.4rem);
+    clip-path: polygon(22% 0, 78% 0, 100% 100%, 0 100%);
+    background: repeating-linear-gradient(0deg, #503929 0 18%, #c5a879 18% 35%);
+    font-size: 0;
+}
+
+.pdx-room .pdx-ladder-down:not(.pdx-has-art) > span {
+    background: repeating-linear-gradient(0deg, #b08f66 0 18%, #29201a 18% 35%);
+}
+
+.pdx-room .pdx-found {
+    left: 66%;
+    color: #ffd379;
+}
+
+.pdx-room .pdx-placeholder {
+    margin: .35rem 0 .7rem;
+    font-size: .9rem;
+}
+
+.pdx-room .pdx-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-block: .75rem;
+}
+
+.pdx-room .pdx-heading {
+    display: grid;
+    place-items: center;
+    min-width: 2rem;
+    min-height: 2rem;
+    align-self: center;
+    color: #ffefce;
+    background: #241b15;
+    border-radius: 50%;
+    font-weight: bold;
+}
+
+.pdx-room .pdx-choice {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5rem;
+    margin-block: .75rem;
+}
+
+.pdx-room .pdx-picker {
+    min-height: 44px;
+    max-width: 100%;
+    padding: .4rem .65rem;
+    color: #302318;
+    background: #fff2d8;
+    border: 1px solid #705940;
+    border-radius: .25rem;
+}
+
+.pdx-room button {
+    min-height: 44px;
+    padding: .4rem .65rem;
+    color: #ffefce;
+    background: #4c3929;
+    border: 1px solid #4c3929;
+    border-radius: .25rem;
+}
+
+.pdx-room button:hover:not(:disabled) {
+    background: #624930;
+}
+
+.pdx-room button:disabled {
+    color: #514839;
+    background: #d8c9ae;
+    border-color: #a1947d;
+    cursor: default;
+}
+
+.pdx-room :is(button, summary, select):focus-visible {
+    outline: 2px solid #54370f;
+    outline-offset: 3px;
+}
+
+.pdx-room .pdx-journal {
+    margin-top: .75rem;
+    border-top: 1px solid #a1947d;
+    padding-top: .4rem;
+}
+
+.pdx-room summary {
+    padding-block: .55rem;
+    cursor: pointer;
+}
+
+.pdx-room .pdx-verses h2 {
+    margin-bottom: .2rem;
+    font-size: 1.05rem;
+}
+
+.pdx-room .pdx-poem {
+    margin-top: 0;
+    white-space: pre-line;
+    font-style: italic;
+}
+
+.pdx-room .pdx-verses > section:first-child .pdx-poem {
+    font-weight: bold;
+}

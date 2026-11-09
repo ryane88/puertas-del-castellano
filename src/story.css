@@ -11,6 +11,67 @@ body {
   max-width: 900px;
 }
 
+#menu-item-saves,
+#menu-item-restart,
+#menu-core:not(:has(> li:not(#menu-item-saves, #menu-item-restart))) {
+  display: none;
+}
+
+#castle-sidebar-controls {
+  position: absolute;
+  top: 2.5em;
+  right: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 2em minmax(0, 1fr);
+  gap: 0.25em 0.5em;
+  padding: 0 1.5em;
+}
+
+#castle-sidebar-controls button {
+  min-height: 2em;
+  padding: 0;
+  color: #eee;
+  background: transparent;
+  border: 1px solid #444;
+}
+
+#castle-sidebar-controls button:hover {
+  background: #444;
+  border-color: #eee;
+}
+
+#castle-sidebar-home {
+  grid-column: 1 / -1;
+}
+
+#castle-sidebar-controls label {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  color: #eee;
+}
+
+#castle-sidebar-volume {
+  width: 100%;
+  min-width: 0;
+}
+
+#ui-bar-body {
+  height: calc(100% - 7.5em);
+  margin-top: 7.5em;
+}
+
+#ui-bar.stowed #castle-sidebar-controls {
+  left: auto;
+  grid-template-columns: 2em;
+  padding: 0;
+}
+
+#ui-bar.stowed .castle-sidebar-expanded {
+  display: none;
+}
+
 h1, h2 {
   color: #514839;
   text-align: center;

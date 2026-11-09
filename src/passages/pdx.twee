@@ -1,0 +1,46 @@
+:: PDX
+<<nobr>>
+<<castleDoorTitle "¿Puedes Descubrir la X?">>
+<section class="pdx-room" aria-label="Laberinto de la X">
+    <p>Busca tres poemas y sigue sus versos hasta la X. Cada vez que avances darás un paso.</p>
+    <label class="pdx-choice">Laberinto
+        <select class="pdx-picker">
+            <option value="pdx-v1">1 · El laberinto de la X</option>
+            <option value="pdx-v2">2 · El secreto de la torre</option>
+        </select>
+    </label>
+    <p class="pdx-status" role="status">Cargando el laberinto…</p>
+    <button type="button" data-pdx-action="retry" hidden>Reintentar</button>
+    <div class="pdx-game" hidden>
+        <p class="pdx-location" aria-live="polite"></p>
+        <div class="pdx-view" aria-hidden="true">
+            <div class="pdx-facet pdx-ceiling"></div>
+            <div class="pdx-facet pdx-floor"></div>
+            <div class="pdx-facet pdx-wall pdx-wall-left"></div>
+            <div class="pdx-facet pdx-wall pdx-wall-right"></div>
+            <div class="pdx-facet pdx-wall pdx-wall-front"></div>
+            <div class="pdx-objects"></div>
+        </div>
+        <p class="pdx-placeholder"></p>
+        <div class="pdx-controls" role="group" aria-label="Controles del laberinto">
+            <span class="pdx-heading" aria-hidden="true"></span>
+            <button type="button" data-pdx-action="left">↶ Girar a la izquierda</button>
+            <button type="button" data-pdx-action="forward">↑ Avanzar</button>
+            <button type="button" data-pdx-action="right">↷ Girar a la derecha</button>
+            <button type="button" data-pdx-action="up" hidden>Subir escaleras</button>
+            <button type="button" data-pdx-action="down" hidden>Bajar escaleras</button>
+            <button type="button" data-pdx-action="inspect" hidden>Examinar la piedra suelta</button>
+        </div>
+        <p class="pdx-return-help">Primero tienes que descubrir un poema.</p>
+        <div class="pdx-controls" role="group" aria-label="Acciones de la aventura">
+            <button type="button" data-pdx-action="return-clue" disabled>Volver a la última pista</button>
+            <button type="button" data-pdx-action="new-adventure">Nueva aventura</button>
+        </div>
+        <details class="pdx-journal">
+            <summary class="pdx-journal-title">Cuaderno de pistas</summary>
+            <div class="pdx-verses"></div>
+        </details>
+    </div>
+</section>
+<<castleDoorReturn>>
+<</nobr>>

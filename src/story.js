@@ -298,34 +298,102 @@ setup.doorSound = new Audio("audio/door-open.wav");
 setup.doorSound.preload = "auto";
 setup.doorSound.load();
 
-setup.audio = setup.audio || {};
-setup.audio.enabled = true;
+setup.audio = { enabled: true, music: new Audio() };
+setup.audio.music.loop = true;
+setup.audio.music.volume = 0.25;
 try {
     setup.audio.enabled = localStorage.getItem("pdd-music-enabled") !== "false";
+    const volume = localStorage.getItem("castle-music-volume");
+    if (volume !== null && Number(volume) >= 0 && Number(volume) <= 1) {
+        setup.audio.music.volume = Number(volume);
+    }
 } catch (error) {
     console.warn("Music preference unavailable:", error);
 }
-setup.audio.music = setup.audio.music || new Audio("audio/chamber0.mp3");
 
-setup.audio.startMusic = function (chamberNumber) {
-    const number = Number(chamberNumber) || 0;
-    const path = "audio/chamber" + number + ".mp3";
+setup.audio.playMusic = function () {
+    const { enabled, music } = setup.audio;
+    if (!enabled || !music.hasAttribute("src") || !music.paused) return;
 
-    if (setup.audio.music.getAttribute("src") !== path) {
-        setup.audio.music.pause();
-        setup.audio.music.src = path;
-        setup.audio.music.load();
-    }
-
-    setup.audio.music.loop = true;
-    setup.audio.music.volume = 0.25;
-
-    if (!setup.audio.enabled) return;
-
-    return setup.audio.music.play().catch(function (error) {
-        console.log("Music playback unavailable:", error);
+    return music.play().catch(function (error) {
+        if (error.name !== "AbortError") console.log("Music playback unavailable:", error);
     });
 };
+
+setup.audio.setTrack = function (path) {
+    const { music } = setup.audio;
+    if (music.getAttribute("src") !== path) {
+        music.pause();
+        if (path === null) music.removeAttribute("src");
+        else music.src = path;
+        music.load();
+    }
+    setup.audio.playMusic();
+};
+
+setup.audio.pddTrack = function (pdd) {
+    const number = Number(pdd);
+    return Number.isInteger(number) && number > 0
+        ? "audio/chamber" + (number % 10) + ".mp3"
+        : null;
+};
+
+// Each passage can resolve its own track. Unlisted passages are silent.
+const castleMusic = new Map([
+    ["TestMystRoom", () => setup.audio.pddTrack(State.variables.currentPdd)]
+]);
+
+$(document).on(":passagedisplay", function (event) {
+    setup.audio.setTrack(castleMusic.get(event.passage.title)?.() ?? null);
+});
+
+$(document).one(":storyready", function () {
+    const $controls = $(`
+        <div id="castle-sidebar-controls">
+            <button type="button" id="castle-sidebar-home" aria-label="Volver a las puertas" title="Volver a las puertas">
+                <span aria-hidden="true">🏠</span>
+                <span class="castle-sidebar-expanded">Volver a las puertas</span>
+            </button>
+            <button type="button" id="castle-sidebar-mute" aria-label="Silenciar música" title="Silenciar música">
+                <span aria-hidden="true"></span>
+            </button>
+            <label class="castle-sidebar-expanded" for="castle-sidebar-volume">
+                Volumen
+                <input type="range" id="castle-sidebar-volume" min="0" max="1" step="0.01">
+            </label>
+        </div>
+    `).insertAfter("#ui-bar-tray");
+    const $mute = $controls.find("#castle-sidebar-mute");
+
+    function updateMute() {
+        $mute.attr("aria-pressed", String(!setup.audio.enabled))
+            .children("span").text(setup.audio.enabled ? "🔊" : "🔇");
+    }
+
+    function saveAudioPreference(key, value) {
+        try {
+            localStorage.setItem(key, String(value));
+        } catch (error) {
+            console.warn("Could not save music preference:", error);
+        }
+    }
+
+    $controls.find("#castle-sidebar-home").on("click", function () {
+        if (State.passage !== "Empieza") Engine.play("Empieza");
+    });
+    $mute.on("click", function () {
+        setup.audio.enabled = !setup.audio.enabled;
+        if (setup.audio.enabled) setup.audio.playMusic();
+        else setup.audio.music.pause();
+        saveAudioPreference("pdd-music-enabled", setup.audio.enabled);
+        updateMute();
+    });
+    $controls.find("#castle-sidebar-volume").val(setup.audio.music.volume).on("input", function () {
+        setup.audio.music.volume = Number(this.value);
+        saveAudioPreference("castle-music-volume", this.value);
+    });
+    updateMute();
+});
 
 /* PUERTAS DEL CASTELLANO — EXPLORATION MEMORY */
 
@@ -372,34 +440,24 @@ setup.features = {
     manuscript: false
 };
 
-$(document).one(":storyready", function () {
-    const $item = $('<li id="menu-solo-restart"></li>');
-    const $button = $('<a href="#">Nueva aventura</a>');
+$(document).on("click", "#solo-restart", function () {
+    if (!confirm(
+        "¿Quieres comenzar una nueva aventura? " +
+        "Se borrarán tu diario, tus recuerdos y tu progreso."
+    )) {
+        return;
+    }
 
-    $button.on("click", function (event) {
-        event.preventDefault();
+    [
+        "soloCastleCurrentPrompt",
+        "soloCastleCurrentVisit",
+        "soloCastleVisits",
+        "soloCastleIntro",
+        "soloCastleMemories",
+        "soloCastleJournal"
+    ].forEach(key => localStorage.removeItem(key));
 
-        if (!confirm(
-            "¿Quieres comenzar una nueva aventura? " +
-            "Se borrarán tu diario, tus recuerdos y tu progreso."
-        )) {
-            return;
-        }
-
-[
-    "soloCastleCurrentPrompt",
-    "soloCastleCurrentVisit",
-    "soloCastleVisits",
-    "soloCastleIntro",
-    "soloCastleMemories",
-    "soloCastleJournal"
-].forEach(key => localStorage.removeItem(key));
-
-        Engine.play("SoloCastleRoom");
-    });
-
-    $item.append($button);
-    $("#menu-core").append($item);
+    Engine.play("SoloCastleRoom");
 });
 
 
@@ -427,8 +485,10 @@ $(document).on(":passagedisplay", (event) => {
         { key: "H", badge: "PDH", name: "Pasadizo de Hipervínculos", destination: "PasadizoHipervinculos" },
         { key: "L", badge: "PDL", name: "Pila de Letras", destination: "PilaDeLetras" },
         { key: "O", badge: "PDO", name: "Palacio de Obras", destination: "PalacioDeObras" },
+        { key: "P", badge: "PDP", name: "Puentes de Principiante", destination: "PDP" },
         { key: "Q", badge: "PDQ", name: "Pruebas de Don Quijote", destination: "PruebasDonQuijote" },
-        { key: "T", badge: "PDT", name: "Puerta de prueba", destination: "TavernRoom" }
+        { key: "T", badge: "PDT", name: "Posada de los Cuentos", destination: "TavernRoom" },
+        { key: "X", badge: "PDX", name: "¿Puedes Descubrir la X?", destination: "PDX" }
       ];
       const keyTargets = {};
       const placeholders = Array.from(alphabet, (_, index) => {
