@@ -715,7 +715,450 @@ object-fit: cover;
         text-align: center;
     }
 }
-/* twine-user-stylesheet #2: "pdp.css" */
+/* twine-user-stylesheet #2: "pde.css" */
+.pde-room {
+    width: min(100%, 34rem);
+    margin: 0 auto;
+    padding: clamp(0.75rem, 3vw, 1.25rem);
+    box-sizing: border-box;
+    border: 1px solid #8e6942;
+    border-radius: 0.8rem;
+    background: #281c16;
+    color: #f9e9ca;
+}
+
+.pde-room [hidden],
+.pde-room .pde-status:empty {
+    display: none !important;
+}
+
+.pde-room h2,
+.pde-room h3 {
+    margin: 0 0 0.45rem;
+    line-height: 1.25;
+}
+
+.pde-room select,
+.pde-room button,
+#ui-dialog-body.pde-dialog button {
+    min-height: 44px;
+    max-width: 100%;
+    padding: 0.35em 0.65em;
+    border: 1px solid #8e6942;
+    border-radius: 0.45rem;
+    background: #fff1d2;
+    color: #392417;
+    font: inherit;
+}
+
+.pde-room button:hover,
+#ui-dialog-body.pde-dialog button:hover {
+    background: #f3d292;
+}
+
+.pde-room :focus-visible,
+#ui-dialog-body.pde-dialog button:focus-visible {
+    outline: 3px solid #df9f44;
+    outline-offset: 3px;
+}
+
+.pde-room label {
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.pde-view {
+    position: relative;
+    border-radius: 0.55rem;
+    box-shadow: inset 0 0 0 1px #8e6942;
+    background:
+        radial-gradient(ellipse at 36% 25%, #92613c88, transparent 64%),
+        repeating-linear-gradient(0deg, #4e372c 0 37px, #352620 38px 40px);
+}
+
+.pde-view:not(.pde-has-image) {
+    aspect-ratio: 4 / 3;
+    min-height: 12rem;
+}
+
+.pde-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+}
+
+.pde-room .pde-hotspot {
+    position: absolute;
+    top: clamp(26px, var(--pde-y), 100% - 26px);
+    left: clamp(26px, var(--pde-x), 100% - 26px);
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 2px solid #fff1d2;
+    border-radius: 50%;
+    background: #38241b;
+    color: #fff1d2;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #000a;
+}
+
+.pde-room .pde-hotspot:hover {
+    color: #38241b;
+}
+
+.pde-object-list {
+    margin: 0;
+    padding-inline-start: 1.7rem;
+}
+
+.pde-object-list li + li {
+    margin-top: 0.4rem;
+}
+
+#ui-dialog:has(.pde-dialog) {
+    width: min(28rem, calc(100% - 20px));
+}
+
+#ui-dialog:has(.pde-dialog) #ui-dialog-titlebar {
+    background: #392417;
+}
+
+#ui-dialog:has(.pde-dialog) #ui-dialog-title {
+    padding: 0.65rem 3rem 0.65rem 1rem;
+    color: #fff1d2;
+    font-size: 1.125rem;
+    text-align: left;
+    text-transform: none;
+}
+
+#ui-dialog-body.pde-dialog {
+    background: #fff5df;
+    color: #392417;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+#ui-dialog-body.pde-dialog h3 {
+    margin: 0;
+}
+
+#ui-dialog-body.pde-dialog .pde-clue {
+    margin: 0.6rem 0 1rem;
+}
+
+.pde-clue img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.4rem;
+}
+
+.pde-color {
+    display: inline-block;
+    padding: 0.08rem 0.4rem;
+    border-radius: 0.25rem;
+    font-weight: bold;
+}
+
+.pde-color-azul { background: #164376; color: #fff; }
+.pde-color-amarillo { background: #f3ce58; color: #392417; }
+.pde-color-morado { background: #673673; color: #fff; }
+.pde-color-verde { background: #325c36; color: #fff; }
+
+.pde-sentences {
+    padding-inline-start: 1.55rem;
+}
+
+.pde-sentences li + li {
+    margin-top: 0.55rem;
+}
+
+.pde-sentence {
+    display: block;
+    margin-top: 0.25rem;
+}
+
+.pde-vials {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pde-vials th,
+.pde-vials td {
+    padding: 0.35rem;
+    border-bottom: 1px solid #b69367;
+    text-align: left;
+}
+
+.pde-vials small {
+    display: block;
+}
+
+.pde-flag-order {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.65rem;
+    padding-inline-start: 1.4rem;
+}
+
+#ui-dialog-body.pde-dialog .pde-clue select,
+#ui-dialog-body.pde-dialog .pde-clue input {
+    box-sizing: border-box;
+    min-height: 44px;
+    padding: 0.25rem 0.45rem;
+    border: 1px solid #8e6942;
+    border-radius: 0.35rem;
+    background: #fff8e8;
+    color: #392417;
+    font: inherit;
+}
+
+.pde-lock input {
+    display: block;
+    width: 8ch;
+    margin: 0.25rem 0 0.65rem;
+}
+
+.pde-feedback:empty {
+    margin: 0;
+}
+
+.pde-key {
+    padding: 0.6rem;
+    border: 1px solid #8e6942;
+    border-radius: 0.4rem;
+    background: #f3ce58;
+    font-weight: bold;
+}
+
+.pde-stable-art {
+    margin: 0;
+}
+
+.pde-stable-painting {
+    position: relative;
+    container-type: inline-size;
+}
+
+.pde-stable-art figcaption {
+    margin-top: 0.4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pde-stable-mark {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: #fff1d2;
+    font: bold 5.2cqi/1 Georgia, serif;
+    white-space: nowrap;
+}
+
+.pde-stable-shield .pde-stable-mark {
+    display: grid;
+    width: 1.5em;
+    height: 1.5em;
+    place-items: center;
+    border: 1px solid #d5a251;
+    border-radius: 50%;
+    background: #392417;
+}
+
+.pde-stable-horseshoe .pde-stable-mark {
+    text-shadow: 0 -1px #1b120c, 0 1px 2px #1b120c, 1px 0 2px #1b120c;
+}
+
+#ui-dialog-body.pde-dialog .pde-stable-parchment {
+    margin: 0;
+    padding: clamp(0.75rem, 4vw, 1.25rem);
+    border: 1px solid #b68c51;
+    border-radius: 0.35rem;
+    background: radial-gradient(ellipse at center, #fff2cc, #eac58a);
+    color: #392417;
+    font: 1.15rem/1.55 Georgia, serif;
+}
+
+.pde-stable-lock button + button {
+    margin-inline-start: 0.45rem;
+}
+
+#ui-dialog-body.pde-dialog .pde-stable-clue input:focus-visible {
+    outline: 3px solid #8a5328;
+    outline-offset: 2px;
+}
+/* twine-user-stylesheet #3: "pdk.css" */
+.pdk-room {
+    --pdk-gold: #e5bb77;
+    color: #fff0db;
+    background: #2a1820;
+    border: 1px solid #8d6748;
+    border-radius: 0.65rem;
+    overflow: hidden;
+}
+
+.pdk-room [hidden] {
+    display: none;
+}
+
+.pdk-banner {
+    background: #401e23;
+    border-bottom: 1px solid #8d6748;
+}
+
+.pdk-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    isolation: isolate;
+}
+
+.pdk-stage > * {
+    grid-area: 1 / 1;
+}
+
+.pdk-stage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 8rem;
+    object-fit: cover;
+    object-position: 58% center;
+}
+
+.pdk-banner p {
+    margin: 0;
+    padding: 0.75rem 1rem;
+}
+
+.pdk-banner strong,
+.pdk-panel h2,
+.pdk-panel h3,
+.pdk-watch {
+    color: var(--pdk-gold);
+}
+
+.pdk-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.pdk-panel {
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid #8d6748;
+    border-radius: 0.5rem;
+    background: #351f28;
+    overflow-wrap: anywhere;
+}
+
+.pdk-panel h2,
+.pdk-panel h3 {
+    margin: 0 0 0.5rem;
+    font-family: Georgia, serif;
+}
+
+.pdk-panel label {
+    display: block;
+    margin-top: 0.75rem;
+}
+
+.pdk-panel input,
+.pdk-panel select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.45rem 0.55rem;
+    color-scheme: light;
+    color: #312016;
+    background: #fff4df;
+    border: 1px solid #b88e59;
+    border-radius: 0.3rem;
+    font: inherit;
+}
+
+.pdk-panel input::placeholder {
+    color: #6b5443;
+}
+
+.pdk-panel input:disabled,
+.pdk-panel select:disabled {
+    color: #514034;
+    background: #e7dbc7;
+    opacity: 1;
+}
+
+.pdk-panel :is(input, select, button) {
+    min-height: 44px;
+}
+
+.pdk-panel :is(button, input, select, a):focus-visible {
+    outline: 2px solid #ffd695;
+    outline-offset: 3px;
+}
+
+.pdk-panel button {
+    max-width: 100%;
+    color: #291818;
+    background: #e5bb77;
+    border: 1px solid #f0d4a3;
+    border-radius: 0.3rem;
+}
+
+.pdk-panel button:hover {
+    background: #f5d7a3;
+}
+
+.pdk-player {
+    position: relative;
+    align-self: center;
+    justify-self: stretch;
+    min-width: 0;
+    margin: clamp(0px, 1vw, 0.65rem);
+    min-height: 200px;
+    aspect-ratio: 16 / 9;
+    background: #150e12;
+}
+
+.pdk-player iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.pdk-watch {
+    text-decoration: underline;
+}
+
+.pdk-status:empty,
+.pdk-video-status:empty {
+    display: none;
+}
+
+@media (max-width: 52rem) {
+    .pdk-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 30rem) {
+    .pdk-player {
+        margin: 0;
+    }
+
+    .pdk-layout {
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .pdk-panel {
+        padding: 0.65rem;
+    }
+}
+/* twine-user-stylesheet #4: "pdp.css" */
 .pdp-room {
     --pdp-ink: #243e32;
     --pdp-green: #23613e;
@@ -846,7 +1289,7 @@ object-fit: cover;
         line-height: 1.35;
     }
 }
-/* twine-user-stylesheet #3: "pdx.css" */
+/* twine-user-stylesheet #5: "pdx.css" */
 /* PDX — a fixed viewpoint. Only the graph opens the three visible walls. */
 .pdx-room {
     max-width: 46rem;
@@ -1171,7 +1614,7 @@ object-fit: cover;
 .pdx-room .pdx-verses > section:first-child .pdx-poem {
     font-weight: bold;
 }
-/* twine-user-stylesheet #4: "story.css" */
+/* twine-user-stylesheet #6: "story.css" */
 
 /* PUERTAS DEL CASTELLANO — LIGHT THEME */
 
@@ -3189,7 +3632,772 @@ $(document).on("click", ".pdd-manuscript-word", function (event) {
 
     Engine.play("TestMystRoom");
 });
-/* twine-user-script #2: "pdp.js" */
+/* twine-user-script #2: "pde-puzzle.js" */
+/* El secreto del alquimista — la cerradura de los cuatro colores */
+(() => {
+    "use strict";
+
+    const clues = {
+        azul: { label: "Azul", ingredient: "Parafenol", por: 1, para: 3 },
+        amarillo: { label: "Amarillo", ingredient: "Empornax", por: 7, para: 2 },
+        morado: { label: "Morado", ingredient: "Parafyl", por: 6, para: 9 },
+        verde: { label: "Verde", ingredient: "Porexene", por: 4, para: 8 }
+    };
+    const sentences = [
+        { color: "morado", before: "", after: " salir del castillo, busca la llave.", answer: "para" },
+        { color: "verde", before: "Pasa ", after: " la ventana.", answer: "por" },
+        { color: "azul", before: "", after: " quedarte aquí, cierra la puerta.", answer: "para" },
+        { color: "amarillo", before: "Sal ", after: " la puerta del jardín.", answer: "por" }
+    ];
+    const flag = ["azul", "amarillo", "morado", "verde"];
+    const vialOrder = ["verde", "amarillo", "morado", "azul"];
+    const descriptions = {
+        manuscrito: "En la última página lees: «Las palabras revelan los colores».",
+        "tubo-de-ensayo": "Hay cuatro frascos de vidrio. Cada uno tiene dos medidas: una «POR CADA AVENTURA» y otra «PARA EL HECHIZO».",
+        cofre: "La cerradura tiene cuatro ruedas. Lee los colores de la bandera de izquierda a derecha."
+    };
+    const art = {
+        manuscrito: ["manuscrito.jpg", "Un manuscrito abierto a la luz de una vela"],
+        "tubo-de-ensayo": ["pociones.jpg", "Cuatro frascos: verde, amarillo, morado y azul"],
+        cofre: ["bandera.jpg", "Bandera con cuatro franjas: azul, amarilla, morada y verde"]
+    };
+
+    function element(tag, text, className) {
+        const node = document.createElement(tag);
+        if (text) node.textContent = text;
+        if (className) node.className = className;
+        return node;
+    }
+
+    function colorLabel(color) {
+        return element("span", clues[color].label, "pde-color pde-color-" + color);
+    }
+
+    function currentProgress() {
+        return State.variables.pdeAlchemist ?? { answers: ["", "", "", ""], code: "", solved: false };
+    }
+
+    function save(progress) {
+        State.variables.pdeAlchemist = progress;
+        // SugarCube serializes the current history moment when saving mid-passage.
+        State.current.variables.pdeAlchemist = { ...progress, answers: [...progress.answers] };
+    }
+
+    function correctAnswers(progress) {
+        return sentences.filter((sentence, index) => progress.answers[index] === sentence.answer).length;
+    }
+
+    function renderManuscript(panel, progress) {
+        const form = element("form");
+        const list = element("ol", "", "pde-sentences");
+        const feedback = element("p", "", "pde-feedback");
+        feedback.setAttribute("role", "status");
+
+        sentences.forEach(({ color, before, after }, index) => {
+            const line = element("li");
+            const label = element("label", "", "pde-sentence");
+            const select = element("select");
+            select.setAttribute("aria-label", (before + "___" + after).trim() + " (" + clues[color].label + ")");
+            select.append(new Option("…", ""), new Option("por", "por"), new Option("para", "para"));
+            select.value = progress.answers[index];
+            select.addEventListener("change", () => {
+                progress.answers[index] = select.value;
+                save(progress);
+                feedback.textContent = "";
+            });
+            label.append(before, select, after);
+            line.append(colorLabel(color), label);
+            list.append(line);
+        });
+
+        const check = element("button", "Comprobar palabras");
+        check.type = "submit";
+        form.append(list, check, feedback);
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+            const count = correctAnswers(progress);
+            feedback.textContent = count === sentences.length
+                ? "¡Las cuatro palabras son correctas!"
+                : "Palabras correctas: " + count + " de " + sentences.length + ". Revisa las frases.";
+        });
+        panel.append(form);
+    }
+
+    function renderVials(panel) {
+        panel.append(element("p", "Para cada color, usa la medida que indica la palabra del manuscrito."));
+        const table = element("table", "", "pde-vials");
+        const header = table.createTHead().insertRow();
+        for (const title of ["Frasco", "POR CADA AVENTURA", "PARA EL HECHIZO"]) {
+            const cell = element("th", title);
+            cell.scope = "col";
+            header.append(cell);
+        }
+        const body = table.createTBody();
+        for (const color of vialOrder) {
+            const { ingredient, por, para } = clues[color];
+            const row = body.insertRow();
+            const label = element("th");
+            label.scope = "row";
+            label.append(colorLabel(color), element("small", ingredient));
+            row.append(label, element("td", por + " ml"), element("td", para + " ml"));
+        }
+        panel.append(table);
+    }
+
+    function renderChest(panel, progress) {
+        if (progress.solved) {
+            const result = element("p", "¡El cofre se abre! Dentro hay una llave dorada.", "pde-key");
+            result.setAttribute("role", "status");
+            result.tabIndex = -1;
+            const reset = element("button", "Reiniciar el rompecabezas");
+            reset.type = "button";
+            reset.addEventListener("click", () => {
+                const fresh = { answers: ["", "", "", ""], code: "", solved: false };
+                save(fresh);
+                panel.replaceChildren();
+                renderChest(panel, fresh);
+                panel.querySelector("input").focus();
+            });
+            panel.append(result, reset);
+            return;
+        }
+
+        const order = element("ol", "", "pde-flag-order");
+        order.setAttribute("aria-label", "Orden de los colores de la bandera");
+        for (const color of flag) {
+            const item = element("li");
+            item.append(colorLabel(color));
+            order.append(item);
+        }
+        const form = element("form", "", "pde-lock");
+        const label = element("label", "Combinación de cuatro cifras");
+        const input = element("input");
+        input.type = "text";
+        input.inputMode = "numeric";
+        input.autocomplete = "off";
+        input.maxLength = flag.length;
+        input.value = progress.code;
+        input.addEventListener("input", () => {
+            input.value = input.value.replace(/[^0-9]/g, "");
+            progress.code = input.value;
+            save(progress);
+            feedback.textContent = "";
+        });
+        label.append(input);
+        const submit = element("button", "Probar combinación");
+        submit.type = "submit";
+        const feedback = element("p", "", "pde-feedback");
+        feedback.setAttribute("role", "status");
+        form.append(label, submit, feedback);
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+            if (progress.code.length !== flag.length) {
+                feedback.textContent = "Escribe cuatro cifras.";
+                return;
+            }
+            if (correctAnswers(progress) !== sentences.length) {
+                feedback.textContent = "La cerradura no se mueve. Revisa las cuatro palabras del manuscrito.";
+                return;
+            }
+
+            const words = new Map(sentences.map((sentence, index) => [sentence.color, progress.answers[index]]));
+            const solution = flag.map(color => clues[color][words.get(color)]).join("");
+            if (progress.code !== solution) {
+                feedback.textContent = "El cofre sigue cerrado. Revisa las medidas y el orden de la bandera.";
+                return;
+            }
+
+            progress.solved = true;
+            save(progress);
+            panel.replaceChildren();
+            renderChest(panel, progress);
+            panel.querySelector(".pde-key").focus();
+        });
+        panel.append(order, form);
+    }
+
+    const renderers = {
+        manuscrito: renderManuscript,
+        "tubo-de-ensayo": renderVials,
+        cofre: renderChest
+    };
+
+    setup.pdeAlchemist = {
+        matches(mission, scene) {
+            return mission.slug === "el-secreto-del-alquimista" && scene.slug === "el-taller" &&
+                Object.keys(renderers).every(slug => scene.objects.some(object => object.slug === slug));
+        },
+        clue(slug) {
+            if (!Object.hasOwn(renderers, slug)) return null;
+            const panel = element("div", "", "pde-clue");
+            const [file, alt] = art[slug];
+            const image = element("img");
+            image.alt = alt;
+            image.width = 960;
+            image.height = 640;
+            image.addEventListener("error", () => image.remove(), { once: true });
+            image.src = "images/pde/" + file;
+            panel.append(image, element("p", descriptions[slug]));
+            const controls = element("div", "", "pde-clue-controls");
+            renderers[slug](controls, currentProgress());
+            panel.append(controls);
+            return panel;
+        }
+    };
+})();
+/* twine-user-script #3: "pde-stables.js" */
+/* El secreto de las caballerizas */
+(() => {
+    "use strict";
+
+    const inscription = "Quiero que la flor ___ aquí, y estoy seguro de que el león no ___. Aunque el dragón ___ feroz, el castillo ___ fuerte y no caerá.";
+    const heraldry = [
+        { symbol: "flor", answer: "esté", x: 19, y: 16 },
+        { symbol: "león", answer: "está", x: 83, y: 15 },
+        { symbol: "dragón", answer: "sea", x: 45, y: 82 },
+        { symbol: "castillo", answer: "es", x: 56, y: 77 }
+    ];
+    const engravings = [
+        { digit: "7", word: "sea", x: 21, y: 30 },
+        { digit: "2", word: "es", x: 78, y: 30 },
+        { digit: "4", word: "esté", x: 21, y: 49 },
+        { digit: "9", word: "está", x: 78, y: 49 }
+    ];
+    const digits = new Map(engravings.map(({ digit, word }) => [word, digit]));
+    const solution = heraldry.map(({ answer }) => digits.get(answer)).join("");
+
+    function element(tag, text, className) {
+        const node = document.createElement(tag);
+        if (text) node.textContent = text;
+        if (className) node.className = className;
+        return node;
+    }
+
+    function save(progress) {
+        State.variables.pdeStables = progress;
+        // Keep mid-passage changes in the history moment serialized by SugarCube saves.
+        State.current.variables.pdeStables = { ...progress };
+    }
+
+    function showArt(panel, filename, caption, marks, className) {
+        const figure = element("figure", "", "pde-stable-art " + className);
+        const painting = element("div", "", "pde-stable-painting");
+        const img = element("img");
+        img.alt = "";
+        img.width = img.height = 1024;
+        img.addEventListener("error", () => { painting.hidden = true; }, { once: true });
+        painting.setAttribute("aria-hidden", "true");
+        painting.append(img);
+        for (const { text, x, y } of marks) {
+            const mark = element("span", text, "pde-stable-mark");
+            mark.style.left = x + "%";
+            mark.style.top = y + "%";
+            painting.append(mark);
+        }
+        figure.append(painting, element("figcaption", caption));
+        panel.append(figure);
+        img.src = "images/pde/" + filename;
+    }
+
+    function renderShield(panel) {
+        const marks = heraldry.map(({ symbol, x, y }, index) => ({ symbol, x, y, text: String(index + 1) }));
+        const caption = marks.map(({ text, symbol }) => text + " — " + symbol).join(" · ");
+        showArt(panel, "escudo-caballerizas.jpg", caption, marks, "pde-stable-shield");
+        panel.append(element("p", "Sigue el orden de los cuarteles para introducir las cifras en la cerradura."));
+    }
+
+    function renderHorseshoe(panel) {
+        const marks = engravings.map(({ digit, word, x, y }) => ({ x, y, text: digit + "—" + word }));
+        const caption = marks.map(({ text }) => text).join(" · ");
+        showArt(panel, "herradura-caballerizas.jpg", caption, marks, "pde-stable-horseshoe");
+        panel.append(element("p", "Cada forma verbal tiene una cifra grabada en el hierro."));
+    }
+
+    function renderLock(panel, progress) {
+        const reset = element("button", "Reiniciar misión");
+        reset.type = "button";
+        reset.addEventListener("click", () => {
+            const fresh = { code: "", solved: false };
+            save(fresh);
+            panel.replaceChildren();
+            renderLock(panel, fresh);
+            panel.querySelector("input").focus();
+        });
+
+        if (progress.solved) {
+            const reward = element("p", "¡El arcón se abre! Dentro encuentras la llave de la verja del patio.", "pde-key");
+            reward.setAttribute("role", "status");
+            reward.tabIndex = -1;
+            const exit = element("button", "Salir al castillo");
+            exit.type = "button";
+            exit.addEventListener("click", () => {
+                Dialog.close();
+                Engine.play("Empieza");
+            });
+            panel.append(reward, exit, reset);
+            return;
+        }
+
+        const form = element("form", "", "pde-lock");
+        const label = element("label", "Combinación de cuatro cifras");
+        const input = element("input");
+        input.type = "text";
+        input.inputMode = "numeric";
+        input.autocomplete = "off";
+        input.maxLength = heraldry.length;
+        input.value = progress.code;
+        const check = element("button", "Probar combinación");
+        check.type = "submit";
+        const feedback = element("p", "", "pde-feedback");
+        feedback.setAttribute("role", "status");
+
+        input.addEventListener("input", () => {
+            input.value = input.value.replace(/[^0-9]/g, "");
+            progress.code = input.value;
+            save(progress);
+            feedback.textContent = "";
+        });
+        form.addEventListener("submit", event => {
+            event.preventDefault();
+            if (progress.code.length !== heraldry.length) {
+                feedback.textContent = "Escribe cuatro cifras.";
+                return;
+            }
+            if (progress.code !== solution) {
+                feedback.textContent = "El arcón sigue cerrado. Revisa las palabras, la herradura y el orden del escudo.";
+                return;
+            }
+            progress.solved = true;
+            save(progress);
+            panel.replaceChildren();
+            renderLock(panel, progress);
+            panel.querySelector(".pde-key").focus();
+        });
+        label.append(input);
+        form.append(label, check, feedback);
+        panel.append(form, reset);
+    }
+
+    function renderArmory(panel) {
+        const parchment = element("blockquote", inscription, "pde-stable-parchment");
+        const lock = element("div", "", "pde-stable-lock");
+        lock.append(element("p", "Completa la inscripción. Usa la herradura para convertir las palabras en cifras y el escudo para ordenarlas."));
+        const controls = element("div");
+        renderLock(controls, State.variables.pdeStables ?? { code: "", solved: false });
+        lock.append(controls);
+        panel.append(parchment, lock);
+    }
+
+    const renderers = {
+        "arcon-de-la-armeria": renderArmory,
+        escudo: renderShield,
+        herradura: renderHorseshoe
+    };
+
+    setup.pdeStables = {
+        matches(mission, scene) {
+            return mission.slug === "escapar-el-establo" && scene.slug === "el-establo" &&
+                Object.keys(renderers).every(slug => scene.objects.some(object => object.slug === slug));
+        },
+        clue(slug) {
+            if (!Object.hasOwn(renderers, slug)) return null;
+            const panel = element("div", "", "pde-clue pde-stable-clue");
+            renderers[slug](panel);
+            return panel;
+        }
+    };
+})();
+/* twine-user-script #4: "pde.js" */
+/* PDE — Posibilidad de Escapar */
+(() => {
+    "use strict";
+
+    async function readMissions(signal) {
+        const query = new URLSearchParams({
+            select: "slug,title,scenes:pde_scenes(slug,title,description,image_path,sort_order," +
+                "objects:pde_objects(slug,name,description,hotspot_x,hotspot_y,sort_order))",
+            published: "eq.true",
+            "scenes.published": "eq.true",
+            "scenes.objects.published": "eq.true",
+            order: "sort_order.asc,slug.asc",
+            "scenes.order": "sort_order.asc,slug.asc",
+            "scenes.objects.order": "sort_order.asc,slug.asc"
+        });
+        const response = await fetch(setup.supabase.url + "/rest/v1/pde_missions?" + query, {
+            headers: { apikey: setup.supabase.key },
+            signal
+        });
+        if (!response.ok) throw new Error("PDE content unavailable");
+        const missions = await response.json();
+        if (!Array.isArray(missions)) throw new Error("Invalid PDE response");
+        return missions;
+    }
+
+    function fillPicker(picker, entries) {
+        picker.replaceChildren(...entries.map(entry => new Option(entry.title, entry.slug)));
+        picker.parentElement.hidden = entries.length < 2;
+    }
+
+    function showObject(object, trigger, puzzle) {
+        trigger.focus();
+        Dialog.create("Examinar objeto", "pde-dialog");
+
+        const name = document.createElement("h3");
+        name.textContent = object.name;
+        const description = document.createElement("p");
+        description.textContent = object.description;
+        const close = document.createElement("button");
+        close.type = "button";
+        close.textContent = "Volver a la sala";
+        close.addEventListener("click", () => Dialog.close());
+
+        const clue = puzzle?.clue(object.slug);
+        name.tabIndex = -1;
+        Dialog.body().append(name, clue ?? description, close);
+        Dialog.open();
+        (clue ? name : close).focus();
+    }
+
+    function mount(room) {
+        const lifetime = new AbortController();
+        const { signal } = lifetime;
+        $(document).one(":passageinit", () => {
+            lifetime.abort();
+            if (Dialog.isOpen("pde-dialog")) Dialog.close();
+        });
+
+        const status = room.querySelector(".pde-status");
+        const retry = room.querySelector(".pde-retry");
+        const content = room.querySelector(".pde-content");
+        const missionPicker = room.querySelector(".pde-mission-picker");
+        const missionTitle = room.querySelector(".pde-mission-title");
+        const scenePicker = room.querySelector(".pde-scene-picker");
+        const scenePanel = room.querySelector(".pde-scene");
+        const sceneTitle = room.querySelector(".pde-scene-title");
+        const sceneDescription = room.querySelector(".pde-scene-description");
+        const view = room.querySelector(".pde-view");
+        const hotspots = room.querySelector(".pde-hotspots");
+        const objectHint = room.querySelector(".pde-object-hint");
+        const objectList = room.querySelector(".pde-object-list");
+        let image = room.querySelector(".pde-image");
+        let missions = [];
+
+        function showImage(path) {
+            const next = document.createElement("img");
+            next.className = "pde-image";
+            next.alt = "";
+            next.hidden = true;
+            view.classList.remove("pde-has-image");
+            image.replaceWith(next);
+            image = next;
+
+            // Only load raster art bundled with the castle.
+            if (!path || !/^images\/(?:[\w-]+\/)*[\w-]+\.(?:jpe?g|png|webp|avif)$/i.test(path)) return;
+            next.addEventListener("load", () => {
+                if (next !== image) return;
+                next.hidden = false;
+                view.classList.add("pde-has-image");
+            }, { once: true, signal });
+            next.src = path;
+        }
+
+        function renderScene(mission, scene) {
+            scenePanel.hidden = !scene;
+            status.textContent = scene ? "" : "Esta misión aún no tiene salas publicadas.";
+            if (!scene) return;
+
+            sceneTitle.textContent = scene.title;
+            sceneDescription.textContent = scene.description;
+            showImage(scene.image_path);
+            hotspots.replaceChildren();
+            objectList.replaceChildren();
+            objectHint.textContent = scene.objects.length
+                ? "Toca un número en la escena o elige un objeto de la lista."
+                : "Aún no hay objetos para explorar en esta sala.";
+
+            const puzzle = [setup.pdeAlchemist, setup.pdeStables].find(entry => entry.matches(mission, scene));
+            scene.objects.forEach((object, index) => {
+                const marker = document.createElement("button");
+                marker.type = "button";
+                marker.className = "pde-hotspot";
+                marker.textContent = index + 1;
+                marker.setAttribute("aria-label", "Examinar: " + object.name);
+                marker.style.setProperty("--pde-x", Number(object.hotspot_x) + "%");
+                marker.style.setProperty("--pde-y", Number(object.hotspot_y) + "%");
+                marker.addEventListener("click", () => showObject(object, marker, puzzle));
+                hotspots.append(marker);
+
+                const item = document.createElement("li");
+                const button = document.createElement("button");
+                button.type = "button";
+                button.textContent = object.name;
+                button.addEventListener("click", () => showObject(object, button, puzzle));
+                item.append(button);
+                objectList.append(item);
+            });
+        }
+
+        function renderMission(mission) {
+            missionTitle.textContent = mission.title;
+            fillPicker(scenePicker, mission.scenes);
+            renderScene(mission, mission.scenes[0]);
+        }
+
+        async function load(moveFocus = false) {
+            retry.hidden = true;
+            status.textContent = "Cargando las misiones…";
+            try {
+                missions = await readMissions(signal);
+                if (signal.aborted) return;
+                if (!missions.length) {
+                    status.textContent = "Aún no hay misiones publicadas.";
+                    return;
+                }
+                fillPicker(missionPicker, missions);
+                renderMission(missions[0]);
+                content.hidden = false;
+                if (moveFocus) missionTitle.focus();
+            } catch {
+                if (signal.aborted) return;
+                status.textContent = "No se pudieron cargar las misiones.";
+                retry.hidden = false;
+                if (moveFocus) retry.focus();
+            }
+        }
+
+        missionTitle.tabIndex = -1;
+        missionPicker.addEventListener("change", () => renderMission(missions[missionPicker.selectedIndex]));
+        scenePicker.addEventListener("change", () => {
+            const mission = missions[missionPicker.selectedIndex];
+            renderScene(mission, mission.scenes[scenePicker.selectedIndex]);
+        });
+        retry.addEventListener("click", () => load(true));
+        load();
+    }
+
+    $(document).on(":passagedisplay", event => {
+        if (event.passage.title !== "PDE") return;
+        const room = event.content.querySelector(".pde-room");
+        if (room) mount(room);
+    });
+})();
+/* twine-user-script #5: "pdk.js" */
+/* PDK — Palacio del Karaoke */
+(() => {
+    "use strict";
+
+    const videoId = /^[A-Za-z0-9_-]{11}$/;
+    let youtubeApi;
+
+    function loadYouTubeApi() {
+        if (window.YT?.Player) return Promise.resolve(window.YT);
+        if (youtubeApi) return youtubeApi;
+
+        youtubeApi = new Promise((resolve, reject) => {
+            const script = document.createElement("script");
+            const previous = window.onYouTubeIframeAPIReady;
+            const ready = () => {
+                clearTimeout(timeout);
+                window.onYouTubeIframeAPIReady = previous;
+                resolve(window.YT);
+                previous?.();
+            };
+            function fail() {
+                clearTimeout(timeout);
+                if (window.onYouTubeIframeAPIReady === ready) window.onYouTubeIframeAPIReady = previous;
+                script.remove();
+                reject(new Error("YouTube player API unavailable"));
+            }
+            const timeout = setTimeout(fail, 10000);
+            window.onYouTubeIframeAPIReady = ready;
+            script.src = "https://www.youtube.com/iframe_api";
+            script.addEventListener("error", fail, { once: true });
+            document.head.append(script);
+        }).catch(error => {
+            youtubeApi = undefined;
+            throw error;
+        });
+        return youtubeApi;
+    }
+
+    async function readSongs(signal) {
+        const query = new URLSearchParams({
+            select: "id,title,artist,youtube_video_id,difficulty,tags,learning_notes",
+            published: "eq.true",
+            order: "sort_order.asc,id.asc"
+        });
+        const response = await fetch(setup.supabase.url + "/rest/v1/karaoke_songs?" + query, {
+            headers: { apikey: setup.supabase.key },
+            signal
+        });
+        if (!response.ok) throw new Error("Karaoke catalog unavailable");
+        const songs = await response.json();
+        if (!Array.isArray(songs)) throw new Error("Invalid karaoke catalog");
+        return songs;
+    }
+
+    function searchText(text) {
+        return text.toLowerCase().normalize("NFD").replace(/\p{Diacritic}/gu, "");
+    }
+
+    function mount(room) {
+        const lifetime = new AbortController();
+        const { signal } = lifetime;
+        const find = selector => room.querySelector(selector);
+        const search = find("#pdk-search");
+        const picker = find("#pdk-song");
+        const status = find(".pdk-status");
+        const retry = find(".pdk-retry");
+        const detail = find(".pdk-song-detail");
+        const stageHint = find(".pdk-stage-hint");
+        const play = find(".pdk-play");
+        const frame = find(".pdk-player");
+        const watch = find(".pdk-watch");
+        const videoStatus = find(".pdk-video-status");
+        let songs = [];
+        let song;
+        let activeVideo;
+
+        function stopVideo() {
+            const current = activeVideo;
+            activeVideo = undefined;
+            clearTimeout(current?.timeout);
+            current?.player?.destroy();
+            frame.replaceChildren();
+            frame.hidden = true;
+        }
+
+        $(document).one(":passageinit", () => {
+            lifetime.abort();
+            stopVideo();
+        });
+
+        function selectSong(next) {
+            if (song === next) return;
+            stopVideo();
+            song = next;
+            detail.hidden = !song;
+            stageHint.hidden = Boolean(song);
+            if (!song) return;
+
+            const id = song.youtube_video_id;
+            const playable = typeof id === "string" && videoId.test(id);
+            find(".pdk-song-title").textContent = song.title;
+            find(".pdk-artist").textContent = song.artist;
+            find(".pdk-tags").textContent = [song.difficulty, ...song.tags].join(" · ");
+            const note = find(".pdk-note");
+            note.hidden = !song.learning_notes;
+            note.textContent = song.learning_notes ? "Para practicar · " + song.learning_notes : "";
+            play.hidden = watch.hidden = !playable;
+            if (playable) {
+                watch.href = "https://www.youtube.com/watch?v=" + id;
+            } else {
+                watch.removeAttribute("href");
+            }
+            videoStatus.textContent = playable ? "" : "Esta canción aún no tiene una pista disponible.";
+        }
+
+        function filterSongs() {
+            const terms = searchText(search.value.trim()).split(/\s+/);
+            const matches = songs.filter(entry => {
+                const fields = searchText([entry.title, entry.artist, entry.difficulty, ...entry.tags].join(" "));
+                return terms.every(term => fields.includes(term));
+            });
+            const selected = matches.includes(song) ? song : undefined;
+            picker.replaceChildren(new Option("Elige una canción", ""), ...matches.map(entry =>
+                new Option(entry.title + " — " + entry.artist, entry.id)
+            ));
+            picker.value = selected?.id ?? "";
+            picker.disabled = !matches.length;
+            selectSong(selected);
+            status.textContent = matches.length === 1 ? "1 canción disponible."
+                : matches.length ? matches.length + " canciones disponibles."
+                : "No hay canciones que coincidan con la búsqueda.";
+        }
+
+        async function loadCatalog() {
+            retry.hidden = true;
+            status.textContent = "Abriendo el cancionero…";
+            try {
+                songs = await readSongs(signal);
+                if (signal.aborted) return;
+                if (!songs.length) {
+                    status.textContent = "Aún no hay canciones publicadas en el cancionero.";
+                    retry.hidden = false;
+                    return;
+                }
+                search.disabled = false;
+                filterSongs();
+            } catch {
+                if (signal.aborted) return;
+                status.textContent = "No se pudo abrir el cancionero. Puedes volver a intentarlo.";
+                retry.hidden = false;
+            }
+        }
+
+        search.addEventListener("input", filterSongs, { signal });
+        picker.addEventListener("change", () => selectSong(songs.find(entry => entry.id === picker.value)), { signal });
+        retry.addEventListener("click", loadCatalog, { signal });
+        play.addEventListener("click", async () => {
+            if (!song || !videoId.test(song.youtube_video_id)) return;
+            const id = song.youtube_video_id;
+            const title = "Karaoke de " + song.title;
+            const current = {};
+            activeVideo = current;
+            play.hidden = true;
+            videoStatus.textContent = "Cargando la pista de YouTube…";
+
+            function unavailable() {
+                if (activeVideo !== current) return;
+                stopVideo();
+                play.hidden = false;
+                videoStatus.textContent = "La pista no se pudo reproducir aquí. Puedes abrirla en YouTube.";
+            }
+
+            try {
+                const yt = await loadYouTubeApi();
+                if (activeVideo !== current) return;
+                const embed = new URL("https://www.youtube-nocookie.com/embed/" + id);
+                embed.searchParams.set("enablejsapi", "1");
+                embed.searchParams.set("playsinline", "1");
+                if (/^https?:$/.test(location.protocol)) embed.searchParams.set("origin", location.origin);
+
+                const iframe = document.createElement("iframe");
+                iframe.title = title;
+                iframe.allow = "encrypted-media; picture-in-picture; fullscreen";
+                iframe.allowFullscreen = true;
+                iframe.referrerPolicy = "strict-origin-when-cross-origin";
+                iframe.src = embed.href;
+                frame.replaceChildren(iframe);
+                frame.hidden = false;
+                current.timeout = setTimeout(unavailable, 12000);
+                current.player = new yt.Player(iframe, {
+                    events: {
+                        onReady: () => {
+                            if (activeVideo !== current) return;
+                            clearTimeout(current.timeout);
+                            videoStatus.textContent = "";
+                            if (document.activeElement === document.body) {
+                                iframe.focus({ preventScroll: true });
+                                frame.scrollIntoView({ block: "nearest" });
+                            }
+                        },
+                        onError: unavailable
+                    }
+                });
+            } catch {
+                unavailable();
+            }
+        }, { signal });
+
+        loadCatalog();
+    }
+
+    $(document).on(":passagedisplay", event => {
+        if (event.passage.title === "PDK") mount(event.content.querySelector(".pdk-room"));
+    });
+})();
+/* twine-user-script #6: "pdp.js" */
 /* PDP — Puentes de Principiante */
 (() => {
     "use strict";
@@ -3333,7 +4541,7 @@ $(document).on("click", ".pdd-manuscript-word", function (event) {
         if (room) mount(room);
     });
 })();
-/* twine-user-script #3: "pdx.js" */
+/* twine-user-script #7: "pdx.js" */
 /* PDX — El laberinto de la X */
 (() => {
     const progressKeys = { "pdx-v1": "pdx", "pdx-v2": "pdxV2" };
@@ -3718,7 +4926,7 @@ $(document).on("click", ".pdd-manuscript-word", function (event) {
         if (room) mount(room);
     });
 })();
-/* twine-user-script #4: "story.js" */
+/* twine-user-script #8: "story.js" */
 
 /* PUERTAS DEL CASTELLANO — SUPABASE */
 
@@ -4203,7 +5411,9 @@ $(document).on(":passagedisplay", (event) => {
         { key: "B", badge: "PDB", name: "Páginas de la Bitácora", destination: "SoloCastleRoom" },
         { key: "C", badge: "PDC", name: "Poemas de la Conjugación", destination: "SalaPoemas" },
         { key: "D", badge: "PDD", name: "Palabra del Día", destination: "CastleEntrance" },
+        { key: "E", badge: "PDE", name: "Posibilidad de Escapar", destination: "PDE" },
         { key: "H", badge: "PDH", name: "Pasadizo de Hipervínculos", destination: "PasadizoHipervinculos" },
+        { key: "K", badge: "PDK", name: "Palacio del Karaoke", destination: "PDK" },
         { key: "L", badge: "PDL", name: "Pila de Letras", destination: "PilaDeLetras" },
         { key: "O", badge: "PDO", name: "Palacio de Obras", destination: "PalacioDeObras" },
         { key: "P", badge: "PDP", name: "Puentes de Principiante", destination: "PDP" },
@@ -4396,9 +5606,12 @@ $(document).on(":passagedisplay", (event) => {
             }
           }
           // Fill empty slots for rooms that older catalogs do not list yet.
-          for (const shortcut of shortcuts.filter(({ key }) => key === "L" || key === "O")) {
+          for (const shortcut of shortcuts.filter(({ key }) => ["E", "K", "L", "O"].includes(key))) {
             const slot = doors[alphabet.indexOf(shortcut.key)];
             const placeholder = placeholders[slot.index];
+            if (["E", "K"].includes(shortcut.key) && rows.some((row) =>
+                row.badge === shortcut.badge || (row.position === slot.index + 1 &&
+                    (row.destination_passage != null || row.initial_door === true)))) continue;
             if (!doors.some(({ destination }) => destination === shortcut.destination) &&
                 !slot.destination && slot.badge === placeholder.badge && slot.name === placeholder.name) {
               Object.assign(slot, shortcut);
@@ -5403,7 +6616,9 @@ $(document).on(":passagedisplay", (event) => {
       &lt;span&gt;&lt;kbd&gt;B&lt;/kbd&gt; &lt;span id=&quot;shortcut-B&quot;&gt;Solo en el Castillo&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;C&lt;/kbd&gt; &lt;span id=&quot;shortcut-C&quot;&gt;Poemas&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;D&lt;/kbd&gt; &lt;span id=&quot;shortcut-D&quot;&gt;Palabra del Día&lt;/span&gt;&lt;/span&gt;
+      &lt;span hidden&gt;&lt;kbd&gt;E&lt;/kbd&gt; &lt;span id=&quot;shortcut-E&quot;&gt;Posibilidad de Escapar&lt;/span&gt;&lt;/span&gt;
       &lt;span hidden&gt;&lt;kbd&gt;H&lt;/kbd&gt; &lt;span id=&quot;shortcut-H&quot;&gt;Pasadizo de Hipervínculos&lt;/span&gt;&lt;/span&gt;
+      &lt;span hidden&gt;&lt;kbd&gt;K&lt;/kbd&gt; &lt;span id=&quot;shortcut-K&quot;&gt;Palacio del Karaoke&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;L&lt;/kbd&gt; &lt;span id=&quot;shortcut-L&quot;&gt;Pila de Letras&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;O&lt;/kbd&gt; &lt;span id=&quot;shortcut-O&quot;&gt;Palacio de Obras&lt;/span&gt;&lt;/span&gt;
       &lt;span hidden&gt;&lt;kbd&gt;P&lt;/kbd&gt; &lt;span id=&quot;shortcut-P&quot;&gt;Puentes de Principiante&lt;/span&gt;&lt;/span&gt;
@@ -8476,7 +9691,65 @@ $(&quot;#poema-image&quot;).attr(&quot;src&quot;, &quot;images/&quot; + filename
     &lt;button class=&quot;pdl-next&quot; type=&quot;button&quot; disabled&gt;¿Otra?&lt;/button&gt;
 &lt;/section&gt;
 &lt;&lt;castleDoorReturn&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="PDP" tags="" position="225,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="32" name="PDE" tags="" position="225,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;castleDoorTitle &quot;Posibilidad de Escapar&quot;&gt;&gt;
+&lt;section class=&quot;pde-room&quot; aria-label=&quot;Posibilidad de Escapar&quot;&gt;
+    &lt;p class=&quot;pde-status&quot; role=&quot;status&quot;&gt;Cargando las misiones…&lt;/p&gt;
+    &lt;button type=&quot;button&quot; class=&quot;pde-retry&quot; hidden&gt;Reintentar&lt;/button&gt;
+    &lt;div class=&quot;pde-content&quot; hidden&gt;
+        &lt;label class=&quot;pde-mission-choice&quot; hidden&gt;Misión &lt;select class=&quot;pde-mission-picker&quot;&gt;&lt;/select&gt;&lt;/label&gt;
+        &lt;h2 class=&quot;pde-mission-title&quot;&gt;&lt;/h2&gt;
+        &lt;label class=&quot;pde-scene-choice&quot; hidden&gt;Sala &lt;select class=&quot;pde-scene-picker&quot;&gt;&lt;/select&gt;&lt;/label&gt;
+        &lt;div class=&quot;pde-scene&quot; hidden&gt;
+            &lt;h3 class=&quot;pde-scene-title&quot;&gt;&lt;/h3&gt;
+            &lt;p class=&quot;pde-scene-description&quot;&gt;&lt;/p&gt;
+            &lt;div class=&quot;pde-view&quot; role=&quot;group&quot; aria-label=&quot;Escena y puntos para explorar&quot;&gt;
+                &lt;img class=&quot;pde-image&quot; alt=&quot;&quot; hidden&gt;
+                &lt;div class=&quot;pde-hotspots&quot;&gt;&lt;/div&gt;
+            &lt;/div&gt;
+            &lt;p class=&quot;pde-object-hint&quot;&gt;&lt;/p&gt;
+            &lt;ol class=&quot;pde-object-list&quot; aria-label=&quot;Objetos de la sala&quot;&gt;&lt;/ol&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+&lt;&lt;castleDoorReturn&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="PDK" tags="" position="350,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;castleDoorTitle &quot;Palacio del Karaoke&quot;&gt;&gt;
+&lt;div class=&quot;pdk-room&quot;&gt;
+    &lt;header class=&quot;pdk-banner&quot;&gt;
+        &lt;div class=&quot;pdk-stage&quot;&gt;
+            &lt;img src=&quot;images/PDK.jpg&quot; alt=&quot;Escenario de madera con un micrófono y cortinas rojas en el salón de banquetes&quot; width=&quot;1700&quot; height=&quot;567&quot;&gt;
+            &lt;div class=&quot;pdk-player&quot; hidden&gt;&lt;/div&gt;
+        &lt;/div&gt;
+        &lt;p&gt;&lt;strong&gt;El salón de banquetes&lt;/strong&gt; · Elige una canción, sube al escenario y canta en español.&lt;/p&gt;
+    &lt;/header&gt;
+    &lt;div class=&quot;pdk-layout&quot;&gt;
+        &lt;section class=&quot;pdk-panel&quot; aria-labelledby=&quot;pdk-catalog-title&quot;&gt;
+            &lt;h2 id=&quot;pdk-catalog-title&quot;&gt;Cancionero&lt;/h2&gt;
+            &lt;label for=&quot;pdk-search&quot;&gt;Buscar por canción, artista, nivel o tema&lt;/label&gt;
+            &lt;input type=&quot;search&quot; id=&quot;pdk-search&quot; placeholder=&quot;Ej. B1 o baile&quot; disabled&gt;
+            &lt;label for=&quot;pdk-song&quot;&gt;Canción&lt;/label&gt;
+            &lt;select id=&quot;pdk-song&quot; disabled&gt;&lt;option value=&quot;&quot;&gt;Elige una canción&lt;/option&gt;&lt;/select&gt;
+            &lt;p class=&quot;pdk-status&quot; role=&quot;status&quot;&gt;Abriendo el cancionero…&lt;/p&gt;
+            &lt;button type=&quot;button&quot; class=&quot;pdk-retry&quot; hidden&gt;Volver a cargar el cancionero&lt;/button&gt;
+        &lt;/section&gt;
+        &lt;section class=&quot;pdk-panel&quot; aria-labelledby=&quot;pdk-stage-title&quot;&gt;
+            &lt;h2 id=&quot;pdk-stage-title&quot;&gt;En el escenario&lt;/h2&gt;
+            &lt;p class=&quot;pdk-stage-hint&quot;&gt;Elige una canción para ver su ficha y preparar la pista.&lt;/p&gt;
+            &lt;div class=&quot;pdk-song-detail&quot; hidden&gt;
+                &lt;h3 class=&quot;pdk-song-title&quot;&gt;&lt;/h3&gt;
+                &lt;p class=&quot;pdk-artist&quot;&gt;&lt;/p&gt;
+                &lt;p class=&quot;pdk-tags&quot;&gt;&lt;/p&gt;
+                &lt;p class=&quot;pdk-note&quot;&gt;&lt;/p&gt;
+                &lt;button type=&quot;button&quot; class=&quot;pdk-play&quot;&gt;Cargar el reproductor de YouTube&lt;/button&gt;
+                &lt;p class=&quot;pdk-video-status&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+                &lt;a class=&quot;pdk-watch&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; hidden&gt;Ver la pista en YouTube (nueva pestaña)&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/section&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+&lt;&lt;castleDoorReturn&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="PDP" tags="" position="475,475" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;castleDoorTitle &quot;Puentes de Principiante&quot;&gt;&gt;
 &lt;section class=&quot;pdp-room&quot; aria-label=&quot;Puentes de Principiante&quot;&gt;
     &lt;p class=&quot;pdp-status&quot; role=&quot;status&quot;&gt;Cargando las islas…&lt;/p&gt;
@@ -8527,7 +9800,7 @@ $(&quot;#poema-image&quot;).attr(&quot;src&quot;, &quot;images/&quot; + filename
     &lt;/div&gt;
 &lt;/section&gt;
 &lt;&lt;castleDoorReturn&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="33" name="PDX" tags="" position="350,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="PDX" tags="" position="600,475" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;castleDoorTitle &quot;¿Puedes Descubrir la X?&quot;&gt;&gt;
 &lt;section class=&quot;pdx-room&quot; aria-label=&quot;Laberinto de la X&quot;&gt;
     &lt;p&gt;Busca tres poemas y sigue sus versos hasta la X. Cada vez que avances darás un paso.&lt;/p&gt;

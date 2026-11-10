@@ -1,0 +1,24 @@
+:: PDE
+<<nobr>>
+<<castleDoorTitle "Posibilidad de Escapar">>
+<section class="pde-room" aria-label="Posibilidad de Escapar">
+    <p class="pde-status" role="status">Cargando las misiones…</p>
+    <button type="button" class="pde-retry" hidden>Reintentar</button>
+    <div class="pde-content" hidden>
+        <label class="pde-mission-choice" hidden>Misión <select class="pde-mission-picker"></select></label>
+        <h2 class="pde-mission-title"></h2>
+        <label class="pde-scene-choice" hidden>Sala <select class="pde-scene-picker"></select></label>
+        <div class="pde-scene" hidden>
+            <h3 class="pde-scene-title"></h3>
+            <p class="pde-scene-description"></p>
+            <div class="pde-view" role="group" aria-label="Escena y puntos para explorar">
+                <img class="pde-image" alt="" hidden>
+                <div class="pde-hotspots"></div>
+            </div>
+            <p class="pde-object-hint"></p>
+            <ol class="pde-object-list" aria-label="Objetos de la sala"></ol>
+        </div>
+    </div>
+</section>
+<<castleDoorReturn>>
+<</nobr>>

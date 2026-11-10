@@ -168,7 +168,9 @@ Puertas del Castellano - Palabras V2
       <span><kbd>B</kbd> <span id="shortcut-B">Solo en el Castillo</span></span>
       <span><kbd>C</kbd> <span id="shortcut-C">Poemas</span></span>
       <span><kbd>D</kbd> <span id="shortcut-D">Palabra del Día</span></span>
+      <span hidden><kbd>E</kbd> <span id="shortcut-E">Posibilidad de Escapar</span></span>
       <span hidden><kbd>H</kbd> <span id="shortcut-H">Pasadizo de Hipervínculos</span></span>
+      <span hidden><kbd>K</kbd> <span id="shortcut-K">Palacio del Karaoke</span></span>
       <span><kbd>L</kbd> <span id="shortcut-L">Pila de Letras</span></span>
       <span><kbd>O</kbd> <span id="shortcut-O">Palacio de Obras</span></span>
       <span hidden><kbd>P</kbd> <span id="shortcut-P">Puentes de Principiante</span></span>

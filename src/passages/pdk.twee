@@ -1,0 +1,38 @@
+:: PDK
+<<nobr>>
+<<castleDoorTitle "Palacio del Karaoke">>
+<div class="pdk-room">
+    <header class="pdk-banner">
+        <div class="pdk-stage">
+            <img src="images/PDK.jpg" alt="Escenario de madera con un micrófono y cortinas rojas en el salón de banquetes" width="1700" height="567">
+            <div class="pdk-player" hidden></div>
+        </div>
+        <p><strong>El salón de banquetes</strong> · Elige una canción, sube al escenario y canta en español.</p>
+    </header>
+    <div class="pdk-layout">
+        <section class="pdk-panel" aria-labelledby="pdk-catalog-title">
+            <h2 id="pdk-catalog-title">Cancionero</h2>
+            <label for="pdk-search">Buscar por canción, artista, nivel o tema</label>
+            <input type="search" id="pdk-search" placeholder="Ej. B1 o baile" disabled>
+            <label for="pdk-song">Canción</label>
+            <select id="pdk-song" disabled><option value="">Elige una canción</option></select>
+            <p class="pdk-status" role="status">Abriendo el cancionero…</p>
+            <button type="button" class="pdk-retry" hidden>Volver a cargar el cancionero</button>
+        </section>
+        <section class="pdk-panel" aria-labelledby="pdk-stage-title">
+            <h2 id="pdk-stage-title">En el escenario</h2>
+            <p class="pdk-stage-hint">Elige una canción para ver su ficha y preparar la pista.</p>
+            <div class="pdk-song-detail" hidden>
+                <h3 class="pdk-song-title"></h3>
+                <p class="pdk-artist"></p>
+                <p class="pdk-tags"></p>
+                <p class="pdk-note"></p>
+                <button type="button" class="pdk-play">Cargar el reproductor de YouTube</button>
+                <p class="pdk-video-status" role="status"></p>
+                <a class="pdk-watch" target="_blank" rel="noopener noreferrer" hidden>Ver la pista en YouTube (nueva pestaña)</a>
+            </div>
+        </section>
+    </div>
+</div>
+<<castleDoorReturn>>
+<</nobr>>

@@ -1,0 +1,169 @@
+.pdk-room {
+    --pdk-gold: #e5bb77;
+    color: #fff0db;
+    background: #2a1820;
+    border: 1px solid #8d6748;
+    border-radius: 0.65rem;
+    overflow: hidden;
+}
+
+.pdk-room [hidden] {
+    display: none;
+}
+
+.pdk-banner {
+    background: #401e23;
+    border-bottom: 1px solid #8d6748;
+}
+
+.pdk-stage {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    isolation: isolate;
+}
+
+.pdk-stage > * {
+    grid-area: 1 / 1;
+}
+
+.pdk-stage img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 8rem;
+    object-fit: cover;
+    object-position: 58% center;
+}
+
+.pdk-banner p {
+    margin: 0;
+    padding: 0.75rem 1rem;
+}
+
+.pdk-banner strong,
+.pdk-panel h2,
+.pdk-panel h3,
+.pdk-watch {
+    color: var(--pdk-gold);
+}
+
+.pdk-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.pdk-panel {
+    min-width: 0;
+    padding: 1rem;
+    border: 1px solid #8d6748;
+    border-radius: 0.5rem;
+    background: #351f28;
+    overflow-wrap: anywhere;
+}
+
+.pdk-panel h2,
+.pdk-panel h3 {
+    margin: 0 0 0.5rem;
+    font-family: Georgia, serif;
+}
+
+.pdk-panel label {
+    display: block;
+    margin-top: 0.75rem;
+}
+
+.pdk-panel input,
+.pdk-panel select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0.45rem 0.55rem;
+    color-scheme: light;
+    color: #312016;
+    background: #fff4df;
+    border: 1px solid #b88e59;
+    border-radius: 0.3rem;
+    font: inherit;
+}
+
+.pdk-panel input::placeholder {
+    color: #6b5443;
+}
+
+.pdk-panel input:disabled,
+.pdk-panel select:disabled {
+    color: #514034;
+    background: #e7dbc7;
+    opacity: 1;
+}
+
+.pdk-panel :is(input, select, button) {
+    min-height: 44px;
+}
+
+.pdk-panel :is(button, input, select, a):focus-visible {
+    outline: 2px solid #ffd695;
+    outline-offset: 3px;
+}
+
+.pdk-panel button {
+    max-width: 100%;
+    color: #291818;
+    background: #e5bb77;
+    border: 1px solid #f0d4a3;
+    border-radius: 0.3rem;
+}
+
+.pdk-panel button:hover {
+    background: #f5d7a3;
+}
+
+.pdk-player {
+    position: relative;
+    align-self: center;
+    justify-self: stretch;
+    min-width: 0;
+    margin: clamp(0px, 1vw, 0.65rem);
+    min-height: 200px;
+    aspect-ratio: 16 / 9;
+    background: #150e12;
+}
+
+.pdk-player iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.pdk-watch {
+    text-decoration: underline;
+}
+
+.pdk-status:empty,
+.pdk-video-status:empty {
+    display: none;
+}
+
+@media (max-width: 52rem) {
+    .pdk-layout {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+
+@media (max-width: 30rem) {
+    .pdk-player {
+        margin: 0;
+    }
+
+    .pdk-layout {
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .pdk-panel {
+        padding: 0.65rem;
+    }
+}

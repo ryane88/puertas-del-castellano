@@ -1,0 +1,272 @@
+.pde-room {
+    width: min(100%, 34rem);
+    margin: 0 auto;
+    padding: clamp(0.75rem, 3vw, 1.25rem);
+    box-sizing: border-box;
+    border: 1px solid #8e6942;
+    border-radius: 0.8rem;
+    background: #281c16;
+    color: #f9e9ca;
+}
+
+.pde-room [hidden],
+.pde-room .pde-status:empty {
+    display: none !important;
+}
+
+.pde-room h2,
+.pde-room h3 {
+    margin: 0 0 0.45rem;
+    line-height: 1.25;
+}
+
+.pde-room select,
+.pde-room button,
+#ui-dialog-body.pde-dialog button {
+    min-height: 44px;
+    max-width: 100%;
+    padding: 0.35em 0.65em;
+    border: 1px solid #8e6942;
+    border-radius: 0.45rem;
+    background: #fff1d2;
+    color: #392417;
+    font: inherit;
+}
+
+.pde-room button:hover,
+#ui-dialog-body.pde-dialog button:hover {
+    background: #f3d292;
+}
+
+.pde-room :focus-visible,
+#ui-dialog-body.pde-dialog button:focus-visible {
+    outline: 3px solid #df9f44;
+    outline-offset: 3px;
+}
+
+.pde-room label {
+    display: block;
+    margin-bottom: 0.8rem;
+}
+
+.pde-view {
+    position: relative;
+    border-radius: 0.55rem;
+    box-shadow: inset 0 0 0 1px #8e6942;
+    background:
+        radial-gradient(ellipse at 36% 25%, #92613c88, transparent 64%),
+        repeating-linear-gradient(0deg, #4e372c 0 37px, #352620 38px 40px);
+}
+
+.pde-view:not(.pde-has-image) {
+    aspect-ratio: 4 / 3;
+    min-height: 12rem;
+}
+
+.pde-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: inherit;
+}
+
+.pde-room .pde-hotspot {
+    position: absolute;
+    top: clamp(26px, var(--pde-y), 100% - 26px);
+    left: clamp(26px, var(--pde-x), 100% - 26px);
+    transform: translate(-50%, -50%);
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 2px solid #fff1d2;
+    border-radius: 50%;
+    background: #38241b;
+    color: #fff1d2;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #000a;
+}
+
+.pde-room .pde-hotspot:hover {
+    color: #38241b;
+}
+
+.pde-object-list {
+    margin: 0;
+    padding-inline-start: 1.7rem;
+}
+
+.pde-object-list li + li {
+    margin-top: 0.4rem;
+}
+
+#ui-dialog:has(.pde-dialog) {
+    width: min(28rem, calc(100% - 20px));
+}
+
+#ui-dialog:has(.pde-dialog) #ui-dialog-titlebar {
+    background: #392417;
+}
+
+#ui-dialog:has(.pde-dialog) #ui-dialog-title {
+    padding: 0.65rem 3rem 0.65rem 1rem;
+    color: #fff1d2;
+    font-size: 1.125rem;
+    text-align: left;
+    text-transform: none;
+}
+
+#ui-dialog-body.pde-dialog {
+    background: #fff5df;
+    color: #392417;
+    line-height: 1.55;
+    overflow-wrap: anywhere;
+}
+
+#ui-dialog-body.pde-dialog h3 {
+    margin: 0;
+}
+
+#ui-dialog-body.pde-dialog .pde-clue {
+    margin: 0.6rem 0 1rem;
+}
+
+.pde-clue img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.4rem;
+}
+
+.pde-color {
+    display: inline-block;
+    padding: 0.08rem 0.4rem;
+    border-radius: 0.25rem;
+    font-weight: bold;
+}
+
+.pde-color-azul { background: #164376; color: #fff; }
+.pde-color-amarillo { background: #f3ce58; color: #392417; }
+.pde-color-morado { background: #673673; color: #fff; }
+.pde-color-verde { background: #325c36; color: #fff; }
+
+.pde-sentences {
+    padding-inline-start: 1.55rem;
+}
+
+.pde-sentences li + li {
+    margin-top: 0.55rem;
+}
+
+.pde-sentence {
+    display: block;
+    margin-top: 0.25rem;
+}
+
+.pde-vials {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.pde-vials th,
+.pde-vials td {
+    padding: 0.35rem;
+    border-bottom: 1px solid #b69367;
+    text-align: left;
+}
+
+.pde-vials small {
+    display: block;
+}
+
+.pde-flag-order {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem 1.65rem;
+    padding-inline-start: 1.4rem;
+}
+
+#ui-dialog-body.pde-dialog .pde-clue select,
+#ui-dialog-body.pde-dialog .pde-clue input {
+    box-sizing: border-box;
+    min-height: 44px;
+    padding: 0.25rem 0.45rem;
+    border: 1px solid #8e6942;
+    border-radius: 0.35rem;
+    background: #fff8e8;
+    color: #392417;
+    font: inherit;
+}
+
+.pde-lock input {
+    display: block;
+    width: 8ch;
+    margin: 0.25rem 0 0.65rem;
+}
+
+.pde-feedback:empty {
+    margin: 0;
+}
+
+.pde-key {
+    padding: 0.6rem;
+    border: 1px solid #8e6942;
+    border-radius: 0.4rem;
+    background: #f3ce58;
+    font-weight: bold;
+}
+
+.pde-stable-art {
+    margin: 0;
+}
+
+.pde-stable-painting {
+    position: relative;
+    container-type: inline-size;
+}
+
+.pde-stable-art figcaption {
+    margin-top: 0.4rem;
+    font-weight: bold;
+    text-align: center;
+}
+
+.pde-stable-mark {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    color: #fff1d2;
+    font: bold 5.2cqi/1 Georgia, serif;
+    white-space: nowrap;
+}
+
+.pde-stable-shield .pde-stable-mark {
+    display: grid;
+    width: 1.5em;
+    height: 1.5em;
+    place-items: center;
+    border: 1px solid #d5a251;
+    border-radius: 50%;
+    background: #392417;
+}
+
+.pde-stable-horseshoe .pde-stable-mark {
+    text-shadow: 0 -1px #1b120c, 0 1px 2px #1b120c, 1px 0 2px #1b120c;
+}
+
+#ui-dialog-body.pde-dialog .pde-stable-parchment {
+    margin: 0;
+    padding: clamp(0.75rem, 4vw, 1.25rem);
+    border: 1px solid #b68c51;
+    border-radius: 0.35rem;
+    background: radial-gradient(ellipse at center, #fff2cc, #eac58a);
+    color: #392417;
+    font: 1.15rem/1.55 Georgia, serif;
+}
+
+.pde-stable-lock button + button {
+    margin-inline-start: 0.45rem;
+}
+
+#ui-dialog-body.pde-dialog .pde-stable-clue input:focus-visible {
+    outline: 3px solid #8a5328;
+    outline-offset: 2px;
+}

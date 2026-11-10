@@ -482,7 +482,9 @@ $(document).on(":passagedisplay", (event) => {
         { key: "B", badge: "PDB", name: "Páginas de la Bitácora", destination: "SoloCastleRoom" },
         { key: "C", badge: "PDC", name: "Poemas de la Conjugación", destination: "SalaPoemas" },
         { key: "D", badge: "PDD", name: "Palabra del Día", destination: "CastleEntrance" },
+        { key: "E", badge: "PDE", name: "Posibilidad de Escapar", destination: "PDE" },
         { key: "H", badge: "PDH", name: "Pasadizo de Hipervínculos", destination: "PasadizoHipervinculos" },
+        { key: "K", badge: "PDK", name: "Palacio del Karaoke", destination: "PDK" },
         { key: "L", badge: "PDL", name: "Pila de Letras", destination: "PilaDeLetras" },
         { key: "O", badge: "PDO", name: "Palacio de Obras", destination: "PalacioDeObras" },
         { key: "P", badge: "PDP", name: "Puentes de Principiante", destination: "PDP" },
@@ -675,9 +677,12 @@ $(document).on(":passagedisplay", (event) => {
             }
           }
           // Fill empty slots for rooms that older catalogs do not list yet.
-          for (const shortcut of shortcuts.filter(({ key }) => key === "L" || key === "O")) {
+          for (const shortcut of shortcuts.filter(({ key }) => ["E", "K", "L", "O"].includes(key))) {
             const slot = doors[alphabet.indexOf(shortcut.key)];
             const placeholder = placeholders[slot.index];
+            if (["E", "K"].includes(shortcut.key) && rows.some((row) =>
+                row.badge === shortcut.badge || (row.position === slot.index + 1 &&
+                    (row.destination_passage != null || row.initial_door === true)))) continue;
             if (!doors.some(({ destination }) => destination === shortcut.destination) &&
                 !slot.destination && slot.badge === placeholder.badge && slot.name === placeholder.name) {
               Object.assign(slot, shortcut);
