@@ -1050,10 +1050,9 @@ setup.mountPdq = function (room) {
         const waitingForAnswer = lesson && !lesson.completed && lesson.stageHistory.length > 0;
         form.hidden = !waitingForAnswer;
         for (const control of form.elements) control.disabled = busy;
-        next.hidden = Boolean(waitingForAnswer);
+        next.hidden = Boolean(waitingForAnswer || lesson?.completed);
         next.disabled = busy;
-        next.textContent = lesson?.completed ? "Comenzar otra prueba"
-            : !vocabulary ? "Cargar la palabra"
+        next.textContent = !vocabulary ? "Cargar la palabra"
             : stage === 0 ? "Comenzar una prueba" : "Continuar a la siguiente prueba";
         extra.hidden = !lesson?.completed;
         extra.disabled = busy;
@@ -1066,6 +1065,8 @@ setup.mountPdq = function (room) {
             if (!diplomaArt.hasAttribute("src")) diplomaArt.src = "images/pdq-diploma.png";
         }
     }
+
+    const wordKey = word => word.normalize("NFC").trim().replace(/\s+/g, " ").toLocaleLowerCase("es");
 
     async function loadVocabulary() {
         status.textContent = "Buscando la última palabra publicada…";
@@ -1084,20 +1085,25 @@ setup.mountPdq = function (room) {
             status.textContent = "La última palabra publicada aún no está disponible para la prueba.";
             return;
         }
+        if (readDiplomas().some(entry => Number(entry.pdd) === pdd || wordKey(entry.word) === wordKey(word))) {
+            await loadRandomVocabulary(false);
+            return;
+        }
         const description = typeof record.description === "string" ? record.description.trim() : "";
         vocabulary = { pdd, word: word.slice(0, 120), definition: definition.slice(0, 800),
             description: description.slice(0, 2000) };
         status.textContent = "";
     }
 
-    async function loadRandomVocabulary() {
+    async function loadRandomVocabulary(startLesson = true) {
         // Read the diary afresh: another completed lesson may have been saved since entry.
         const diplomas = readDiplomas();
-        const wordKey = word => word.normalize("NFC").trim().replace(/\s+/g, " ").toLocaleLowerCase("es");
         const seenPdds = new Set(diplomas.map(entry => Number(entry.pdd)));
         const seenWords = new Set(diplomas.map(entry => wordKey(entry.word)));
-        seenPdds.add(Number(lesson.vocabulary.pdd));
-        seenWords.add(wordKey(lesson.vocabulary.word));
+        if (lesson?.vocabulary) {
+            seenPdds.add(Number(lesson.vocabulary.pdd));
+            seenWords.add(wordKey(lesson.vocabulary.word));
+        }
         const candidates = new Map();
         const pageSize = 250;
         status.textContent = "Buscando una palabra nueva para tu próxima aventura…";
@@ -1129,7 +1135,12 @@ setup.mountPdq = function (room) {
             return;
         }
         // Start only after selection and AI response succeed; preserve the diploma on failure.
-        await play("", words[Math.floor(Math.random() * words.length)]);
+        const selected = words[Math.floor(Math.random() * words.length)];
+        if (startLesson) await play("", selected);
+        else {
+            vocabulary = selected;
+            status.textContent = "Una palabra nueva te espera. Comienza la prueba cuando quieras.";
+        }
     }
 
     async function run(action, errorMessage) {
@@ -1202,10 +1213,7 @@ setup.mountPdq = function (room) {
     const replyError = "Don Quijote no pudo responder. Inténtalo de nuevo.";
     next.addEventListener("click", () => {
         if (busy) return;
-        if (lesson?.completed) {
-            lesson = variables.pdq = undefined;
-            vocabulary = undefined;
-        }
+        if (lesson?.completed) return;
         if (!vocabulary) return run(loadVocabulary, loadError);
         return run(() => play(""), replyError);
     });

@@ -24,6 +24,7 @@ try {
    if(delayAi)await new Promise(r=>release=r);
    return route.fulfill({status:failAi?502:200,json:failAi?{error:'fixture'}:{reply:'Reto de '+b.word+' · '+b.stage,advance:b.attempt>0}});
   }
+  if(u.pathname.endsWith('/castle_doors'))return route.fulfill({json:[{position:18,name:'Pruebas de Don Quijote',destination_passage:'PruebasDonQuijote',badge:'PDQ',published:true,testing:false}]});
   if(u.pathname.endsWith('/rooms')){
    if(u.searchParams.get('limit')==='1')return route.fulfill({json:[row(408,old.word)]});
    catalogs.push(u.toString());
@@ -78,10 +79,19 @@ try {
  await page.locator('.pdq-extra:visible').waitFor({timeout:5000}).catch(async e=>{console.log(await page.locator('body').innerText(),errors);throw e;});
  const count=posts.length;await page.locator('.pdq-extra').click();await idle();
  assert.match(await page.locator('.pdq-status').textContent(),/todas las palabras/);assert.equal(posts.length,count);
- // Existing latest-word replay remains available.
- await page.locator('.pdq-next').click();await idle();await page.locator('.pdq-next').click();await idle();
- assert.equal(posts.at(-1).pdd,408);
- assert.equal(await page.locator('.pdq-extra').isVisible(),false);
+ assert.equal(await page.locator('.pdq-next').isVisible(),false);
+ // Fresh entry skips today's earned word without starting AI until requested.
+ mode='normal';
+ await page.evaluate(()=>{SugarCube.storage.set('pdq-diplomas',[
+ {pdd:408,word:'NO JUZGAR A LA LIGERA'}, {pdd:404,word:'EVOCAR'}]);
+ delete SugarCube.State.variables.pdq;SugarCube.Engine.play('Empieza');});
+ await page.waitForFunction(()=>SugarCube.Engine.isIdle());
+ await page.evaluate(()=>SugarCube.Engine.play('PruebasDonQuijote'));
+ await idle();
+ assert.equal(posts.length,count);
+ await page.locator('.pdq-next').click();await idle();
+ assert.equal(posts.at(-1).pdd,409);
+ assert.equal(posts.at(-1).stage,'discover');
  assert.deepEqual(errors,[]);
- console.log('PASS: unseen-word filtering by ID and normalized word, pagination, database/AI failure recovery, duplicate-click protection, three-stage completion, diary persistence, reentry, exhaustion, existing daily replay.');
+ console.log('PASS: unseen-word filtering by ID and normalized word, pagination, database/AI failure recovery, duplicate-click protection, three-stage completion, diary persistence, reentry, exhaustion, earned daily-word replacement and single completion button.');
 }finally{await browser.close();await new Promise(r=>server.close(r));}
