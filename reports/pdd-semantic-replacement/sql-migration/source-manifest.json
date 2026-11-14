@@ -1,0 +1,27 @@
+{
+  "source": "../proposed-network.csv",
+  "source_sha256": "05439a9e34968ce4be32041833944b2ba25fecb00fca73b8b41b73e275aca740",
+  "rooms": 396,
+  "expected_connections": 215,
+  "expected_degree_histogram": {
+    "0": 138,
+    "1": 115,
+    "2": 114,
+    "3": 29
+  },
+  "live_existing_rows": 1101,
+  "reused_existing_pairs": 50,
+  "rows_to_disable": 1051,
+  "rows_to_insert": 165,
+  "backup_scope": "Public-key-visible snapshot; privileged runtime backup and full-scope validation required.",
+  "schema_status": "Compatibility reviewed; user execution approval received. Awaiting dashboard execution and verification results.",
+  "prepared_at_utc": "2026-10-31T20:16:50.250532+00:00",
+  "production_schema_md5": "643d39bcaefd85cd99487efe7d4469bc",
+  "production_inspected_at_utc": "2026-10-31T20:50:36.96734+00:00",
+  "event_triggers_inspected_at_utc": "2026-10-31T20:58:58.596483+00:00",
+  "production_execution_authorized": true,
+  "execution_status": "APPLIED_AND_VERIFIED: user-supplied privileged verification passed; no rerun required.",
+  "production_executed_at_utc": "2026-10-31T21:11:58.5287+00:00",
+  "production_verification_file": "production-verification-results.json",
+  "production_executed_by": "User through authenticated Supabase SQL Editor"
+}

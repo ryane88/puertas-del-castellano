@@ -1,0 +1,140 @@
+{
+   "batch" : 12,
+   "manifest" : {
+      "columns" : 5,
+      "composite_aspect_ratio" : "5:3",
+      "excluded_manifests" : [
+         "reports/pdd-batch-01/manifest.json",
+         "reports/pdd-batch-02/manifest.json",
+         "reports/pdd-batch-03/manifest.json",
+         "reports/pdd-batch-04/manifest.json",
+         "reports/pdd-batch-05/manifest.json",
+         "reports/pdd-batch-06/manifest.json",
+         "reports/pdd-batch-07/manifest.json",
+         "reports/pdd-batch-08/manifest.json",
+         "reports/pdd-batch-09/manifest.json",
+         "reports/pdd-batch-10/manifest.json",
+         "reports/pdd-batch-11/manifest.json"
+      ],
+      "panel_aspect_ratio" : "2:3",
+      "panels" : [
+         {
+            "column" : 1,
+            "description" : "En una torre cubierta de hiedra viven tres familias de artesanos. Por la mañana se abren las ventanas, sale humo de las chimeneas y se oyen voces en la escalera.\n\nLa torre no es solo una construcción antigua: hay personas que la habitan y la llenan de vida.",
+            "expected_filename" : "images/pdd135.jpg",
+            "pdd" : 135,
+            "position" : 1,
+            "row" : 1,
+            "short_definition" : "Vivir u ocupar habitualmente un lugar.",
+            "supabase_record_id" : 137,
+            "word" : "habitar"
+         },
+         {
+            "column" : 2,
+            "description" : "Dos cortesanos discuten durante una hora sobre el color de las servilletas del banquete. Preguntan al jardinero cuál prefiere.\n\nÉl sigue plantando semillas y responde: «Me importa un pimiento». Para él, esa cuestión no tiene ninguna importancia.",
+            "expected_filename" : "images/pdd136.jpg",
+            "pdd" : 136,
+            "position" : 2,
+            "row" : 1,
+            "short_definition" : "Expresión que indica que algo no importa en absoluto.",
+            "supabase_record_id" : 138,
+            "word" : "Me importa un pimiento"
+         },
+         {
+            "column" : 3,
+            "description" : "En el mercado, una viajera encuentra una capa gruesa y bien cosida por apenas dos monedas. Revisa las costuras y comprueba que no tiene defectos.\n\nSale sonriendo: ha encontrado un auténtico chollo, algo muy bueno por un precio sorprendentemente bajo.",
+            "expected_filename" : "images/pdd137.jpg",
+            "pdd" : 137,
+            "position" : 3,
+            "row" : 1,
+            "short_definition" : "Oportunidad de comprar o conseguir algo a un precio muy conveniente.",
+            "supabase_record_id" : 139,
+            "word" : "Chollo"
+         },
+         {
+            "column" : 4,
+            "description" : "El panadero siempre deja una hogaza para quienes no pueden pagarla. Cuando una niña pierde su cesta, él la ayuda a recogerlo todo sin pedir nada a cambio.\n\nEn la aldea dicen que es más bueno que el pan: su bondad se nota en los gestos cotidianos.",
+            "expected_filename" : "images/pdd138.jpg",
+            "pdd" : 138,
+            "position" : 4,
+            "row" : 1,
+            "short_definition" : "Ser una persona extremadamente amable y bondadosa.",
+            "supabase_record_id" : 140,
+            "word" : "Ser más bueno que el pan"
+         },
+         {
+            "column" : 5,
+            "description" : "El mensajero acepta entrar en un túnel desconocido sin mapa ni linterna. Avanza sin saber dónde están los cruces ni qué encontrará al final.\n\nHa decidido seguir a ciegas, confiando en la suerte en lugar de contar con información suficiente.",
+            "expected_filename" : "images/pdd139.jpg",
+            "pdd" : 139,
+            "position" : 5,
+            "row" : 1,
+            "short_definition" : "Sin poder ver o sin conocer lo que va a suceder.",
+            "supabase_record_id" : 141,
+            "word" : "A ciegas"
+         },
+         {
+            "column" : 1,
+            "description" : "La lámpara se apaga en medio de la escalera. La bibliotecaria extiende las manos y avanza despacio, tocando la pared para encontrar el siguiente peldaño.\n\nCamina a tientas: no puede ver el camino y necesita reconocerlo con el tacto.",
+            "expected_filename" : "images/pdd140.jpg",
+            "pdd" : 140,
+            "position" : 6,
+            "row" : 2,
+            "short_definition" : "Buscando el camino mediante el tacto cuando no se ve bien.",
+            "supabase_record_id" : 142,
+            "word" : "a tientas"
+         },
+         {
+            "column" : 2,
+            "description" : "La anciana enfermera ha pasado décadas cuidando a viajeros, soldados y niños del pueblo. Incluso durante el invierno más duro, nunca cerró su puerta a quien necesitaba ayuda.\n\nCuando por fin se toma un descanso, todos le dicen que tiene el cielo ganado por tanta generosidad.",
+            "expected_filename" : "images/pdd141.jpg",
+            "pdd" : 141,
+            "position" : 7,
+            "row" : 2,
+            "short_definition" : "Merecer una gran recompensa por haber soportado o hecho mucho bien.",
+            "supabase_record_id" : 143,
+            "word" : "Tener el cielo ganado"
+         },
+         {
+            "column" : 3,
+            "description" : "La exploradora saca de su bolsa una pequeña caja con una aguja que gira hasta señalar el norte. Las nubes ocultan el sol, pero el instrumento le permite orientarse.\n\nGracias a su brújula, puede elegir el sendero correcto sin depender de las estrellas.",
+            "expected_filename" : "images/pdd142.jpg",
+            "pdd" : 142,
+            "position" : 8,
+            "row" : 2,
+            "short_definition" : "Instrumento que señala los puntos cardinales para orientarse.",
+            "supabase_record_id" : 144,
+            "word" : "brújula"
+         },
+         {
+            "column" : 4,
+            "description" : "Un invitado critica la cena, insulta al cocinero y después exige que le regalen la vajilla. El anfitrión deja la copa sobre la mesa, indignado.\n\nUna queja habría sido comprensible, pero el visitante se ha pasado tres pueblos: ha ido demasiado lejos.",
+            "expected_filename" : "images/pdd143.jpg",
+            "pdd" : 143,
+            "position" : 9,
+            "row" : 2,
+            "short_definition" : "Exagerar mucho o superar claramente los límites aceptables.",
+            "supabase_record_id" : 145,
+            "word" : "Pasarse tres pueblos"
+         },
+         {
+            "column" : 5,
+            "description" : "El aprendiz promete resolver una disputa entre dos familias sin conocer sus motivos. En pocas horas tiene que mediar entre primos, vecinos y un mercader enfadado.\n\nQuiso ayudar, pero terminó metiéndose en berenjenales: asuntos complicados de los que ahora le cuesta salir.",
+            "expected_filename" : "images/pdd144.jpg",
+            "pdd" : 144,
+            "position" : 10,
+            "row" : 2,
+            "short_definition" : "Involucrarse en asuntos complicados de los que cuesta salir.",
+            "supabase_record_id" : 146,
+            "word" : "Meterse en berenjenales"
+         }
+      ],
+      "preferred_composite_pixels" : [
+         5000,
+         3000
+      ],
+      "rows" : 2,
+      "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+   },
+   "splitter_sha256" : "517a7b22ab4eecfb0b6335a640d85d957d57f3283fbae2af05dee0a02a9e16bb"
+}

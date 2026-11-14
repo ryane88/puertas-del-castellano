@@ -1,0 +1,153 @@
+{
+   "columns" : 5,
+   "composite_aspect_ratio" : "5:3",
+   "crop_layout" : {
+      "column_edges" : [
+         0,
+         324,
+         648,
+         972,
+         1295,
+         1619
+      ],
+      "method" : "Centered equal 2:3 crops within inspected Batch 08 boundaries; no resizing",
+      "row_edges" : [
+         0,
+         486,
+         971
+      ],
+      "seam_inset_pixels" : 1,
+      "source_pixels" : [
+         1619,
+         971
+      ]
+   },
+   "excluded_manifests" : [
+      "reports/pdd-batch-01/manifest.json",
+      "reports/pdd-batch-02/manifest.json",
+      "reports/pdd-batch-03/manifest.json",
+      "reports/pdd-batch-04/manifest.json",
+      "reports/pdd-batch-05/manifest.json",
+      "reports/pdd-batch-06/manifest.json",
+      "reports/pdd-batch-07/manifest.json"
+   ],
+   "panel_aspect_ratio" : "2:3",
+   "panels" : [
+      {
+         "column" : 1,
+         "description" : "Cuando las puertas del observatorio se abren, cientos de pequeñas luces flotan bajo la cúpula como estrellas vivas. Los visitantes se quedan sin palabras.\n\nNunca imaginaron contemplar algo tan sorprendente y maravilloso.",
+         "expected_filename" : "images/pdd94.jpg",
+         "pdd" : 94,
+         "position" : 1,
+         "row" : 1,
+         "short_definition" : "Causar sorpresa o admiración intensa.",
+         "supabase_record_id" : 96,
+         "word" : "Asombrar"
+      },
+      {
+         "column" : 2,
+         "description" : "El maestro señala el puente helado y advierte al aprendiz que no corra. Su voz es firme: sería muy conveniente que escuchara el consejo.\n\nEl joven reduce el paso antes de que el hielo le dé una lección.",
+         "expected_filename" : "images/pdd95.jpg",
+         "pdd" : 95,
+         "position" : 2,
+         "row" : 1,
+         "short_definition" : "Advertencia de que conviene hacer algo para evitar consecuencias.",
+         "supabase_record_id" : 97,
+         "word" : "Más te vale"
+      },
+      {
+         "column" : 3,
+         "description" : "Tras perder el torneo, la arquera pasa varios días mirando al suelo. Una mañana recoge su arco y vuelve al patio de entrenamiento.\n\nTodavía está triste, pero empieza a recuperar el ánimo y la confianza.",
+         "expected_filename" : "images/pdd96.jpg",
+         "pdd" : 96,
+         "position" : 3,
+         "row" : 1,
+         "short_definition" : "Recuperar la dignidad, la confianza o el ánimo.",
+         "supabase_record_id" : 98,
+         "word" : "Alzar la cabeza"
+      },
+      {
+         "column" : 4,
+         "description" : "En el invernadero crecen flores que se abren al amanecer y vuelven a florecer cada vez que alguien canta. Ni el invierno consigue detenerlas.\n\nLos jardineros las cuidan como símbolo de una belleza que siempre encuentra fuerzas para continuar.",
+         "expected_filename" : "images/pdd97.jpg",
+         "pdd" : 97,
+         "position" : 4,
+         "row" : 1,
+         "short_definition" : "Imagen poética de belleza y vitalidad que se renuevan continuamente.",
+         "supabase_record_id" : 99,
+         "word" : "Flores que nunca se detienen"
+      },
+      {
+         "column" : 5,
+         "description" : "El joven escriba se queja de que nadie comparte los libros del castillo. Al día siguiente coloca el suyo sobre una mesa e invita a otros a leerlo.\n\nComprende que transformar el mundo puede comenzar con una acción propia, por pequeña que sea.",
+         "expected_filename" : "images/pdd98.jpg",
+         "pdd" : 98,
+         "position" : 5,
+         "row" : 1,
+         "short_definition" : "Invitación a transformar la realidad empezando por la propia conducta.",
+         "supabase_record_id" : 100,
+         "word" : "Sé el cambio que quieres ver en el universo"
+      },
+      {
+         "column" : 1,
+         "description" : "La bailarina sabe que la fiesta terminará y que mañana le dolerán los pies. Aun así, sigue girando bajo las antorchas, feliz.\n\nNadie podrá quitarle la alegría de haber vivido aquella noche intensamente.",
+         "expected_filename" : "images/pdd99.jpg",
+         "pdd" : 99,
+         "position" : 6,
+         "row" : 2,
+         "short_definition" : "Expresión de satisfacción por experiencias disfrutadas que nadie puede quitar.",
+         "supabase_record_id" : 101,
+         "word" : "Que me quiten lo bailado"
+      },
+      {
+         "column" : 2,
+         "description" : "El viajero busca una ruta marcada en un mapa antiguo, pero la página está en blanco. Su guía le entrega unas botas y señala el horizonte.\n\nCada paso abrirá un sendero nuevo; el camino aparecerá mientras avanza.",
+         "expected_filename" : "images/pdd100.jpg",
+         "pdd" : 100,
+         "position" : 7,
+         "row" : 2,
+         "short_definition" : "Reflexión sobre cómo cada persona construye su camino al vivir.",
+         "supabase_record_id" : 102,
+         "word" : "Caminante, no hay camino, se hace camino al andar"
+      },
+      {
+         "column" : 3,
+         "description" : "En el gran salón suenan tambores y flautas. Los aprendices bailan entre mesas cubiertas de fruta, mientras la cocinera se ríe al ver al mayordomo intentando seguir el ritmo.\n\nLa celebración es tan ruidosa y alegre que hasta los guardias abandonan por un momento su habitual seriedad.",
+         "expected_filename" : "images/pdd101.jpg",
+         "pdd" : 101,
+         "position" : 8,
+         "row" : 2,
+         "short_definition" : "Ambiente de gran alegría, ruido y celebración.",
+         "supabase_record_id" : 103,
+         "word" : "Jolgorio"
+      },
+      {
+         "column" : 4,
+         "description" : "La reunión del consejo terminó hace una hora, pero el tesorero sigue hablando. Repite los mismos argumentos, añade detalles innecesarios y nadie consigue marcharse.\n\nLa reina mira el reloj de arena y suspira: una conversación útil se ha convertido en algo interminable.",
+         "expected_filename" : "images/pdd102.jpg",
+         "pdd" : 102,
+         "position" : 9,
+         "row" : 2,
+         "short_definition" : "Prolongar demasiado un asunto para sacar más provecho de él.",
+         "supabase_record_id" : 104,
+         "word" : "Estirar el chicle"
+      },
+      {
+         "column" : 5,
+         "description" : "Un joven escudero entra al establo con las botas llenas de barro, aunque está prohibido pisar allí después de la lluvia. El guardián lo ve perfectamente, pero vuelve la cabeza y continúa barriendo.\n\nHoy ha decidido ignorar una falta pequeña para evitar una discusión.",
+         "expected_filename" : "images/pdd103.jpg",
+         "pdd" : 103,
+         "position" : 10,
+         "row" : 2,
+         "short_definition" : "Fingir que no se ve una falta o un problema evidente.",
+         "supabase_record_id" : 105,
+         "word" : "Hacer / Hacerse la vista gorda"
+      }
+   ],
+   "preferred_composite_pixels" : [
+      5000,
+      3000
+   ],
+   "rows" : 2,
+   "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+}

@@ -1,0 +1,88 @@
+{
+   "composite_sha256" : "3fedd5e52000082c32fa8ed99e62ab1c82343765d9d384da78b7fd5a46c1bbde",
+   "installation" : "never",
+   "manifest_sha256" : "fd331fd0d677ee4640a6e6e207d31b0dfc2919c4493fdabb1928be75a969f60e",
+   "outputs" : [
+      {
+         "filename" : "pdd155.jpg",
+         "height" : 471,
+         "pdd" : 155,
+         "position" : 1,
+         "sha256" : "c1778eeb884e95f031ba557f6fecd972489a7b7abbba635da1cd7b6e33880755",
+         "width" : 314
+      },
+      {
+         "filename" : "pdd156.jpg",
+         "height" : 471,
+         "pdd" : 156,
+         "position" : 2,
+         "sha256" : "b1c9c7a8a6bde039774b3dfd8863ea4d579eb26a6c716044517c545075071c8a",
+         "width" : 314
+      },
+      {
+         "filename" : "pdd157.jpg",
+         "height" : 471,
+         "pdd" : 157,
+         "position" : 3,
+         "sha256" : "11e434702e835a013a6e3f306497a1386472e8788bd0fed7099b386f36e19429",
+         "width" : 314
+      },
+      {
+         "filename" : "pdd158.jpg",
+         "height" : 471,
+         "pdd" : 158,
+         "position" : 4,
+         "sha256" : "dfeda2dd972b7518eae98bdd6b125f542f0f9a29185aadc9c63053f3bd2bed9c",
+         "width" : 314
+      },
+      {
+         "filename" : "pdd159.jpg",
+         "height" : 471,
+         "pdd" : 159,
+         "position" : 5,
+         "sha256" : "00d26db0b730b1b0b65b7b6a1f713794928d0c059590379ff8508047217e903f",
+         "width" : 314
+      },
+      {
+         "filename" : "pdd160.jpg",
+         "height" : 471,
+         "pdd" : 160,
+         "position" : 6,
+         "sha256" : "c721d3a6ea0a797c67a588e2f94adf7b25d6c7a4729e0890f302534d7595510e",
+         "width" : 314
+      },
+      {
+         "filename" : "pdd161.jpg",
+         "height" : 471,
+         "pdd" : 161,
+         "position" : 7,
+         "sha256" : "2a63f0983bacc6697b7a669c7d8578c94cdbd2c65e50845237a19f19a49c7bda",
+         "width" : 314
+      },
+      {
+         "filename" : "pdd162.jpg",
+         "height" : 471,
+         "pdd" : 162,
+         "position" : 8,
+         "sha256" : "e0c67213d6d0a2abbb3d07c4de9f2e37afb6fc71cf612a1060981711f38e1238",
+         "width" : 314
+      },
+      {
+         "filename" : "pdd163.jpg",
+         "height" : 471,
+         "pdd" : 163,
+         "position" : 9,
+         "sha256" : "8c3a92a5de77e33fb41ba23e8046654c8f6948b2104b48b7e7b8e49d7b3f6cc9",
+         "width" : 314
+      },
+      {
+         "filename" : "pdd165.jpg",
+         "height" : 471,
+         "pdd" : 165,
+         "position" : 10,
+         "sha256" : "ab125d7c87059b2bb1e590f063e9d8b8acadee85ecc470afa1983f0872855856",
+         "width" : 314
+      }
+   ],
+   "prompt_sha256" : "11747fd29f49d2a4bb633a5e9ae108e07ba864bc08a48266821247803f586e21"
+}

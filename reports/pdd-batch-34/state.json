@@ -1,0 +1,8 @@
+{
+  "batch": "34",
+  "phase": "review_ready",
+  "workflow": "user-authorized six-image exception; four ignored placeholders",
+  "installation": "never",
+  "validation_sha256": "abe65d6546aec44e92f6b1c966d278b9f67f49a3116b2442a09c6337c3457eb4",
+  "review_sha256": "58a56d8b5c3cba7b75f4f6bb76444cab88f023b9991cff2bc63abeab2c21d196"
+}

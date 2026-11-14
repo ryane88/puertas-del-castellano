@@ -145,6 +145,7 @@ Puertas del Castellano - Palabras V2
     <section class="wall-window" id="wall-window" aria-label="Vista panorámica del muro">
       <div class="wall-track" id="wall-track"></div>
         <button id="enter-door" type="button" hidden>Entrar</button>
+        <span id="door-coming-soon" role="status">Próximamente</span>
       <div class="edge-shade left" aria-hidden="true"></div>
       <div class="edge-shade right" aria-hidden="true"></div>
       <div class="wall-caption" aria-hidden="true">27 puertas · una sola muralla</div>
@@ -172,9 +173,11 @@ Puertas del Castellano - Palabras V2
       <span hidden><kbd>H</kbd> <span id="shortcut-H">Pasadizo de Hipervínculos</span></span>
       <span hidden><kbd>K</kbd> <span id="shortcut-K">Palacio del Karaoke</span></span>
       <span><kbd>L</kbd> <span id="shortcut-L">Pila de Letras</span></span>
+      <span hidden><kbd>M</kbd> <span id="shortcut-M">Palabras de Maestría</span></span>
       <span><kbd>O</kbd> <span id="shortcut-O">Palacio de Obras</span></span>
       <span hidden><kbd>P</kbd> <span id="shortcut-P">Puentes de Principiante</span></span>
       <span><kbd>Q</kbd> <span id="shortcut-Q">Pruebas de Don Quijote</span></span>
+      <span hidden><kbd>R</kbd> <span id="shortcut-R">Puerta de los Roles</span></span>
       <span><kbd>T</kbd> <span id="shortcut-T">Posada de los Cuentos</span></span>
       <span hidden><kbd>X</kbd> <span id="shortcut-X">¿Puedes Descubrir la X?</span></span>
       <span><kbd>←</kbd><kbd>→</kbd> Recorrer el muro</span>
@@ -3538,117 +3541,53 @@ resultBox.text("Has llegado al Prompt " + nextPrompt);
 
 <<done>>
 <<run (async function () {
-
+    const lifetime = new AbortController();
+    $(document).one(":passageinit", () => lifetime.abort());
     const today = new Intl.DateTimeFormat("en-CA", {
-        timeZone: "America/Toronto",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
+        timeZone: "America/Toronto", year: "numeric", month: "2-digit", day: "2-digit"
     }).format(new Date());
 
-    try {
-        const endpoint = setup.supabase.url +
-            "/rest/v1/poemas?select=*" +
-            "&fecha_publicacion=eq." + today +
-            "&publicado=eq.true&limit=1";
-
-        const response = await fetch(endpoint, {
-            headers: { apikey: setup.supabase.key }
+    async function loadPoems(query) {
+        const response = await fetch(setup.supabase.url + "/rest/v1/poemas?select=*" + query, {
+            headers: { apikey: setup.supabase.key },
+            signal: AbortSignal.any([lifetime.signal, AbortSignal.timeout(10000)])
         });
+        if (!response.ok) throw new Error("Supabase: " + response.status);
+        const rows = await response.json();
+        if (!Array.isArray(rows)) throw new Error("Invalid poems response");
+        return rows;
+    }
 
-        if (!response.ok) {
-            throw new Error("Supabase: " + response.status);
+    try {
+        const poems = await loadPoems("&fecha_publicacion=eq." + today + "&publicado=eq.true&limit=1");
+        let poem = poems[0];
+        if (!poem) {
+            const catalogue = [];
+            const pageSize = 250;
+            for (let offset = 0; ; offset += pageSize) {
+                const page = await loadPoems("&publicado=eq.true&order=id.asc&limit=" + pageSize + "&offset=" + offset);
+                catalogue.push(...page);
+                if (page.length < pageSize) break;
+            }
+            poem = catalogue[Math.floor(Math.random() * catalogue.length)];
         }
-
-        const poems = await response.json();
-
-        if (!poems.length) {
-            $("#poema-title").text("Todavía no hay poema para hoy");
+        if (lifetime.signal.aborted) return;
+        if (!poem) {
+            $("#poema-title").text("Todavía no hay poemas disponibles");
             return;
         }
-
-        const poem = poems[0];
-
         $("#poema-title").text(poem.titulo);
         $("#poema-verses").text(poem.poema);
         $("#poema-focus").text(poem.enfoque || "");
         $("#poema-explanation").text(poem.explicacion || "");
-
-        // Elegir uno de los siete paisajes
         const landscape = Number(poem.id || 0) % 7;
-
-        $("#poema-image").attr(
-            "src",
-            "images/poema-" + landscape + ".jpg"
-        );
-
+        $("#poema-image").attr("src", "images/poema-" + landscape + ".jpg");
     } catch (error) {
-        console.error("Poem error:", error);
-        $("#poema-status").text("No se pudo cargar el poema.");
-    }
-
-})()>>
-<</done>>
-
-<<done>>
-<<run (async function () {
-
-    const today = new Intl.DateTimeFormat("en-CA", {
-        timeZone: "America/Toronto",
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit"
-    }).format(new Date());
-
-    try {
-
-        const endpoint = setup.supabase.url +
-            "/rest/v1/poemas?select=*" +
-            "&fecha_publicacion=eq." + today +
-            "&publicado=eq.true&limit=1";
-
-        const response = await fetch(endpoint, {
-            headers: {
-                apikey: setup.supabase.key
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error("Supabase: " + response.status);
+        if (!lifetime.signal.aborted) {
+            console.error("Poem error:", error);
+            $("#poema-status").text("No se pudo cargar el poema.");
         }
-
-        const poems = await response.json();
-
-        if (!poems.length) {
-            $("#poema-title").text(
-                "Todavía no hay poema para hoy"
-            );
-            return;
-        }
-
-        const poem = poems[0];
-
-        $("#poema-title").text(poem.titulo);
-        $("#poema-verses").text(poem.poema);
-        $("#poema-focus").text(poem.enfoque);
-        $("#poema-explanation").text(poem.explicacion);
-
-        // Imagen asociada a la fecha del poema.
-        // Ejemplo: 2026-10-27 -> p20261027.jpg
-
-        
-
-$("#poema-image").attr("src", "images/" + filename);
-
-    } catch (error) {
-
-        console.error("Poem error:", error);
-
-        $("#poema-status").text(
-            "No se pudo cargar el poema."
-        );
     }
-
 })()>>
 
 <<run $("#poema-diary").on("click", function () {
@@ -4074,6 +4013,7 @@ $("#poema-image").attr("src", "images/" + filename);
             </div>
         </div>
     </section>
+    <button class="pdq-extra" type="button" hidden>Otra prueba con una palabra nueva</button>
     <button class="pdq-diary-toggle" type="button" aria-expanded="false" aria-controls="pdq-diary">
         📜 Diario de diplomas
     </button>

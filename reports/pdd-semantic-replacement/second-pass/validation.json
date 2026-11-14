@@ -1,0 +1,23 @@
+{
+  "original_rooms": 396,
+  "original_connections": 215,
+  "original_uncovered": 138,
+  "candidate_connections": 20,
+  "confidence_counts": {
+    "alta": 4,
+    "media": 16
+  },
+  "conditional_candidates": 2,
+  "newly_covered_if_all_accepted": 26,
+  "still_uncovered_if_all_accepted": 112,
+  "hypothetical_total_connections": 235,
+  "hypothetical_degree_histogram": {
+    "0": 112,
+    "1": 134,
+    "2": 114,
+    "3": 36
+  },
+  "max_hypothetical_degree": 3,
+  "candidate_pairs_joining_two_uncovered": 6,
+  "original_files_unchanged": true
+}

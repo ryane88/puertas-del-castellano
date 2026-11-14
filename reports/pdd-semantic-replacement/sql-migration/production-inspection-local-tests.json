@@ -1,0 +1,14 @@
+{
+  "environment": "Disposable local PostgreSQL only; production compatibility pending",
+  "postgres_version": "PostgreSQL 16.2 on aarch64-apple-darwin23.5.0, compiled by Apple clang version 15.0.0 (clang-1500.0.40.1), 64-bit",
+  "tests": [
+    "Single JSON result in enforced read-only repeatable-read transaction",
+    "Existing migration fingerprint preserved",
+    "Counts, scope, RLS, constraints, dependencies and sequences reported",
+    "Snapshot drift detected with changed field names",
+    "No connection data or sequence advancement during inspection",
+    "Trigger bodies omitted while hashes retained"
+  ],
+  "production_queries_executed": 0,
+  "production_writes": 0
+}

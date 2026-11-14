@@ -1794,3 +1794,6 @@ button.castle-home-door:disabled:hover {
     outline: 3px solid #795235;
     outline-offset: 3px;
 }
+
+#door-coming-soon { position:absolute; bottom:8%; left:50%; transform:translateX(-50%); z-index:10; padding:.6em 1em; background:#f4e5c7; color:#322217; border-radius:.3em; pointer-events:none; }
+#door-coming-soon[hidden] { display:none; }

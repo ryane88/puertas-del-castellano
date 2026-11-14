@@ -1,0 +1,25 @@
+Create ONE composite containing EXACTLY TEN independent medieval-fantasy paintings in FIVE equal columns and TWO equal rows. Overall landscape 5:3, preferably 5000×3000. Each tile is portrait 2:3. Edge-to-edge cells with boundaries at 20%, 40%, 60%, 80% of width and 50% of height. No gutters, borders, frames, padding, dividing lines, labels, numbers, letters, writing, signatures or watermarks. No modern objects. Each cell is one coherent complete scene, never a continuous panorama or extra inset. Keep subjects comfortably inside their tile edges for safe cropping.
+
+Use Puertas del Castellano's richly detailed medieval-fantasy painterly style, illuminated-manuscript jewel tones, lapis blue, crimson, earthy textures, warm torchlight and candlelight, cool atmospheric shadows, Gothic architecture where appropriate. Gold is within the scene, never a border. No photorealistic rendering. Any supplied references are for style only. Illustrate the vocabulary senses faithfully. Position numbers below are instructions only and must not appear in the art. Exactly these ten distinct scenes in this order:
+
+TOP ROW, LEFT TO RIGHT:
+1. A cheerful guard at the annual castle feast accepts an extra small honey pastry from the smiling cook, winking playfully as companions smile; a modest plate and normally restrained posture convey a rare indulgence. Warm kitchen banquet, no text or calendars. Occasional exception conveyed contextually, not a claim about health.
+
+2. In a dusty castle attic, a curious granddaughter and elderly grandfather examine an extremely old wooden mechanical spinning device with tarnished iron gears, thick cobwebs and dust; grandfather fondly demonstrates a worn handle. Antiquity and distant memory unmistakable; no pears, no labels, no modern machine.
+
+3. A hat merchant beside the castle gate at a busy summer fair counts a generous pile of coins with satisfied surprise; nearly empty hat racks and the final few colorful hats show highly profitable sales, happy departing customers wearing hats. Golden sunset, commercially successful opportunity, not agriculture.
+
+4. A royal chronicler solemnly lights a commemorative candle beside a small sculpted model of a beautiful old stone bridge; beyond the Gothic window that same bridge is decorated with garlands and townspeople lay flowers at its entrance to remember its inauguration long ago. No calendar, letters, numerals or inscriptions. Convey remembrance of a historic event through repeated bridge motif, not writing.
+
+5. A grand castle foundation anniversary in the main plaza: families of several generations celebrate beneath two great ringing bells; children carry plain blue and crimson banners, an elder shows a small old foundation stone to a child, ancient walls richly garlanded. Commemorative continuity across generations, no text or numerals. Two bells are source detail, not a literal count of years; exact two hundred years requires vocabulary context.
+
+BOTTOM ROW, LEFT TO RIGHT:
+6. A jester in a medieval dining hall comically imitates a stern captain; two guards burst into unrestrained open-mouthed laughter, one clutches his belly and the other slaps the table, tears of mirth and relaxed joyful faces. Distinct from yawning: laughing eyes, lifted cheeks, animated communal reaction.
+
+7. A tired young female map apprentice at a candlelit desk yawns widely, hand politely raised near her open mouth, drooping eyelids and watery sleepy eyes; a kind older scribe gestures toward a comfortable resting bench. Blank parchment and geometric maps without writing, late-night Gothic study, distinct from joyful laughter.
+
+8. A flour-dusted miller in a rustic stone granary turns his face into a bent elbow during a sudden sneeze, eyes tightly squeezed shut and shoulders jolting; startled pigeons flutter upward through drifting flour dust. No words, no drawn sound effects, no visible mucus or illness caricature. Clear involuntary forceful reflex.
+
+9. A young squire stands to speak at a medieval banquet but is interrupted by a small hiccup: shoulders abruptly raised, lips pursed in surprise, one hand lightly on upper chest and other holding a cup of water; seated guests offer sympathetic amused glances. No choking, pain or distress, no text or sound bubbles. Repeated sound cannot be shown in a still; recognizable contextual posture.
+
+10. An elderly night sentinel sleeps deeply in a padded wooden chair inside a torchlit tower, head tipped back and mouth open, relaxed face; an awake female guard by the open door reacts with amused surprise to his noisy breathing, one hand near her ear. Starry window and resting spear secured to wall; no text, sound marks or monsters. Snoring suggested by sleeping open mouth and listener reaction.

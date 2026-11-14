@@ -9,3 +9,11 @@ verify_jwt = false
 [functions.pdo-mystery]
 # Public castle. Only the function can open or issue authenticated case tokens.
 verify_jwt = false
+
+[functions.pdm-generate-chapter]
+# Guest endpoint. A separate database quota limits generation across all instances.
+verify_jwt = false
+
+[functions.pdr-warden]
+# Guest castle: exact origin allowlist, signed saves and dedicated database quota.
+verify_jwt = false

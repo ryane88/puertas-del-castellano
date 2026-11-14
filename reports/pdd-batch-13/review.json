@@ -1,0 +1,19 @@
+{
+  "composite_sha256": "e80d8a3b59197c7816d8b75c8b3716402525facbfbb4dc4c87e56c6de9a3a457",
+  "manifest_sha256": "aa0f914d8bc6499d596bedfb606e18c52516a16799717860c7a1ca748266e643",
+  "prompt_sha256": "a287b95cda352c969de697f02325a0c225febf3a863f7f5b5c87e00dbe904e92",
+  "positions_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visual_review_passed": true,
+  "issues": "All ten JPGs individually inspected in manifest order; correct subjects, no visible neighbouring-panel bleed, no captions/lettering. Composite 1619x971; centered equal 320x480 2:3 crops, small seam/edge trims, no resizing. PDD145 evokes medieval Paris without modern landmarks. PDD146 uses vigorous leadership versus nourishing refreshment as a nonverbal language contrast. PDD147 tart is close to the right frame edge but its readiness and cook remain clear. PDD148 can only evoke artistic representation and symbolic fear; it does not independently explain the figurativo/figurado usage distinction, whose source wording is itself ambiguous. PDD150 depicts rejection of punitive teaching, without injury or readable writing. PDD152 communal singing suggests a refrain but cannot show temporal repetition in a still painting. PDD153 replaces the modern garage with a medieval cartwright workshop as required by style. Visual QC only, not user approval or installation permission."
+}

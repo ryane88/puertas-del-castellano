@@ -1,0 +1,24 @@
+{
+   "batch" : 30,
+   "blocked_reason" : "Visual review failed: PDD320 pours water instead of depicting its absence. Preserve original and crops; no automatic retry.",
+   "composite_sha256" : "d8fa4cab5072381b08af04423e5881376de5ff8302e039e776fe28524bf6a2e6",
+   "gallery_sha256" : "42685705bc9be5bb973b7340dbb3f7021320cbbee099f0f7bedd2b068f990a2f",
+   "installation" : "never",
+   "manifest_sha256" : "60fef11fbc009188896318de3eb98344d8b295ba528a444f91a9934774e1003d",
+   "outputs" : {
+      "pdd317.jpg" : "47139c7289003bfb80c2695021469c15f915772069b0f75873a94663bd247667",
+      "pdd318.jpg" : "9bc51b6f6c653cbfefc33c16add3b1f90c26e4d05c78bf4816d5fe5d03f21294",
+      "pdd319.jpg" : "3a862608f1be43308194b0291fa595f7334534731f8881a18353ffe295b1faad",
+      "pdd320.jpg" : "8d5bdb8ee08672ee4c597f65d58e70c875bac07dd96b97c15a5c18c8daaafeb3",
+      "pdd321.jpg" : "4efc32f39bb4ab77ff208643cf0b1a58b3280a1ea0ac1fc4633aa73766eb032e",
+      "pdd322.jpg" : "a4409bb63411cef15ec920670b86c79dc6a61bac7b8a543aa34ce31c950260e3",
+      "pdd323.jpg" : "e99c71b489edb5e18c47a1131d8fb091fadc04f569fabbbeb73a44522a0dd4ef",
+      "pdd324.jpg" : "1e9dc2adbc94f724c160ed1a03eb9492dc6c5064e2e64cc340ba2f1ee13d115e",
+      "pdd325.jpg" : "4ba7217a6ea4fce9bb7e67d3aa2c997ddf8754cda394751966e3a5387e3e7568",
+      "pdd326.jpg" : "57d8133cc367ee6253aa82542e7a63e6bb08877f03115fab24a7d7d7c15f97aa"
+   },
+   "phase" : "blocked",
+   "prompt_sha256" : "bca5b32cc0d8b00fac1dc005df4a1b90db7a5af755042b4e9af86e4d5a932b8d",
+   "splitter_sha256" : "517a7b22ab4eecfb0b6335a640d85d957d57f3283fbae2af05dee0a02a9e16bb",
+   "validation_sha256" : "e87321774550b0a096446dc8cf97fe9aa3e5eb9a21aa3d56887a1b4e819b9883"
+}

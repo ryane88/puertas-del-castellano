@@ -1,0 +1,156 @@
+{
+   "columns" : 5,
+   "composite_aspect_ratio" : "5:3",
+   "crop_layout" : {
+      "column_edges" : [
+         0,
+         324,
+         648,
+         971,
+         1295,
+         1619
+      ],
+      "method" : "Visually inspected Batch 11 vertical joins at 324,648,971,1295 and horizontal join at 485; centered exact 2:3 crops inset from each seam, no resizing.",
+      "row_edges" : [
+         0,
+         485,
+         971
+      ],
+      "seam_inset_pixels" : 1,
+      "source_pixels" : [
+         1619,
+         971
+      ]
+   },
+   "excluded_manifests" : [
+      "reports/pdd-batch-01/manifest.json",
+      "reports/pdd-batch-02/manifest.json",
+      "reports/pdd-batch-03/manifest.json",
+      "reports/pdd-batch-04/manifest.json",
+      "reports/pdd-batch-05/manifest.json",
+      "reports/pdd-batch-06/manifest.json",
+      "reports/pdd-batch-07/manifest.json",
+      "reports/pdd-batch-08/manifest.json",
+      "reports/pdd-batch-09/manifest.json",
+      "reports/pdd-batch-10/manifest.json"
+   ],
+   "panel_aspect_ratio" : "2:3",
+   "panels" : [
+      {
+         "column" : 1,
+         "description" : "Cada mañana, los aprendices levantan piedras pequeñas antes de intentar mover las grandes. Con el entrenamiento, sus brazos se fortalecen.\n\nEn cambio, una cuerda olvidada bajo la lluvia se debilita poco a poco, hasta que ya no puede sostener el cubo del pozo.",
+         "expected_filename" : "images/pdd125.jpg",
+         "pdd" : 125,
+         "position" : 1,
+         "row" : 1,
+         "short_definition" : "Hacer algo más resistente y, por el contrario, quitarle fuerza.",
+         "supabase_record_id" : 127,
+         "word" : "fortalecer y debilitar"
+      },
+      {
+         "column" : 2,
+         "description" : "Tras caminar todo el día bajo la lluvia, la viajera entra en una posada. Le sirven un cuenco de sopa caliente con pan recién hecho.\n\nNo es un banquete lujoso, pero en ese momento le sabe a gloria: pocas cosas podrían parecerle tan deliciosas.",
+         "expected_filename" : "images/pdd126.jpg",
+         "pdd" : 126,
+         "position" : 2,
+         "row" : 1,
+         "short_definition" : "Resultar extraordinariamente agradable, especialmente al comer.",
+         "supabase_record_id" : 128,
+         "word" : "saber a gloria"
+      },
+      {
+         "column" : 3,
+         "description" : "Un anciano vendedor escucha al aprendiz presumir de conocer todos los atajos del valle. Sin consultar ningún mapa, el viejo le señala un sendero que evita tres barrancos.\n\nHa vivido muchas aventuras y conoce trucos que otros ni imaginan. En el mercado dicen que sabe más que un cuco.",
+         "expected_filename" : "images/pdd127.jpg",
+         "pdd" : 127,
+         "position" : 3,
+         "row" : 1,
+         "short_definition" : "Ser muy astuto y conocer muchos trucos o experiencias.",
+         "supabase_record_id" : 129,
+         "word" : "saber más que un cuco"
+      },
+      {
+         "column" : 4,
+         "description" : "Una vaca descansa a la sombra y mueve lentamente la mandíbula mientras vuelve a masticar el alimento. Cerca de ella, un filósofo repasa una pregunta que le hicieron ayer.\n\nAmbos parecen rumiar: uno la hierba y el otro una idea a la que todavía no encuentra respuesta.",
+         "expected_filename" : "images/pdd128.jpg",
+         "pdd" : 128,
+         "position" : 4,
+         "row" : 1,
+         "short_definition" : "Pensar repetidamente en una preocupación sin llegar a resolverla.",
+         "supabase_record_id" : 130,
+         "word" : "Rumiar"
+      },
+      {
+         "column" : 5,
+         "description" : "El mensaje del capitán dice claramente: «Cerrad la puerta al ponerse el sol». Esa orden es explícita. Pero su mirada inquieta hacia el bosque sugiere algo que no ha dicho.\n\nLos guardias entienden la diferencia entre las palabras expresadas y el temor implícito que esconden.",
+         "expected_filename" : "images/pdd129.jpg",
+         "pdd" : 129,
+         "position" : 5,
+         "row" : 1,
+         "short_definition" : "Diferencia entre lo que se sugiere sin decirlo y lo que se expresa claramente.",
+         "supabase_record_id" : 131,
+         "word" : "implicite vs.explicito"
+      },
+      {
+         "column" : 1,
+         "description" : "El alcalde compra una fuente encantada que, según el vendedor, dará agua durante cien años. Al instalarla en la plaza, solo sale barro.\n\nLo que parecía una compra maravillosa ha salido rana: el resultado es mucho peor de lo esperado.",
+         "expected_filename" : "images/pdd130.jpg",
+         "pdd" : 130,
+         "position" : 6,
+         "row" : 2,
+         "short_definition" : "Resultar decepcionante algo que parecía prometedor.",
+         "supabase_record_id" : 132,
+         "word" : "salir rana"
+      },
+      {
+         "column" : 2,
+         "description" : "Un noble exige el caballo más alto de la feria, aunque apenas puede subir a la silla. Rechaza los animales tranquilos porque le parecen demasiado pequeños.\n\nEl mozo de cuadra sonríe: para aquel hombre, cuanto más grande sea algo, mejor, incluso si no resulta práctico.",
+         "expected_filename" : "images/pdd131.jpg",
+         "pdd" : 131,
+         "position" : 7,
+         "row" : 2,
+         "short_definition" : "Preferir algo grande o vistoso aunque no sea práctico.",
+         "supabase_record_id" : 133,
+         "word" : "Caballo grande, ande o no ande"
+      },
+      {
+         "column" : 3,
+         "description" : "Dos ladrones intentan abrir el almacén de especias. Uno vigila el pasillo mientras el otro fuerza la cerradura.\n\nCuando los atrapan, ambos deben responder por lo ocurrido: aunque solo uno tocó la puerta, el otro fue su cómplice.",
+         "expected_filename" : "images/pdd132.jpg",
+         "pdd" : 132,
+         "position" : 8,
+         "row" : 2,
+         "short_definition" : "Persona que ayuda o participa con otra en una acción, a veces secreta.",
+         "supabase_record_id" : 134,
+         "word" : "Cómplice"
+      },
+      {
+         "column" : 4,
+         "description" : "La exploradora cruza el bosque con una arquera que conoce cada sendero. Cuando aparece un lobo, la arquera se coloca a su lado y la ayuda a proteger el campamento.\n\nNo compiten entre ellas; trabajan por el mismo objetivo. En una tierra desconocida, encontrar una aliada cambia el viaje.",
+         "expected_filename" : "images/pdd133.jpg",
+         "pdd" : 133,
+         "position" : 9,
+         "row" : 2,
+         "short_definition" : "Persona que apoya y colabora con otra para alcanzar un objetivo.",
+         "supabase_record_id" : 135,
+         "word" : "aliado/aliada"
+      },
+      {
+         "column" : 5,
+         "description" : "El alfarero coloca un trozo de barro húmedo sobre el torno. Con los dedos y un poco de agua, le da forma hasta convertirlo en una jarra.\n\nA su lado, una maestra intenta moldear la paciencia de sus alumnos: también las costumbres pueden cambiar poco a poco.",
+         "expected_filename" : "images/pdd134.jpg",
+         "pdd" : 134,
+         "position" : 10,
+         "row" : 2,
+         "short_definition" : "Dar forma a un material o influir en cómo se desarrolla algo.",
+         "supabase_record_id" : 136,
+         "word" : "moldear"
+      }
+   ],
+   "preferred_composite_pixels" : [
+      5000,
+      3000
+   ],
+   "rows" : 2,
+   "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+}

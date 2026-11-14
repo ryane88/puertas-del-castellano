@@ -1,0 +1,21 @@
+{
+  "source_pixels": [
+    1619,
+    972
+  ],
+  "column_edges": [
+    0,
+    324,
+    648,
+    972,
+    1296,
+    1619
+  ],
+  "row_edges": [
+    0,
+    486,
+    972
+  ],
+  "seam_inset_pixels": 1,
+  "method": "Batch 15 visual inspection with adjacent-column RGB checks confirms joins at x=324,648,972 and transition around 1295-1296. Horizontal seam observed at y=486. Center exact 2:3 crops with 1px seam inset, no resizing."
+}

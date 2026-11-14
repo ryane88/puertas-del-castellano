@@ -1,0 +1,19 @@
+{
+  "composite_sha256": "101ab0aa778f42b7a3190c9a9f0b9dbac0628e1362693773122ae57113a30fbf",
+  "manifest_sha256": "66d4c30c795ce8344dbfa77122d669c65876a2cf7433ee5439c85415852ade5d",
+  "prompt_sha256": "7f068ae37f09828c8e3eb1fa0c8068d00c7831d735d9f833969702c04c321d15",
+  "positions_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visual_review_passed": true,
+  "issues": "All ten individual JPGs inspected against manifest identity, ordering and meaning. All320x480 exact2:3 without resizing; centered aspect trim and1px seam inset remove peripheral imagery, no neighboring-panel bleed, readable captions, outer frames or watermarks. PDD247 secret/private reading suggested by secluded stairs, book not concealed under apron. PDD248 affection visible but transformation over time contextual. PDD249 conversation preceding arrival and PDD250 years of convergent journeys require captions. PDD250 unlettered map-like markings decorative. PDD251 door slightly open clearly distinct from PDD256 jagged split in wood. PDD252 disapproving counselor communicates spoilsport but musician still playing rather than stopped. PDD253 source meal scene and guarded purse suggest excessive thrift; source description and short definition emphasize different aspects. PDD254 roadrunner exaggerated foreground size for readability. PDD255 smug correcting pose clear, salt/sugar error not distinguishable without labels and cook mostly outside frame. No blocking crop or subject issues found."
+}

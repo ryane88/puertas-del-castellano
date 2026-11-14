@@ -1,0 +1,19 @@
+{
+  "composite_sha256": "bda50fc4259e9629d612f556f91e91033cb67590bfcec33894199819863b79e7",
+  "manifest_sha256": "a5418320cdbda36357812af0755708ee92079a36e28e3cb26c159ee240957af7",
+  "prompt_sha256": "3afbd5e4fdf0379d7831c4fbd123800b4d5f31b965362fe4362759c2c231d693",
+  "positions_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visual_review_passed": true,
+  "issues": "All ten individual JPGs inspected against manifest identity, order and meaning. All320x480 exact2:3 without resizing; centered peripheral trim and1px seam inset. No readable captions, outer borders or watermarks. PDD338 heat clear, exact August contextual. PDD339 farmer appears female rather than source male; a small partial pointing hand and horse fragment at far left continue neighboring travel imagery into vineyard scene, minor generated scene contamination retained rather than hidden; central grape-must subject clear. PDD340 shade and evening clear, exact seven oclock cannot be established. PDD341 salt crust exaggerated and snow-like though sunny coastal spray context supports salt; not a precise material reference. PDD342 discouraged towel-holder depicts contemplation of abandoning, not completed surrender. PDD343 swallow has recognizable forked tail, enlarged foreground perspective and long streamers. PDD344 freedom in dance clear but prior shyness contextual. PDD345 leather thong sandals adapt flip-flops to medieval materials. PDD346 palette and PDD347 blank stretched canvas clear. Minor noted defects do not block overall vocabulary visual review; user should inspect them before approval."
+}

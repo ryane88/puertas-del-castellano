@@ -1,0 +1,88 @@
+{
+  "batch": 22,
+  "authorization": "User: batch approved for install",
+  "installed_at_utc": "2026-11-01T16:41:03.184569+00:00",
+  "review_originals_preserved": true,
+  "paintings": [
+    {
+      "pdd": 237,
+      "filename": "images/pdd237.jpg",
+      "sha256": "2ccf1b6a9197078c282f71d3f7c5c6ca41dce48b7b998582a296c6134414ff52",
+      "width": 308,
+      "height": 462,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 238,
+      "filename": "images/pdd238.jpg",
+      "sha256": "2ebd77c696f8879651b27dddb6f7f6800d3de0404a219919f8f36795022a7b80",
+      "width": 308,
+      "height": 462,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 239,
+      "filename": "images/pdd239.jpg",
+      "sha256": "2997fee8ae8be7a6bb54ef5c89f15700e1badf3a35f36ae2308b74a98646cca6",
+      "width": 308,
+      "height": 462,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 240,
+      "filename": "images/pdd240.jpg",
+      "sha256": "be2e783e63921757d6bb7e903610d4636e663ac1033cb85ad78dbbe95b2d2b75",
+      "width": 308,
+      "height": 462,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 241,
+      "filename": "images/pdd241.jpg",
+      "sha256": "a4e400225d4740de16ae4c64dd675a22d30356d1446b885e79b4e8c963f1cba0",
+      "width": 308,
+      "height": 462,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 242,
+      "filename": "images/pdd242.jpg",
+      "sha256": "fb86e4ed9dde7b87c34a0ee2c51e25f5fa67a669f85260fc59d4a6697ea826fd",
+      "width": 308,
+      "height": 462,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 243,
+      "filename": "images/pdd243.jpg",
+      "sha256": "8483043dd2c913f238fc296bbdefb85544e5583c8d2d50a496c3aba62ff41e96",
+      "width": 308,
+      "height": 462,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 244,
+      "filename": "images/pdd244.jpg",
+      "sha256": "f7aba9a1f87ae4dee97bd037a5e3560f2117c09a6c098dbe9225593d28cfd97e",
+      "width": 308,
+      "height": 462,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 245,
+      "filename": "images/pdd245.jpg",
+      "sha256": "2a949c17b93dbd55d30985ec4fb945875266f48abbffba6eeb3de1b09bb02a66",
+      "width": 308,
+      "height": 462,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 246,
+      "filename": "images/pdd246.jpg",
+      "sha256": "07c1492b2a85f59ed205c30e02ae92e44b42be6375b95c915bd465061480c66f",
+      "width": 308,
+      "height": 462,
+      "action": "copied_without_overwrite"
+    }
+  ]
+}

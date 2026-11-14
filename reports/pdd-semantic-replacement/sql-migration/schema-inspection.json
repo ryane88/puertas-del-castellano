@@ -1,0 +1,20 @@
+[
+  {
+    "accept": "application/openapi+json",
+    "status": 401,
+    "schema_available": false,
+    "error": {
+      "message": "Secret API key required",
+      "hint": "Only secret API keys can be used for this endpoint."
+    }
+  },
+  {
+    "accept": "application/json",
+    "status": 401,
+    "schema_available": false,
+    "error": {
+      "message": "Secret API key required",
+      "hint": "Only secret API keys can be used for this endpoint."
+    }
+  }
+]

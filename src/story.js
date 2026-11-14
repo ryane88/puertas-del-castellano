@@ -8,17 +8,18 @@ setup.supabase = {
 
 // Share the wall's door catalog with passages, including direct entries.
 let castleDoorsRequest;
+let castleDoorCatalog = [];
 setup.getCastleDoors = function (refresh = false) {
     if (!castleDoorsRequest || refresh) {
-        const endpoint = setup.supabase.url + "/rest/v1/castle_doors?select=position,name,destination_passage";
+        const endpoint = setup.supabase.url + "/rest/v1/castle_doors?select=position,name,destination_passage,badge,initial_door,published,testing";
         const options = { headers: { apikey: setup.supabase.key } };
 
         const request = (async () => {
-            let response = await fetch(endpoint + ",badge,initial_door", options);
-            if (response.status === 400) response = await fetch(endpoint, options);
+            const response = await fetch(endpoint, options);
             if (!response.ok) throw new Error(`Supabase: ${response.status}`);
             const rows = await response.json();
             if (!Array.isArray(rows)) throw new Error("Invalid castle doors response");
+            castleDoorCatalog = rows;
             return rows;
         })();
         castleDoorsRequest = request;
@@ -27,6 +28,40 @@ setup.getCastleDoors = function (refresh = false) {
         });
     }
     return castleDoorsRequest;
+};
+
+// Explicit development configuration is source-controlled; query strings never enable it.
+setup.castleDevelopment = false;
+setup.canEnterRoom = function (room) {
+    const development = ["localhost", "127.0.0.1"].includes(window.location.hostname) ||
+        setup.castleDevelopment === true;
+    return room?.published === true || (development && room?.testing === true);
+};
+
+// Protect passage navigation before widgets, room code or requests execute.
+setup.castleDoorForPassage = function (title) {
+    const aliases = {
+        TestMystRoom: "CastleEntrance", TestCircularRoom: "CastleEntrance",
+        PuertaPalabras: "CastleEntrance", TestSupabase: "CastleEntrance",
+        PDMChapter: "PDMRoom", PDMReview: "PDMRoom", PDMGenerated: "PDMRoom", PDMDiary: "PDMRoom"
+    };
+    return /^PDD\d+$/.test(title) ? "CastleEntrance" : aliases[title] || title;
+};
+const castleNavigationOverride = Config.navigation.override;
+Config.navigation.override = function (requested) {
+    const title = castleNavigationOverride?.(requested) || requested;
+    if (["Empieza", "StoryInit"].includes(title)) return title;
+    // All playable non-home passages belong to a door. Unknown destinations fail closed.
+    const destination = setup.castleDoorForPassage(title);
+    const allowed = () => castleDoorCatalog.some(row =>
+        row.destination_passage === destination && setup.canEnterRoom(row));
+    if (allowed()) return title;
+    if (!castleDoorCatalog.length) {
+        setup.getCastleDoors().then(() => {
+            if (State.passage === "Empieza" && allowed()) Engine.play(title);
+        }).catch(() => {});
+    }
+    return "Empieza";
 };
 
 $(document).on(":passagedisplay", async (event) => {
@@ -486,9 +521,11 @@ $(document).on(":passagedisplay", (event) => {
         { key: "H", badge: "PDH", name: "Pasadizo de Hipervínculos", destination: "PasadizoHipervinculos" },
         { key: "K", badge: "PDK", name: "Palacio del Karaoke", destination: "PDK" },
         { key: "L", badge: "PDL", name: "Pila de Letras", destination: "PilaDeLetras" },
+        { key: "M", badge: "PDM", name: "Palabras de Maestría", destination: "PDMRoom" },
         { key: "O", badge: "PDO", name: "Palacio de Obras", destination: "PalacioDeObras" },
         { key: "P", badge: "PDP", name: "Puentes de Principiante", destination: "PDP" },
         { key: "Q", badge: "PDQ", name: "Pruebas de Don Quijote", destination: "PruebasDonQuijote" },
+        { key: "R", badge: "PDR", name: "Puerta de los Roles", destination: "PDR" },
         { key: "T", badge: "PDT", name: "Posada de los Cuentos", destination: "TavernRoom" },
         { key: "X", badge: "PDX", name: "¿Puedes Descubrir la X?", destination: "PDX" }
       ];
@@ -506,7 +543,7 @@ $(document).on(":passagedisplay", (event) => {
           door.route = door.destination ? door.badge : "Recorrido de prueba";
         }
         for (const { key, badge, destination } of shortcuts) {
-          const door = doors.find((entry) => entry.badge === badge && entry.destination === destination);
+          const door = doors.find((entry) => entry.destination === destination);
           const guide = root.querySelector("#shortcut-" + key);
           guide.parentElement.hidden = !door;
           if (door) {
@@ -521,6 +558,7 @@ $(document).on(":passagedisplay", (event) => {
 
       const panelCount = doors.length + bufferDoors * 2;
       const enterButton = root.querySelector("#enter-door");
+      const comingSoon = root.querySelector("#door-coming-soon");
 
       const windowElement = root.querySelector("#" + "wall-window");
       const track = root.querySelector("#" + "wall-track");
@@ -535,7 +573,7 @@ $(document).on(":passagedisplay", (event) => {
         event.stopPropagation();
         if (enterButton.disabled) return;
         const destination = doors[selectedIndex].destination;
-        if (destination && Story.has(destination)) Engine.play(destination);
+        if (setup.canEnterRoom(doors[selectedIndex]) && destination && Story.has(destination)) Engine.play(destination);
       });
 
       const artworkSlots = [];
@@ -617,7 +655,8 @@ $(document).on(":passagedisplay", (event) => {
           button.setAttribute("aria-current", String(panel === selectedIndex));
           button.setAttribute("aria-label", `${item.name}, puerta ${item.index + 1} de 27`);
         });
-        enterButton.hidden = !door.destination;
+        enterButton.hidden = !setup.canEnterRoom(door) || !door.destination;
+        comingSoon.hidden = !enterButton.hidden;
         const movement = track.getAnimations();
         enterButton.disabled = movement.length > 0;
         if (movement.length) {
@@ -659,11 +698,13 @@ $(document).on(":passagedisplay", (event) => {
           if (lifetime.signal.aborted) return;
           let initialIndex;
           for (const [index, placeholder] of placeholders.entries()) {
-            Object.assign(doors[index], placeholder, { destination: undefined, key: "" });
+            Object.assign(doors[index], placeholder, { destination: undefined, key: "", published: false, testing: false });
           }
           for (const row of rows) {
             const door = doors[row.position - 1];
             if (!door) continue;
+            door.published = row.published;
+            door.testing = row.testing;
             if (row.initial_door === true) initialIndex = door.index;
             if (typeof row.name === "string" && row.name.trim()) door.name = row.name.trim();
             if (row.destination_passage && Story.has(row.destination_passage)) {
@@ -671,21 +712,11 @@ $(document).on(":passagedisplay", (event) => {
             }
             if (typeof row.badge === "string" && row.badge.trim()) {
               door.badge = row.badge.trim();
+              // Preserve the pre-existing PDL fallback artwork and label.
+              if (row.position === 12 && row.badge === "12" && door.destination === "PilaDeLetras") door.badge = "PDL";
             } else {
               const shortcut = shortcuts.find((entry) => entry.destination === door.destination);
               if (shortcut) door.badge = shortcut.badge;
-            }
-          }
-          // Fill empty slots for rooms that older catalogs do not list yet.
-          for (const shortcut of shortcuts.filter(({ key }) => ["E", "K", "L", "O"].includes(key))) {
-            const slot = doors[alphabet.indexOf(shortcut.key)];
-            const placeholder = placeholders[slot.index];
-            if (["E", "K"].includes(shortcut.key) && rows.some((row) =>
-                row.badge === shortcut.badge || (row.position === slot.index + 1 &&
-                    (row.destination_passage != null || row.initial_door === true)))) continue;
-            if (!doors.some(({ destination }) => destination === shortcut.destination) &&
-                !slot.destination && slot.badge === placeholder.badge && slot.name === placeholder.name) {
-              Object.assign(slot, shortcut);
             }
           }
           bindShortcuts();
@@ -938,6 +969,7 @@ setup.mountPdq = function (room) {
     const form = room.querySelector(".pdq-answer");
     const input = form.querySelector("textarea");
     const next = room.querySelector(".pdq-next");
+    const extra = room.querySelector(".pdq-extra");
     const diploma = room.querySelector(".pdq-diploma");
     const diplomaArt = diploma.querySelector(".pdq-diploma-art");
     const diplomaNumber = diploma.querySelector(".pdq-diploma-number");
@@ -1023,6 +1055,8 @@ setup.mountPdq = function (room) {
         next.textContent = lesson?.completed ? "Comenzar otra prueba"
             : !vocabulary ? "Cargar la palabra"
             : stage === 0 ? "Comenzar una prueba" : "Continuar a la siguiente prueba";
+        extra.hidden = !lesson?.completed;
+        extra.disabled = busy;
         diploma.hidden = !lesson?.completed;
         if (lesson?.completed) {
             const { pdd, word, definition } = lesson.vocabulary;
@@ -1056,6 +1090,48 @@ setup.mountPdq = function (room) {
         status.textContent = "";
     }
 
+    async function loadRandomVocabulary() {
+        // Read the diary afresh: another completed lesson may have been saved since entry.
+        const diplomas = readDiplomas();
+        const wordKey = word => word.normalize("NFC").trim().replace(/\s+/g, " ").toLocaleLowerCase("es");
+        const seenPdds = new Set(diplomas.map(entry => Number(entry.pdd)));
+        const seenWords = new Set(diplomas.map(entry => wordKey(entry.word)));
+        seenPdds.add(Number(lesson.vocabulary.pdd));
+        seenWords.add(wordKey(lesson.vocabulary.word));
+        const candidates = new Map();
+        const pageSize = 250;
+        status.textContent = "Buscando una palabra nueva para tu próxima aventura…";
+        for (let offset = 0; ; offset += pageSize) {
+            const response = await fetch(setup.supabase.url + "/rest/v1/rooms" +
+                "?select=pdd,word,short_definition,description&published=eq.true&pdd=gt.0" +
+                "&order=pdd.asc,id.asc&limit=" + pageSize + "&offset=" + offset, {
+                headers: { apikey: setup.supabase.key },
+                signal: AbortSignal.any([lifetime.signal, AbortSignal.timeout(10000)])
+            });
+            if (!response.ok) throw new Error();
+            const rows = await response.json();
+            if (!Array.isArray(rows)) throw new Error();
+            for (const record of rows) {
+                const pdd = Number(record?.pdd);
+                const word = typeof record?.word === "string" ? record.word.trim() : "";
+                const definition = typeof record?.short_definition === "string" ? record.short_definition.trim() : "";
+                if (!Number.isSafeInteger(pdd) || pdd < 1 || !word || !definition ||
+                    seenPdds.has(pdd) || seenWords.has(wordKey(word))) continue;
+                candidates.set(wordKey(word), { pdd, word: word.slice(0, 120),
+                    definition: definition.slice(0, 800),
+                    description: typeof record.description === "string" ? record.description.trim().slice(0, 2000) : "" });
+            }
+            if (rows.length < pageSize) break;
+        }
+        const words = [...candidates.values()];
+        if (!words.length) {
+            status.textContent = "¡Ya has completado todas las palabras disponibles! Vuelve cuando se publiquen más.";
+            return;
+        }
+        // Start only after selection and AI response succeed; preserve the diploma on failure.
+        await play("", words[Math.floor(Math.random() * words.length)]);
+    }
+
     async function run(action, errorMessage) {
         if (busy) return;
         busy = true;
@@ -1070,9 +1146,10 @@ setup.mountPdq = function (room) {
         }
     }
 
-    async function play(message) {
-        const current = lesson ?? { vocabulary, stage: 0, attempts: 0, history: [],
-            stageHistory: [], completed: false };
+    async function play(message, freshVocabulary) {
+        const current = freshVocabulary ? { vocabulary: freshVocabulary, stage: 0, attempts: 0,
+            history: [], stageHistory: [], completed: false } : lesson ?? { vocabulary,
+            stage: 0, attempts: 0, history: [], stageHistory: [], completed: false };
         const attempt = message ? current.attempts + 1 : 0;
         status.textContent = "Don Quijote está pensando…";
         const response = await fetch(setup.supabase.url + "/functions/v1/pdq-chat", {
@@ -1111,6 +1188,7 @@ setup.mountPdq = function (room) {
             current.completed = current.stage === stages.length;
         }
         lesson = variables.pdq = current;
+        vocabulary = current.vocabulary;
         input.value = "";
         if (current.completed) {
             status.textContent = saveDiploma() ? "¡Diploma guardado en tu diario!"
@@ -1130,6 +1208,10 @@ setup.mountPdq = function (room) {
         }
         if (!vocabulary) return run(loadVocabulary, loadError);
         return run(() => play(""), replyError);
+    });
+    extra.addEventListener("click", () => {
+        if (!busy && lesson?.completed) return run(loadRandomVocabulary,
+            "No se pudo comenzar otra prueba. Tu diploma sigue guardado; inténtalo de nuevo.");
     });
     form.addEventListener("submit", (event) => {
         event.preventDefault();

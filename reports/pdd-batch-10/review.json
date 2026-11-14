@@ -1,0 +1,19 @@
+{
+  "composite_sha256": "2394b11800275cec55feb7d6395fe364fb0ece2ab1ec202b18cff7121b4f09ef",
+  "manifest_sha256": "3ac4317d83d6b654c22e7743396b4a5db6759a6e4dd4b2860bd2d6bf1f695ac8",
+  "prompt_sha256": "741eb09ad19adf85cbefcae5cd737a8e7debb8df28ce67fe2ffca62e9db8f6bb",
+  "positions_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visual_review_passed": true,
+  "issues": "All ten individual crops inspected in manifest order; filenames, hashes and equal 314x471 portrait dimensions verified, no obvious neighbouring-panel bleed or major subject mismatch. PDDs 114 and 115 show the return/transformed stance rather than an entire character arc or journey; accompanying room text is necessary. PDD 121 suggests hidden deceit without proving the precise horse defect; PDD 122 uses two differently sized pictorial maps as a visual scale analogy. Training scene PDD 123 shows a safe wooden-sword touch without injury. Small centered edge trims, no resizing or upscaling. Codex visual QC is not user approval or installation permission."
+}

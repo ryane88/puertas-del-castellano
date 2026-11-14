@@ -1,0 +1,141 @@
+{
+   "batch" : 13,
+   "manifest" : {
+      "columns" : 5,
+      "composite_aspect_ratio" : "5:3",
+      "excluded_manifests" : [
+         "reports/pdd-batch-01/manifest.json",
+         "reports/pdd-batch-02/manifest.json",
+         "reports/pdd-batch-03/manifest.json",
+         "reports/pdd-batch-04/manifest.json",
+         "reports/pdd-batch-05/manifest.json",
+         "reports/pdd-batch-06/manifest.json",
+         "reports/pdd-batch-07/manifest.json",
+         "reports/pdd-batch-08/manifest.json",
+         "reports/pdd-batch-09/manifest.json",
+         "reports/pdd-batch-10/manifest.json",
+         "reports/pdd-batch-11/manifest.json",
+         "reports/pdd-batch-12/manifest.json"
+      ],
+      "panel_aspect_ratio" : "2:3",
+      "panels" : [
+         {
+            "column" : 1,
+            "description" : "Una joven artista llega a París con un cuaderno y muchas ganas de caminar. Pasa la mañana junto al Sena, observa los puentes y termina la tarde en una pequeña cafetería.\n\nNo tiene prisa ni un itinerario rígido. Ha venido a parisear, a disfrutar de la ciudad y de su ambiente.",
+            "expected_filename" : "images/pdd145.jpg",
+            "pdd" : 145,
+            "position" : 1,
+            "row" : 1,
+            "short_definition" : "Pasear y disfrutar de la vida y el ambiente de París.",
+            "supabase_record_id" : 147,
+            "word" : "Parisear"
+         },
+         {
+            "column" : 2,
+            "description" : "La capitana entra en el patio con paso firme y organiza a los guardias con voz enérgica. Sus movimientos transmiten decisión y vitalidad.\n\nDespués del entrenamiento, un aprendiz pide una bebida energética para recuperar fuerzas. Una palabra describe la actitud; la otra, algo que aporta energía.",
+            "expected_filename" : "images/pdd146.jpg",
+            "pdd" : 146,
+            "position" : 2,
+            "row" : 1,
+            "short_definition" : "Diferencia entre algo lleno de energía y algo que aporta energía.",
+            "supabase_record_id" : 148,
+            "word" : "enérgica\" y \"energética"
+         },
+         {
+            "column" : 3,
+            "description" : "La repostera observa una tarta dorada en el horno. El aroma llena la cocina y el glaseado está a punto de alcanzar la textura perfecta.\n\nTodavía necesita un instante más, pero ya está a punto de caramelo: casi lista para servir.",
+            "expected_filename" : "images/pdd147.jpg",
+            "pdd" : 147,
+            "position" : 3,
+            "row" : 1,
+            "short_definition" : "Estar en el momento perfecto para realizar o disfrutar algo.",
+            "supabase_record_id" : 149,
+            "word" : "A punto de caramelo"
+         },
+         {
+            "column" : 4,
+            "description" : "En una crónica, el escribano lee que el dragón representa, en sentido figurado, el miedo del protagonista. Luego señala el dragón figurado en el tapiz: una criatura representada con hilo rojo.\n\nAmbas expresiones hablan de representación, pero una alude al significado no literal y la otra a algo plasmado o imaginado.",
+            "expected_filename" : "images/pdd148.jpg",
+            "pdd" : 148,
+            "position" : 4,
+            "row" : 1,
+            "short_definition" : "Diferencia entre usar un sentido no literal y representar algo mediante una figura.",
+            "supabase_record_id" : 150,
+            "word" : "FIGURATIVO vs FIGURADO"
+         },
+         {
+            "column" : 5,
+            "description" : "La diplomática entra en la sala y advierte que los dos nobles están ofendidos. En lugar de acusarlos, elige palabras suaves y una pregunta cuidadosa.\n\nSu sutileza evita una pelea: consigue expresar una idea delicada sin decirla de manera brusca.",
+            "expected_filename" : "images/pdd149.jpg",
+            "pdd" : 149,
+            "position" : 5,
+            "row" : 1,
+            "short_definition" : "Delicadeza o finura difícil de percibir a primera vista.",
+            "supabase_record_id" : 151,
+            "word" : "Sutileza"
+         },
+         {
+            "column" : 1,
+            "description" : "Un maestro antiguo sostiene una vara y asegura que solo el castigo puede enseñar a leer. La nueva bibliotecaria aparta la vara y ofrece a los niños libros, paciencia y tiempo.\n\nEl viejo refrán «la letra con sangre entra» refleja una educación basada en la dureza; ella demuestra que aprender no requiere violencia.",
+            "expected_filename" : "images/pdd150.jpg",
+            "pdd" : 150,
+            "position" : 6,
+            "row" : 2,
+            "short_definition" : "Antiguo dicho que defiende aprender mediante castigos severos.",
+            "supabase_record_id" : 152,
+            "word" : "la letra con sangre entra"
+         },
+         {
+            "column" : 2,
+            "description" : "El mercader llega al castillo en un carruaje dorado, seguido por criados que cargan baúles de seda. Cada noche exige un banquete distinto y una habitación más grande.\n\nLa tesorera se pregunta cuánto tiempo podrá mantener un tren de vida tan lujoso.",
+            "expected_filename" : "images/pdd151.jpg",
+            "pdd" : 151,
+            "position" : 7,
+            "row" : 2,
+            "short_definition" : "Mantener un determinado nivel de gastos y estilo de vida.",
+            "supabase_record_id" : 153,
+            "word" : "Llevar un tren de vida"
+         },
+         {
+            "column" : 3,
+            "description" : "Desde la cocina llega una canción que todos conocen. La panadera canta una estrofa nueva, pero los aprendices esperan impacientes la parte que se repite.\n\nCuando llega el estribillo, hasta los guardias se unen al coro.",
+            "expected_filename" : "images/pdd152.jpg",
+            "pdd" : 152,
+            "position" : 8,
+            "row" : 2,
+            "short_definition" : "Parte de una canción que se repite varias veces.",
+            "supabase_record_id" : 154,
+            "word" : "estribillo"
+         },
+         {
+            "column" : 4,
+            "description" : "Un pulpo escapado del acuario del alquimista aparece entre ruedas, herramientas y herraduras. Mueve sus ocho brazos sin saber qué tocar.\n\nEl escudero que intenta encontrar la biblioteca se siente igual de perdido entre los pasillos del castillo.",
+            "expected_filename" : "images/pdd153.jpg",
+            "pdd" : 153,
+            "position" : 9,
+            "row" : 2,
+            "short_definition" : "Estar completamente desorientado en una situación desconocida.",
+            "supabase_record_id" : 155,
+            "word" : "Estar más perdido que un pulpo en un garaje"
+         },
+         {
+            "column" : 5,
+            "description" : "La herrera enseña al viajero una espada forjada con metal caído de una estrella. Para comprarla tendría que entregar todas sus monedas y vender su caballo.\n\n—¡Eso cuesta un huevo! —exclama, devolviéndola con cuidado.",
+            "expected_filename" : "images/pdd154.jpg",
+            "pdd" : 154,
+            "position" : 10,
+            "row" : 2,
+            "short_definition" : "Ser muy caro o requerir muchísimo esfuerzo.",
+            "supabase_record_id" : 156,
+            "word" : "Costar un huevo"
+         }
+      ],
+      "preferred_composite_pixels" : [
+         5000,
+         3000
+      ],
+      "rows" : 2,
+      "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+   },
+   "splitter_sha256" : "517a7b22ab4eecfb0b6335a640d85d957d57f3283fbae2af05dee0a02a9e16bb"
+}

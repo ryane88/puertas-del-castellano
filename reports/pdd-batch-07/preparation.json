@@ -1,0 +1,135 @@
+{
+   "batch" : "07",
+   "manifest" : {
+      "columns" : 5,
+      "composite_aspect_ratio" : "5:3",
+      "excluded_manifests" : [
+         "reports/pdd-batch-01/manifest.json",
+         "reports/pdd-batch-02/manifest.json",
+         "reports/pdd-batch-03/manifest.json",
+         "reports/pdd-batch-04/manifest.json",
+         "reports/pdd-batch-05/manifest.json",
+         "reports/pdd-batch-06/manifest.json"
+      ],
+      "panel_aspect_ratio" : "2:3",
+      "panels" : [
+         {
+            "column" : 1,
+            "description" : "El relojero recibe una máquina diminuta que nadie ha conseguido reparar. Con manos seguras y mucha experiencia, coloca cada engranaje en su sitio.\n\nCuando el mecanismo vuelve a funcionar, los aprendices admiran su habilidad extraordinaria.",
+            "expected_filename" : "images/pdd84.jpg",
+            "pdd" : 84,
+            "position" : 1,
+            "row" : 1,
+            "short_definition" : "Habilidad adquirida mediante la experiencia para hacer algo bien.",
+            "supabase_record_id" : 86,
+            "word" : "pericia"
+         },
+         {
+            "column" : 2,
+            "description" : "En la sala de los dados, una máquina escoge cada mañana una puerta distinta del castillo. Nadie puede predecir cuál se abrirá.\n\nNo sigue un orden fijo: la elección depende por completo del azar.",
+            "expected_filename" : "images/pdd85.jpg",
+            "pdd" : 85,
+            "position" : 2,
+            "row" : 1,
+            "short_definition" : "Que depende del azar y no sigue un orden previsible.",
+            "supabase_record_id" : 87,
+            "word" : "aleatorio/a"
+         },
+         {
+            "column" : 3,
+            "description" : "Una tejedora deja caer su ovillo de lana y el hilo rueda por el suelo de piedra. El gato lo persigue hasta convertir el taller en una red de hebras.\n\nElla recoge aquella pequeña bola de hilo antes de que desaparezca bajo el armario.",
+            "expected_filename" : "images/pdd86.jpg",
+            "pdd" : 86,
+            "position" : 3,
+            "row" : 1,
+            "short_definition" : "Conjunto de hilo de lana enrollado formando una esfera.",
+            "supabase_record_id" : 88,
+            "word" : "bola de estambre"
+         },
+         {
+            "column" : 4,
+            "description" : "El sol está bajando y el barquero todavía no ha cargado las provisiones. Su compañera le hace señas desde el muelle.\n\n«¡Date prisa!», grita. Si no se mueve más rápido, perderán la marea favorable.",
+            "expected_filename" : "images/pdd87.jpg",
+            "pdd" : 87,
+            "position" : 4,
+            "row" : 1,
+            "short_definition" : "Darse prisa y actuar con más energía o rapidez.",
+            "supabase_record_id" : 89,
+            "word" : "darse vidilla"
+         },
+         {
+            "column" : 5,
+            "description" : "Un mercader promete vender un espejo capaz de mostrar el futuro. Habla con palabras grandiosas, pero nunca permite que nadie pruebe su mercancía.\n\nLa bibliotecaria sospecha que ofrece promesas vacías para impresionar a los compradores.",
+            "expected_filename" : "images/pdd88.jpg",
+            "pdd" : 88,
+            "position" : 5,
+            "row" : 1,
+            "short_definition" : "Persona que promete grandes resultados sin ofrecer nada sólido.",
+            "supabase_record_id" : 90,
+            "word" : "vendehumos"
+         },
+         {
+            "column" : 1,
+            "description" : "El aprendiz derrama tinta sobre el mapa que debía entregar al rey. Primero busca a quién culpar, pero luego respira hondo y recoge el pergamino.\n\nEl error ya está cometido; ahora le corresponde asumirlo y reparar el daño.",
+            "expected_filename" : "images/pdd89.jpg",
+            "pdd" : 89,
+            "position" : 6,
+            "row" : 2,
+            "short_definition" : "Aceptar las consecuencias de lo que ya se ha hecho.",
+            "supabase_record_id" : 91,
+            "word" : "a lo hecho, pecho"
+         },
+         {
+            "column" : 2,
+            "description" : "Una viajera llega al castillo pensando quedarse solo una noche. Con los meses planta un huerto, aprende los nombres de sus vecinos y encuentra amigos.\n\nSin darse cuenta, empieza a echar raíces en aquel lugar.",
+            "expected_filename" : "images/pdd90.jpg",
+            "pdd" : 90,
+            "position" : 7,
+            "row" : 2,
+            "short_definition" : "Echar raíces en un lugar o establecer vínculos profundos.",
+            "supabase_record_id" : 92,
+            "word" : "Enraizarse"
+         },
+         {
+            "column" : 3,
+            "description" : "El embajador llama «valiente» al capitán después de una batalla. Algunos oyen un elogio; otros perciben una crítica a su imprudencia.\n\nLa misma palabra puede sugerir cosas distintas según quién la diga y cómo se escuche.",
+            "expected_filename" : "images/pdd91.jpg",
+            "pdd" : 91,
+            "position" : 8,
+            "row" : 2,
+            "short_definition" : "Significado adicional o asociación que una palabra sugiere.",
+            "supabase_record_id" : 93,
+            "word" : "connotación"
+         },
+         {
+            "column" : 4,
+            "description" : "Al otro lado del muro aparece primero la punta de un sombrero. Después surge una cara curiosa entre las ramas.\n\nEl niño se asoma lentamente para mirar el desfile sin que lo descubran.",
+            "expected_filename" : "images/pdd92.jpg",
+            "pdd" : 92,
+            "position" : 9,
+            "row" : 2,
+            "short_definition" : "Empezar a aparecer o dejarse ver parcialmente.",
+            "supabase_record_id" : 94,
+            "word" : "Asomar"
+         },
+         {
+            "column" : 5,
+            "description" : "Durante años, un cuadro estuvo cubierto por una tela oscura. La conservadora retira el paño y revela un retrato que nadie recordaba.\n\nEl descubrimiento ilumina un secreto del castillo que había permanecido oculto.",
+            "expected_filename" : "images/pdd93.jpg",
+            "pdd" : 93,
+            "position" : 10,
+            "row" : 2,
+            "short_definition" : "Acción de descubrir o revelar algo que estaba oculto.",
+            "supabase_record_id" : 95,
+            "word" : "desvelamiento"
+         }
+      ],
+      "preferred_composite_pixels" : [
+         5000,
+         3000
+      ],
+      "rows" : 2,
+      "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+   },
+   "splitter_sha256" : "517a7b22ab4eecfb0b6335a640d85d957d57f3283fbae2af05dee0a02a9e16bb"
+}

@@ -1,0 +1,7 @@
+{
+ "source_pixels": [1619,971],
+ "column_edges": [0,332,648,973,1289,1619],
+ "row_edges": [0,486,971],
+ "seam_inset_pixels": 1,
+ "method": "Centered equal 2:3 crops within inspected Batch 10 boundaries; no resizing"
+}

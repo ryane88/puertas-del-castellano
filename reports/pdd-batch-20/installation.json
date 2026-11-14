@@ -1,0 +1,90 @@
+{
+  "batch": 20,
+  "authorization": "User: batch approved for install, following disclosure that PDD222 failed visual review",
+  "visual_review_passed": false,
+  "known_visual_issues": "All ten individual JPGs inspected. File validation passes: 314x471 exact 2:3 without resizing; centered crops and seam insets trim peripheral material without neighbouring-panel bleed. PDD216 listener gender differs from source but inspiration scene works. PDD218 generosity conveys metaphor with no temporal proof of last loaf. PDD219 memory and PDD220 collective small actions recognizable. PDD221 diaphragm and PDD223 fascia recognizable as stylized teaching models. BLOCKING: PDD222 depicts an origin in the central brain and a dominant central trunk extending down the torso resembling a spinal/autonomic schematic, not a faithful vagus nerve route; cannot attest vocabulary accuracy. PDD224 pineal model and PDD225 abdominal plexus are schematic, with exaggerated highlighted structures and simplified anatomy; not precise anatomical diagrams. Batch remains incomplete pending explicit user direction; no automatic regeneration or installation.",
+  "installed_at_utc": "2026-11-01T11:27:20.057366+00:00",
+  "review_originals_preserved": true,
+  "paintings": [
+    {
+      "pdd": 216,
+      "filename": "images/pdd216.jpg",
+      "sha256": "ffd7845e7f916af12cc6c66226f3ea5f0adc59b5497018b1e01f633a02333d7f",
+      "width": 314,
+      "height": 471,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 217,
+      "filename": "images/pdd217.jpg",
+      "sha256": "355d1ea02a38526cdcddf02a495d1ed12f19dc844444e85227f19a2f93109cc8",
+      "width": 314,
+      "height": 471,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 218,
+      "filename": "images/pdd218.jpg",
+      "sha256": "6d7ab273de82f8e417b2994f66898d5e4cf17fbe5ff347be515c1aff66e7eea1",
+      "width": 314,
+      "height": 471,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 219,
+      "filename": "images/pdd219.jpg",
+      "sha256": "700e17171e31f7bd1a34a81b4b74414816e9b626c5fc8453a4ffd99f8bf82e14",
+      "width": 314,
+      "height": 471,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 220,
+      "filename": "images/pdd220.jpg",
+      "sha256": "2a128cf223ce2c0eb8e3bfb06cde936b96c5d3afff925cda94db181e56f2a166",
+      "width": 314,
+      "height": 471,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 221,
+      "filename": "images/pdd221.jpg",
+      "sha256": "a89e38f6cfb76fb592bfe6fde9fd74dd221319fff50fb95e0898e8c8fbaaecb4",
+      "width": 314,
+      "height": 471,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 222,
+      "filename": "images/pdd222.jpg",
+      "sha256": "2deb1f802ad89ded48513f1cccad0d5a7cc6ee0c4e653cbbc5adc857c0044758",
+      "width": 314,
+      "height": 471,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 223,
+      "filename": "images/pdd223.jpg",
+      "sha256": "110db386caaa67fe0eb6eb3f0cac62da1cfc4f9ef1be515d0191c70ec8819702",
+      "width": 314,
+      "height": 471,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 224,
+      "filename": "images/pdd224.jpg",
+      "sha256": "cca0d1059d90493e865a51582b4f44ab9aa68d73bfd5ff8330da6208494c9d94",
+      "width": 314,
+      "height": 471,
+      "action": "copied_without_overwrite"
+    },
+    {
+      "pdd": 225,
+      "filename": "images/pdd225.jpg",
+      "sha256": "b6315766b400e032c0937eff906dcdcf7e909ac1f805606e8840d942feb53a05",
+      "width": 314,
+      "height": 471,
+      "action": "copied_without_overwrite"
+    }
+  ]
+}

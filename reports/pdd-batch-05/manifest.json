@@ -1,0 +1,138 @@
+{
+   "columns" : 5,
+   "crop_layout" : {
+      "source_pixels" : [1619, 971],
+      "column_edges" : [0, 324, 648, 972, 1295, 1619],
+      "row_edges" : [0, 486, 971],
+      "seam_inset_pixels" : 1,
+      "method" : "Centered equal 2:3 crops within observed Batch 05 boundaries; no resizing"
+   },
+   "composite_aspect_ratio" : "5:3",
+   "excluded_manifests" : [
+      "reports/pdd-batch-01/manifest.json",
+      "reports/pdd-batch-02/manifest.json",
+      "reports/pdd-batch-03/manifest.json",
+      "reports/pdd-batch-04/manifest.json"
+   ],
+   "panel_aspect_ratio" : "2:3",
+   "panels" : [
+      {
+         "column" : 1,
+         "description" : "Las puertas del salón se abren y la multitud recibe a la exploradora con aplausos y gritos entusiastas. Algunos levantan antorchas; otros cantan su nombre.\n\nEl entusiasmo es tan intenso que hasta los muros parecen vibrar.",
+         "expected_filename" : "images/pdd64.jpg",
+         "pdd" : 64,
+         "position" : 1,
+         "row" : 1,
+         "short_definition" : "Pasión o entusiasmo muy intenso por algo.",
+         "supabase_record_id" : 66,
+         "word" : "fervor"
+      },
+      {
+         "column" : 2,
+         "description" : "El mago coloca una piedra sobre la mesa, la cubre con un pañuelo y chasquea los dedos. Cuando retira la tela, hay una manzana roja en su lugar.\n\nNadie entiende cómo ocurrió: parece que el cambio se hizo por pura magia.",
+         "expected_filename" : "images/pdd65.jpg",
+         "pdd" : 65,
+         "position" : 2,
+         "row" : 1,
+         "short_definition" : "De manera aparentemente mágica o inexplicable.",
+         "supabase_record_id" : 67,
+         "word" : "por arte de birlibirloque"
+      },
+      {
+         "column" : 3,
+         "description" : "El detective encuentra una carta sin firma, una huella junto al pozo y una llave que no abre ninguna puerta conocida.\n\nEl caso parece resuelto, pero esos detalles pendientes todavía pueden cambiar toda la historia.",
+         "expected_filename" : "images/pdd66.jpg",
+         "pdd" : 66,
+         "position" : 3,
+         "row" : 1,
+         "short_definition" : "Detalles sin resolver que impiden comprender completamente una situación.",
+         "supabase_record_id" : 68,
+         "word" : "Los cabos sueltos"
+      },
+      {
+         "column" : 4,
+         "description" : "El herrero golpea la cerradura por décima vez y deja caer el martillo, agotado. Está a punto de abandonar la tarea.\n\nEntonces descubre una pequeña pieza escondida y decide intentarlo una vez más.",
+         "expected_filename" : "images/pdd67.jpg",
+         "pdd" : 67,
+         "position" : 4,
+         "row" : 1,
+         "short_definition" : "Dejar de intentarlo porque se considera imposible conseguirlo.",
+         "supabase_record_id" : 69,
+         "word" : "Darse por vencido"
+      },
+      {
+         "column" : 5,
+         "description" : "Tras horas de discutir sobre el color de las banderas, la capitana cierra el libro de cuentas. Está cansada de reuniones que no llevan a ninguna parte.\n\nSale del salón y decide olvidarse del asunto por el resto del día.",
+         "expected_filename" : "images/pdd68.jpg",
+         "pdd" : 68,
+         "position" : 5,
+         "row" : 1,
+         "short_definition" : "Abandonar algo por cansancio, enfado o frustración.",
+         "supabase_record_id" : 70,
+         "word" : "Mandar todo a paseo"
+      },
+      {
+         "column" : 1,
+         "description" : "Al amanecer, una noticia recorre el mercado: habrá una fiesta sorpresa en la plaza. Los vendedores corren, los músicos afinan y todos quieren participar.\n\nEl tranquilo pueblo se llena de actividad y de una agitación inesperada.",
+         "expected_filename" : "images/pdd69.jpg",
+         "pdd" : 69,
+         "position" : 6,
+         "row" : 2,
+         "short_definition" : "Situación agitada, complicada o llena de actividad.",
+         "supabase_record_id" : 71,
+         "word" : "Movida"
+      },
+      {
+         "column" : 2,
+         "description" : "Una discusión sobre una silla termina con dos caballeros empujándose junto a la fuente. El guardia interviene antes de que lleguen a golpearse.\n\nLo que empezó como una simple disputa casi se convierte en una pelea.",
+         "expected_filename" : "images/pdd70.jpg",
+         "pdd" : 70,
+         "position" : 7,
+         "row" : 2,
+         "short_definition" : "Perder el control de una situación o excederse en una acción.",
+         "supabase_record_id" : 72,
+         "word" : "Irse de manos"
+      },
+      {
+         "column" : 3,
+         "description" : "Aquí el castillo casi no hace ruido. Solo escuchas el fuego, tu respiración y, muy lejos, el agua de una fuente.",
+         "expected_filename" : "images/pdd71.jpg",
+         "pdd" : 71,
+         "position" : 8,
+         "row" : 2,
+         "short_definition" : "Tranquilidad profunda, sin ruido ni preocupaciones.",
+         "supabase_record_id" : 73,
+         "word" : "Sosiego"
+      },
+      {
+         "column" : 4,
+         "description" : "En pleno banquete, el bufón se vuelve hacia el rey y anuncia sin aviso que la sopa está horrible. El salón queda en silencio.\n\nNadie esperaba una opinión tan directa, pronunciada de golpe y sin rodeos.",
+         "expected_filename" : "images/pdd72.jpg",
+         "pdd" : 72,
+         "position" : 9,
+         "row" : 2,
+         "short_definition" : "Decir algo de forma repentina, directa y sin preparación.",
+         "supabase_record_id" : 74,
+         "word" : "decir algo a bocajarro"
+      },
+      {
+         "column" : 5,
+         "description" : "En la biblioteca hay un cartel que dice: «Para encontrar la salida, debes dejar de buscarla». El viajero se ríe, confundido.\n\nCuanto más piensa en aquellas palabras contradictorias, más sentido parecen tener.",
+         "expected_filename" : "images/pdd73.jpg",
+         "pdd" : 73,
+         "position" : 10,
+         "row" : 2,
+         "short_definition" : "Idea o situación que parece contradictoria pero puede tener sentido.",
+         "supabase_record_id" : 75,
+         "word" : "paradoja"
+      }
+   ],
+   "positions" : "Left to right across top row, then left to right across bottom row",
+   "preferred_composite_pixels" : [
+      5000,
+      3000
+   ],
+   "rows" : 2,
+   "selection" : "Next ten missing PDD rows in refreshed inventory order; exclude all PDDs and record IDs from Batches 01-04 regardless of installation",
+   "source" : "reports/artwork-inventory.csv"
+}

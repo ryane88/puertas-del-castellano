@@ -1,0 +1,31 @@
+Create ONE composite image containing exactly TEN distinct paintings in FIVE equal-width columns and TWO equal-height rows. Overall canvas: landscape, exact 5:3 aspect ratio, preferably 5000 × 3000 pixels. Every panel: portrait, exact 2:3 aspect ratio, 1000 × 1500 pixels at the preferred size.
+
+Fill the canvas edge to edge. NO gutters, gaps, borders, frames, dividing lines, margins, or padding. Panel boundaries must fall exactly at 20%, 40%, 60%, and 80% of the width, and 50% of the height, without drawing lines. Each panel is an independent complete scene, never a continuous panorama or a collage within a panel. Keep important subjects comfortably inside each panel's edges for cropping.
+
+Use a consistent richly detailed medieval-fantasy painterly style: illuminated-manuscript colours, Gothic stone architecture, warm torchlight and candlelight, cool atmospheric shadows, lapis blue, crimson, jewel tones, earthy textures, and golden accents within the scenes. Match the craftsmanship of the previous Puertas del Castellano paintings. No photorealistic rendering or modern objects. NO captions, labels, numbers, letters, readable writing, signatures, or watermarks anywhere. Parchment may contain pictorial drawings only. Position numbers below are instructions and must not appear in the image. If previous paintings are attached, use them only as style references; do not reproduce their scenes or borders.
+
+TOP ROW, left to right:
+
+1. A bold medieval explorer making the first committed leap across a narrow break in a high stone bridge, while hesitant companions wait behind. Show the daring attempt clearly, with a secure landing visible ahead, a deep misty ravine below, and distant Gothic towers. Strong vertical depth, windswept cloak, golden dawn against cool blue shadows. One decisive moment of courage, no injury or modern climbing equipment.
+
+2. A shepherd showing a traveller a narrow woodland shortcut toward a watermill. From a raised castle path, the winding main road can be seen making a long detour around three green hills, while the shepherd points to a shorter footpath between nearby trees leading toward the same mill. Keep it one coherent landscape, not a map or diagram. Sunlit foliage, cool wooded shade, medieval packs and clothing; no arrows or signs.
+
+3. An apprentice at a castle scriptorium desk trying to sketch a dragon on an otherwise blank parchment. The drawing is a charming, visibly untidy pictorial scribble of crooked curves, loops, and ink blots, loosely suggesting a dragon rather than letters. A patient teacher smiles at the apprentice's spontaneous attempt. Focus on the ink-stained hand and messy drawing, with warm candles, Gothic windows, and jewel-coloured sleeves. No written manuscript text.
+
+4. A confident castle cook holding the sole large iron storeroom key while several nobles debate around a table. She stands beside the locked heavy wooden storeroom door, calmly indicating that she decides when it opens; the others turn toward her, recognising her control. Make the key and her assured posture the visual focus. Medieval kitchen details, hanging copper cookware, warm hearth light and cool stone shadows. No labels, documents with writing, or literal symbolic diagrams.
+
+5. A gardener stepping out from the shelter of a castle doorway to face an accusing knight directly in a courtyard. Their eyes meet; the gardener's hands tremble slightly but his stance is resolute. Show courage in confronting a difficult disagreement rather than aggression: no drawn weapons, fighting, or injuries. Gardening tools rest nearby. Gothic arches, cool morning stone and a warm shaft of sunlight.
+
+BOTTOM ROW, left to right:
+
+6. Representatives of two neighbouring medieval villages sharing bread beside a stone bridge over a river, exchanging a sincere handshake after a long dispute over its water. Their companions visibly relax and mingle; both settlements are suggested along the banks. Peaceful cooperation is the focus. Golden afternoon light, cool flowing water, rustic clothing, and an open welcoming composition. No treaty text or written signs.
+
+7. A master tapestry maker spreading an unlettered pictorial pattern on a wooden workshop table while apprentices use it to repeat the same simple floral motif on separate pieces of cloth. Clearly show the matching repeated shapes in the original drawing and the developing textiles. This is a design model, not a portrait of an employer or patron. Coloured threads, wooden looms, Gothic windows, warm lamplight and deep jewel-toned fabric. No letters, numbers, captions, or decorative outer image border.
+
+8. A travel-weary medieval wanderer sinking deeply into a broad cushioned armchair beside a castle inn's fireplace, legs comfortably stretched out and shoulders relaxed. Boots and a travel pack lie nearby; rain streaks the cool blue window beyond. Emphasise the luxurious bodily ease of settling into the seat. Rich upholstery, warm firelight, soft shadows, and no modern furniture or objects.
+
+9. A small old castle tower that initially looks sturdy, but a clearly visible crack runs through its exposed lower masonry and foundations. A concerned mason gestures for companions to stay back while inspecting the weakness, with dark storm clouds gathering beyond. Make vulnerability and the need for repair legible, not an ongoing collapse. Weathered stone, a simple wooden tool chest, cool threatening sky and warm lantern light. No warning signs, labels, or writing.
+
+10. A medieval violinist seated in a quiet castle alcove, overwhelmed with tender emotion after receiving a letter from a long-lost brother. A companion offers gentle reassurance; tears gather as she smiles, her expression conveying feelings close to the surface. Her wooden violin rests nearby. Show only the blank reverse of the letter or a folded unlettered parchment, with no readable marks. Warm candlelight on expressive faces, cool Gothic window shadows, lapis and crimson fabrics.
+
+Final check: exactly ten independent scenes, in the specified order, arranged five columns by two rows; equal portrait 2:3 panels; overall 5:3; no gutters, borders, text, labels, numbers, or modern objects; consistent painterly medieval-fantasy style.

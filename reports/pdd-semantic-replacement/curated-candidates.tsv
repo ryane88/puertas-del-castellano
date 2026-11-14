@@ -1,0 +1,236 @@
+from_pdd	to_pdd	relationship_type	strength	explanation_es
+1	96	significados_cercanos	2	Ambas entradas expresan recuperación tras una dificultad; resiliencia es la capacidad y alzar la cabeza es recuperar el ánimo o la dignidad.
+1	239	significados_cercanos	2	Las dos definiciones se refieren a recursos personales que aparecen ante la adversidad; la cita destaca la fuerza y resiliencia añade recuperación.
+1	262	expresiones_equivalentes	2	La resiliencia permite recuperarse de las adversidades; el refrán presenta esa superación como una fuente de fortaleza, sin afirmar que todo daño beneficie.
+2	395	significados_cercanos	2	Verbalizar convierte ideas en palabras; la elocuencia añade claridad y capacidad expresiva a ese mismo acto, sin que sean sinónimos exactos.
+7	46	contraste_de_uso	3	Dar por sentado acepta algo como seguro sin cuestionarlo; epojé consiste precisamente en suspender ese juicio para observar antes de concluir.
+7	309	contraste_de_uso	3	La pregunta exige razones para una certeza que dar por sentado acepta sin examinarlas; permite contrastar dos actitudes ante la misma afirmación.
+9	165	significados_cercanos	2	Dominguero, en la definición del proyecto, es un excursionista ocasional y poco experimentado: comparte la práctica no profesional de aficionado, con un matiz específico y a veces despectivo.
+10	63	significados_cercanos	2	Ambas entradas describen sensibilidad emocional elevada; susceptible destaca la facilidad para ofenderse, mientras a flor de piel abarca sentimientos intensos de cualquier signo.
+10	116	significados_cercanos	2	Susceptible reacciona fácilmente a una ofensa y ser de mecha corta pierde pronto la paciencia; coinciden en la reacción fácil, no en todos los tipos de sensibilidad.
+11	219	significados_cercanos	2	Volver a pasar por el corazón es recordar con emoción; nostalgia es una modalidad de ese recuerdo teñida de tristeza por lo pasado.
+12	298	significados_cercanos	2	En la acepción interpersonal, sintonizar es conectar emocionalmente y llevarse a las mil maravillas es entenderse muy bien; se excluye aquí la acepción de ajustar una frecuencia.
+12	299	significados_cercanos	2	Hacer buenas migas expresa un entendimiento inicial que encaja con sintonizar emocionalmente, aunque la sintonía no exige que la relación sea nueva.
+13	155	significados_cercanos	2	Dichoso describe a quien siente felicidad; gozar es experimentar o disfrutar un placer que puede producir ese estado, sin equivalencia en la acepción de buena suerte.
+14	60	sinonimia_parcial	3	Paradigma y patrón comparten la acepción de modelo que sirve de referencia; paradigma puede abarcar además un sistema de ideas.
+15	299	significados_cercanos	2	Entablar una relación es iniciarla; hacer buenas migas precisa que ese inicio trae entendimiento. La relación se limita al comienzo de un vínculo interpersonal.
+16	44	significados_cercanos	2	La serenidad es calma interior y la templanza es dominio moderado de las emociones que permite conservar esa calma ante una dificultad.
+16	71	sinonimia	3	Serenidad y sosiego designan calma sin agitación; sosiego puede subrayar también la quietud del entorno.
+16	189	significados_cercanos	2	Recogimiento añade concentración e intimidad reflexiva a la calma interior de serenidad; no son intercambiables en todos los contextos.
+19	118	equivalencia_nominal_verbal	3	El elogio es la expresión de reconocimiento que se realiza al halagar sinceramente; halagar puede tener además intención de agradar.
+19	208	expresiones_equivalentes	3	Echar flores significa dedicar elogios; expresa en locución la misma acción de alabanza que nombra el elogio.
+20	361	acepcion_compartida	3	La entrada El prejucio corresponde por su definición a prejuicio, opinión previa sin fundamento; la sala Perjuicio/Prejuicio contrasta esa misma acepción con daño. Se conserva la errata del registro.
+22	255	significados_cercanos	2	Jactarse es presumir de los propios méritos; sabelotodo caracteriza a quien presume específicamente de saberlo todo. Se contrasta el verbo general con un tipo de presunción.
+23	89	contraste_de_uso	3	Hacerse el sueco evita reconocer una responsabilidad; a lo hecho, pecho insta a asumir las consecuencias de lo realizado.
+23	103	expresiones_equivalentes	3	Ambas locuciones implican fingir no percibir algo para evitar intervenir: hacerse el sueco simula no entender y hacerse la vista gorda simula no ver.
+23	268	contraste_de_uso	3	Dar la cara asume responsabilidad públicamente; hacerse el sueco finge no entender para evitarla. Contrastan respuestas ante una misma exigencia de responsabilidad.
+24	29	significados_cercanos	3	La valentía permite actuar ante el miedo; atrevimiento pone el acento en dar el paso hacia una acción arriesgada.
+24	54	sinonimia	3	Atrevimiento y audacia nombran la decisión valiente de emprender algo arriesgado o fuera de lo habitual.
+24	269	significados_cercanos	2	Tener cara expresa descaro para pedir o actuar; atrevimiento expresa disposición a hacer algo inusual o arriesgado. Se distingue valoración negativa de osadía de un valor que puede ser positivo.
+25	62	contraste_de_significado	3	Inquebrantable destaca resistencia que no se vence; vulnerable destaca la facilidad de sufrir daño. Se contrasta resistencia y exposición al daño.
+25	120	sinonimia_parcial	3	Inquebrantable describe lo que no cede; firmeza nombra la estabilidad y decisión de mantenerse sin ceder ante dificultades.
+25	167	antonimia_parcial	3	Precario es inestable e inseguro; inquebrantable es resistente y no cede. Se opone estabilidad frente a fragilidad, no la carencia de recursos en sí misma.
+26	242	expresiones_equivalentes	3	Por si las moscas introduce una medida de precaución; precavido describe a quien adopta precisamente esas medidas para evitar riesgos.
+26	285	significados_cercanos	2	Precavido destaca la anticipación de riesgos; sensatez incluye actuar prudentemente con buen juicio, del que la precaución es una manifestación.
+27	285	sinonimia	3	Cordura y sensatez comparten la capacidad de pensar y decidir con buen juicio y prudencia.
+27	396	significados_cercanos	2	La cordura supone buen juicio; discernir consiste en distinguir diferencias para comprender y juzgar adecuadamente. Se conecta juicio sensato y discriminación razonada.
+29	54	sinonimia_parcial	3	Audacia es valor para acometer acciones arriesgadas; valentía es afrontar el miedo ante el peligro. Comparten valor, con distinto énfasis en iniciativa y miedo.
+31	32	sinonimia_parcial	2	Tremendo y flipante pueden valorar algo como extraordinariamente impresionante; se limita al uso admirativo, no a cualquier intensidad negativa.
+31	109	sinonimia_parcial	2	En su acepción de extraordinario o muy grande, tremendo puede aproximarse a grandioso; no se extiende a los usos negativos o temibles de tremendo.
+32	94	significados_cercanos	3	Algo flipante causa sorpresa o admiración, que es precisamente asombrar; se relaciona la cualidad causante con la acción de causar asombro.
+32	162	sinonimia_parcial	3	Flipante es sorprendente de modo extraordinario y prodigioso es tan extraordinario que parece milagroso; difieren en registro y grado de admiración.
+33	252	significados_cercanos	2	Fastidiar es molestar o causar contratiempos; un aguafiestas fastidia específicamente la diversión o el entusiasmo ajeno.
+34	109	sinonimia_parcial	2	Fastuoso y grandioso coinciden al valorar algo como magnífico; fastuoso exige lujo y esplendor, que grandioso no siempre implica.
+35	209	expresiones_equivalentes	3	Una situación pasajera dura poco; como flor de un día expresa esa brevedad, con el matiz frecuente de belleza o intensidad fugaz.
+35	348	antonimia	3	Pasajero es de corta duración; interminable parece no acabar. Contrastan directamente dos duraciones.
+36	133	significados_cercanos	3	Un aliado es quien apoya y colabora; respaldar es realizar ese apoyo o defensa. Se vincula la función de la persona con la acción correspondiente.
+36	159	sinonimia_parcial	3	Respaldar es apoyar o defender; echar un cable es ayudar. Se aproximan en el apoyo a una persona, aunque ayudar no siempre implique defender una postura.
+37	87	sinonimia_parcial	2	En el uso de rapidez o energía, a todo trapo intensifica una acción y darse vidilla pide acelerarla. No se equiparan los usos de lujo de la primera locución.
+39	291	sinonimia	3	Proeza y hazaña nombran una acción extraordinaria que exige valor, habilidad o gran esfuerzo.
+40	311	significados_cercanos	2	Vanguardia implica introducir ideas o estilos nuevos; originalidad es crear ideas propias y novedosas. La primera añade una posición innovadora respecto de su época.
+42	358	acepcion_compartida	3	Talante corresponde a disposición o actitud personal; la sala Aptitud/Actitud enseña esa misma disposición diferenciándola de la capacidad.
+43	97	expresiones_equivalentes	2	Reverdecer expresa recuperación de vitalidad; flores que nunca se detienen es una imagen de vitalidad que se renueva continuamente.
+43	235	significados_cercanos	2	Necesitar primavera atribuye al mar una renovación; reverdecer expresa volver a adquirir vitalidad. Se compara el sentido figurado de renovarse, no mar y vegetación como objetos.
+43	272	significados_cercanos	2	Brotar es comenzar a crecer o salir; reverdecer es volver a mostrar verdor o vitalidad. Se contrastan aparición inicial y renovación del crecimiento.
+44	70	contraste_de_uso	3	La templanza mantiene el control de una reacción; irse de manos describe que una situación se descontrola o excede los límites.
+44	116	antonimia_de_actitud	3	Templanza es dominio moderado de las emociones; ser de mecha corta es perder fácilmente ese dominio al enfadarse.
+45	156	expresiones_equivalentes	3	Persona vitamina y ser la alegría de la huerta caracterizan a alguien cuya presencia anima y aporta bienestar a los demás; la segunda subraya alegría visible.
+46	108	contraste_de_uso	3	Epojé suspende la afirmación de certeza; no cabe duda de que declara certeza completa. Son posturas opuestas ante una proposición.
+46	215	significados_cercanos	2	La cita cuestiona la estabilidad de certezas previas cuando cambian las preguntas; epojé suspende juicios para reconsiderar. Se relaciona revisión de la certeza, no mera sorpresa.
+46	309	expresiones_equivalentes	2	La pregunta sobre las razones de estar seguro invita a suspender conclusiones apresuradas, núcleo de la epojé, aunque preguntar no implique una doctrina filosófica.
+47	94	significados_cercanos	3	Asombrar causa sorpresa intensa; patidifuso describe a quien queda tan sorprendido que no sabe reaccionar. Se relacionan causa y estado resultante del mismo significado.
+48	390	significados_cercanos	3	Concatenar es enlazar elementos sucesivos; atar cabos enlaza específicamente pistas o hechos para comprenderlos. No toda concatenación constituye una deducción.
+49	126	significados_cercanos	2	Saborear es disfrutar atentamente un sabor; saber a gloria califica ese sabor como extraordinariamente agradable. No implican necesariamente comer mucho.
+49	155	sinonimia_parcial	3	Saborear y gozar pueden significar disfrutar una experiencia; saborear añade atención lenta a sus matices y no se limita a tener placer.
+50	59	sinonimia_parcial	3	La convivencia de esta sala se define como relación respetuosa y armónica; concordia nombra precisamente acuerdo y armonía, sin exigir compartir espacio.
+50	298	significados_cercanos	2	Llevarse a las mil maravillas expresa una relación de gran entendimiento; la convivencia armónica extiende ese entendimiento a quienes comparten espacio.
+52	87	contraste_de_uso	3	Demorar supone retrasarse o hacer tardar; darse vidilla pide actuar más deprisa. Contrastan el ritmo de realización de una tarea.
+52	294	sinonimia	3	Demorar y postergar pueden significar retrasar una acción; postergar destaca dejarla deliberadamente para más adelante, mientras demorar también puede ser tardar.
+55	260	significados_cercanos	2	Un atajo es una ruta que acorta el trayecto; una vereda es un sendero estrecho que puede servir de atajo. Se declara el solapamiento, sin afirmar que toda vereda acorte.
+56	334	significados_cercanos	2	Garabato es un dibujo rápido y poco cuidado; la cita compara escribir espontáneamente con un boceto, otro trazo preliminar. Comparten el carácter inicial del trazo, no toda obra artística.
+57	70	contraste_de_uso	3	Tener la sartén por el mango significa controlar la situación; irse de manos significa perder ese control.
+57	323	significados_cercanos	2	La locución afirma dominio de una situación; la pregunta contrapone dirigir la propia vida a ser arrastrado por ella. El vínculo se limita al contraste explícito de control y pasividad.
+58	268	sinonimia_parcial	3	Encarar es afrontar directamente una dificultad; dar la cara es afrontarla asumiendo responsabilidad o defensa pública.
+58	310	contraste_de_uso	2	Encarar afronta una realidad difícil; la relación descrita en la huida se sostiene evitando afrontarla. Se oponen confrontación y evasión en el sentido declarado de la cita.
+59	326	expresiones_equivalentes	2	Concordia es acuerdo y armonía; la paz que se hace destaca construir activamente ese acuerdo, en lugar de esperar que aparezca solo.
+59	328	expresiones_equivalentes	2	Tender puentes para llegar a acuerdos es una formulación de la concordia frente a la división; el vínculo es acuerdo explícito, no política en general.
+62	125	contraste_de_significado	2	Vulnerable contrasta con el resultado de fortalecer y se aproxima al de debilitar; la sala contiene ambos procesos y permite delimitar esa oposición.
+62	167	significados_cercanos	3	Vulnerable es susceptible de daño; precario es inseguro o inestable. Coinciden cuando una condición insegura expone a daño, no en todas las acepciones de carencia de recursos.
+64	136	contraste_de_actitud	3	Me importa un pimiento declara indiferencia completa; fervor expresa implicación apasionada e intensa hacia algo.
+65	162	significados_cercanos	2	Por arte de birlibirloque atribuye un resultado a magia inexplicable; prodigioso lo valora como casi milagroso. Comparten apariencia extraordinaria, no identidad literal de causa.
+66	390	contraste_de_estado	3	Los cabos sueltos son detalles aún sin resolver; atar cabos relaciona esos detalles para que encajen y permitan comprender la situación.
+67	303	antonimia	3	Darse por vencido abandona el intento; persistencia consiste en seguir esforzándose pese a las dificultades.
+67	342	expresiones_equivalentes	3	Darse por vencido y tirar la toalla expresan abandonar un esfuerzo al reconocer que no se quiere o no se puede continuar.
+68	182	contraste_de_uso	3	Mandar todo a paseo abandona el asunto por frustración; el que la sigue la consigue aconseja perseverar para alcanzar el objetivo.
+68	342	expresiones_equivalentes	3	Mandar todo a paseo y tirar la toalla pueden expresar abandono; la primera añade hartazgo o enfado, y la segunda reconocimiento de renuncia.
+69	158	significados_cercanos	2	Movida puede ser una situación complicada y agitada; liarse parda expresa que se provoca precisamente un gran lío o escándalo.
+69	184	sinonimia_parcial	3	En sentido figurado, movida y torbellino pueden designar una situación de gran agitación; no se relaciona aquí el torbellino de viento.
+70	143	expresiones_equivalentes	3	Pasarse tres pueblos e irse de manos coinciden en sobrepasar límites aceptables; la segunda subraya pérdida de control de la situación.
+70	273	significados_cercanos	2	Desatar una reacción intensa puede iniciar un descontrol; irse de manos describe ese exceso de control perdido. Se restringe al uso figurado de desatar, no a soltar nudos.
+71	101	antonimia_de_estado	3	Sosiego es tranquilidad sin ruido; jolgorio es alegría ruidosa y agitada. Se contrasta el estado del ambiente, sin valorar negativamente la alegría.
+71	189	sinonimia_parcial	3	Sosiego y recogimiento comparten tranquilidad y quietud; recogimiento añade concentración e intimidad reflexiva.
+72	258	significados_cercanos	3	Decir a bocajarro es hablar de golpe y sin rodeos; sincericidio añade que esa franqueza excesiva puede herir. No toda expresión directa es dañina.
+74	190	sinonimia_parcial	3	Trasnochar y vigilia comparten permanecer despierto de noche; vigilia puede ser voluntaria por cuidado u oración y no exige acostarse tarde por ocio.
+75	155	sinonimia_parcial	3	Ponerse las botas significa disfrutar mucho una oportunidad; gozar expresa disfrutar. Se reconoce el matiz intensivo y el uso frecuente de comida de la locución.
+75	175	contraste_de_uso	3	En su acepción alimentaria, ponerse las botas implica comer con abundancia; ayunar implica no comer durante un período.
+78	102	significados_cercanos	3	Marear la perdiz alarga un asunto sin resolverlo; estirar el chicle lo prolonga en exceso para seguir aprovechándolo. Comparten dilación, con distinto fin.
+78	107	expresiones_equivalentes	3	Marear la perdiz y irse por las ramas evitan llegar al punto principal; marear la perdiz destaca dar vueltas sin resolver y la otra locución apartarse del tema.
+79	194	expresiones_equivalentes	3	Donde Jesucristo perdió la chancla y estar a años luz expresan distancia extrema; la primera localiza un lugar remoto y la segunda admite también distancia figurada.
+82	121	expresiones_equivalentes	3	Oler a chamusquina y haber gato encerrado expresan sospecha de que algo no va bien; la segunda apunta particularmente a un engaño o secreto.
+82	387	expresiones_equivalentes	3	Oler a chamusquina y olerse la tostada expresan sospechar un problema o intención oculta, sin limitarse a percibir un olor real.
+83	380	sinonimia	3	Ambos registros definen serendipia como hallazgo valioso o afortunado que ocurre de manera inesperada, sin buscarlo directamente.
+84	236	significados_cercanos	2	El talento es capacidad personal cuyo descubrimiento aporta realización; pericia es habilidad desarrollada con experiencia. La distinción entre potencial y dominio adquirido es explícita.
+84	358	acepcion_compartida	2	Pericia es habilidad adquirida por experiencia; aptitud, dentro de Aptitud/Actitud, es capacidad para hacer algo. Se diferencia destreza entrenada de capacidad en general.
+85	388	significados_cercanos	2	Aleatorio depende del azar y no sigue orden previsible; un imponderable es una circunstancia que no se puede prever o calcular fácilmente. Coinciden en imprevisibilidad, no en que todo imprevisto sea azar puro.
+87	294	contraste_de_uso	3	Postergar deja una acción para después; darse vidilla pide acelerarla ahora. Son orientaciones temporales contrastantes ante una tarea.
+87	321	sinonimia	3	Darse vidilla y apurarse coinciden en darse prisa; se excluye la acepción de apurarse como sentirse preocupado o presionado.
+87	371	expresiones_cercanas	3	Cagaprisas describe impaciencia habitual por hacerlo todo deprisa; darse vidilla pide acelerar. Comparten prisa, con valoración crítica frente a exhortación puntual.
+89	168	significados_cercanos	2	Arrepentirse reconoce con pesar lo hecho; a lo hecho pecho acepta sus consecuencias. Se distingue aceptación responsable de remordimiento, que no siempre van juntos.
+89	241	expresiones_equivalentes	2	Sea lo que sea acepta lo que ocurra sin condiciones; a lo hecho pecho acepta consecuencias de lo ya realizado. Se diferencia aceptación general de responsabilidad retrospectiva.
+89	268	expresiones_equivalentes	3	A lo hecho pecho acepta consecuencias de una acción; dar la cara asume públicamente esa responsabilidad. La segunda añade exposición o defensa ante otros.
+90	135	significados_cercanos	2	Habitar es vivir habitualmente en un lugar; enraizarse añade establecer allí vínculos profundos. El enlace delimita residencia frente a arraigo.
+91	129	acepcion_compartida	3	La connotación es significado sugerido; implícito, en la sala implícito/explícito, designa lo que se sugiere sin expresarlo directamente. No toda información implícita es connotación léxica.
+91	148	acepcion_compartida	2	Figurado remite al sentido no literal y connotación a asociaciones añadidas; permiten distinguir dos ampliaciones de interpretación, sin confundir connotación y figuración ni el sentido figurativo artístico.
+92	271	contraste_de_modo	2	Irrumpir es entrar o aparecer repentina y fuertemente; asomar es aparecer de manera inicial y parcial. Se contrasta modo de aparición, no desplazamiento en general.
+92	282	significados_cercanos	3	Asomar es comenzar a dejarse ver; atisbo puede ser la señal mínima de esa aparición y atisbar su percepción fugaz. Se contrasta aparecer parcialmente y percibir apenas.
+92	398	significados_cercanos	3	Asomar es empezar a verse y vislumbrar percibir algo vagamente; se vinculan aparición parcial y percepción parcial, sin convertirlos en verbos intercambiables.
+93	277	equivalencia_nominal_verbal	3	Desvelamiento es la acción de desvelar en su acepción de revelar lo oculto; se excluyen desvelarse y desvelo cuando significan perder el sueño.
+95	244	expresiones_equivalentes	2	Más te vale formula una advertencia de conveniencia; hazme caso pide atender el consejo. Comparten función de mover al interlocutor a seguir una indicación, con distinto tono y fuerza.
+96	264	significados_cercanos	2	Alzar la cabeza recupera el ánimo tras la adversidad; al mal tiempo buena cara mantiene una actitud positiva mientras dura. Se comparan recuperación y afrontamiento positivo.
+97	231	expresiones_equivalentes	3	Ambas imágenes florales expresan renovación vital que continúa pese a obstáculos; el refrán afirma que la adversidad no consigue detener esa renovación.
+98	220	expresiones_equivalentes	3	Ambas formulaciones atribuyen el cambio colectivo a acciones concretas de personas corrientes; una pide iniciativa personal y otra destaca su suma.
+98	233	expresiones_equivalentes	3	Sé el cambio y donde hay un árbol que plantar plántalo tú invitan a comenzar la mejora por una acción propia, no a esperar que actúen otros.
+99	212	expresiones_equivalentes	3	Las dos expresiones valoran una experiencia disfrutada aunque termine: nadie quita lo vivido y se agradece que haya ocurrido en vez de centrarse solo en la pérdida.
+100	240	expresiones_equivalentes	3	Camino hecho al andar y vida bordada día a día presentan la propia vida como construcción progresiva mediante acciones y experiencias, con metáforas distintas.
+100	323	significados_cercanos	2	La pregunta sobre dirigir la vida o ser arrastrado y el camino hecho al andar contrastan agencia personal y pasividad ante la trayectoria vital.
+101	296	sinonimia	3	Jolgorio y parranda expresan celebración animada y ruidosa; parranda suele nombrar la fiesta y jolgorio su ambiente.
+102	348	significados_cercanos	2	Estirar el chicle prolonga excesivamente un asunto; interminable describe el efecto de que parece no acabar. Se distingue acción dilatoria y duración percibida.
+104	179	significados_cercanos	2	Hacer malabares con obligaciones supone coordinar varias a la vez; abarcar varias tareas es incluirlas en el propio alcance. El primer uso añade dificultad de coordinación.
+105	143	significados_cercanos	2	Eso es el colmo protesta porque se supera lo tolerable; pasarse tres pueblos describe exceder esos límites. Se conectan valoración indignada y acción excesiva.
+106	189	significados_cercanos	2	Recogimiento es concentración tranquila y reflexiva; prestar atención es concentrar sentidos y mente. Comparten concentración, con un matiz interior y sereno en recogimiento.
+106	244	expresiones_equivalentes	3	Prestar atención concentra los sentidos; hazme caso pide escuchar y atender, a menudo además seguir el consejo. No toda atención implica obediencia.
+108	309	contraste_de_uso	3	No cabe duda de que presenta una afirmación como segura; por qué estás tan seguro exige revisar la justificación de esa seguridad.
+109	162	sinonimia_parcial	3	Grandioso y prodigioso valoran algo como excepcional o admirable; prodigioso añade una impresión casi milagrosa que grandioso no exige.
+110	128	significados_cercanos	2	Rumiar preocupaciones es volver repetidamente al mismo pensamiento sin resolverlo, un bucle mental. Se excluye el sentido digestivo de rumiar.
+110	152	significados_cercanos	2	Bucle es una secuencia que se repite; estribillo es un segmento musical que reaparece. El estribillo ejemplifica repetición, sin ser necesariamente un bucle cerrado.
+113	386	significados_cercanos	2	Presagio es una señal interpretada como anuncio futuro; corazonada es un presentimiento sin pruebas claras. Se diferencia indicio exterior de intuición interior.
+116	278	significados_cercanos	2	Arrebato, en sentido emocional, es dejarse llevar por una emoción intensa; ser de mecha corta facilita arrebatos de enfado. Se excluye arrebatar como quitar por fuerza.
+117	303	significados_cercanos	2	Procurar es intentar con cuidado y esfuerzo; persistencia añade mantener ese intento a pesar de dificultades. Se distingue esfuerzo puntual de continuidad.
+118	170	expresiones_equivalentes	2	Más hermosa que un gorrino es un elogio humorístico de belleza; halagar es dedicar ese tipo de cumplido, sin extender la comparación a cualquier admiración.
+118	208	expresiones_equivalentes	3	Halagar y echar flores coinciden en dedicar alabanzas o cumplidos; halagar puede añadir el propósito de agradar.
+120	391	significados_cercanos	2	Sostener mantiene algo firme; firmeza nombra esa estabilidad y, figuradamente, decisión ante dificultades. El enlace reconoce el paso de estabilidad física a estabilidad de postura.
+120	393	sinonimia_parcial	3	Firmeza y determinación comparten mantenerse decidido ante obstáculos; determinación destaca la voluntad dirigida a un objetivo.
+121	387	expresiones_equivalentes	3	Haber gato encerrado y olerse algo sugieren que existe una intención o engaño oculto que provoca desconfianza.
+122	364	acepcion_compartida	2	Compresión reduce volumen y por tanto ejemplifica disminuir; la sala de disminuir y ampliar contrapone escalas. Se excluye comprensión como entender y no se equipara toda disminución a compresión.
+124	244	sinonimia_parcial	3	Obedecer cumple una indicación; hacer caso puede significar atenderla y seguirla. Se distingue de limitarse a escuchar sin cumplir.
+125	262	significados_cercanos	2	La sala opone fortalecer y debilitar; el refrán afirma una posible fortaleza adquirida tras dificultades. Se enlaza exclusivamente el sentido de fortalecer, no una ley universal sobre el daño.
+125	352	acepcion_compartida	3	Endurecer puede hacer algo más resistente, sentido cercano a fortalecer; la misma sala contrapone debilitar, su dirección opuesta. No se confunde dureza física con toda fortaleza emocional.
+126	157	expresiones_equivalentes	3	Saber a gloria y estar para chuparse los dedos valoran una comida como extremadamente deliciosa.
+127	255	contraste_de_uso	3	Saber más que un cuco atribuye astucia y conocimientos efectivos; sabelotodo critica la presunción de saberlo todo. Se contrasta capacidad atribuida con ostentación molesta.
+129	213	expresiones_equivalentes	2	Lo implícito comunica sin decir directamente; el silencio que habla es una formulación de comunicación sin palabras. Se excluyen aquí los signos explícitos.
+129	395	acepcion_compartida	2	Verbalizar vuelve expresable en palabras una idea; explícito, en la sala implícito/explícito, la dice de forma directa. Se distingue expresar de hacerlo sin insinuaciones.
+132	133	sinonimia_parcial	3	Cómplice y aliado colaboran con otra persona; cómplice suele implicar una acción compartida secreta o censurable que aliado no exige.
+134	399	significados_cercanos	2	Moldear da forma o influye en el desarrollo; gestar forma o desarrolla una idea o proyecto. Coinciden en dar forma progresiva en usos figurados.
+137	154	contraste_de_valoracion	3	Costar un huevo destaca un precio excesivo mientras chollo destaca una compra muy ventajosa; se compara valoración del coste.
+137	270	contraste_de_valoracion	3	Chollo es una oportunidad de precio ventajoso; costar un ojo de la cara valora un precio como extremadamente elevado. Se compara el juicio de coste, no un precio absoluto.
+138	305	sinonimia_parcial	2	Ser bueno como el pan y ser majo pueden elogiar el trato agradable y amable; majo no implica necesariamente bondad moral y puede referirse a atractivo.
+138	394	expresiones_equivalentes	3	Ser más bueno que el pan atribuye bondad extraordinaria; benevolencia nombra la actitud comprensiva y de buena voluntad que expresa esa bondad.
+139	140	sinonimia_parcial	3	A ciegas y a tientas coinciden en actuar sin visión; a tientas añade buscar por el tacto, y a ciegas permite desconocimiento figurado.
+139	153	significados_cercanos	2	Actuar a ciegas sin saber qué sucederá se aproxima a la desorientación expresada por estar perdido como un pulpo en un garaje; no son equivalentes en incapacidad visual literal.
+144	158	significados_cercanos	3	Meterse en berenjenales implica involucrarse en asuntos complicados; liarse parda describe un gran lío o problema provocado. Se distinguen implicación y desencadenamiento.
+149	258	contraste_de_uso	2	Sincericidio comunica con franqueza excesiva que puede herir; sutileza permite comunicar matices con delicadeza. Se contrasta modo directo y modo delicado, no verdad y mentira.
+154	270	expresiones_equivalentes	3	Costar un huevo y costar un ojo de la cara son expresiones intensivas de precio muy alto; se excluye aquí el uso de costar un huevo como esfuerzo no monetario.
+156	252	antonimia_de_funcion	3	La alegría de la huerta anima a los demás; un aguafiestas estropea su diversión o entusiasmo. Son funciones sociales contrastantes, no juicios totales sobre una persona.
+159	246	expresiones_equivalentes	2	Echar un cable es ayudar; la cita define el amor como ayudar al otro a ser auténtico. Se conecta la acción concreta de ayudar con esa definición de apoyo personal.
+161	265	contraste_de_uso	3	A quien madruga aconseja actuar temprano; no por mucho madrugar advierte que empezar antes no acelera todos los procesos. Son recomendaciones contrastantes, no reglas lógicas incompatibles en todo contexto.
+163	328	significados_cercanos	2	Aunar es unir fuerzas para un fin común; tender puentes para acuerdos propone unir voluntades frente a separarlas.
+167	320	significados_cercanos	2	Carecer de recursos necesarios puede constituir precariedad; precario añade inseguridad o inestabilidad. Se limita a la acepción de recursos insuficientes.
+176	250	expresiones_equivalentes	2	Encontrarse sin buscarse y el mundo es un pañuelo presentan encuentros inesperados entre personas. La primera añade una interpretación poética de afinidad o destino.
+177	253	contraste_de_actitud	3	Malgastar desperdicia recursos; lonchafinista describe ahorro extremo. Se contrastan dos formas de gestionar gasto, sin presentar la tacañería como virtud obligatoria.
+178	179	contraste_morfosemantico	3	Inabarcable niega la posibilidad de abarcar por exceso de amplitud; abarcar expresa incluir o alcanzar el conjunto. Comparten la misma operación y su límite.
+182	303	expresiones_equivalentes	3	El que la sigue la consigue recomienda continuar pese a dificultades, la misma perseverancia que define persistencia, sin garantizar siempre el éxito real.
+183	364	acepcion_compartida	2	Aplastar puede reducir el volumen por presión; compresión nombra reducir volumen. Se excluye comprensión como entender y los usos figurados de aplastar a un rival.
+185	210	contraste_de_valoracion	3	La flor y nata sitúa a alguien en una élite selecta; pelagatos lo rebaja despectivamente a insignificancia social. Se comparan valoraciones de estatus, sin legitimarlas.
+186	399	significados_cercanos	3	Concepción y gestación pueden referirse al origen y desarrollo de una vida o idea; son fases relacionadas, no sinónimos en toda su duración.
+190	277	acepcion_compartida	2	Vigilia y desvelarse comparten permanecer sin dormir; vigilia puede ser una decisión de cuidado y desvelarse un efecto de preocupación. No se usa desvelar como revelar.
+191	228	contraste_de_uso	2	Agua pasada no mueve molino resta eficacia a lo ya ocurrido; borrón y cuenta nueva propone dejar errores pasados para empezar de nuevo. Comparten dejar atrás el pasado con distinta función discursiva.
+191	263	expresiones_equivalentes	2	Borrón y cuenta nueva propone recomenzar tras errores; cuando una puerta se cierra otra se abre presenta el final como ocasión para otro comienzo.
+192	206	antonimia_de_etapa	3	Entrado en años indica edad avanzada; estar en la flor de la vida destaca juventud y plenitud. Se contrastan etapas, sin equiparar edad avanzada con falta de salud o valor.
+197	319	antonimia	3	El año de la pera remite a un pasado muy remoto; reciente a lo ocurrido hace poco. Contrastan directamente distancia temporal.
+198	226	expresiones_equivalentes	2	Hacer el agosto es aprovechar una ocasión para ganar mucho; a río revuelto ganancia de pescadores limita esa ventaja a una situación de confusión.
+198	336	expresiones_equivalentes	3	Ambos registros de hacer el agosto expresan conseguir grandes beneficios aprovechando una situación especialmente favorable.
+199	200	relacion_especificacion	3	Bicentenario es una conmemoración de doscientos años que puede ser una efeméride; efeméride es cualquier fecha de recuerdo de un hecho importante.
+207	261	contraste_de_uso	2	No todo es color de rosa advierte del lado difícil de una realidad; no hay mal que por bien no venga invita a encontrar un efecto favorable dentro de esa dificultad.
+209	348	antonimia	3	Como flor de un día indica duración breve; interminable una duración que parece no acabar. Se contrasta extensión temporal, no flores literales.
+217	247	expresiones_equivalentes	3	Ambas citas presentan la lectura como felicidad: una imagina la biblioteca como paraíso y la otra el leer como placer íntimo. Comparten valoración explícita de leer, no solo libros como tema.
+220	233	expresiones_equivalentes	3	Las pequeñas acciones que cambian el mundo y plantar uno mismo el árbol invitan a actuar personalmente en mejoras concretas y acumulativas.
+226	336	expresiones_equivalentes	2	Ambas locuciones pueden expresar obtener beneficios aprovechando una ocasión; a río revuelto añade que la ocasión nace del desorden o confusión.
+230	265	expresiones_equivalentes	2	Ambos refranes aconsejan actuar con diligencia para no perder ventajas; uno advierte sobre descuido y el otro recomienda iniciativa temprana.
+231	262	expresiones_equivalentes	2	La primavera que no pueden detener y la fortaleza tras superar dificultades expresan resistencia ante adversidad. La primera subraya renovación colectiva y la segunda fortaleza individual.
+241	243	significados_cercanos	2	Sea lo que sea y de todos modos mantienen una disposición independientemente de las circunstancias; la primera expresa aceptación y la segunda continuidad argumentativa.
+246	307	expresiones_equivalentes	3	La cita que define amar como ayudar al otro y el cuidado como amor coinciden en entender el afecto como apoyo activo a necesidades y autenticidad ajenas.
+254	321	significados_cercanos	2	Correcaminos caracteriza desplazamiento muy rápido; apurarse puede ser darse prisa. Se limita al uso de rapidez, no a sentirse angustiado.
+259	295	significados_cercanos	2	Inmortal en la memoria significa permanecer recordado; trascender puede ser alcanzar importancia duradera más allá de lo inmediato. Se excluye inmortalidad biológica literal.
+259	397	significados_cercanos	2	La acepción figurada de inmortal coincide con dejar una huella duradera, parte de la definición de trascender en este registro.
+261	263	expresiones_equivalentes	3	De un mal puede surgir un bien y una puerta cerrada puede abrir otra oportunidad: ambas expresiones reinterpretan un contratiempo como posibilidad favorable.
+262	264	significados_cercanos	2	Al mal tiempo buena cara recomienda actitud positiva ante la adversidad; el otro refrán subraya fortaleza adquirida al superarla. Se distinguen actitud y resultado posible.
+272	399	significados_cercanos	2	Brotar señala el inicio visible de un crecimiento; gestarse es ir formándose gradualmente antes o durante su aparición. Se delimitan fases de desarrollo, no toda actividad natural.
+279	365	acepcion_compartida	3	Entrañable despierta afecto y cercanía; afecto, dentro de Afecto/Efecto, nombra ese cariño. No se usa efecto como consecuencia.
+282	398	sinonimia_parcial	3	Atisbar y vislumbrar comparten percibir apenas o fugazmente; atisbo y vislumbre nombran indicios tenues. No se equipara toda observación detenida.
+283	395	significados_cercanos	2	Plantear una cuestión implica formularla para considerarla; verbalizar convierte una idea en palabras. Se limita a la formulación verbal de preguntas o problemas.
+285	396	significados_cercanos	3	Sensatez es decidir con buen juicio; discernir distingue diferencias para comprender y juzgar mejor. Se vinculan juicio prudente y capacidad discriminadora.
+288	289	significados_cercanos	3	Esencia es lo fundamental de algo; quintaesencia destaca su manifestación más pura o representativa, con intensificación y selección de lo esencial.
+288	357	acepcion_compartida	2	La esencia incluye los rasgos fundamentales; cualidad es una característica. Se conecta con cualidad y se distingue de calidad como excelencia.
+289	357	acepcion_compartida	2	Quintaesencia selecciona lo más puro o perfecto; calidad nombra grado de excelencia. Se conecta con calidad y no con cualquier cualidad descriptiva.
+295	397	sinonimia	3	Los dos registros de trascender comparten ir más allá de límites e importancia duradera; el segundo explicita superar lo inmediato y dejar huella.
+298	299	expresiones_equivalentes	3	Llevarse a las mil maravillas y hacer buenas migas expresan entenderse muy bien; hacer buenas migas suele destacar el inicio de esa afinidad.
+303	342	antonimia	3	Tirar la toalla abandona el esfuerzo; persistencia lo mantiene pese a dificultades. Son respuestas opuestas al mismo obstáculo.
+303	393	significados_cercanos	3	Determinación es voluntad firme de lograr un objetivo; persistencia mantiene ese esfuerzo en el tiempo pese a obstáculos. Se distingue decisión y continuidad.
+305	394	sinonimia_parcial	2	Majo en su sentido de amable y simpático se aproxima al trato de buena voluntad de benevolencia; se excluye majo como atractivo físico.
+306	395	expresiones_equivalentes	2	Hablar incluso sin respuesta mantiene la necesidad de expresar; verbalizar es expresar pensamientos o emociones con palabras, haya o no contestación.
+311	333	expresiones_equivalentes	2	La cita sitúa el estilo en la sensibilidad personal, una fuente de expresión propia vinculada a originalidad; no afirma que cualquier estilo sea novedoso.
+311	335	significados_cercanos	3	Originalidad es creación propia; la cita sobre aprendizaje técnico e iniciación a la personalidad describe cómo se desarrolla un estilo artístico propio, no arte como etiqueta general.
+312	313	relacion_especificacion	3	Trencadís es una técnica de mosaico de fragmentos cerámicos irregulares; se conecta con mosaico dentro de la sala Vidriera/Mosaico, no con vidrio por coincidencia visual.
+317	365	acepcion_compartida	2	De amor remite al cariño; afecto, dentro del par Afecto/Efecto, también nombra cariño. Se excluye efecto como consecuencia.
+321	371	significados_cercanos	3	Apurarse puede significar darse prisa; cagaprisas caracteriza a quien siempre quiere actuar deprisa y con impaciencia. Se distingue acción puntual y hábito criticado.
+326	327	expresiones_equivalentes	3	La paz que se construye y la paz como proceso sin fin subrayan mantenimiento activo de convivencia; una destaca producción y otra continuidad.
+326	330	expresiones_equivalentes	3	La paz se hace y la paz es una ardua tarea coinciden en que la paz exige acción y esfuerzo, no mera espera o deseo.
+327	330	expresiones_equivalentes	3	Ambas citas definen la paz como trabajo persistente y no un estado que se obtiene de una vez para siempre.
+333	335	significados_cercanos	3	Ambas citas describen el estilo propio del artista: sensibilidad personal en una y aprendizaje técnico que desarrolla personalidad en la otra. La relación específica es autoría y estilo, no mera pintura.
+360	400	contraste_de_transformacion	2	Adaptar ajusta algo a nuevas circunstancias manteniendo parte de su naturaleza; transmutir, según el registro, implica cambio profundo a otra naturaleza. Se contrasta ajuste y transformación, no adoptar como aceptar.
+364	396	acepcion_compartida	2	Comprensión es entender el significado; discernir distingue diferencias para comprender mejor. Se conecta con comprensión, no compresión física.
+386	389	significados_cercanos	3	Tener una corazonada y tener olfato para algo son formas de intuición sin prueba explícita; olfato suele destacar habilidad para detectar oportunidades o peligros.
+387	389	significados_cercanos	3	Olerse algo sospecha una intención o problema oculto; tener olfato para algo es habilidad intuitiva para detectarlos. Se distingue episodio de sospecha y capacidad habitual.
+390	396	significados_cercanos	3	Atar cabos relaciona pistas para entender; discernir distingue diferencias mediante observación y juicio. Son operaciones próximas de comprensión razonada, no idénticas.
+392	396	significados_cercanos	2	Discurrir, en su acepción de pensar, desarrolla un razonamiento; discernir distingue diferencias para comprender y juzgar. Se comparan dos operaciones de pensamiento, sin incluir discurrir como fluir el agua.
+34	37	sinonimia_parcial	2	En su acepción de lujo, a todo trapo significa con gran esplendor y se aproxima a fastuoso. No se incluyen los usos de velocidad o intensidad de la locución.
+64	146	significados_cercanos	2	Fervor es entusiasmo intenso; enérgica, dentro del par enérgica/energética, describe una actitud de gran energía. Se relaciona la intensidad del ánimo, sin equiparar entusiasmo con una bebida que aporta energía.
+172	320	contraste_de_significado	3	Rebosar expresa abundancia que supera la capacidad; carecer expresa ausencia o falta de lo necesario. En uso figurado, rebosar de alegría contrasta con carecer de alegría: sobra frente a falta.
+24	344	significados_cercanos	2	Desinhibirse permite actuar sin la timidez que antes frenaba; atrevimiento nombra la disposición a dar ese paso. En atreverse a bailar delante de otros coinciden, sin exigir que toda audacia nazca de perder la vergüenza.
+248	400	significados_cercanos	2	La cita describe una transformación profunda de la manera de vivir por el cariño; transmutir, según la definición del registro, nombra un cambio profundo de naturaleza. El enlace se limita a ese cambio interior, no al amor como tema ni a la alquimia literal.
+36	391	sinonimia_parcial	2	Respaldar y sostener pueden significar mantener o apoyar una postura o a una persona. Sostener conserva además el sentido físico de sujetar; respaldar añade defensa o apoyo explícito.
+74	277	sinonimia_parcial	3	Trasnochar es permanecer despierto hasta tarde; desvelarse y desvelo, en la acepción de falta de sueño, comparten esa vigilia nocturna. Trasnochar puede ser voluntario y desvelarse puede ser involuntario; se excluye desvelar un secreto.
+134	360	sinonimia_parcial	2	Moldear da forma o influye en el desarrollo; adaptar modifica algo para ajustarlo a circunstancias. Se aproximan al cambiar una forma o conducta para adecuarla, sin equiparar adoptar como acoger.
+261	264	expresiones_cercanas	2	No hay mal que por bien no venga interpreta una dificultad como posible origen de un beneficio; al mal tiempo buena cara recomienda responder positivamente a la dificultad. Comparten orientación optimista ante el contratiempo, distinguiendo resultado y actitud.
+50	299	significados_cercanos	2	Convivencia, según la definición de esta sala, implica trato respetuoso y armónico; hacer buenas migas expresa entenderse bien con otra persona. Se relaciona la armonía interpersonal, sin exigir que toda convivencia sea amistosa ni que toda amistad comparta vivienda.
+29	268	significados_cercanos	2	Valentía es afrontar el miedo; dar la cara afronta una dificultad asumiendo responsabilidad sin esconderse. Se restringe a la disposición de afrontar, sin afirmar que toda valentía implique una defensa pública.

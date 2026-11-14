@@ -1,0 +1,173 @@
+{
+   "columns" : 5,
+   "composite_aspect_ratio" : "5:3",
+   "crop_layout" : {
+      "column_edges" : [
+         0,
+         324,
+         648,
+         972,
+         1296,
+         1619
+      ],
+      "method" : "Inspected Batch28 scene transitions at324,648,972,1296 and row485. Center equal exact2:3 crops within observed cells with1px seam inset,no resizing.",
+      "row_edges" : [
+         0,
+         485,
+         971
+      ],
+      "seam_inset_pixels" : 1,
+      "source_pixels" : [
+         1619,
+         971
+      ]
+   },
+   "excluded_manifests" : [
+      "reports/pdd-batch-01/manifest.json",
+      "reports/pdd-batch-02/manifest.json",
+      "reports/pdd-batch-03/manifest.json",
+      "reports/pdd-batch-04/manifest.json",
+      "reports/pdd-batch-05/manifest.json",
+      "reports/pdd-batch-06/manifest.json",
+      "reports/pdd-batch-07/manifest.json",
+      "reports/pdd-batch-08/manifest.json",
+      "reports/pdd-batch-09/manifest.json",
+      "reports/pdd-batch-10/manifest.json",
+      "reports/pdd-batch-11/manifest.json",
+      "reports/pdd-batch-12/manifest.json",
+      "reports/pdd-batch-13/manifest.json",
+      "reports/pdd-batch-14/manifest.json",
+      "reports/pdd-batch-15/manifest.json",
+      "reports/pdd-batch-16/manifest.json",
+      "reports/pdd-batch-17/manifest.json",
+      "reports/pdd-batch-18/manifest.json",
+      "reports/pdd-batch-19/manifest.json",
+      "reports/pdd-batch-20/manifest.json",
+      "reports/pdd-batch-21/manifest.json",
+      "reports/pdd-batch-22/manifest.json",
+      "reports/pdd-batch-23/manifest.json",
+      "reports/pdd-batch-24/manifest.json",
+      "reports/pdd-batch-25/manifest.json",
+      "reports/pdd-batch-26/manifest.json",
+      "reports/pdd-batch-27/manifest.json"
+   ],
+   "panel_aspect_ratio" : "2:3",
+   "panels" : [
+      {
+         "column" : 1,
+         "description" : "La aprendiz estudia antiguos manuscritos a la luz de una vela. Lee, compara notas y vuelve a empezar mientras el resto del castillo duerme.\n\nAl amanecer tiene los ojos cansados: se ha quemado las pestañas preparando el examen.",
+         "expected_filename" : "images/pdd297.jpg",
+         "pdd" : 297,
+         "position" : 1,
+         "row" : 1,
+         "short_definition" : "Estudiar o trabajar intensamente durante muchas horas.",
+         "supabase_record_id" : 298,
+         "word" : "quemarse las pestanas"
+      },
+      {
+         "column" : 2,
+         "description" : "La herrera y el jardinero se conocen desde niños. Trabajan juntos, se ayudan sin discutir y siempre encuentran motivos para reír.\n\nIncluso cuando llueve durante la feria, se llevan a las mil maravillas y convierten el contratiempo en una aventura.",
+         "expected_filename" : "images/pdd298.jpg",
+         "pdd" : 298,
+         "position" : 2,
+         "row" : 1,
+         "short_definition" : "Relacionarse extraordinariamente bien con otra persona.",
+         "supabase_record_id" : 299,
+         "word" : "llevarse a las mil maravillas"
+      },
+      {
+         "column" : 3,
+         "description" : "Dos viajeros que no se conocían comparten pan junto al fuego. Al poco rato hablan como si hubieran recorrido juntos medio mundo.",
+         "expected_filename" : "images/pdd299.jpg",
+         "pdd" : 299,
+         "position" : 3,
+         "row" : 1,
+         "short_definition" : "Entenderse bien con alguien desde el principio.",
+         "supabase_record_id" : 300,
+         "word" : "hacer buenas migas"
+      },
+      {
+         "column" : 4,
+         "description" : "En la biblioteca, una niña pregunta por qué brillan las estrellas, quién construyó la primera torre y qué hay detrás de las montañas. Cada respuesta provoca tres preguntas nuevas.\n\nEl bibliotecario sonríe ante aquella curiosidad insaciable: su deseo de aprender nunca parece agotarse.",
+         "expected_filename" : "images/pdd300.jpg",
+         "pdd" : 300,
+         "position" : 4,
+         "row" : 1,
+         "short_definition" : "Deseo constante de aprender y descubrir cosas nuevas.",
+         "supabase_record_id" : 301,
+         "word" : "curiosidad insaciable"
+      },
+      {
+         "column" : 5,
+         "description" : "En el salón de invierno, un pequeño armiño cruza la alfombra con pasos ligeros. Su pelaje, blanco como la nieve, apenas se distingue de los copos que se acumulan junto a la ventana.\n\nSolo la punta negra de su cola delata su presencia antes de que desaparezca detrás de un arcón.",
+         "expected_filename" : "images/pdd301.jpg",
+         "pdd" : 301,
+         "position" : 5,
+         "row" : 1,
+         "short_definition" : "Pequeño mamífero de pelaje blanco invernal, apreciado históricamente por su piel.",
+         "supabase_record_id" : 302,
+         "word" : "armiño"
+      },
+      {
+         "column" : 1,
+         "description" : "En la galería cuelga un retrato de una infanta rodeada de sus damas, un perro y varios personajes de la corte. Al fondo, un espejo parece revelar algo que sucede fuera del cuadro.\n\nLos visitantes se acercan para descubrir quién mira a quién en aquella escena inspirada en Las Meninas.",
+         "expected_filename" : "images/pdd302.jpg",
+         "pdd" : 302,
+         "position" : 6,
+         "row" : 2,
+         "short_definition" : "Famoso cuadro de Velázquez que representa una escena de la corte española.",
+         "supabase_record_id" : 303,
+         "word" : "Las Meninas"
+      },
+      {
+         "column" : 2,
+         "description" : "Cada madrugada, la aprendiz vuelve a la puerta cerrada de la biblioteca. Ha probado decenas de llaves y ninguna funciona, pero hoy llega con otra idea.\n\nSu maestro admira su persistencia: no confunde un fracaso con el final del camino.",
+         "expected_filename" : "images/pdd303.jpg",
+         "pdd" : 303,
+         "position" : 7,
+         "row" : 2,
+         "short_definition" : "Capacidad de continuar esforzándose a pesar de las dificultades.",
+         "supabase_record_id" : 304,
+         "word" : "persistencia"
+      },
+      {
+         "column" : 3,
+         "description" : "El viajero se detiene en la orilla del río, donde la tierra húmeda se encuentra con el agua. Desde allí contempla las barcas que regresan al castillo.\n\nNo necesita cruzar todavía; se sienta en la ribera y deja que la corriente le refresque los pies.",
+         "expected_filename" : "images/pdd304.jpg",
+         "pdd" : 304,
+         "position" : 8,
+         "row" : 2,
+         "short_definition" : "Borde de un río, lago, mar u otra extensión de agua.",
+         "supabase_record_id" : 305,
+         "word" : "orilla"
+      },
+      {
+         "column" : 4,
+         "description" : "En la fiesta del pueblo, una maja lleva un vestido vistoso y camina con tanta seguridad que todos vuelven la cabeza. A su lado, un majo luce una chaqueta bordada y saluda con gracia.\n\nNo son nobles de la corte: su elegancia nace del estilo popular y de una actitud orgullosa.",
+         "expected_filename" : "images/pdd305.jpg",
+         "pdd" : 305,
+         "position" : 9,
+         "row" : 2,
+         "short_definition" : "Persona agradable, simpática o atractiva, según el contexto.",
+         "supabase_record_id" : 306,
+         "word" : "maja/majo"
+      },
+      {
+         "column" : 5,
+         "description" : "Desde la torre, la guardiana envía cada noche un saludo al faro lejano. Durante semanas no llega ninguna señal de regreso.\n\nAun así, sigue hablando a través de la oscuridad: hay palabras que vale la pena decir incluso cuando nadie contesta.",
+         "expected_filename" : "images/pdd306.jpg",
+         "pdd" : 306,
+         "position" : 10,
+         "row" : 2,
+         "short_definition" : "Reflexión sobre la necesidad de expresarse aunque nadie conteste.",
+         "supabase_record_id" : 307,
+         "word" : "Hablar incluso cuando no hay respuesta"
+      }
+   ],
+   "preferred_composite_pixels" : [
+      5000,
+      3000
+   ],
+   "rows" : 2,
+   "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+}

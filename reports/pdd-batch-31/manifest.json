@@ -1,0 +1,176 @@
+{
+   "columns" : 5,
+   "composite_aspect_ratio" : "5:3",
+   "crop_layout" : {
+      "column_edges" : [
+         0,
+         324,
+         648,
+         972,
+         1296,
+         1619
+      ],
+      "method" : "Inspected Batch31 transitions at324,648,972,1296 and row485; centered equal exact2:3 crops with1px inset,no resizing.",
+      "row_edges" : [
+         0,
+         485,
+         971
+      ],
+      "seam_inset_pixels" : 1,
+      "source_pixels" : [
+         1619,
+         971
+      ]
+   },
+   "excluded_manifests" : [
+      "reports/pdd-batch-01/manifest.json",
+      "reports/pdd-batch-02/manifest.json",
+      "reports/pdd-batch-03/manifest.json",
+      "reports/pdd-batch-04/manifest.json",
+      "reports/pdd-batch-05/manifest.json",
+      "reports/pdd-batch-06/manifest.json",
+      "reports/pdd-batch-07/manifest.json",
+      "reports/pdd-batch-08/manifest.json",
+      "reports/pdd-batch-09/manifest.json",
+      "reports/pdd-batch-10/manifest.json",
+      "reports/pdd-batch-11/manifest.json",
+      "reports/pdd-batch-12/manifest.json",
+      "reports/pdd-batch-13/manifest.json",
+      "reports/pdd-batch-14/manifest.json",
+      "reports/pdd-batch-15/manifest.json",
+      "reports/pdd-batch-16/manifest.json",
+      "reports/pdd-batch-17/manifest.json",
+      "reports/pdd-batch-18/manifest.json",
+      "reports/pdd-batch-19/manifest.json",
+      "reports/pdd-batch-20/manifest.json",
+      "reports/pdd-batch-21/manifest.json",
+      "reports/pdd-batch-22/manifest.json",
+      "reports/pdd-batch-23/manifest.json",
+      "reports/pdd-batch-24/manifest.json",
+      "reports/pdd-batch-25/manifest.json",
+      "reports/pdd-batch-26/manifest.json",
+      "reports/pdd-batch-27/manifest.json",
+      "reports/pdd-batch-28/manifest.json",
+      "reports/pdd-batch-29/manifest.json",
+      "reports/pdd-batch-30/manifest.json"
+   ],
+   "panel_aspect_ratio" : "2:3",
+   "panels" : [
+      {
+         "column" : 1,
+         "description" : "Los vecinos celebran el fin de una pelea y creen que todo ha terminado. La mediadora, sin embargo, vuelve al día siguiente para escuchar las preocupaciones que aún quedan.\n\nLes recuerda que la paz es un proceso que nunca termina y necesita cuidados constantes.",
+         "expected_filename" : "images/pdd327.jpg",
+         "pdd" : 327,
+         "position" : 1,
+         "row" : 1,
+         "short_definition" : "Reflexión sobre la necesidad de construir y mantener continuamente la convivencia.",
+         "supabase_record_id" : 328,
+         "word" : "La paz es un proceso que nunca termina"
+      },
+      {
+         "column" : 2,
+         "description" : "Dos pueblos levantaron muros durante años hasta que dejaron de verse las caras. La nueva gobernante convoca a sus representantes y propone un puente sobre el río fronterizo.\n\nSabe que dirigir no consiste en agrandar las divisiones, sino en tender caminos para llegar a acuerdos.",
+         "expected_filename" : "images/pdd328.jpg",
+         "pdd" : 328,
+         "position" : 2,
+         "row" : 1,
+         "short_definition" : "Defensa del diálogo y los acuerdos frente a la división política.",
+         "supabase_record_id" : 329,
+         "word" : "Un presidente debe tender puentes para llegar a acuerdos y no levantar paredes para seguir divididos"
+      },
+      {
+         "column" : 3,
+         "description" : "En lugar de comprar nuevas espadas, el consejo destina monedas a una escuela abierta a los niños de ambas orillas del río. Allí aprenden a leer, preguntar y escucharse.\n\nLa maestra dice que educar es una inversión cuyos frutos pueden ser la convivencia y la paz.",
+         "expected_filename" : "images/pdd329.jpg",
+         "pdd" : 329,
+         "position" : 3,
+         "row" : 1,
+         "short_definition" : "Idea de que aprender y enseñar favorece una convivencia pacífica.",
+         "supabase_record_id" : 330,
+         "word" : "La educación es la mejor inversión para la paz"
+      },
+      {
+         "column" : 4,
+         "description" : "La reina sueña con un reino sin guerras, pero al despertar encuentra disputas por tierras y cosechas. Reúne a sus consejeros y comienza la difícil tarea de negociar.\n\nLa paz no es solo un sueño hermoso: requiere paciencia, valentía y esfuerzo.",
+         "expected_filename" : "images/pdd330.jpg",
+         "pdd" : 330,
+         "position" : 4,
+         "row" : 1,
+         "short_definition" : "Reflexión sobre el esfuerzo constante necesario para evitar conflictos.",
+         "supabase_record_id" : 331,
+         "word" : "La paz no es un sueño, sino una ardua tarea"
+      },
+      {
+         "column" : 5,
+         "description" : "Un mercader cambia de ciudad cada vez que se siente desdichado. Busca alegría en puertos, montañas y mercados, pero la inquietud viaja con él.\n\nAl detenerse en un jardín silencioso, comprende que ningún paisaje resolverá por sí solo lo que lleva dentro.",
+         "expected_filename" : "images/pdd331.jpg",
+         "pdd" : 331,
+         "position" : 5,
+         "row" : 1,
+         "short_definition" : "Idea de que cambiar de lugar no resuelve el malestar interior.",
+         "supabase_record_id" : 332,
+         "word" : "Puedes ir de acá para allá, pero mientras tú no estés bien, nada de lo que te rodea lo estará"
+      },
+      {
+         "column" : 1,
+         "description" : "En la sala de arte, un pintor dibuja relojes que florecen y peces que nadan entre las nubes. Cerca, un estudioso escucha los sueños de quienes buscan comprender su mundo interior.\n\nAmbos exploran lo que escapa a la lógica cotidiana: el surrealismo mediante imágenes y el psicoanálisis mediante la mente.",
+         "expected_filename" : "images/pdd332.jpg",
+         "pdd" : 332,
+         "position" : 6,
+         "row" : 2,
+         "short_definition" : "Comparación entre la exploración artística de los sueños y el estudio de la mente inconsciente.",
+         "supabase_record_id" : 333,
+         "word" : "El surrealismo ha contribuido al arte en la misma medida en que el *psicoanálisis ha contribuido a explorar el subconsciente"
+      },
+      {
+         "column" : 2,
+         "description" : "Un pintor trabaja junto al mar y luego regresa a las montañas. Cambian la luz y los colores del paisaje, pero sus cuadros conservan una sensibilidad reconocible.\n\nExplica que pintaría de manera parecida en cualquier lugar, porque su arte nace de una forma personal de sentir.",
+         "expected_filename" : "images/pdd333.jpg",
+         "pdd" : 333,
+         "position" : 7,
+         "row" : 2,
+         "short_definition" : "Declaración de que el estilo artístico nace de la sensibilidad personal.",
+         "supabase_record_id" : 334,
+         "word" : "Creo que pintaría de la misma forma en cualquier lugar del mundo, puesto que proviene de una manera particular de sentir."
+      },
+      {
+         "column" : 3,
+         "description" : "La escritora no encuentra la frase perfecta, así que traza palabras rápidas en los márgenes de un cuaderno, como un artista que ensaya líneas antes de pintar.\n\n«A veces escribo como si hiciera un boceto», dice. Primero busca la forma; después llegarán los detalles.",
+         "expected_filename" : "images/pdd334.jpg",
+         "pdd" : 334,
+         "position" : 8,
+         "row" : 2,
+         "short_definition" : "Comparación entre escribir espontáneamente y dibujar un primer esbozo.",
+         "supabase_record_id" : 335,
+         "word" : "A veces escribo como si trazase un boceto"
+      },
+      {
+         "column" : 4,
+         "description" : "Durante la feria de verano, la vendedora de sombreros no deja de atender clientes. Al caer la tarde, cuenta sus monedas y sonríe: ha hecho el agosto en apenas unos días.\n\nNo significa que haya cambiado el calendario, sino que ha ganado mucho dinero en una buena ocasión.",
+         "expected_filename" : "images/pdd336.jpg",
+         "pdd" : 336,
+         "position" : 9,
+         "row" : 2,
+         "short_definition" : "Conseguir grandes beneficios durante un período especialmente favorable.",
+         "supabase_record_id" : 337,
+         "word" : "Hacer el agosto"
+      },
+      {
+         "column" : 5,
+         "description" : "Después de semanas de preocupaciones, el marinero se adentra en el mar al amanecer. Una ola le moja el rostro y el sabor salado le recuerda su infancia.\n\nRegresa a la playa más ligero, convencido de que un baño en el agua salada también puede lavar el alma.",
+         "expected_filename" : "images/pdd337.jpg",
+         "pdd" : 337,
+         "position" : 10,
+         "row" : 2,
+         "short_definition" : "Expresión poética sobre la sensación renovadora de bañarse en el mar.",
+         "supabase_record_id" : 338,
+         "word" : "Agua salada, alma lavada"
+      }
+   ],
+   "preferred_composite_pixels" : [
+      5000,
+      3000
+   ],
+   "rows" : 2,
+   "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+}

@@ -1,0 +1,161 @@
+{
+   "batch" : 33,
+   "manifest" : {
+      "columns" : 5,
+      "composite_aspect_ratio" : "5:3",
+      "excluded_manifests" : [
+         "reports/pdd-batch-01/manifest.json",
+         "reports/pdd-batch-02/manifest.json",
+         "reports/pdd-batch-03/manifest.json",
+         "reports/pdd-batch-04/manifest.json",
+         "reports/pdd-batch-05/manifest.json",
+         "reports/pdd-batch-06/manifest.json",
+         "reports/pdd-batch-07/manifest.json",
+         "reports/pdd-batch-08/manifest.json",
+         "reports/pdd-batch-09/manifest.json",
+         "reports/pdd-batch-10/manifest.json",
+         "reports/pdd-batch-11/manifest.json",
+         "reports/pdd-batch-12/manifest.json",
+         "reports/pdd-batch-13/manifest.json",
+         "reports/pdd-batch-14/manifest.json",
+         "reports/pdd-batch-15/manifest.json",
+         "reports/pdd-batch-16/manifest.json",
+         "reports/pdd-batch-17/manifest.json",
+         "reports/pdd-batch-18/manifest.json",
+         "reports/pdd-batch-19/manifest.json",
+         "reports/pdd-batch-20/manifest.json",
+         "reports/pdd-batch-21/manifest.json",
+         "reports/pdd-batch-22/manifest.json",
+         "reports/pdd-batch-23/manifest.json",
+         "reports/pdd-batch-24/manifest.json",
+         "reports/pdd-batch-25/manifest.json",
+         "reports/pdd-batch-26/manifest.json",
+         "reports/pdd-batch-27/manifest.json",
+         "reports/pdd-batch-28/manifest.json",
+         "reports/pdd-batch-29/manifest.json",
+         "reports/pdd-batch-30/manifest.json",
+         "reports/pdd-batch-31/manifest.json",
+         "reports/pdd-batch-32/manifest.json"
+      ],
+      "panel_aspect_ratio" : "2:3",
+      "panels" : [
+         {
+            "column" : 1,
+            "description" : "El pasillo parece interminable. El mensajero pasa bajo un arco, luego otro, y después otro más, sin encontrar la escalera prometida.\n\nCuando por fin ve una puerta iluminada, siente que ha caminado durante horas, aunque solo hayan pasado unos minutos.",
+            "expected_filename" : "images/pdd348.jpg",
+            "pdd" : 348,
+            "position" : 1,
+            "row" : 1,
+            "short_definition" : "Que parece no tener fin o dura muchísimo tiempo.",
+            "supabase_record_id" : 349,
+            "word" : "Interminable"
+         },
+         {
+            "column" : 2,
+            "description" : "En una costa lejana, una joven espera sobre su tabla hasta que se acerca una ola grande. Rema con fuerza, se pone de pie y surfea sobre el agua mientras la espuma corre a su alrededor.\n\nDesde las rocas, sus amigos celebran el equilibrio con que sigue el movimiento del mar.",
+            "expected_filename" : "images/pdd349.jpg",
+            "pdd" : 349,
+            "position" : 2,
+            "row" : 1,
+            "short_definition" : "Deslizarse sobre las olas del mar usando una tabla.",
+            "supabase_record_id" : 350,
+            "word" : "Surfear"
+         },
+         {
+            "column" : 3,
+            "description" : "El calor aprieta en el patio y dos escuderos corren hacia el estanque. Uno salta primero y provoca un enorme chapuzón que salpica hasta al jardinero.\n\nEl otro se ríe antes de lanzarse también al agua fresca.",
+            "expected_filename" : "images/pdd350.jpg",
+            "pdd" : 350,
+            "position" : 3,
+            "row" : 1,
+            "short_definition" : "Salto o inmersión rápida en el agua para bañarse.",
+            "supabase_record_id" : 351,
+            "word" : "Chapuzón"
+         },
+         {
+            "column" : 4,
+            "description" : "En la huerta, una culebra se desliza entre las piedras tibias sin hacer ruido. El jardinero la observa desde lejos y deja que continúe su camino.\n\nSu cuerpo largo y flexible desaparece bajo una mata de romero, como una cuerda viva que conociera todos los escondites del castillo.",
+            "expected_filename" : "images/pdd351.jpg",
+            "pdd" : 351,
+            "position" : 4,
+            "row" : 1,
+            "short_definition" : "Reptil alargado sin patas, semejante a una serpiente.",
+            "supabase_record_id" : 352,
+            "word" : "Culebra"
+         },
+         {
+            "column" : 5,
+            "description" : "El herrero sumerge una hoja de acero ardiente en agua fría. Una nube de vapor llena la fragua y el metal, antes maleable, se vuelve más duro.\n\n—Hay que endurecerlo para que resista —explica a su aprendiz, mientras examina el filo a la luz del fuego.",
+            "expected_filename" : "images/pdd352.jpg",
+            "pdd" : 352,
+            "position" : 5,
+            "row" : 1,
+            "short_definition" : "Volver algo más duro, resistente o rígido.",
+            "supabase_record_id" : 353,
+            "word" : "Endurecer"
+         },
+         {
+            "column" : 1,
+            "description" : "Al comenzar el año, la anciana del molino anota cómo cambia el cielo durante los primeros días de enero. Dice que esas jornadas anuncian el tiempo que traerán los meses siguientes.\n\nEl joven astrónomo escucha con curiosidad: son las cabañuelas, una tradición popular para pronosticar el clima, aunque no sea un método científico fiable.",
+            "expected_filename" : "images/pdd353.jpg",
+            "pdd" : 353,
+            "position" : 6,
+            "row" : 2,
+            "short_definition" : "Método popular de pronóstico del tiempo basado en la observación de ciertos días.",
+            "supabase_record_id" : 354,
+            "word" : "Cabañuelas"
+         },
+         {
+            "column" : 2,
+            "description" : "Los viñedos del castillo están llenos de voces y cestos. Familias enteras cortan racimos maduros y los llevan hasta el lagar, donde pronto comenzará el trabajo del vino.\n\nLa vendimia reúne a vecinos que apenas se ven durante el resto del año; al caer la tarde, sus manos están teñidas de jugo de uva.",
+            "expected_filename" : "images/pdd354.jpg",
+            "pdd" : 354,
+            "position" : 7,
+            "row" : 2,
+            "short_definition" : "Recogida de uvas cuando alcanzan la madurez para elaborar vino.",
+            "supabase_record_id" : 355,
+            "word" : "Vendimia"
+         },
+         {
+            "column" : 3,
+            "description" : "Sobre la era seca, dos campesinos golpean las espigas cosechadas con instrumentos de madera. Quieren separar el grano de la paja antes de guardarlo para el invierno.\n\nEl niño que los acompaña aprende que trillar no es sembrar ni recoger: es una tarea que viene después de la cosecha.",
+            "expected_filename" : "images/pdd355.jpg",
+            "pdd" : 355,
+            "position" : 8,
+            "row" : 2,
+            "short_definition" : "Separar el grano de las espigas después de la cosecha.",
+            "supabase_record_id" : 356,
+            "word" : "Trillar"
+         },
+         {
+            "column" : 4,
+            "description" : "En verano, la familia abandona la ciudad para veranear junto al lago, donde las tardes son largas y cálidas. Pero la abuela prefiere regresar cuando los bosques se visten de cobre.\n\n—Yo quisiera otoñear aquí —dice, inventando un verbo juguetón para disfrutar del otoño como otros disfrutan del verano.",
+            "expected_filename" : "images/pdd356.jpg",
+            "pdd" : 356,
+            "position" : 9,
+            "row" : 2,
+            "short_definition" : "Pasar una temporada de descanso en verano o, de forma creativa, en otoño.",
+            "supabase_record_id" : 357,
+            "word" : "Veranear /Otoñear"
+         },
+         {
+            "column" : 5,
+            "description" : "El maestro muestra dos mantos. El primero tiene la cualidad de conservar el calor incluso en noches heladas; el segundo está cosido con tanto cuidado que su calidad impresiona a todos.\n\n—Una cualidad es una característica —explica—. La calidad nos habla de qué tan bueno resulta algo.",
+            "expected_filename" : "images/pdd357.jpg",
+            "pdd" : 357,
+            "position" : 10,
+            "row" : 2,
+            "short_definition" : "Diferencia entre una característica y el grado de excelencia de algo.",
+            "supabase_record_id" : 358,
+            "word" : "Cualidad / Calidad"
+         }
+      ],
+      "preferred_composite_pixels" : [
+         5000,
+         3000
+      ],
+      "rows" : 2,
+      "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+   },
+   "splitter_sha256" : "517a7b22ab4eecfb0b6335a640d85d957d57f3283fbae2af05dee0a02a9e16bb"
+}

@@ -1158,7 +1158,36 @@ object-fit: cover;
         padding: 0.65rem;
     }
 }
-/* twine-user-stylesheet #4: "pdp.css" */
+/* twine-user-stylesheet #4: "pdm.css" */
+:is(#pdm-chapter, #pdm-generated-story) .pdm-word {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+}
+
+:is(#pdm-chapter, #pdm-generated-story) .pdm-word:not(:disabled) {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    cursor: pointer;
+}
+
+:is(#pdm-chapter, #pdm-generated-story) .pdm-word:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+.pdm-review-choices {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.pdm-review-choices button {
+    min-height: 44px;
+    text-align: start;
+}
+/* twine-user-stylesheet #5: "pdp.css" */
 .pdp-room {
     --pdp-ink: #243e32;
     --pdp-green: #23613e;
@@ -1289,7 +1318,40 @@ object-fit: cover;
         line-height: 1.35;
     }
 }
-/* twine-user-stylesheet #5: "pdx.css" */
+/* twine-user-stylesheet #6: "pdr.css" */
+.pdr { max-width: 960px; margin: 2rem auto; padding: 2rem; color: #e9e5d8; background: #15251f; font: 18px/1.6 Georgia, serif; border: 1px solid #67765a; border-radius: 12px; }
+.pdr h1 { font-size: clamp(2rem,5vw,3.6rem); line-height: 1.1; margin: .5em 0; color: #eddba8; }
+.pdr h2 { font-size: 1.3rem; color: #eddba8; }
+.pdr .pdr-eyebrow,.pdr .pdr-meta { font: 13px/1.5 system-ui,sans-serif; letter-spacing: .08em; }
+.pdr .pdr-party { display: grid; grid-template-columns: repeat(auto-fit,minmax(240px,1fr)); gap: 1rem; }
+.pdr .pdr-party section { background: #21372c; padding: 1rem; border-radius: 8px; font-size: 15px; }
+.pdr .pdr-story { border-left: 3px solid #c0aa71; padding-left: 1.2rem; margin: 2rem 0; }
+.pdr button { white-space: normal; background: #e0d2a9; color: #15251f; border: 1px solid #d5bf81; border-radius: 6px; padding: .7rem 1rem; margin: .35rem; font: 15px/1.4 system-ui,sans-serif; cursor: pointer; }
+.pdr button:disabled { opacity: .5; cursor: wait; }
+.pdr button:focus-visible,.pdr input:focus-visible,.pdr summary:focus-visible { outline: 3px solid #f0c66a; outline-offset: 3px; }
+.pdr input { display: block; box-sizing: border-box; width: 100%; margin: .5rem 0; padding: .8rem; font-size: 17px; color: #15251f; background: #f8f0dd; }
+.pdr details { margin: 1rem 0; font-size: 15px; }
+.pdr summary { cursor: pointer; }
+.pdr a { color: #f0d99e; }
+.pdr [role=status]:not(:empty) { padding: 1rem; border: 1px solid #f0c66a; }
+@media(max-width:600px) { .pdr { padding: 1rem; margin: .5rem; }.pdr button { display: block; width: calc(100% - .7rem); } }
+
+/* Explicit controls override the story format in every input state. */
+.pdr form input[type="text"].pdr-action-input,
+.pdr form input[type="text"].pdr-action-input:not(:focus),
+.pdr form input[type="text"].pdr-action-input:focus {
+  display: block; box-sizing: border-box; width: 100%; margin: .5rem 0; padding: .8rem;
+  font-size: 17px; color: #15251f; -webkit-text-fill-color: #15251f;
+  background-color: #f8f0dd; border: 2px solid #a99561; caret-color: #15251f;
+  color-scheme: light; opacity: 1;
+}
+.pdr form input[type="text"].pdr-action-input::placeholder { color: #645d4b; opacity: 1; }
+.pdr form input[type="text"].pdr-action-input:disabled {
+  color: #4c4638; -webkit-text-fill-color: #4c4638; background-color: #e3dcc9;
+  opacity: 1; cursor: wait;
+}
+.pdr .pdr-journal-entry { border-top: 1px solid #67765a; padding: .5rem 0; }
+/* twine-user-stylesheet #7: "pdx.css" */
 /* PDX — a fixed viewpoint. Only the graph opens the three visible walls. */
 .pdx-room {
     max-width: 46rem;
@@ -1614,7 +1676,7 @@ object-fit: cover;
 .pdx-room .pdx-verses > section:first-child .pdx-poem {
     font-weight: bold;
 }
-/* twine-user-stylesheet #6: "story.css" */
+/* twine-user-stylesheet #8: "story.css" */
 
 /* PUERTAS DEL CASTELLANO — LIGHT THEME */
 
@@ -3411,6 +3473,9 @@ button.castle-home-door:disabled:hover {
     outline: 3px solid #795235;
     outline-offset: 3px;
 }
+
+#door-coming-soon { position:absolute; bottom:8%; left:50%; transform:translateX(-50%); z-index:10; padding:.6em 1em; background:#f4e5c7; color:#322217; border-radius:.3em; pointer-events:none; }
+#door-coming-soon[hidden] { display:none; }
 </style><script role="script" id="twine-user-script" type="text/twine-javascript">/* twine-user-script #1: "StoryScript" */
 /* PUERTAS DEL CASTELLANO — SUPABASE */
 
@@ -4397,7 +4462,393 @@ $(document).on("click", ".pdd-manuscript-word", function (event) {
         if (event.passage.title === "PDK") mount(event.content.querySelector(".pdk-room"));
     });
 })();
-/* twine-user-script #6: "pdp.js" */
+/* twine-user-script #6: "pdm.js" */
+(() => {
+    "use strict";
+
+    const prefix = "pdm-unknown-v1:";
+    const wordId = /^[0-9a-f]{8}(?:-[0-9a-f]{4}){3}-[0-9a-f]{12}$/;
+    let currentChapter;
+
+    setup.pdmGuest = {
+        markUnknown({ id, word }) {
+            if (!wordId.test(id) || typeof word !== "string" || !word.trim()) return false;
+            return SugarCube.storage.set(prefix + id, word.trim());
+        },
+        markKnown(id) {
+            return wordId.test(id) && SugarCube.storage.delete(prefix + id);
+        },
+        unknownWords() {
+            const words = [];
+            for (const key of SugarCube.storage.keys()) {
+                if (!key.startsWith(prefix)) continue;
+                const id = key.slice(prefix.length);
+                if (!wordId.test(id)) continue;
+                const word = SugarCube.storage.get(key);
+                if (typeof word === "string" && word.trim()) words.push({ id, word });
+            }
+            return words.sort((a, b) => a.word.localeCompare(b.word, "es"));
+        }
+    };
+
+    function validWord(entry) {
+        return wordId.test(entry?.id) && typeof entry.word === "string" &&
+            typeof entry.short_definition === "string" && entry.short_definition.trim();
+    }
+
+    async function readWords(query, signal) {
+        query.set("select", "id,word,short_definition");
+        query.set("published", "eq.true");
+        const response = await fetch(setup.supabase.url + "/rest/v1/pdm_words?" + query, {
+            headers: { apikey: setup.supabase.key },
+            signal: AbortSignal.any([signal, AbortSignal.timeout(10000)])
+        });
+        if (!response.ok) throw new Error("PDM vocabulary unavailable");
+        const entries = await response.json();
+        if (!Array.isArray(entries)) throw new Error("Invalid PDM vocabulary");
+        return entries;
+    }
+
+    function showWord(entry, trigger) {
+        trigger.focus();
+        Dialog.create(entry.word, "pdm-definition");
+
+        const definition = document.createElement("p");
+        definition.textContent = entry.short_definition;
+        const mark = document.createElement("button");
+        mark.type = "button";
+        mark.textContent = "Marcar como desconocida";
+        const status = document.createElement("p");
+        status.setAttribute("role", "status");
+        const close = document.createElement("button");
+        close.type = "button";
+        close.textContent = "Volver al capítulo";
+        close.addEventListener("click", () => Dialog.close());
+
+        function saved() {
+            mark.disabled = true;
+            status.textContent = "Esta palabra está en tu Diario de Maestría.";
+        }
+
+        try {
+            if (SugarCube.storage.has(prefix + entry.id)) saved();
+        } catch {
+            status.textContent = "No se pudo leer el diario en este navegador.";
+        }
+        mark.addEventListener("click", () => {
+            try {
+                if (!setup.pdmGuest.markUnknown(entry)) throw new Error();
+                saved();
+                close.focus();
+            } catch {
+                status.textContent = "No se pudo guardar la palabra en este navegador.";
+            }
+        });
+
+        Dialog.body().append(definition, mark, status, close);
+        Dialog.open();
+        (mark.disabled ? close : mark).focus();
+    }
+
+    function mountChapter(chapter) {
+        const lifetime = new AbortController();
+        const { signal } = lifetime;
+        $(document).one(":passageinit", () => {
+            lifetime.abort();
+            if (Dialog.isOpen("pdm-definition")) Dialog.close();
+        });
+
+        const buttons = [...chapter.querySelectorAll(".pdm-word")];
+        const status = chapter.querySelector("[role=status]");
+        const retry = chapter.querySelector(".pdm-vocabulary-retry");
+        const words = new Map();
+        const query = new URLSearchParams({
+            word: "in.(" + buttons.map(button => JSON.stringify(button.dataset.word)).join(",") + ")"
+        });
+
+        for (const button of buttons) {
+            button.addEventListener("click", () => {
+                const entry = words.get(button.dataset.word);
+                if (entry) showWord(entry, button);
+            });
+        }
+
+        async function loadWords() {
+            retry.hidden = true;
+            status.textContent = "Cargando definiciones…";
+            try {
+                const entries = await readWords(query, signal);
+                if (signal.aborted) return;
+                words.clear();
+                for (const entry of entries) {
+                    if (validWord(entry)) words.set(entry.word, entry);
+                }
+                for (const button of buttons) button.disabled = !words.has(button.dataset.word);
+                status.textContent = buttons.every(button => !button.disabled)
+                    ? "" : "Algunas definiciones no están disponibles.";
+                retry.hidden = !status.textContent;
+            } catch {
+                if (signal.aborted) return;
+                status.textContent = "No se pudieron cargar las definiciones. Puedes seguir leyendo.";
+                retry.hidden = false;
+            }
+        }
+
+        retry.addEventListener("click", loadWords);
+        loadWords();
+    }
+
+    async function readReviewVocabulary(signal) {
+        const vocabulary = [];
+        const pageSize = 250;
+        for (let offset = 0; ; offset += pageSize) {
+            const query = new URLSearchParams({ order: "id.asc", limit: pageSize, offset });
+            const entries = await readWords(query, signal);
+            vocabulary.push(...entries.filter(validWord));
+            if (entries.length < pageSize) return vocabulary;
+        }
+    }
+
+    function selectPracticeWords(vocabulary, flagged) {
+        const priority = vocabulary.filter(entry => flagged.has(entry.id)).shuffle();
+        const other = vocabulary.filter(entry => !flagged.has(entry.id)).shuffle();
+        // Reserve up to two places for unflagged words when available.
+        const selected = priority.slice(0, Math.max(4, 6 - other.length));
+        return selected.concat(other.slice(0, 6 - selected.length));
+    }
+
+    function mountGenerator(room) {
+        const lifetime = new AbortController();
+        const { signal } = lifetime;
+        $(document).one(":passageinit", () => {
+            lifetime.abort();
+            if (Dialog.isOpen("pdm-definition")) Dialog.close();
+        });
+        const generate = room.querySelector(".pdm-generate");
+        const status = room.querySelector("[role=status]");
+        const story = room.querySelector("article");
+        const readRequested = setup.pdmReadRequested;
+        setup.pdmReadRequested = false;
+
+        function renderChapter(chapter, ids) {
+            if (typeof chapter.title !== "string" || !Array.isArray(chapter.paragraphs) ||
+                !Array.isArray(chapter.words) || chapter.words.length !== ids.length ||
+                !chapter.words.every((entry, index) => validWord(entry) && entry.id === ids[index])) {
+                throw new Error("Invalid PDM chapter");
+            }
+            const title = document.createElement("h2");
+            title.textContent = chapter.title;
+            const paragraphs = chapter.paragraphs.map(text => {
+                const paragraph = document.createElement("p");
+                for (const [index, part] of text.split(/\[\[(\d+)\]\]/g).entries()) {
+                    if (index % 2 === 0) {
+                        paragraph.append(part);
+                        continue;
+                    }
+                    const entry = chapter.words[Number(part) - 1];
+                    if (!entry) throw new Error("Invalid PDM marker");
+                    const button = document.createElement("button");
+                    button.type = "button";
+                    button.className = "pdm-word";
+                    button.textContent = entry.word;
+                    button.addEventListener("click", () => showWord(entry, button));
+                    paragraph.append(button);
+                }
+                return paragraph;
+            });
+            story.replaceChildren(title, ...paragraphs);
+            story.hidden = false;
+            generate.textContent = "Generar otro capítulo";
+        }
+
+        async function generateChapter() {
+            generate.disabled = true;
+            status.textContent = "Preparando un capítulo…";
+            try {
+                const vocabulary = await readReviewVocabulary(signal);
+                const flagged = new Set(setup.pdmGuest.unknownWords().map(entry => entry.id));
+                const ids = selectPracticeWords(vocabulary, flagged).map(entry => entry.id);
+                if (ids.length < 2) {
+                    status.textContent = "Se necesitan al menos dos palabras publicadas.";
+                    return;
+                }
+                const response = await fetch(setup.supabase.url + "/functions/v1/pdm-generate-chapter", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ wordIds: ids }),
+                    signal: AbortSignal.any([signal, AbortSignal.timeout(30000)])
+                });
+                if (response.status === 429) {
+                    status.textContent = "Se alcanzó el límite de capítulos. Inténtalo más tarde.";
+                    return;
+                }
+                if (!response.ok) throw new Error("PDM generation unavailable");
+                const chapter = await response.json();
+                if (signal.aborted) return;
+                renderChapter(chapter, ids);
+                currentChapter = { chapter, ids };
+                status.textContent = "Capítulo listo.";
+            } catch {
+                if (!signal.aborted) status.textContent = "No se pudo generar el capítulo. Puedes volver al capítulo del archivo.";
+            } finally {
+                if (!signal.aborted) generate.disabled = false;
+            }
+        }
+
+        generate.addEventListener("click", generateChapter);
+        if (currentChapter) {
+            renderChapter(currentChapter.chapter, currentChapter.ids);
+        } else if (readRequested) {
+            generateChapter();
+        }
+    }
+
+    function mountReview(review) {
+        const lifetime = new AbortController();
+        const { signal } = lifetime;
+        $(document).one(":passageinit", () => lifetime.abort());
+
+        const status = review.querySelector(".pdm-review-status");
+        const question = review.querySelector("fieldset");
+        const title = question.querySelector("legend");
+        const choices = review.querySelector(".pdm-review-choices");
+        const feedback = review.querySelector(".pdm-review-feedback");
+        const mark = review.querySelector(".pdm-review-mark");
+        const next = review.querySelector(".pdm-review-next");
+        const start = review.querySelector(".pdm-review-start");
+        let round;
+        let definitions;
+        let flagged;
+        let index;
+        let correct;
+
+        function showQuestion() {
+            const entry = round[index];
+            const answer = entry.short_definition;
+            const alternatives = definitions.filter(definition => definition !== answer).shuffle().slice(0, 2);
+            status.textContent = "Palabra " + (index + 1) + " de " + round.length;
+            title.textContent = "¿Qué significa «" + entry.word + "»?";
+            feedback.textContent = "";
+            mark.hidden = next.hidden = true;
+            mark.disabled = false;
+            next.textContent = index === round.length - 1 ? "Ver resultado" : "Siguiente";
+            question.disabled = false;
+            choices.replaceChildren(...[answer, ...alternatives].shuffle().map(definition => {
+                const button = document.createElement("button");
+                button.type = "button";
+                button.textContent = definition;
+                button.addEventListener("click", () => {
+                    if (definition === answer) correct++;
+                    feedback.textContent = definition === answer ? "Correcto." : "Significado: " + answer;
+                    mark.hidden = flagged.has(entry.id);
+                    next.hidden = false;
+                    next.focus();
+                    question.disabled = true;
+                });
+                return button;
+            }));
+            question.hidden = false;
+            title.focus();
+        }
+
+        async function startRound() {
+            start.hidden = question.hidden = mark.hidden = next.hidden = true;
+            feedback.textContent = "";
+            status.textContent = "Preparando el repaso…";
+            try {
+                const vocabulary = await readReviewVocabulary(signal);
+                if (signal.aborted) return;
+                definitions = [...new Set(vocabulary.map(entry => entry.short_definition))];
+                if (definitions.length < 2) {
+                    status.textContent = "El repaso necesita al menos dos palabras con significados distintos.";
+                    start.textContent = "Volver a cargar";
+                    start.hidden = false;
+                    return;
+                }
+                flagged = new Set(setup.pdmGuest.unknownWords().map(entry => entry.id));
+                round = selectPracticeWords(vocabulary, flagged);
+                index = correct = 0;
+                showQuestion();
+            } catch {
+                if (signal.aborted) return;
+                status.textContent = "No se pudo preparar el repaso. Inténtalo otra vez.";
+                start.textContent = "Volver a intentar";
+                start.hidden = false;
+            }
+        }
+
+        mark.addEventListener("click", () => {
+            const entry = round[index];
+            try {
+                if (!setup.pdmGuest.markUnknown(entry)) throw new Error();
+                flagged.add(entry.id);
+                mark.textContent = "Guardada en el diario";
+                mark.disabled = true;
+                next.focus();
+            } catch {
+                feedback.textContent = "No se pudo guardar la palabra en este navegador.";
+            }
+        });
+        next.addEventListener("click", () => {
+            mark.textContent = "Marcar como desconocida";
+            if (++index < round.length) {
+                showQuestion();
+                return;
+            }
+            question.hidden = mark.hidden = next.hidden = true;
+            feedback.textContent = "";
+            status.textContent = "Resultado: " + correct + " de " + round.length + " respuestas correctas.";
+            start.textContent = "Otra ronda";
+            start.hidden = false;
+            start.focus();
+        });
+        start.addEventListener("click", startRound);
+        startRound();
+    }
+
+    $(document).on(":passagedisplay", event => {
+        if (event.passage.title === "PDMChapter") mountChapter(event.content.querySelector("#pdm-chapter"));
+        if (event.passage.title === "PDMReview") mountReview(event.content.querySelector("#pdm-review"));
+        if (event.passage.title === "PDMGenerated") mountGenerator(event.content.querySelector("#pdm-generated"));
+    });
+
+    $(document).on(":passagedisplay", event => {
+        if (event.passage.title !== "PDMDiary") return;
+        const diary = event.content.querySelector("#pdm-diary");
+        const list = diary.querySelector("ul");
+        const status = diary.querySelector("#pdm-diary-status");
+
+        function render() {
+            list.replaceChildren();
+            try {
+                const words = setup.pdmGuest.unknownWords();
+                status.textContent = words.length ? "" : "Todavía no has marcado ninguna palabra.";
+                for (const { id, word } of words) {
+                    const item = document.createElement("li");
+                    const button = document.createElement("button");
+                    button.type = "button";
+                    button.textContent = "Ya la conozco";
+                    button.setAttribute("aria-label", "Ya conozco «" + word + "»");
+                    button.addEventListener("click", () => {
+                        try {
+                            if (!setup.pdmGuest.markKnown(id)) throw new Error();
+                            render();
+                        } catch {
+                            status.textContent = "No se pudo actualizar el diario en este navegador.";
+                        }
+                    });
+                    item.append(word + " ", button);
+                    list.append(item);
+                }
+            } catch {
+                status.textContent = "No se pudo abrir el diario en este navegador.";
+            }
+        }
+
+        render();
+    });
+})();
+/* twine-user-script #7: "pdp.js" */
 /* PDP — Puentes de Principiante */
 (() => {
     "use strict";
@@ -4541,7 +4992,126 @@ $(document).on("click", ".pdd-manuscript-word", function (event) {
         if (room) mount(room);
     });
 })();
-/* twine-user-script #7: "pdx.js" */
+/* twine-user-script #8: "pdr.js" */
+// Reuse the existing castle configuration; this room adds no browser API keys.
+setup.pdrConfig = Object.assign({ backend: 'edge', creditsUrl: 'PDR-CREDITS.md' }, setup.pdrConfig || {});
+/* Browser adapter: stores only PDR data. Never Wikify AI/player text. */
+(() => {
+  'use strict';
+  const KEY='puertas.pdr.tegny.v1';
+  let busy=false;
+  const storySetup=()=>typeof setup!=='undefined'?setup:window.setup;
+  const config=()=>storySetup()?.pdrConfig||{};
+  const storyState=()=>typeof State!=='undefined'?State:window.SugarCube?.State;
+  const read=()=>{
+    if(storyState()?.variables?.pdr)return storyState().variables.pdr;
+    try{return JSON.parse(localStorage.getItem(KEY));}catch{return null;}
+  };
+  const write=value=>{
+    if(storyState()?.variables)storyState().variables.pdr=value;
+    try{localStorage.setItem(KEY,JSON.stringify(value));return true;}catch{return false;}
+  };
+  function el(tag,text,parent){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(parent)parent.append(e);return e;}
+  function endpoint(){
+    const here=window.location;
+    const staticPreview=['localhost','127.0.0.1'].includes(here.hostname)&&here.port==='8000';
+    const edge=config().backend==='edge';
+    const castleUrl=storySetup()?.supabase?.url;
+    if(edge&&!config().endpoint&&!castleUrl)throw Error('Falta configurar la dirección de Supabase para la Guardiana.');
+    const defaultEndpoint=edge?castleUrl+'/functions/v1/pdr-warden':staticPreview?`http://${here.hostname}:4319/api/pdr`:'/api/pdr';
+    let url;
+    try{url=new URL(config().endpoint||defaultEndpoint,here.href);}
+    catch{throw Error('La dirección de la Guardiana no es válida. Abre el castillo desde http://127.0.0.1:4319/.');}
+    if(!['http:','https:'].includes(url.protocol))throw Error('Abre el castillo desde un servidor local, como http://127.0.0.1:4319/, para continuar la expedición.');
+    return url.href;
+  }
+  async function api(input){
+    const url=endpoint();
+    const access=await config().getAccessToken?.();
+    let r;
+    try{r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json',...(access?{Authorization:`Bearer ${access}`}:{})},body:JSON.stringify(input)});}
+    catch{throw Error(config().backend==='edge'?'No se pudo conectar con la Guardiana en Supabase. Inténtalo de nuevo; tu guardado se conserva.':'No se pudo conectar con la Guardiana. Comprueba que el servidor PDR del puerto 4319 está en marcha. Tu guardado se conserva.');}
+    if(!r.headers.get('content-type')?.includes('application/json'))throw Error(config().backend==='edge'?'La Guardiana en Supabase no devolvió datos válidos. Tu guardado se conserva.':'El servidor del castillo no reconoce la petición de PDR. La Guardiana debe estar en marcha en el puerto 4319. Tu guardado se conserva.');
+    let data;
+    try{data=await r.json();}catch{throw Error('La Guardiana devolvió una respuesta incompleta. Inténtalo de nuevo; tu guardado se conserva.');}
+    if(!r.ok)throw Error(data.error||'No se pudo continuar');return data;
+  }
+  function draw(root,data){
+    const journalOpen=root.querySelector('.pdr-journal')?.open||false;
+    root.replaceChildren();root.classList.add('pdr');
+    el('p','PUERTA DE LOS ROLES · CAIRN 2e',root).className='pdr-eyebrow';
+    el('h1',data?.state?.location==='old-dam'?'La presa vieja':'El festín de Tegny',root);
+    const status=el('p','',root);status.setAttribute('role','status');
+    if(!data){
+      el('p','Dos viajeros, una fiesta bajo los árboles y un grito junto al río. Una primera expedición en español.',root);
+      el('p','Incluye muerte, enfermedad y horror corporal. Dos trasfondos originales de PDR compatibles con Cairn 2e; no usa tablas de equipo de 1e.',root);
+      const saved=read();
+      if(saved)button('Continuar expedición',()=>run({action:'resume',token:saved.token}),root);
+      button('Generar dos viajeros y comenzar',()=>run({action:'start'}),root);
+      credits(root);return;
+    }
+    const s=data.state;
+    el('p',`14 de Sunrise · ${s.turns} turnos de muestra · ${s.progress==='completo'?'Primera expedición completada':'Investigación en curso'}`,root).className='pdr-meta';
+    if(data.mode==='scripted'||data.aiStatus==='scripted')el('p','Guardiana de muestra sin IA. Usa las acciones disponibles.',root);
+    if(data.mode==='ai'||data.aiStatus==='ai')el('p','Guardiana con IA · Puedes escribir vuestra acción o elegir una opción.',root);
+    if(data.aiStatus==='fallback')el('p','La IA no respondió. Se muestra la resolución del motor.',root);
+    const cards=el('div',undefined,root);cards.className='pdr-party';
+    for(const p of s.party){
+      const card=el('section',undefined,cards);el('h2',p.name,card);
+      el('p',`${p.background} · ${p.age} años`,card);
+      el('p',`PG ${p.hp}/${p.maxHp} · FUE ${p.str} · DES ${p.dex} · VOL ${p.wil} · ${p.gold} monedas · ${p.condition}`,card);
+      el('p',p.inventory.map(i=>i.name+(i.uses?` (${i.uses} usos)`:'')).join(' · '),card);
+    }
+    const story=el('section',undefined,root);story.className='pdr-story';
+    el('h2','La Guardiana',story);el('p',data.narration||data.event.text,story);
+    if(data.event.kind!=='conversation'&&data.narration&&data.narration!==data.event.text){const d=el('details',undefined,story);el('summary','Resolución y peligros del turno',d);el('p',data.event.text,d);d.open=true;}
+    if(data.event.dice?.length)el('p','Dados: '+JSON.stringify(data.event.dice),story);
+    if(s.infection)el('p',`Contagio de Olmo: ${s.infection.remaining} turnos hasta la transformación; ${s.infection.cutoff} para extirpar la mano.`,story);
+    const controls=el('div',undefined,root);controls.className='pdr-actions';
+    for(const a of data.actions)button(a.label,()=>{
+      const dangerous=['touch','amputate'].includes(a.id);
+      if(dangerous&&!window.confirm(a.label+' ¿Continuar?'))return;
+      return run({token:data.token,action:a.id,confirmed:dangerous});
+    },controls);
+    const form=el('form',undefined,root),label=el('label',data.mode==='ai'?'¿Qué queréis hacer?':'¿Qué queréis hacer? (requiere IA activa)',form);
+    const input=el('input',undefined,label);input.type='text';input.className='pdr-action-input';input.maxLength=1000;input.name='pdr-action';input.autocomplete='off';
+    const submit=el('button','Proponer acción',form);submit.type='submit';
+    form.onsubmit=e=>{e.preventDefault();run({token:data.token,text:input.value});};
+    form.append(status);
+    const journal=el('details',undefined,root);journal.className='pdr-journal';journal.open=journalOpen;
+    el('summary','Diario y presagio',journal);el('p',s.omen,journal);
+    s.log.forEach((e,index)=>{
+      const entry=el('section',undefined,journal);entry.className='pdr-journal-entry';
+      el('p',`Turno ${e.turn}`,entry).className='pdr-meta';
+      if(e.player)el('p',`Vosotros: ${e.player}`,entry);
+      const reply=e.reply||(index===s.log.length-1?s.wardenNarration:'');
+      el('p',reply?`Guardiana: ${reply}`:`Registro anterior: ${e.text}`,entry);
+    });
+    button('Nueva expedición',()=>{if(window.confirm('¿Reemplazar el guardado de PDR?'))return run({action:'start'});},root);
+    credits(root);
+    async function run(input){await perform(input);}
+    async function perform(input){
+      if(busy)return;busy=true;root.setAttribute('aria-busy','true');status.textContent='La Guardiana escucha…';
+      root.querySelectorAll('button,input').forEach(e=>e.disabled=true);
+      try{const next=await api(input);const saved=write(next);draw(root,next);if(input.text!==undefined)root.querySelector('.pdr-action-input')?.focus({preventScroll:true});if(!saved)el('p','El navegador no pudo guardar. Mantén esta pestaña abierta.',root);}
+      catch(e){status.textContent=e.message;root.querySelectorAll('button,input').forEach(e=>e.disabled=false);status.scrollIntoView({block:'nearest'});}
+      finally{busy=false;root.setAttribute('aria-busy','false');}
+    }
+  }
+  function button(text,fn,parent){const b=el('button',text,parent);b.type='button';b.onclick=fn;return b;}
+  function credits(root){
+    const d=el('details',undefined,root);el('summary','Créditos y licencias',d);
+    el('p','The Feast of Tegny Wood, Yochai Gal. Edición: Derek B. y Yossi Krausz. Maquetación: Adam Hensley. Arte y mapa: Ari-Matti Toivonen. Cairn 2e: Yochai Gal.',d);
+    el('p','Traducción parcial y adaptación interactiva por Puertas del Castellano: inicio fijo, viaje simplificado, dos trasfondos originales y objetivo de informar al mercado. Aventura adaptada y prompt: CC BY-SA 4.0. Sin aval de los autores originales.',d);
+    const a=el('a','CC BY-SA 4.0',d);a.href='https://creativecommons.org/licenses/by-sa/4.0/';
+    const b=el('a',' · Fuentes y cambios',d);b.href=config().creditsUrl||'/credits';
+  }
+  window.PDR={mount:root=>draw(root,null)};
+  const macros=typeof Macro!=='undefined'?Macro:window.SugarCube?.Macro;
+  if(macros)macros.add('pdr',{handler(){const root=document.createElement('div');this.output.appendChild(root);window.PDR.mount(root);}});
+  const root=document.getElementById('pdr-root');if(root)window.PDR.mount(root);
+})();
+/* twine-user-script #9: "pdx.js" */
 /* PDX — El laberinto de la X */
 (() => {
     const progressKeys = { "pdx-v1": "pdx", "pdx-v2": "pdxV2" };
@@ -4926,7 +5496,7 @@ $(document).on("click", ".pdd-manuscript-word", function (event) {
         if (room) mount(room);
     });
 })();
-/* twine-user-script #8: "story.js" */
+/* twine-user-script #10: "story.js" */
 
 /* PUERTAS DEL CASTELLANO — SUPABASE */
 
@@ -4937,17 +5507,18 @@ setup.supabase = {
 
 // Share the wall's door catalog with passages, including direct entries.
 let castleDoorsRequest;
+let castleDoorCatalog = [];
 setup.getCastleDoors = function (refresh = false) {
     if (!castleDoorsRequest || refresh) {
-        const endpoint = setup.supabase.url + "/rest/v1/castle_doors?select=position,name,destination_passage";
+        const endpoint = setup.supabase.url + "/rest/v1/castle_doors?select=position,name,destination_passage,badge,initial_door,published,testing";
         const options = { headers: { apikey: setup.supabase.key } };
 
         const request = (async () => {
-            let response = await fetch(endpoint + ",badge,initial_door", options);
-            if (response.status === 400) response = await fetch(endpoint, options);
+            const response = await fetch(endpoint, options);
             if (!response.ok) throw new Error(`Supabase: ${response.status}`);
             const rows = await response.json();
             if (!Array.isArray(rows)) throw new Error("Invalid castle doors response");
+            castleDoorCatalog = rows;
             return rows;
         })();
         castleDoorsRequest = request;
@@ -4956,6 +5527,40 @@ setup.getCastleDoors = function (refresh = false) {
         });
     }
     return castleDoorsRequest;
+};
+
+// Explicit development configuration is source-controlled; query strings never enable it.
+setup.castleDevelopment = false;
+setup.canEnterRoom = function (room) {
+    const development = ["localhost", "127.0.0.1"].includes(window.location.hostname) ||
+        setup.castleDevelopment === true;
+    return room?.published === true || (development && room?.testing === true);
+};
+
+// Protect passage navigation before widgets, room code or requests execute.
+setup.castleDoorForPassage = function (title) {
+    const aliases = {
+        TestMystRoom: "CastleEntrance", TestCircularRoom: "CastleEntrance",
+        PuertaPalabras: "CastleEntrance", TestSupabase: "CastleEntrance",
+        PDMChapter: "PDMRoom", PDMReview: "PDMRoom", PDMGenerated: "PDMRoom", PDMDiary: "PDMRoom"
+    };
+    return /^PDD\d+$/.test(title) ? "CastleEntrance" : aliases[title] || title;
+};
+const castleNavigationOverride = Config.navigation.override;
+Config.navigation.override = function (requested) {
+    const title = castleNavigationOverride?.(requested) || requested;
+    if (["Empieza", "StoryInit"].includes(title)) return title;
+    // All playable non-home passages belong to a door. Unknown destinations fail closed.
+    const destination = setup.castleDoorForPassage(title);
+    const allowed = () => castleDoorCatalog.some(row =>
+        row.destination_passage === destination && setup.canEnterRoom(row));
+    if (allowed()) return title;
+    if (!castleDoorCatalog.length) {
+        setup.getCastleDoors().then(() => {
+            if (State.passage === "Empieza" && allowed()) Engine.play(title);
+        }).catch(() => {});
+    }
+    return "Empieza";
 };
 
 $(document).on(":passagedisplay", async (event) => {
@@ -5415,9 +6020,11 @@ $(document).on(":passagedisplay", (event) => {
         { key: "H", badge: "PDH", name: "Pasadizo de Hipervínculos", destination: "PasadizoHipervinculos" },
         { key: "K", badge: "PDK", name: "Palacio del Karaoke", destination: "PDK" },
         { key: "L", badge: "PDL", name: "Pila de Letras", destination: "PilaDeLetras" },
+        { key: "M", badge: "PDM", name: "Palabras de Maestría", destination: "PDMRoom" },
         { key: "O", badge: "PDO", name: "Palacio de Obras", destination: "PalacioDeObras" },
         { key: "P", badge: "PDP", name: "Puentes de Principiante", destination: "PDP" },
         { key: "Q", badge: "PDQ", name: "Pruebas de Don Quijote", destination: "PruebasDonQuijote" },
+        { key: "R", badge: "PDR", name: "Puerta de los Roles", destination: "PDR" },
         { key: "T", badge: "PDT", name: "Posada de los Cuentos", destination: "TavernRoom" },
         { key: "X", badge: "PDX", name: "¿Puedes Descubrir la X?", destination: "PDX" }
       ];
@@ -5435,7 +6042,7 @@ $(document).on(":passagedisplay", (event) => {
           door.route = door.destination ? door.badge : "Recorrido de prueba";
         }
         for (const { key, badge, destination } of shortcuts) {
-          const door = doors.find((entry) => entry.badge === badge && entry.destination === destination);
+          const door = doors.find((entry) => entry.destination === destination);
           const guide = root.querySelector("#shortcut-" + key);
           guide.parentElement.hidden = !door;
           if (door) {
@@ -5450,6 +6057,7 @@ $(document).on(":passagedisplay", (event) => {
 
       const panelCount = doors.length + bufferDoors * 2;
       const enterButton = root.querySelector("#enter-door");
+      const comingSoon = root.querySelector("#door-coming-soon");
 
       const windowElement = root.querySelector("#" + "wall-window");
       const track = root.querySelector("#" + "wall-track");
@@ -5464,7 +6072,7 @@ $(document).on(":passagedisplay", (event) => {
         event.stopPropagation();
         if (enterButton.disabled) return;
         const destination = doors[selectedIndex].destination;
-        if (destination && Story.has(destination)) Engine.play(destination);
+        if (setup.canEnterRoom(doors[selectedIndex]) && destination && Story.has(destination)) Engine.play(destination);
       });
 
       const artworkSlots = [];
@@ -5546,7 +6154,8 @@ $(document).on(":passagedisplay", (event) => {
           button.setAttribute("aria-current", String(panel === selectedIndex));
           button.setAttribute("aria-label", `${item.name}, puerta ${item.index + 1} de 27`);
         });
-        enterButton.hidden = !door.destination;
+        enterButton.hidden = !setup.canEnterRoom(door) || !door.destination;
+        comingSoon.hidden = !enterButton.hidden;
         const movement = track.getAnimations();
         enterButton.disabled = movement.length > 0;
         if (movement.length) {
@@ -5588,11 +6197,13 @@ $(document).on(":passagedisplay", (event) => {
           if (lifetime.signal.aborted) return;
           let initialIndex;
           for (const [index, placeholder] of placeholders.entries()) {
-            Object.assign(doors[index], placeholder, { destination: undefined, key: "" });
+            Object.assign(doors[index], placeholder, { destination: undefined, key: "", published: false, testing: false });
           }
           for (const row of rows) {
             const door = doors[row.position - 1];
             if (!door) continue;
+            door.published = row.published;
+            door.testing = row.testing;
             if (row.initial_door === true) initialIndex = door.index;
             if (typeof row.name === "string" && row.name.trim()) door.name = row.name.trim();
             if (row.destination_passage && Story.has(row.destination_passage)) {
@@ -5600,21 +6211,11 @@ $(document).on(":passagedisplay", (event) => {
             }
             if (typeof row.badge === "string" && row.badge.trim()) {
               door.badge = row.badge.trim();
+              // Preserve the pre-existing PDL fallback artwork and label.
+              if (row.position === 12 && row.badge === "12" && door.destination === "PilaDeLetras") door.badge = "PDL";
             } else {
               const shortcut = shortcuts.find((entry) => entry.destination === door.destination);
               if (shortcut) door.badge = shortcut.badge;
-            }
-          }
-          // Fill empty slots for rooms that older catalogs do not list yet.
-          for (const shortcut of shortcuts.filter(({ key }) => ["E", "K", "L", "O"].includes(key))) {
-            const slot = doors[alphabet.indexOf(shortcut.key)];
-            const placeholder = placeholders[slot.index];
-            if (["E", "K"].includes(shortcut.key) && rows.some((row) =>
-                row.badge === shortcut.badge || (row.position === slot.index + 1 &&
-                    (row.destination_passage != null || row.initial_door === true)))) continue;
-            if (!doors.some(({ destination }) => destination === shortcut.destination) &&
-                !slot.destination && slot.badge === placeholder.badge && slot.name === placeholder.name) {
-              Object.assign(slot, shortcut);
             }
           }
           bindShortcuts();
@@ -5867,6 +6468,7 @@ setup.mountPdq = function (room) {
     const form = room.querySelector(".pdq-answer");
     const input = form.querySelector("textarea");
     const next = room.querySelector(".pdq-next");
+    const extra = room.querySelector(".pdq-extra");
     const diploma = room.querySelector(".pdq-diploma");
     const diplomaArt = diploma.querySelector(".pdq-diploma-art");
     const diplomaNumber = diploma.querySelector(".pdq-diploma-number");
@@ -5952,6 +6554,8 @@ setup.mountPdq = function (room) {
         next.textContent = lesson?.completed ? "Comenzar otra prueba"
             : !vocabulary ? "Cargar la palabra"
             : stage === 0 ? "Comenzar una prueba" : "Continuar a la siguiente prueba";
+        extra.hidden = !lesson?.completed;
+        extra.disabled = busy;
         diploma.hidden = !lesson?.completed;
         if (lesson?.completed) {
             const { pdd, word, definition } = lesson.vocabulary;
@@ -5985,6 +6589,48 @@ setup.mountPdq = function (room) {
         status.textContent = "";
     }
 
+    async function loadRandomVocabulary() {
+        // Read the diary afresh: another completed lesson may have been saved since entry.
+        const diplomas = readDiplomas();
+        const wordKey = word => word.normalize("NFC").trim().replace(/\s+/g, " ").toLocaleLowerCase("es");
+        const seenPdds = new Set(diplomas.map(entry => Number(entry.pdd)));
+        const seenWords = new Set(diplomas.map(entry => wordKey(entry.word)));
+        seenPdds.add(Number(lesson.vocabulary.pdd));
+        seenWords.add(wordKey(lesson.vocabulary.word));
+        const candidates = new Map();
+        const pageSize = 250;
+        status.textContent = "Buscando una palabra nueva para tu próxima aventura…";
+        for (let offset = 0; ; offset += pageSize) {
+            const response = await fetch(setup.supabase.url + "/rest/v1/rooms" +
+                "?select=pdd,word,short_definition,description&published=eq.true&pdd=gt.0" +
+                "&order=pdd.asc,id.asc&limit=" + pageSize + "&offset=" + offset, {
+                headers: { apikey: setup.supabase.key },
+                signal: AbortSignal.any([lifetime.signal, AbortSignal.timeout(10000)])
+            });
+            if (!response.ok) throw new Error();
+            const rows = await response.json();
+            if (!Array.isArray(rows)) throw new Error();
+            for (const record of rows) {
+                const pdd = Number(record?.pdd);
+                const word = typeof record?.word === "string" ? record.word.trim() : "";
+                const definition = typeof record?.short_definition === "string" ? record.short_definition.trim() : "";
+                if (!Number.isSafeInteger(pdd) || pdd < 1 || !word || !definition ||
+                    seenPdds.has(pdd) || seenWords.has(wordKey(word))) continue;
+                candidates.set(wordKey(word), { pdd, word: word.slice(0, 120),
+                    definition: definition.slice(0, 800),
+                    description: typeof record.description === "string" ? record.description.trim().slice(0, 2000) : "" });
+            }
+            if (rows.length < pageSize) break;
+        }
+        const words = [...candidates.values()];
+        if (!words.length) {
+            status.textContent = "¡Ya has completado todas las palabras disponibles! Vuelve cuando se publiquen más.";
+            return;
+        }
+        // Start only after selection and AI response succeed; preserve the diploma on failure.
+        await play("", words[Math.floor(Math.random() * words.length)]);
+    }
+
     async function run(action, errorMessage) {
         if (busy) return;
         busy = true;
@@ -5999,9 +6645,10 @@ setup.mountPdq = function (room) {
         }
     }
 
-    async function play(message) {
-        const current = lesson ?? { vocabulary, stage: 0, attempts: 0, history: [],
-            stageHistory: [], completed: false };
+    async function play(message, freshVocabulary) {
+        const current = freshVocabulary ? { vocabulary: freshVocabulary, stage: 0, attempts: 0,
+            history: [], stageHistory: [], completed: false } : lesson ?? { vocabulary,
+            stage: 0, attempts: 0, history: [], stageHistory: [], completed: false };
         const attempt = message ? current.attempts + 1 : 0;
         status.textContent = "Don Quijote está pensando…";
         const response = await fetch(setup.supabase.url + "/functions/v1/pdq-chat", {
@@ -6040,6 +6687,7 @@ setup.mountPdq = function (room) {
             current.completed = current.stage === stages.length;
         }
         lesson = variables.pdq = current;
+        vocabulary = current.vocabulary;
         input.value = "";
         if (current.completed) {
             status.textContent = saveDiploma() ? "¡Diploma guardado en tu diario!"
@@ -6059,6 +6707,10 @@ setup.mountPdq = function (room) {
         }
         if (!vocabulary) return run(loadVocabulary, loadError);
         return run(() => play(""), replyError);
+    });
+    extra.addEventListener("click", () => {
+        if (!busy && lesson?.completed) return run(loadRandomVocabulary,
+            "No se pudo comenzar otra prueba. Tu diploma sigue guardado; inténtalo de nuevo.");
     });
     form.addEventListener("submit", (event) => {
         event.preventDefault();
@@ -6593,6 +7245,7 @@ $(document).on(":passagedisplay", (event) => {
     &lt;section class=&quot;wall-window&quot; id=&quot;wall-window&quot; aria-label=&quot;Vista panorámica del muro&quot;&gt;
       &lt;div class=&quot;wall-track&quot; id=&quot;wall-track&quot;&gt;&lt;/div&gt;
         &lt;button id=&quot;enter-door&quot; type=&quot;button&quot; hidden&gt;Entrar&lt;/button&gt;
+        &lt;span id=&quot;door-coming-soon&quot; role=&quot;status&quot;&gt;Próximamente&lt;/span&gt;
       &lt;div class=&quot;edge-shade left&quot; aria-hidden=&quot;true&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;edge-shade right&quot; aria-hidden=&quot;true&quot;&gt;&lt;/div&gt;
       &lt;div class=&quot;wall-caption&quot; aria-hidden=&quot;true&quot;&gt;27 puertas · una sola muralla&lt;/div&gt;
@@ -6620,9 +7273,11 @@ $(document).on(":passagedisplay", (event) => {
       &lt;span hidden&gt;&lt;kbd&gt;H&lt;/kbd&gt; &lt;span id=&quot;shortcut-H&quot;&gt;Pasadizo de Hipervínculos&lt;/span&gt;&lt;/span&gt;
       &lt;span hidden&gt;&lt;kbd&gt;K&lt;/kbd&gt; &lt;span id=&quot;shortcut-K&quot;&gt;Palacio del Karaoke&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;L&lt;/kbd&gt; &lt;span id=&quot;shortcut-L&quot;&gt;Pila de Letras&lt;/span&gt;&lt;/span&gt;
+      &lt;span hidden&gt;&lt;kbd&gt;M&lt;/kbd&gt; &lt;span id=&quot;shortcut-M&quot;&gt;Palabras de Maestría&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;O&lt;/kbd&gt; &lt;span id=&quot;shortcut-O&quot;&gt;Palacio de Obras&lt;/span&gt;&lt;/span&gt;
       &lt;span hidden&gt;&lt;kbd&gt;P&lt;/kbd&gt; &lt;span id=&quot;shortcut-P&quot;&gt;Puentes de Principiante&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;Q&lt;/kbd&gt; &lt;span id=&quot;shortcut-Q&quot;&gt;Pruebas de Don Quijote&lt;/span&gt;&lt;/span&gt;
+      &lt;span hidden&gt;&lt;kbd&gt;R&lt;/kbd&gt; &lt;span id=&quot;shortcut-R&quot;&gt;Puerta de los Roles&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;T&lt;/kbd&gt; &lt;span id=&quot;shortcut-T&quot;&gt;Posada de los Cuentos&lt;/span&gt;&lt;/span&gt;
       &lt;span hidden&gt;&lt;kbd&gt;X&lt;/kbd&gt; &lt;span id=&quot;shortcut-X&quot;&gt;¿Puedes Descubrir la X?&lt;/span&gt;&lt;/span&gt;
       &lt;span&gt;&lt;kbd&gt;←&lt;/kbd&gt;&lt;kbd&gt;→&lt;/kbd&gt; Recorrer el muro&lt;/span&gt;
@@ -9044,117 +9699,53 @@ resultBox.text(&quot;Has llegado al Prompt &quot; + nextPrompt);
 
 &lt;&lt;done&gt;&gt;
 &lt;&lt;run (async function () {
-
+    const lifetime = new AbortController();
+    $(document).one(&quot;:passageinit&quot;, () =&gt; lifetime.abort());
     const today = new Intl.DateTimeFormat(&quot;en-CA&quot;, {
-        timeZone: &quot;America/Toronto&quot;,
-        year: &quot;numeric&quot;,
-        month: &quot;2-digit&quot;,
-        day: &quot;2-digit&quot;
+        timeZone: &quot;America/Toronto&quot;, year: &quot;numeric&quot;, month: &quot;2-digit&quot;, day: &quot;2-digit&quot;
     }).format(new Date());
 
-    try {
-        const endpoint = setup.supabase.url +
-            &quot;/rest/v1/poemas?select=*&quot; +
-            &quot;&amp;fecha_publicacion=eq.&quot; + today +
-            &quot;&amp;publicado=eq.true&amp;limit=1&quot;;
-
-        const response = await fetch(endpoint, {
-            headers: { apikey: setup.supabase.key }
+    async function loadPoems(query) {
+        const response = await fetch(setup.supabase.url + &quot;/rest/v1/poemas?select=*&quot; + query, {
+            headers: { apikey: setup.supabase.key },
+            signal: AbortSignal.any([lifetime.signal, AbortSignal.timeout(10000)])
         });
+        if (!response.ok) throw new Error(&quot;Supabase: &quot; + response.status);
+        const rows = await response.json();
+        if (!Array.isArray(rows)) throw new Error(&quot;Invalid poems response&quot;);
+        return rows;
+    }
 
-        if (!response.ok) {
-            throw new Error(&quot;Supabase: &quot; + response.status);
+    try {
+        const poems = await loadPoems(&quot;&amp;fecha_publicacion=eq.&quot; + today + &quot;&amp;publicado=eq.true&amp;limit=1&quot;);
+        let poem = poems[0];
+        if (!poem) {
+            const catalogue = [];
+            const pageSize = 250;
+            for (let offset = 0; ; offset += pageSize) {
+                const page = await loadPoems(&quot;&amp;publicado=eq.true&amp;order=id.asc&amp;limit=&quot; + pageSize + &quot;&amp;offset=&quot; + offset);
+                catalogue.push(...page);
+                if (page.length &lt; pageSize) break;
+            }
+            poem = catalogue[Math.floor(Math.random() * catalogue.length)];
         }
-
-        const poems = await response.json();
-
-        if (!poems.length) {
-            $(&quot;#poema-title&quot;).text(&quot;Todavía no hay poema para hoy&quot;);
+        if (lifetime.signal.aborted) return;
+        if (!poem) {
+            $(&quot;#poema-title&quot;).text(&quot;Todavía no hay poemas disponibles&quot;);
             return;
         }
-
-        const poem = poems[0];
-
         $(&quot;#poema-title&quot;).text(poem.titulo);
         $(&quot;#poema-verses&quot;).text(poem.poema);
         $(&quot;#poema-focus&quot;).text(poem.enfoque || &quot;&quot;);
         $(&quot;#poema-explanation&quot;).text(poem.explicacion || &quot;&quot;);
-
-        // Elegir uno de los siete paisajes
         const landscape = Number(poem.id || 0) % 7;
-
-        $(&quot;#poema-image&quot;).attr(
-            &quot;src&quot;,
-            &quot;images/poema-&quot; + landscape + &quot;.jpg&quot;
-        );
-
+        $(&quot;#poema-image&quot;).attr(&quot;src&quot;, &quot;images/poema-&quot; + landscape + &quot;.jpg&quot;);
     } catch (error) {
-        console.error(&quot;Poem error:&quot;, error);
-        $(&quot;#poema-status&quot;).text(&quot;No se pudo cargar el poema.&quot;);
-    }
-
-})()&gt;&gt;
-&lt;&lt;/done&gt;&gt;
-
-&lt;&lt;done&gt;&gt;
-&lt;&lt;run (async function () {
-
-    const today = new Intl.DateTimeFormat(&quot;en-CA&quot;, {
-        timeZone: &quot;America/Toronto&quot;,
-        year: &quot;numeric&quot;,
-        month: &quot;2-digit&quot;,
-        day: &quot;2-digit&quot;
-    }).format(new Date());
-
-    try {
-
-        const endpoint = setup.supabase.url +
-            &quot;/rest/v1/poemas?select=*&quot; +
-            &quot;&amp;fecha_publicacion=eq.&quot; + today +
-            &quot;&amp;publicado=eq.true&amp;limit=1&quot;;
-
-        const response = await fetch(endpoint, {
-            headers: {
-                apikey: setup.supabase.key
-            }
-        });
-
-        if (!response.ok) {
-            throw new Error(&quot;Supabase: &quot; + response.status);
+        if (!lifetime.signal.aborted) {
+            console.error(&quot;Poem error:&quot;, error);
+            $(&quot;#poema-status&quot;).text(&quot;No se pudo cargar el poema.&quot;);
         }
-
-        const poems = await response.json();
-
-        if (!poems.length) {
-            $(&quot;#poema-title&quot;).text(
-                &quot;Todavía no hay poema para hoy&quot;
-            );
-            return;
-        }
-
-        const poem = poems[0];
-
-        $(&quot;#poema-title&quot;).text(poem.titulo);
-        $(&quot;#poema-verses&quot;).text(poem.poema);
-        $(&quot;#poema-focus&quot;).text(poem.enfoque);
-        $(&quot;#poema-explanation&quot;).text(poem.explicacion);
-
-        // Imagen asociada a la fecha del poema.
-        // Ejemplo: 2026-10-27 -&gt; p20261027.jpg
-
-        
-
-$(&quot;#poema-image&quot;).attr(&quot;src&quot;, &quot;images/&quot; + filename);
-
-    } catch (error) {
-
-        console.error(&quot;Poem error:&quot;, error);
-
-        $(&quot;#poema-status&quot;).text(
-            &quot;No se pudo cargar el poema.&quot;
-        );
     }
-
 })()&gt;&gt;
 
 &lt;&lt;run $(&quot;#poema-diary&quot;).on(&quot;click&quot;, function () {
@@ -9572,6 +10163,7 @@ $(&quot;#poema-image&quot;).attr(&quot;src&quot;, &quot;images/&quot; + filename
             &lt;/div&gt;
         &lt;/div&gt;
     &lt;/section&gt;
+    &lt;button class=&quot;pdq-extra&quot; type=&quot;button&quot; hidden&gt;Otra prueba con una palabra nueva&lt;/button&gt;
     &lt;button class=&quot;pdq-diary-toggle&quot; type=&quot;button&quot; aria-expanded=&quot;false&quot; aria-controls=&quot;pdq-diary&quot;&gt;
         📜 Diario de diplomas
     &lt;/button&gt;
@@ -9749,7 +10341,66 @@ $(&quot;#poema-image&quot;).attr(&quot;src&quot;, &quot;images/&quot; + filename
     &lt;/div&gt;
 &lt;/div&gt;
 &lt;&lt;castleDoorReturn&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="PDP" tags="" position="475,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="34" name="PDMRoom" tags="" position="475,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;castleDoorTitle &quot;Palabras de Maestría&quot;&gt;&gt;
+&lt;p&gt;Modo invitado. Las palabras que marques como desconocidas se guardan en este navegador.&lt;/p&gt;
+&lt;section aria-labelledby=&quot;pdm-current-chapter&quot;&gt;
+    &lt;h2 id=&quot;pdm-current-chapter&quot;&gt;Capítulo actual&lt;/h2&gt;
+    &lt;p&gt;Un misterio breve con palabras de tu repaso.&lt;/p&gt;
+    &lt;&lt;button &quot;Leer capítulo&quot; &quot;PDMGenerated&quot;&gt;&gt;&lt;&lt;run setup.pdmReadRequested = true&gt;&gt;&lt;&lt;/button&gt;&gt;
+    &lt;&lt;button &quot;Leer capítulo de ejemplo&quot; &quot;PDMChapter&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+    &lt;&lt;button &quot;Practicar vocabulario&quot; &quot;PDMReview&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+    &lt;&lt;button &quot;Diario de Maestría&quot; &quot;PDMDiary&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;/section&gt;
+&lt;&lt;castleDoorReturn&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="PDMChapter" tags="" position="600,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;castleDoorTitle &quot;El misterio del archivo&quot;&gt;&gt;
+&lt;article id=&quot;pdm-chapter&quot;&gt;
+    &lt;p&gt;Selecciona una palabra subrayada para ver su significado y marcarla como desconocida.&lt;/p&gt;
+    &lt;p role=&quot;status&quot;&gt;&lt;/p&gt;
+    &lt;button class=&quot;pdm-vocabulary-retry&quot; type=&quot;button&quot; hidden&gt;Volver a cargar las definiciones&lt;/button&gt;
+    &lt;p&gt;Cuando se apagó el último candil, Inés cruzó &lt;button class=&quot;pdm-word&quot; type=&quot;button&quot; data-word=&quot;a tientas&quot; disabled&gt;a tientas&lt;/button&gt; el archivo del castillo. Al fondo pudo &lt;button class=&quot;pdm-word&quot; type=&quot;button&quot; data-word=&quot;atisbar&quot; disabled&gt;atisbar&lt;/button&gt; un hilo de luz que se colaba por el &lt;button class=&quot;pdm-word&quot; type=&quot;button&quot; data-word=&quot;resquicio&quot; disabled&gt;resquicio&lt;/button&gt; de un armario. Allí guardaban el registro del puente. Esa tarde, alguien había arrancado la página donde figuraba el nombre del último encargado de repararlo.&lt;/p&gt;
+    &lt;p&gt;Inés se puso a &lt;button class=&quot;pdm-word&quot; type=&quot;button&quot; data-word=&quot;escudriñar&quot; disabled&gt;escudriñar&lt;/button&gt; los estantes. En el polvo vio la marca de un libro que ya no estaba y, al agacharse, encontró un pliego doblado bajo el armario. La firma del cantero seguía allí. Al dorso, él había dibujado una grieta en el arco norte y anotado el día en que pidió madera para apuntalarlo.&lt;/p&gt;
+    &lt;p&gt;Antes de tocar el pliego, Inés se detuvo a &lt;button class=&quot;pdm-word&quot; type=&quot;button&quot; data-word=&quot;sopesar&quot; disabled&gt;sopesar&lt;/button&gt; qué hacer. Podía llevarlo al consejo o dejarlo donde estaba y esperar a que alguien volviera a buscarlo. Decidió guardar el original &lt;button class=&quot;pdm-word&quot; type=&quot;button&quot; data-word=&quot;a buen recaudo&quot; disabled&gt;a buen recaudo&lt;/button&gt; y &lt;button class=&quot;pdm-word&quot; type=&quot;button&quot; data-word=&quot;dejar constancia&quot; disabled&gt;dejar constancia&lt;/button&gt; del hallazgo en el registro. Mientras mojaba la pluma, oyó pasos. Alguien se detuvo al otro lado de la puerta y probó la llave.&lt;/p&gt;
+&lt;/article&gt;
+&lt;&lt;button &quot;Diario de Maestría&quot; &quot;PDMDiary&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;div class=&quot;castle-return castle-door-footer&quot;&gt;[[← Volver a Palabras de Maestría-&gt;PDMRoom]]&lt;/div&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="36" name="PDMReview" tags="" position="725,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;castleDoorTitle &quot;Reconocimiento de palabras&quot;&gt;&gt;
+&lt;section id=&quot;pdm-review&quot;&gt;
+    &lt;p&gt;Elige el significado de cada palabra. Las palabras de tu diario tienen prioridad.&lt;/p&gt;
+    &lt;p class=&quot;pdm-review-status&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+    &lt;fieldset hidden&gt;
+        &lt;legend tabindex=&quot;-1&quot;&gt;&lt;/legend&gt;
+        &lt;div class=&quot;pdm-review-choices&quot;&gt;&lt;/div&gt;
+    &lt;/fieldset&gt;
+    &lt;p class=&quot;pdm-review-feedback&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+    &lt;button class=&quot;pdm-review-mark&quot; type=&quot;button&quot; hidden&gt;Marcar como desconocida&lt;/button&gt;
+    &lt;button class=&quot;pdm-review-next&quot; type=&quot;button&quot; hidden&gt;Siguiente&lt;/button&gt;
+    &lt;button class=&quot;pdm-review-start&quot; type=&quot;button&quot; hidden&gt;Otra ronda&lt;/button&gt;
+&lt;/section&gt;
+&lt;&lt;button &quot;Diario de Maestría&quot; &quot;PDMDiary&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;div class=&quot;castle-return castle-door-footer&quot;&gt;[[← Volver a Palabras de Maestría-&gt;PDMRoom]]&lt;/div&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="37" name="PDMGenerated" tags="" position="850,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;castleDoorTitle &quot;Capítulo de Maestría&quot;&gt;&gt;
+&lt;section id=&quot;pdm-generated&quot;&gt;
+    &lt;p&gt;Genera un misterio breve con palabras de práctica. Solo se envían las palabras seleccionadas.&lt;/p&gt;
+    &lt;button class=&quot;pdm-generate&quot; type=&quot;button&quot;&gt;Generar capítulo&lt;/button&gt;
+    &lt;p role=&quot;status&quot;&gt;&lt;/p&gt;
+    &lt;article id=&quot;pdm-generated-story&quot; hidden&gt;&lt;/article&gt;
+&lt;/section&gt;
+&lt;&lt;button &quot;Leer capítulo de ejemplo&quot; &quot;PDMChapter&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;&lt;button &quot;Diario de Maestría&quot; &quot;PDMDiary&quot;&gt;&gt;&lt;&lt;/button&gt;&gt;
+&lt;div class=&quot;castle-return castle-door-footer&quot;&gt;[[← Volver a Palabras de Maestría-&gt;PDMRoom]]&lt;/div&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="38" name="PDMDiary" tags="" position="975,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;h1 class=&quot;castle-door-title&quot;&gt;Diario de Maestría&lt;/h1&gt;
+&lt;section id=&quot;pdm-diary&quot; aria-labelledby=&quot;pdm-unknown-title&quot;&gt;
+    &lt;h2 id=&quot;pdm-unknown-title&quot;&gt;Palabras desconocidas&lt;/h2&gt;
+    &lt;p id=&quot;pdm-diary-status&quot; role=&quot;status&quot;&gt;&lt;/p&gt;
+    &lt;ul&gt;&lt;/ul&gt;
+&lt;/section&gt;
+&lt;div class=&quot;castle-return castle-door-footer&quot;&gt;[[← Volver a Palabras de Maestría-&gt;PDMRoom]]&lt;/div&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="39" name="PDP" tags="" position="1100,475" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;castleDoorTitle &quot;Puentes de Principiante&quot;&gt;&gt;
 &lt;section class=&quot;pdp-room&quot; aria-label=&quot;Puentes de Principiante&quot;&gt;
     &lt;p class=&quot;pdp-status&quot; role=&quot;status&quot;&gt;Cargando las islas…&lt;/p&gt;
@@ -9800,7 +10451,11 @@ $(&quot;#poema-image&quot;).attr(&quot;src&quot;, &quot;images/&quot; + filename
     &lt;/div&gt;
 &lt;/section&gt;
 &lt;&lt;castleDoorReturn&gt;&gt;
-&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="35" name="PDX" tags="" position="600,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="40" name="PDR" tags="" position="1225,475" size="100,100">&lt;&lt;nobr&gt;&gt;
+&lt;&lt;castleDoorTitle &quot;Puerta de los Roles&quot;&gt;&gt;
+&lt;&lt;pdr&gt;&gt;
+&lt;&lt;castleDoorReturn&gt;&gt;
+&lt;&lt;/nobr&gt;&gt;</tw-passagedata><tw-passagedata pid="41" name="PDX" tags="" position="100,600" size="100,100">&lt;&lt;nobr&gt;&gt;
 &lt;&lt;castleDoorTitle &quot;¿Puedes Descubrir la X?&quot;&gt;&gt;
 &lt;section class=&quot;pdx-room&quot; aria-label=&quot;Laberinto de la X&quot;&gt;
     &lt;p&gt;Busca tres poemas y sigue sus versos hasta la X. Cada vez que avances darás un paso.&lt;/p&gt;

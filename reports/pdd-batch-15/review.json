@@ -1,0 +1,19 @@
+{
+  "composite_sha256": "1c0c0d498e4474ec0ea79ade1514833bdd172b848c243ec82a1b4f3f5005c4c1",
+  "manifest_sha256": "990bade1ae96654c272a25ce2e21e5b04e6ac0175a4e98f484a399bf11c22583",
+  "prompt_sha256": "c939a2fe37f9bc7e62ceee56463f5ca298360c5d11ee217fa32f12a4e0c27772",
+  "positions_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visual_review_passed": true,
+  "issues": "All ten individual images inspected against manifest identities/meanings in grid order; no visible neighbouring-panel bleed or readable lettering. Source 1619x972; centered exact 320x480 2:3 crops with minor seam/edge trim and no resizing. PDD166 parallel garden paths use natural perspective, not a mathematical diagram; the small parchment has decorative linework but no readable labels. PDD168 uses remorseful expression and conciliatory gesture; the prior wrongdoing cannot be shown directly in one still image. PDD169 conveys expert inspection, not an engineering instruction. PDD171 correctly illustrates artistic charisma rather than a literal goblin. PDD173 uses a blank parchment to avoid writing; the mistaken recipient is contextual. PDD174 conveys the persistent unresolved issue through weary council members and a bridge model; temporal repetition remains interpretive. PDD175 depicts voluntary refusal of bread with empty dishes. This visual-QC attestation is not user approval or installation permission."
+}

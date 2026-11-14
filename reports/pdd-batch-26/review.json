@@ -1,0 +1,19 @@
+{
+  "composite_sha256": "d23407e3cf95860709388aaf8123ed5a6e9b70bd333d66941c7ae42c47895ee2",
+  "manifest_sha256": "9794e8456ac77740a8047b0ce82f8fab22de9566bc521922d43daeb653518e22",
+  "prompt_sha256": "6876ac9d6770811b358cad1d13f3ca585435bb4ad97e9bb00160608f5be7efe9",
+  "positions_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visual_review_passed": true,
+  "issues": "All ten individual JPGs inspected against manifest identities, order and vocabulary. All320x480 exact2:3 without resizing, centered peripheral trim and1px seam inset; no neighboring-panel bleed, readable captions, outer borders or watermarks. PDD277 illustrates sleep-loss sense only, not revealing hidden information. PDD278 wind snatching hat illustrates arrebatar, not emotional arrebato. PDD279 endearing home clear. PDD280 rain visually heavier than very fine drizzle with conspicuous droplets; mist and absence of lightning support mild rain but exact intensity imperfect. PDD281 citrus flowers stylized and enlarged for readability. PDD282 faint ship and light support barely perceiving. PDD283 problem posing needs caption; water model illustrates discussion. PDD284 punctuation-shaped brass teaching objects are intentional nonverbal adaptation; parentheses enclose boot but quotation marks sit left of knight instead of fully enclosing him, so exact syntax and irony need context. PDD285 prudence and PDD286 carefree avoidance supported by contrast and gesture. No blocking crop or subject issues found."
+}

@@ -1,0 +1,61 @@
+{
+  "source_sha256": "05439a9e34968ce4be32041833944b2ba25fecb00fca73b8b41b73e275aca740",
+  "source_connections": 215,
+  "backup_rows": 1101,
+  "reused_pairs": 50,
+  "disabled_rows": 1051,
+  "new_pairs": 165,
+  "histogram": {
+    "0": 138,
+    "1": 115,
+    "2": 114,
+    "3": 29
+  },
+  "embedded_source_exact": true,
+  "sql_parser": "v7.22",
+  "syntax": {
+    "00_inspect_event_trigger_functions.sql": {
+      "statements": 5,
+      "plpgsql": "parsed"
+    },
+    "00_inspect_production.sql": {
+      "statements": 8,
+      "plpgsql": "parsed"
+    },
+    "00_inspect_schema.sql": {
+      "statements": 5,
+      "plpgsql": "parsed"
+    },
+    "01_export_affected_rows.sql": {
+      "statements": 5,
+      "plpgsql": "parsed"
+    },
+    "02_replace_connections.sql": {
+      "statements": 40,
+      "plpgsql": "parsed"
+    },
+    "03_verify.sql": {
+      "statements": 7,
+      "plpgsql": "parsed"
+    },
+    "04_rollback.sql": {
+      "statements": 19,
+      "plpgsql": "parsed"
+    },
+    "05_execute_approved.sql": {
+      "statements": 41,
+      "plpgsql": "parsed"
+    }
+  },
+  "sql_sha256": {
+    "00_inspect_event_trigger_functions.sql": "db23b5f1922dc4a682080f719acea2a12ee2212b7ab3d1af2f8376033a9d7f03",
+    "00_inspect_production.sql": "903cc2caed7e34fc33c92f34990e71729981d2112898a9b03d34066bd2ef7ac5",
+    "00_inspect_schema.sql": "eaaf1437e1c36e34df444914829ea812ea2aeee49907104fe8baa42ab0698880",
+    "01_export_affected_rows.sql": "d31604301fe2504444eedc54e8a4daef8654dbb07066734e535fe9943dfb2727",
+    "02_replace_connections.sql": "12a0c32d3b109ec3ca32738ba24e9a6912497eb7e7ff6dd6b2f942e1e777362f",
+    "03_verify.sql": "4264da915615a07b08990f71861d258bca25be59f9f5e80780106c6d5c70ef1c",
+    "04_rollback.sql": "fd49a0991622dde39d41aed308a68de24b0368cb858deed8ac064c96a56b09af",
+    "05_execute_approved.sql": "bed7fdcd7f1ea5cc010922aa9c4a3cc4e522363a04f072a1ce6c57f2ec696851"
+  },
+  "production_executed": false
+}

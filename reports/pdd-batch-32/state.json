@@ -1,0 +1,24 @@
+{
+   "batch" : 32,
+   "composite_sha256" : "bda50fc4259e9629d612f556f91e91033cb67590bfcec33894199819863b79e7",
+   "gallery_sha256" : "e352fd3f8483402c494794bc73e9c91569f89ddc8e8749e6cba51034aa8f7124",
+   "installation" : "never",
+   "manifest_sha256" : "a5418320cdbda36357812af0755708ee92079a36e28e3cb26c159ee240957af7",
+   "outputs" : {
+      "pdd338.jpg" : "7571dc55de24aa79f82700957a4e62c22b38edaec856c057075c1c57cefbc412",
+      "pdd339.jpg" : "b399cbf097d881dca990f784e4fca1ed779a41304cf505ce39cc7981ee331dce",
+      "pdd340.jpg" : "39882fc9d9d03c2103eaf2946bfa2aab4ad3db98b62ae8d4a27a4486d4dcd26a",
+      "pdd341.jpg" : "d4394a7daad34a6671e96cc9b5db47a48764f0ed60d9cecf49389c437e1542aa",
+      "pdd342.jpg" : "c85e4c15d9591cb4fcc09d388ab74482fc43a6800aa719a20a92a836fbe613ba",
+      "pdd343.jpg" : "39e98145e77543ab0901f24cc59f971a841f8bbecc283df678952f946be01c31",
+      "pdd344.jpg" : "f4c5450e84cf390631c461054b13f209790eb0b0dff0a1bb8da434603f366776",
+      "pdd345.jpg" : "2173dfb32a70cf354ce0bda00e32c088d91e3233a90066e6d46d85c2e774528a",
+      "pdd346.jpg" : "dfb73c0d3f1218daffff9d115c866f8731b9c2e0ac753ce08c5980bd382f61da",
+      "pdd347.jpg" : "274b109e5cbb50cb0d94e7e089f0f2a187cef40883ef032e33a555d8d59de258"
+   },
+   "phase" : "review_ready",
+   "prompt_sha256" : "3afbd5e4fdf0379d7831c4fbd123800b4d5f31b965362fe4362759c2c231d693",
+   "review_sha256" : "6ad79098bd0212438772064cd1934297b7aff719072bbb65b51d1d5a267f07ff",
+   "splitter_sha256" : "517a7b22ab4eecfb0b6335a640d85d957d57f3283fbae2af05dee0a02a9e16bb",
+   "validation_sha256" : "e2bc1d84baa82d390e3db6dc871c1d50fea29892da9fefc3a619930b4a565ead"
+}

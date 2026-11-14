@@ -1,0 +1,88 @@
+{
+   "composite_sha256" : "101ab0aa778f42b7a3190c9a9f0b9dbac0628e1362693773122ae57113a30fbf",
+   "installation" : "never",
+   "manifest_sha256" : "66d4c30c795ce8344dbfa77122d669c65876a2cf7433ee5439c85415852ade5d",
+   "outputs" : [
+      {
+         "filename" : "pdd247.jpg",
+         "height" : 480,
+         "pdd" : 247,
+         "position" : 1,
+         "sha256" : "07afd9191d6f21de01d278d197ddf8e618bd344e9bed4d646632b902eed572e9",
+         "width" : 320
+      },
+      {
+         "filename" : "pdd248.jpg",
+         "height" : 480,
+         "pdd" : 248,
+         "position" : 2,
+         "sha256" : "c5e871b05b0c035381d2266f3e7f86882b1e8ea877516cd5b05efd1a35dca3f0",
+         "width" : 320
+      },
+      {
+         "filename" : "pdd249.jpg",
+         "height" : 480,
+         "pdd" : 249,
+         "position" : 3,
+         "sha256" : "cd1932409a80ff05a9e85ca96e4ef50526cc9b2cee33978f6b0b74e4ea67c4c6",
+         "width" : 320
+      },
+      {
+         "filename" : "pdd250.jpg",
+         "height" : 480,
+         "pdd" : 250,
+         "position" : 4,
+         "sha256" : "53c4a63e63b1831dd2a20f8f2e7b9a1f2ee4d58a086ea47edada98335fc977ce",
+         "width" : 320
+      },
+      {
+         "filename" : "pdd251.jpg",
+         "height" : 480,
+         "pdd" : 251,
+         "position" : 5,
+         "sha256" : "f30360533fecba1b95b167ed5419730946788c7d50307bb5a05ab8b888f68260",
+         "width" : 320
+      },
+      {
+         "filename" : "pdd252.jpg",
+         "height" : 480,
+         "pdd" : 252,
+         "position" : 6,
+         "sha256" : "d1bf95412c0e5a8cdbe1073233a75125b829e88190210c2b2b9f5d6126072f0c",
+         "width" : 320
+      },
+      {
+         "filename" : "pdd253.jpg",
+         "height" : 480,
+         "pdd" : 253,
+         "position" : 7,
+         "sha256" : "3c11496f52385b7d66e96e26374c68b1b67e21c11940214311c4fc9d5672cf78",
+         "width" : 320
+      },
+      {
+         "filename" : "pdd254.jpg",
+         "height" : 480,
+         "pdd" : 254,
+         "position" : 8,
+         "sha256" : "11a42d5d694e2cb0a80b4da56b0cda2c7346acb620fd7c0c95a708ac01af40a8",
+         "width" : 320
+      },
+      {
+         "filename" : "pdd255.jpg",
+         "height" : 480,
+         "pdd" : 255,
+         "position" : 9,
+         "sha256" : "2b1b75f94173769ca5295e84bd86134071f3ab31287db5a34c6c789e916d4a8f",
+         "width" : 320
+      },
+      {
+         "filename" : "pdd256.jpg",
+         "height" : 480,
+         "pdd" : 256,
+         "position" : 10,
+         "sha256" : "0cf3c4d3cba8fd220ad7769ac669423316abd8299fe8bd8759de56feb24fd8c7",
+         "width" : 320
+      }
+   ],
+   "prompt_sha256" : "7f068ae37f09828c8e3eb1fa0c8068d00c7831d735d9f833969702c04c321d15"
+}

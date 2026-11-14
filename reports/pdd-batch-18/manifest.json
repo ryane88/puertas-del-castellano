@@ -1,0 +1,163 @@
+{
+   "columns" : 5,
+   "composite_aspect_ratio" : "5:3",
+   "crop_layout" : {
+      "column_edges" : [
+         0,
+         324,
+         648,
+         972,
+         1296,
+         1619
+      ],
+      "method" : "Inspected Batch 18 scene joins: x=324,648,972,1296 and row join y=485. Center exact 2:3 crops within these panels with 1px seam inset, no resizing.",
+      "row_edges" : [
+         0,
+         485,
+         971
+      ],
+      "seam_inset_pixels" : 1,
+      "source_pixels" : [
+         1619,
+         971
+      ]
+   },
+   "excluded_manifests" : [
+      "reports/pdd-batch-01/manifest.json",
+      "reports/pdd-batch-02/manifest.json",
+      "reports/pdd-batch-03/manifest.json",
+      "reports/pdd-batch-04/manifest.json",
+      "reports/pdd-batch-05/manifest.json",
+      "reports/pdd-batch-06/manifest.json",
+      "reports/pdd-batch-07/manifest.json",
+      "reports/pdd-batch-08/manifest.json",
+      "reports/pdd-batch-09/manifest.json",
+      "reports/pdd-batch-10/manifest.json",
+      "reports/pdd-batch-11/manifest.json",
+      "reports/pdd-batch-12/manifest.json",
+      "reports/pdd-batch-13/manifest.json",
+      "reports/pdd-batch-14/manifest.json",
+      "reports/pdd-batch-15/manifest.json",
+      "reports/pdd-batch-16/manifest.json",
+      "reports/pdd-batch-17/manifest.json"
+   ],
+   "panel_aspect_ratio" : "2:3",
+   "panels" : [
+      {
+         "column" : 1,
+         "description" : "La cocinera prepara dulces especiales para la fiesta anual. Un guardia que normalmente evita los postres toma una segunda porción y guiña un ojo.\n\n—Una vez al año no hace daño —dice, mientras los demás se ríen.",
+         "expected_filename" : "images/pdd196.jpg",
+         "pdd" : 196,
+         "position" : 1,
+         "row" : 1,
+         "short_definition" : "Expresión que justifica una excepción ocasional a las costumbres.",
+         "supabase_record_id" : 197,
+         "word" : "Una vez al año no hace daño"
+      },
+      {
+         "column" : 2,
+         "description" : "En el desván aparece una máquina extraña, cubierta de polvo y telarañas. Nadie recuerda para qué servía, salvo el abuelo, que asegura haberla usado cuando era niño.\n\n—¡Eso es del año de la pera! —exclama la nieta al ver lo antigua que es.",
+         "expected_filename" : "images/pdd197.jpg",
+         "pdd" : 197,
+         "position" : 2,
+         "row" : 1,
+         "short_definition" : "Hace muchísimo tiempo, en una época ya lejana.",
+         "supabase_record_id" : 198,
+         "word" : "el año de la pera"
+      },
+      {
+         "column" : 3,
+         "description" : "Durante la feria de verano, el vendedor de sombreros instala su puesto junto a la entrada del castillo. Llegan tantos visitantes que al anochecer apenas le queda mercancía.\n\nCuenta las monedas satisfecho: este año ha conseguido hacer el agosto.",
+         "expected_filename" : "images/pdd198.jpg",
+         "pdd" : 198,
+         "position" : 3,
+         "row" : 1,
+         "short_definition" : "Obtener grandes ganancias o aprovechar muy bien una oportunidad.",
+         "supabase_record_id" : 199,
+         "word" : "Hacer el agosto"
+      },
+      {
+         "column" : 4,
+         "description" : "El cronista coloca una vela junto al calendario del reino. Hoy se cumple un siglo desde la inauguración del puente que une las dos orillas.\n\nAnota la efeméride en letras cuidadosas para que las generaciones futuras recuerden la fecha.",
+         "expected_filename" : "images/pdd199.jpg",
+         "pdd" : 199,
+         "position" : 4,
+         "row" : 1,
+         "short_definition" : "Fecha que recuerda un acontecimiento importante ocurrido en el pasado.",
+         "supabase_record_id" : 200,
+         "word" : "Efeméride"
+      },
+      {
+         "column" : 5,
+         "description" : "Dos campanas repican sobre la plaza. Los habitantes celebran doscientos años desde la fundación del castillo, y los niños llevan estandartes con los colores antiguos.\n\nEl bicentenario reúne a familias cuyos antepasados construyeron las primeras murallas.",
+         "expected_filename" : "images/pdd200.jpg",
+         "pdd" : 200,
+         "position" : 5,
+         "row" : 1,
+         "short_definition" : "Aniversario que celebra doscientos años de un acontecimiento.",
+         "supabase_record_id" : 201,
+         "word" : "Bicentenario"
+      },
+      {
+         "column" : 1,
+         "description" : "En el comedor del castillo, el bufón imita al capitán con tanta gracia que hasta los guardias pierden la compostura. Uno se agarra el vientre y otro golpea la mesa entre carcajadas.\n\nLa risa es tan fuerte y abierta que apenas pueden respirar.",
+         "expected_filename" : "images/pdd201.jpg",
+         "pdd" : 201,
+         "position" : 6,
+         "row" : 2,
+         "short_definition" : "Reírse con muchísima fuerza y sin contenerse.",
+         "supabase_record_id" : 202,
+         "word" : "reír(se) a mandíbula batiente"
+      },
+      {
+         "column" : 2,
+         "description" : "La aprendiz lleva horas copiando mapas a la luz de una vela. Abre mucho la boca sin querer y se le humedecen los ojos.\n\nEl escribano sonríe y le aconseja descansar: ese gesto involuntario anuncia el sueño.",
+         "expected_filename" : "images/pdd202.jpg",
+         "pdd" : 202,
+         "position" : 7,
+         "row" : 2,
+         "short_definition" : "Abrir involuntariamente la boca y respirar hondo por sueño o cansancio.",
+         "supabase_record_id" : 203,
+         "word" : "bostezar"
+      },
+      {
+         "column" : 3,
+         "description" : "Un molinero entra en el granero lleno de harina. De pronto siente un cosquilleo en la nariz, cierra los ojos y expulsa el aire con un ruido formidable.\n\nLas palomas alzan el vuelo, asustadas por aquel estallido inesperado.",
+         "expected_filename" : "images/pdd203.jpg",
+         "pdd" : 203,
+         "position" : 8,
+         "row" : 2,
+         "short_definition" : "Expulsar aire de forma repentina por la nariz y la boca.",
+         "supabase_record_id" : 204,
+         "word" : "Estornudar"
+      },
+      {
+         "column" : 4,
+         "description" : "Durante el banquete, el joven escudero intenta pronunciar un discurso solemne. Cada pocas palabras, un pequeño espasmo le sacude el pecho y le interrumpe la voz.\n\nBebe agua lentamente mientras los invitados tratan de no reír.",
+         "expected_filename" : "images/pdd204.jpg",
+         "pdd" : 204,
+         "position" : 9,
+         "row" : 2,
+         "short_definition" : "Sufrir contracciones involuntarias que producen sonidos repetidos en la garganta.",
+         "supabase_record_id" : 205,
+         "word" : "Tener hipo"
+      },
+      {
+         "column" : 5,
+         "description" : "La guardia nocturna escucha un ruido profundo detrás de la puerta de la torre. No es un monstruo: el viejo centinela duerme en su silla y respira con un estruendo que hace vibrar los cristales.",
+         "expected_filename" : "images/pdd205.jpg",
+         "pdd" : 205,
+         "position" : 10,
+         "row" : 2,
+         "short_definition" : "Respirar ruidosamente mientras se duerme.",
+         "supabase_record_id" : 206,
+         "word" : "Roncar"
+      }
+   ],
+   "preferred_composite_pixels" : [
+      5000,
+      3000
+   ],
+   "rows" : 2,
+   "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+}

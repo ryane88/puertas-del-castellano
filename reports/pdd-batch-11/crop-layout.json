@@ -1,0 +1,21 @@
+{
+  "source_pixels": [
+    1619,
+    971
+  ],
+  "column_edges": [
+    0,
+    324,
+    648,
+    971,
+    1295,
+    1619
+  ],
+  "row_edges": [
+    0,
+    485,
+    971
+  ],
+  "seam_inset_pixels": 1,
+  "method": "Visually inspected Batch 11 vertical joins at 324,648,971,1295 and horizontal join at 485; centered exact 2:3 crops inset from each seam, no resizing."
+}

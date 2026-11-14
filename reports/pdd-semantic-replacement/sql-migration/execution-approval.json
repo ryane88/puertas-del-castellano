@@ -1,0 +1,14 @@
+{
+  "approval_source": "User message: execution approved",
+  "scope": "Execute the reviewed 215-pair PDD migration only; no gameplay/vocabulary changes or deployment",
+  "source_sha256": "05439a9e34968ce4be32041833944b2ba25fecb00fca73b8b41b73e275aca740",
+  "schema_md5": "643d39bcaefd85cd99487efe7d4469bc",
+  "migration_sha256": "12a0c32d3b109ec3ca32738ba24e9a6912497eb7e7ff6dd6b2f942e1e777362f",
+  "execution_file": "05_execute_approved.sql",
+  "execution_sha256": "bed7fdcd7f1ea5cc010922aa9c4a3cc4e522363a04f072a1ce6c57f2ec696851",
+  "execution_status": "APPLIED_AND_VERIFIED: user-supplied privileged verification passed; no rerun required.",
+  "recorded_at_utc": "2026-10-31T21:01:38.729284+00:00",
+  "production_executed_at_utc": "2026-10-31T21:11:58.5287+00:00",
+  "production_verification_file": "production-verification-results.json",
+  "production_executed_by": "User through authenticated Supabase SQL Editor"
+}

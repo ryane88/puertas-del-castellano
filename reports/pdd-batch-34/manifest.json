@@ -1,0 +1,101 @@
+{
+  "columns": 5,
+  "rows": 2,
+  "panel_aspect_ratio": "2:3",
+  "panels": [
+    {
+      "position": 1,
+      "row": 1,
+      "column": 1,
+      "pdd": 358,
+      "supabase_record_id": 359,
+      "word": "Aptitud / Actitud",
+      "short_definition": "Diferencia entre la capacidad para hacer algo y la disposición con que se hace.",
+      "description": "Dos aprendices se presentan al examen de arquería. Una posee gran aptitud: calcula las distancias con facilidad y acierta casi siempre. El otro todavía falla, pero mantiene una actitud paciente y entusiasta.\n\nEl instructor sonríe: la capacidad ayuda, pero la manera de afrontar el aprendizaje también importa.",
+      "expected_filename": "images/pdd358.jpg"
+    },
+    {
+      "position": 2,
+      "row": 1,
+      "column": 2,
+      "pdd": 359,
+      "supabase_record_id": 360,
+      "word": "Especia / Especie",
+      "short_definition": "Diferencia entre un condimento aromático y un grupo de seres semejantes.",
+      "description": "La cocinera abre dos cofres: uno guarda canela, clavo y pimienta; el otro contiene dibujos de aves, árboles y peces.\n\n—En el primero hay especias para dar sabor a la comida —dice—. En el segundo estudiamos distintas especies de seres vivos. ¡Una sola letra cambia el sentido!",
+      "expected_filename": "images/pdd359.jpg"
+    },
+    {
+      "position": 3,
+      "row": 1,
+      "column": 3,
+      "pdd": 360,
+      "supabase_record_id": 361,
+      "word": "Adoptar y Adaptar",
+      "short_definition": "Diferencia entre aceptar algo como propio y ajustarlo a nuevas circunstancias.",
+      "description": "Una pareja decide adoptar a un perro abandonado junto a la muralla. Al principio, el animal se esconde bajo la mesa, pero poco a poco consigue adaptarse a su nuevo hogar.\n\nLa niña comprende que adoptar es acoger como propio, mientras que adaptarse significa ajustarse a circunstancias diferentes.",
+      "expected_filename": "images/pdd360.jpg"
+    },
+    {
+      "position": 4,
+      "row": 1,
+      "column": 4,
+      "pdd": 361,
+      "supabase_record_id": 362,
+      "word": "Perjuicio / Prejuicio",
+      "short_definition": "Diferencia entre un daño causado y una opinión previa sin fundamento.",
+      "description": "El consejero advierte que cerrar el puente causaría un perjuicio a los comerciantes: perderían clientes y dinero. Un guardia, sin conocer a los viajeros, sospecha que todos son ladrones.\n\n—Eso es un prejuicio —le responde la reina—. Una cosa es el daño real y otra juzgar a alguien antes de conocerlo.",
+      "expected_filename": "images/pdd361.jpg"
+    },
+    {
+      "position": 5,
+      "row": 1,
+      "column": 5,
+      "pdd": 364,
+      "supabase_record_id": 365,
+      "word": "Compresión / Comprensión",
+      "short_definition": "Diferencia entre reducir el volumen de algo y entender su significado.",
+      "description": "El ingeniero construye una prensa que ejerce compresión sobre un bloque de lana hasta reducir su volumen. A su lado, una aprendiz relee un acertijo hasta alcanzar su comprensión.\n\n—Una palabra habla de apretar —dice ella—; la otra, de entender. ¡Qué diferencia hace una letra!",
+      "expected_filename": "images/pdd364.jpg"
+    },
+    {
+      "position": 6,
+      "row": 2,
+      "column": 1,
+      "pdd": 365,
+      "supabase_record_id": 366,
+      "word": "Afecto / Efecto",
+      "short_definition": "Diferencia entre un sentimiento de cariño y una consecuencia producida.",
+      "description": "El viejo guardián muestra afecto por su caballo: lo acaricia y le habla con ternura. Después observa el efecto de la lluvia sobre el camino, ahora convertido en barro.\n\n—El afecto se siente por alguien —explica—; el efecto es el resultado de una causa.",
+      "expected_filename": "images/pdd365.jpg"
+    }
+  ],
+  "placeholder_positions": [
+    7,
+    8,
+    9,
+    10
+  ],
+  "authorization": "User explicitly requested six paintings plus four ignored simple frame placeholders",
+  "crop_layout": {
+    "source_pixels": [
+      1619,
+      971
+    ],
+    "column_edges": [
+      0,
+      324,
+      648,
+      972,
+      1296,
+      1619
+    ],
+    "row_edges": [
+      0,
+      485,
+      971
+    ],
+    "seam_inset_pixels": 2,
+    "method": "Inspected six scenes plus four framed placeholders; first five top row, sixth bottom left. Center exact2:3 crops with2px inset to remove thin outer edging."
+  }
+}

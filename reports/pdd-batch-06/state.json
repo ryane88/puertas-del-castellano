@@ -1,0 +1,24 @@
+{
+   "batch" : "06",
+   "blocked_reason" : "Visual QC: PDD 76 lustro depicts four stones rather than five; preserve outputs, no automatic paid retry.",
+   "composite_sha256" : "bb991a34ab07756862eebbe82bec163224bc66bcb3f635130a94e672ee69ba61",
+   "gallery_sha256" : "8405ea1b7db332e76ed02195838f93583c6932ef7f48a185a8fb22ae25a3edfc",
+   "installation" : "never",
+   "manifest_sha256" : "ac16e99c825c033114f90efa14bf2af968e406dd1f3af3cd71c5da08d8850c70",
+   "outputs" : {
+      "pdd74.jpg" : "bd43a214cc4b367dbd97d93eaebf29c2d6ac981311ab956679a238efdd21f660",
+      "pdd75.jpg" : "0e05d610093080941229a98035edeb21d0525faef10de31b4515c2a74ea95032",
+      "pdd76.jpg" : "6414eceeeed02bdf0b6e089c292c66304b6f7daa28311dec4abdd32269e0ac00",
+      "pdd77.jpg" : "6bd1e902ac204bc8b3eeebee25f3bdf1c9b0f73c08a06f754eb0c58a2d5f51b8",
+      "pdd78.jpg" : "27da97e33d6b16ffa944d84d9dd97546f2ec72ad98aba47e35ba2c557b22b45f",
+      "pdd79.jpg" : "edbf2994506011085a601d2fc1df0f478203e11e48edaa35c175ee45d4f170d6",
+      "pdd80.jpg" : "b654ab4f1ab09a8783ce0cdcd2824c1753a0bed0c5b87db8283bef8223f1bbbd",
+      "pdd81.jpg" : "62710493642047af389f4c4aae29422cc574ed36ea2ee38f020a90b8a4f0d237",
+      "pdd82.jpg" : "7fd37972055b4a0ee4fb201db99346f97951b5d75c045e9222cef6640ded5f5f",
+      "pdd83.jpg" : "f2757296de18737ba23361fd5e78720db9e90ffae675ae2d1f47c6b010deb5e5"
+   },
+   "phase" : "blocked",
+   "prompt_sha256" : "cc6c2305769bb39878241fba42ab11596ac80f9a5ac6e6b499a5a1ba8edcc3ba",
+   "splitter_sha256" : "517a7b22ab4eecfb0b6335a640d85d957d57f3283fbae2af05dee0a02a9e16bb",
+   "validation_sha256" : "68ca948820a5841644d069d6593847b055c0bacfb657e4ee6a7075062119e726"
+}

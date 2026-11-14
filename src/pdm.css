@@ -1,0 +1,28 @@
+:is(#pdm-chapter, #pdm-generated-story) .pdm-word {
+    padding: 0;
+    border: 0;
+    background: none;
+    color: inherit;
+    font: inherit;
+}
+
+:is(#pdm-chapter, #pdm-generated-story) .pdm-word:not(:disabled) {
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+    cursor: pointer;
+}
+
+:is(#pdm-chapter, #pdm-generated-story) .pdm-word:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+.pdm-review-choices {
+    display: grid;
+    gap: 0.5rem;
+}
+
+.pdm-review-choices button {
+    min-height: 44px;
+    text-align: start;
+}

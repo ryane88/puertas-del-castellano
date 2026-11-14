@@ -1,0 +1,29 @@
+{
+  "source": "reports/artwork-inventory.csv",
+  "selection": "First 10 PDD rows with Image status MISSING_LOCAL, in inventory order",
+  "columns": 5,
+  "rows": 2,
+  "panel_aspect_ratio": "2:3",
+  "composite_aspect_ratio": "5:3",
+  "preferred_composite_pixels": [5000, 3000],
+  "crop_layout": {
+    "source_pixels": [1619, 971],
+    "column_edges": [0, 332, 662, 986, 1298, 1619],
+    "row_edges": [0, 484, 971],
+    "seam_inset_pixels": 1,
+    "method": "Centered equal 2:3 crops within observed panel boundaries; no resizing"
+  },
+  "positions": "Left to right across the top row, then left to right across the bottom row",
+  "panels": [
+    {"position": 1, "row": 1, "column": 1, "pdd": 20, "supabase_record_id": 22, "word": "El prejucio", "expected_filename": "images/pdd20.jpg"},
+    {"position": 2, "row": 1, "column": 2, "pdd": 22, "supabase_record_id": 24, "word": "Jactarse", "expected_filename": "images/pdd22.jpg"},
+    {"position": 3, "row": 1, "column": 3, "pdd": 23, "supabase_record_id": 25, "word": "Hacerse el sueco", "expected_filename": "images/pdd23.jpg"},
+    {"position": 4, "row": 1, "column": 4, "pdd": 24, "supabase_record_id": 26, "word": "Atrevimiento", "expected_filename": "images/pdd24.jpg"},
+    {"position": 5, "row": 1, "column": 5, "pdd": 25, "supabase_record_id": 27, "word": "Inquebrantable", "expected_filename": "images/pdd25.jpg"},
+    {"position": 6, "row": 2, "column": 1, "pdd": 26, "supabase_record_id": 28, "word": "Precavido", "expected_filename": "images/pdd26.jpg"},
+    {"position": 7, "row": 2, "column": 2, "pdd": 27, "supabase_record_id": 29, "word": "Cordura", "expected_filename": "images/pdd27.jpg"},
+    {"position": 8, "row": 2, "column": 3, "pdd": 28, "supabase_record_id": 30, "word": "Terracear", "expected_filename": "images/pdd28.jpg"},
+    {"position": 9, "row": 2, "column": 4, "pdd": 30, "supabase_record_id": 32, "word": "Luciérnaga", "expected_filename": "images/pdd30.jpg"},
+    {"position": 10, "row": 2, "column": 5, "pdd": 31, "supabase_record_id": 33, "word": "tremendo", "expected_filename": "images/pdd31.jpg"}
+  ]
+}

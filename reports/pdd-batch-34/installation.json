@@ -1,0 +1,62 @@
+{
+  "batch": 34,
+  "authorization": "User: and install",
+  "installed_at_utc": "2026-11-02T23:43:31.639281+00:00",
+  "review_originals_preserved": true,
+  "ignored_placeholder_positions": [
+    7,
+    8,
+    9,
+    10
+  ],
+  "paintings": [
+    {
+      "pdd": 358,
+      "filename": "images/pdd358.jpg",
+      "sha256": "e09f13b6159b3274645906d4c69d7aa6fdf6bcc6c7ef9e72d98eddae0a6756e5",
+      "width": 318,
+      "height": 477,
+      "action": "already_identical"
+    },
+    {
+      "pdd": 359,
+      "filename": "images/pdd359.jpg",
+      "sha256": "ae0e5cf0ae2eea880146cc00b7d6caf0bf3655d06a60625cd1a67fa557232615",
+      "width": 318,
+      "height": 477,
+      "action": "already_identical"
+    },
+    {
+      "pdd": 360,
+      "filename": "images/pdd360.jpg",
+      "sha256": "1f1a3b3ce97e420bc099ae80281cb586a904dd557472ca78824271de668a12d3",
+      "width": 318,
+      "height": 477,
+      "action": "already_identical"
+    },
+    {
+      "pdd": 361,
+      "filename": "images/pdd361.jpg",
+      "sha256": "15468dbc3bcbc217fc25b1b1e792a875983b8b623a38910bceb845a9d1a96db2",
+      "width": 318,
+      "height": 477,
+      "action": "already_identical"
+    },
+    {
+      "pdd": 364,
+      "filename": "images/pdd364.jpg",
+      "sha256": "570edd471167d8d184302e3bb5170587737eeb3ef124d75e8f7c7e99136c99ac",
+      "width": 318,
+      "height": 477,
+      "action": "already_identical"
+    },
+    {
+      "pdd": 365,
+      "filename": "images/pdd365.jpg",
+      "sha256": "dfe6968ae6cb17fe954e1bce42dae9c0868d1666ca8399a0b575183dcd84d375",
+      "width": 318,
+      "height": 477,
+      "action": "already_identical"
+    }
+  ]
+}

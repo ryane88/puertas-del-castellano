@@ -1,0 +1,137 @@
+{
+   "batch" : "09",
+   "manifest" : {
+      "columns" : 5,
+      "composite_aspect_ratio" : "5:3",
+      "excluded_manifests" : [
+         "reports/pdd-batch-01/manifest.json",
+         "reports/pdd-batch-02/manifest.json",
+         "reports/pdd-batch-03/manifest.json",
+         "reports/pdd-batch-04/manifest.json",
+         "reports/pdd-batch-05/manifest.json",
+         "reports/pdd-batch-06/manifest.json",
+         "reports/pdd-batch-07/manifest.json",
+         "reports/pdd-batch-08/manifest.json"
+      ],
+      "panel_aspect_ratio" : "2:3",
+      "panels" : [
+         {
+            "column" : 1,
+            "description" : "La encargada de la cocina sostiene tres platos mientras vigila una olla y responde a las preguntas de dos mensajeros. Al mismo tiempo intenta recordar qué invitados no comen carne.\n\nNo lanza objetos al aire, pero hace tantos malabares con sus obligaciones como un artista de feria.",
+            "expected_filename" : "images/pdd104.jpg",
+            "pdd" : 104,
+            "position" : 1,
+            "row" : 1,
+            "short_definition" : "Coordinar varias tareas o dificultades al mismo tiempo.",
+            "supabase_record_id" : 106,
+            "word" : "Hacer Malabares"
+         },
+         {
+            "column" : 2,
+            "description" : "El herrero lleva toda la mañana reparando una puerta que alguien rompió. Cuando por fin termina, descubre que el culpable ha usado su martillo nuevo para abrir una nuez.\n\n—¡Esto es el colmo! —exclama. Ya no puede soportar otra imprudencia.",
+            "expected_filename" : "images/pdd105.jpg",
+            "pdd" : 105,
+            "position" : 2,
+            "row" : 1,
+            "short_definition" : "Expresión de indignación ante algo que supera lo tolerable.",
+            "supabase_record_id" : 107,
+            "word" : "Eso es el colmo"
+         },
+         {
+            "column" : 3,
+            "description" : "En la biblioteca, una anciana coloca una llave diminuta sobre la mesa. Habla en voz baja y señala tres marcas casi invisibles grabadas en el metal.\n\nEl aprendiz deja de mirar por la ventana. Sabe que, si no escucha y observa con cuidado, perderá una pista esencial.",
+            "expected_filename" : "images/pdd106.jpg",
+            "pdd" : 106,
+            "position" : 3,
+            "row" : 1,
+            "short_definition" : "Concentrar los sentidos y la mente en algo.",
+            "supabase_record_id" : 108,
+            "word" : "Prestar Atención"
+         },
+         {
+            "column" : 4,
+            "description" : "El capitán pregunta por qué faltan provisiones. El cocinero comienza a contar cómo conoció a un mercader, luego describe una tormenta y acaba hablando de la infancia de su caballo.\n\nDespués de diez minutos, nadie ha oído una respuesta a la pregunta original.",
+            "expected_filename" : "images/pdd107.jpg",
+            "pdd" : 107,
+            "position" : 4,
+            "row" : 1,
+            "short_definition" : "Apartarse del tema principal al hablar o explicar algo.",
+            "supabase_record_id" : 109,
+            "word" : "Irse Por Las Ramas"
+         },
+         {
+            "column" : 5,
+            "description" : "Al amanecer, las huellas del lobo aparecen junto al gallinero y una pluma queda atrapada en la cerca rota. La guardabosques examina las señales con calma.\n\nNo cabe duda de que un animal entró durante la noche: las pruebas están delante de todos.",
+            "expected_filename" : "images/pdd108.jpg",
+            "pdd" : 108,
+            "position" : 5,
+            "row" : 1,
+            "short_definition" : "Expresión que afirma que algo es completamente seguro.",
+            "supabase_record_id" : 110,
+            "word" : "No Cabe Duda De Que"
+         },
+         {
+            "column" : 1,
+            "description" : "El albañil enseña al pueblo una maqueta de su proyecto: un puente capaz de unir los dos lados del desfiladero. Es tan ambicioso que algunos se quedan sin palabras.\n\nTodavía no existe, pero todos imaginan lo grandioso que sería cruzarlo por primera vez.",
+            "expected_filename" : "images/pdd109.jpg",
+            "pdd" : 109,
+            "position" : 6,
+            "row" : 2,
+            "short_definition" : "Algo excepcional por su tamaño, importancia o belleza.",
+            "supabase_record_id" : 111,
+            "word" : "Algo grandioso"
+         },
+         {
+            "column" : 2,
+            "description" : "El mago atraviesa la misma puerta y vuelve a aparecer en la sala de la que acaba de salir. Prueba otra vez; escucha la misma campana y encuentra la misma vela encendida.\n\nParece atrapado en una secuencia que se repite sin llegar nunca a su final.",
+            "expected_filename" : "images/pdd110.jpg",
+            "pdd" : 110,
+            "position" : 7,
+            "row" : 2,
+            "short_definition" : "Secuencia que se repite y parece volver siempre al principio.",
+            "supabase_record_id" : 112,
+            "word" : "Bucle"
+         },
+         {
+            "column" : 3,
+            "description" : "Durante la representación, el actor que interpreta al rey tropieza con su capa y derriba el trono de cartón. Los músicos dejan de tocar y alguien suelta una carcajada.\n\nEl director hace una señal para comenzar de nuevo. Esa escena fallida no formará parte de la función.",
+            "expected_filename" : "images/pdd111.jpg",
+            "pdd" : 111,
+            "position" : 8,
+            "row" : 2,
+            "short_definition" : "Grabación fallida que se descarta por un error o imprevisto.",
+            "supabase_record_id" : 113,
+            "word" : "toma falsa"
+         },
+         {
+            "column" : 4,
+            "description" : "El caballero alcanza la torre justo cuando el hechicero levanta su bastón sobre la corona. El viento sacude los ventanales y los dos adversarios se miran en silencio.\n\nTodo lo ocurrido durante el viaje conduce a este instante decisivo: el momento de mayor tensión de la historia.",
+            "expected_filename" : "images/pdd112.jpg",
+            "pdd" : 112,
+            "position" : 9,
+            "row" : 2,
+            "short_definition" : "Momento de máxima intensidad en una historia o situación.",
+            "supabase_record_id" : 114,
+            "word" : "Clímax"
+         },
+         {
+            "column" : 5,
+            "description" : "Tres cuervos vuelan sobre el patio al mismo tiempo que la campana suena sin que nadie la toque. La anciana del castillo observa el cielo y frunce el ceño.\n\nNo sabe qué sucederá, pero siente que esas señales anuncian un acontecimiento importante.",
+            "expected_filename" : "images/pdd113.jpg",
+            "pdd" : 113,
+            "position" : 10,
+            "row" : 2,
+            "short_definition" : "Señal que parece anunciar algo que sucederá después.",
+            "supabase_record_id" : 115,
+            "word" : "Presagio"
+         }
+      ],
+      "preferred_composite_pixels" : [
+         5000,
+         3000
+      ],
+      "rows" : 2,
+      "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+   },
+   "splitter_sha256" : "517a7b22ab4eecfb0b6335a640d85d957d57f3283fbae2af05dee0a02a9e16bb"
+}

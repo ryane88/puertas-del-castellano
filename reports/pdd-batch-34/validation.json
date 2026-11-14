@@ -1,0 +1,62 @@
+{
+  "composite_sha256": "566e9b7c1f9a683f84d16a37e8e2c3502e7719dae79e049a05e400d4918050ac",
+  "manifest_sha256": "4b5cc45a414149cb2540a7725f52bd3528d917df8ca4d2d07ccbe5ef5c5b382c",
+  "prompt_sha256": "dabe994b2506b2ed329b655fe10da38f1b87c264a099baf7ce3a0de2e8010583",
+  "outputs": [
+    {
+      "position": 1,
+      "pdd": 358,
+      "filename": "pdd358.jpg",
+      "width": 318,
+      "height": 477,
+      "sha256": "e09f13b6159b3274645906d4c69d7aa6fdf6bcc6c7ef9e72d98eddae0a6756e5"
+    },
+    {
+      "position": 2,
+      "pdd": 359,
+      "filename": "pdd359.jpg",
+      "width": 318,
+      "height": 477,
+      "sha256": "ae0e5cf0ae2eea880146cc00b7d6caf0bf3655d06a60625cd1a67fa557232615"
+    },
+    {
+      "position": 3,
+      "pdd": 360,
+      "filename": "pdd360.jpg",
+      "width": 318,
+      "height": 477,
+      "sha256": "1f1a3b3ce97e420bc099ae80281cb586a904dd557472ca78824271de668a12d3"
+    },
+    {
+      "position": 4,
+      "pdd": 361,
+      "filename": "pdd361.jpg",
+      "width": 318,
+      "height": 477,
+      "sha256": "15468dbc3bcbc217fc25b1b1e792a875983b8b623a38910bceb845a9d1a96db2"
+    },
+    {
+      "position": 5,
+      "pdd": 364,
+      "filename": "pdd364.jpg",
+      "width": 318,
+      "height": 477,
+      "sha256": "570edd471167d8d184302e3bb5170587737eeb3ef124d75e8f7c7e99136c99ac"
+    },
+    {
+      "position": 6,
+      "pdd": 365,
+      "filename": "pdd365.jpg",
+      "width": 318,
+      "height": 477,
+      "sha256": "dfe6968ae6cb17fe954e1bce42dae9c0868d1666ca8399a0b575183dcd84d375"
+    }
+  ],
+  "ignored_placeholder_positions": [
+    7,
+    8,
+    9,
+    10
+  ],
+  "installation": "never"
+}

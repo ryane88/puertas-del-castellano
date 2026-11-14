@@ -1,0 +1,19 @@
+{
+  "composite_sha256": "e6afe93932647dddf43063349a084bbb7fd7da6222d88e12eee86844d5333840",
+  "manifest_sha256": "c657afdc784bd86ad38e20a6be885876fd6316b6500f28a26c1e9705cfd3752e",
+  "prompt_sha256": "3da60da2343e0aebe3babb71e0343d47a29ba221c3b82c21c4700ae46d46c65e",
+  "positions_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visual_review_passed": true,
+  "issues": "All ten individual crops inspected in manifest order against source meanings; no visible neighbouring-panel bleed or lettering. Source is 1619x972; centered 320x480 exact portrait 2:3 crops use small edge trims and no resizing. Idioms are interpreted through actions and expressions, not literal peppers/villages/eggplants or written captions. PDD139 depicts uncertainty in an unlit unfamiliar tunnel rather than literal blindness and is more contextual; PDD140 clearly shows tactile navigation. PDD141 conveys earned gratitude/rest without literal heavenly reward. Compass has an unlettered radial face; precise bargain pricing in PDD137 depends on visible small coins rather than labels. Codex visual QC only; not user approval or installation."
+}

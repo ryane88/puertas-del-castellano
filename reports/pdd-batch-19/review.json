@@ -1,0 +1,19 @@
+{
+  "composite_sha256": "245eb51288f15c88bb954504069cc513dcf1c5f6d918a6f610d7ea7a8926963e",
+  "manifest_sha256": "c5012b98a13977fcb8ee437c4dd2ae59c903c85b3c58c5f755326d64b96014d8",
+  "prompt_sha256": "7fc8910ddb1b5a0de32850c1ba311ee2d0f98da2b30df0b62037db601105d335",
+  "positions_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visual_review_passed": true,
+  "issues": "All ten individual JPGs inspected against manifest identities, order and meanings. No neighbouring-panel bleed or readable writing, captions, outer frames or watermarks. All 320x480 exact 2:3, no resizing; centered crop and 1px seam inset trim peripheral content. PDD206 vitality is one example of youth, not a universal age/health claim. PDD208 praise and PDD210 distinguished gathering communicate idioms through context. PDD209 wilted blue flowers and sunset imply fleeting beauty but cannot establish precisely one day. PDD211 sailing-ship wakes are clearly visible but stylized. PDD212 tear and emerging smile suggest gratitude at farewell; PDD213 quiet hurt and remorse rely on body language. PDD214 renewed joy is visible but prior illness is not. PDD215 unlettered geometric puzzles adapt changed questions to a nonverbal scene; sequence of former certainty and new questions requires context. No blocking crop or subject issues found."
+}

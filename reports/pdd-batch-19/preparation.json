@@ -1,0 +1,147 @@
+{
+   "batch" : 19,
+   "manifest" : {
+      "columns" : 5,
+      "composite_aspect_ratio" : "5:3",
+      "excluded_manifests" : [
+         "reports/pdd-batch-01/manifest.json",
+         "reports/pdd-batch-02/manifest.json",
+         "reports/pdd-batch-03/manifest.json",
+         "reports/pdd-batch-04/manifest.json",
+         "reports/pdd-batch-05/manifest.json",
+         "reports/pdd-batch-06/manifest.json",
+         "reports/pdd-batch-07/manifest.json",
+         "reports/pdd-batch-08/manifest.json",
+         "reports/pdd-batch-09/manifest.json",
+         "reports/pdd-batch-10/manifest.json",
+         "reports/pdd-batch-11/manifest.json",
+         "reports/pdd-batch-12/manifest.json",
+         "reports/pdd-batch-13/manifest.json",
+         "reports/pdd-batch-14/manifest.json",
+         "reports/pdd-batch-15/manifest.json",
+         "reports/pdd-batch-16/manifest.json",
+         "reports/pdd-batch-17/manifest.json",
+         "reports/pdd-batch-18/manifest.json"
+      ],
+      "panel_aspect_ratio" : "2:3",
+      "panels" : [
+         {
+            "column" : 1,
+            "description" : "La joven mensajera sube las escaleras de dos en dos y todavía tiene energía para correr hasta el bosque. El anciano jardinero la observa con una sonrisa.\n\nDisfruta de esa etapa de juventud en la que parece que todo está por descubrir.",
+            "expected_filename" : "images/pdd206.jpg",
+            "pdd" : 206,
+            "position" : 1,
+            "row" : 1,
+            "short_definition" : "Encontrarse en una etapa de juventud, salud y plenitud.",
+            "supabase_record_id" : 207,
+            "word" : "Estar en la flor de la vida"
+         },
+         {
+            "column" : 2,
+            "description" : "Los viajeros imaginaban un camino fácil hasta el castillo, lleno de música y flores. Sin embargo, la lluvia convirtió el sendero en barro y uno perdió una bota.\n\nLlegar fue hermoso, pero el viaje también tuvo dificultades.",
+            "expected_filename" : "images/pdd207.jpg",
+            "pdd" : 207,
+            "position" : 2,
+            "row" : 1,
+            "short_definition" : "La vida también incluye problemas y momentos difíciles.",
+            "supabase_record_id" : 208,
+            "word" : "No todo es color de rosa"
+         },
+         {
+            "column" : 3,
+            "description" : "En la ceremonia, el maestro elogia sin descanso a su nueva ayudante: habla de su ingenio, su paciencia y su talento. Ella se sonroja mientras sus compañeros aplauden.\n\nLas palabras amables florecen más deprisa que las rosas del jardín.",
+            "expected_filename" : "images/pdd208.jpg",
+            "pdd" : 208,
+            "position" : 3,
+            "row" : 1,
+            "short_definition" : "Dedicar muchos elogios o cumplidos a alguien.",
+            "supabase_record_id" : 209,
+            "word" : "Echar flores"
+         },
+         {
+            "column" : 4,
+            "description" : "Una flor azul aparece al amanecer en el patio y cautiva a todos los visitantes. Al caer la tarde, sus pétalos ya se han marchitado.\n\nEl jardinero recuerda que algunas maravillas duran muy poco, aunque sean intensas.",
+            "expected_filename" : "images/pdd209.jpg",
+            "pdd" : 209,
+            "position" : 4,
+            "row" : 1,
+            "short_definition" : "Algo hermoso o intenso que dura muy poco tiempo.",
+            "supabase_record_id" : 210,
+            "word" : "Como flor de un día"
+         },
+         {
+            "column" : 5,
+            "description" : "En el salón se reúnen las personas más distinguidas del reino: sabias, artistas y exploradores famosos. La cocinera observa sus capas elegantes y murmura que allí está lo más selecto de la corte.",
+            "expected_filename" : "images/pdd210.jpg",
+            "pdd" : 210,
+            "position" : 5,
+            "row" : 1,
+            "short_definition" : "Pertenecer al grupo más selecto o destacado de una sociedad.",
+            "supabase_record_id" : 211,
+            "word" : "Ser la flor y nata 🌸"
+         },
+         {
+            "column" : 1,
+            "description" : "Desde el acantilado, una niña observa las líneas blancas que dejan los barcos sobre el agua. Poco a poco se deshacen detrás de las velas y desaparecen en el horizonte.\n\nEl mar conserva por un instante la huella de cada viaje.",
+            "expected_filename" : "images/pdd211.jpg",
+            "pdd" : 211,
+            "position" : 6,
+            "row" : 2,
+            "short_definition" : "Huellas pasajeras que dejan las embarcaciones al avanzar sobre el agua.",
+            "supabase_record_id" : 212,
+            "word" : "Estelas en la mar"
+         },
+         {
+            "column" : 2,
+            "description" : "El último día de la feria, un niño contempla las tiendas vacías con lágrimas en los ojos. Su abuela le recuerda los juegos, las canciones y los amigos que conoció.\n\nLa despedida duele, pero los recuerdos merecen una sonrisa.",
+            "expected_filename" : "images/pdd212.jpg",
+            "pdd" : 212,
+            "position" : 7,
+            "row" : 2,
+            "short_definition" : "Invitación a agradecer lo vivido en vez de lamentar su final.",
+            "supabase_record_id" : 213,
+            "word" : "No llores porque se terminó, sonríe porque sucedió"
+         },
+         {
+            "column" : 3,
+            "description" : "Dos hermanas discuten junto al pozo. Una deja de hablar y contempla el agua inmóvil; la otra comprende por fin cuánto la ha herido.\n\nSin pronunciar una sola palabra, el silencio expresa lo que faltaba decir.",
+            "expected_filename" : "images/pdd213.jpg",
+            "pdd" : 213,
+            "position" : 8,
+            "row" : 2,
+            "short_definition" : "Reflexión sobre cómo la ausencia de palabras también comunica sentimientos.",
+            "supabase_record_id" : 214,
+            "word" : "Aprendí que el silencio también habla"
+         },
+         {
+            "column" : 4,
+            "description" : "Después de una larga enfermedad, una viajera abre las ventanas de su habitación. Escucha los pájaros, huele el pan recién hecho y decide recibir cada mañana como un regalo.\n\nNo sabe qué traerá el futuro, pero quiere abrazar la vida entera.",
+            "expected_filename" : "images/pdd214.jpg",
+            "pdd" : 214,
+            "position" : 9,
+            "row" : 2,
+            "short_definition" : "Declaración poética de amor y compromiso con la propia existencia.",
+            "supabase_record_id" : 215,
+            "word" : "Decidí enamorarme de la vida, es la única que no me va a dejar"
+         },
+         {
+            "column" : 5,
+            "description" : "Los sabios prepararon durante meses las respuestas para el examen del rey. Cuando llegan al salón, encuentran un pergamino distinto: ahora las preguntas tratan sobre aquello que nadie había previsto.\n\nComprenden que aprender también exige adaptarse.",
+            "expected_filename" : "images/pdd215.jpg",
+            "pdd" : 215,
+            "position" : 10,
+            "row" : 2,
+            "short_definition" : "Reflexión sobre cómo la vida puede cambiar incluso nuestras preguntas fundamentales.",
+            "supabase_record_id" : 216,
+            "word" : "Cuando creíamos que teníamos todas las respuestas, de pronto, cambiaron todas las preguntas"
+         }
+      ],
+      "preferred_composite_pixels" : [
+         5000,
+         3000
+      ],
+      "rows" : 2,
+      "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+   },
+   "splitter_sha256" : "517a7b22ab4eecfb0b6335a640d85d957d57f3283fbae2af05dee0a02a9e16bb"
+}

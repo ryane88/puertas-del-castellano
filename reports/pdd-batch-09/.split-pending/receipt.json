@@ -1,0 +1,16 @@
+{
+   "composite_sha256" : "2e41bbaa2dcfe4f818e082793dab1917c615dcf5c6ec30fed51796964bacc836",
+   "files" : {
+      "pdd104.jpg" : "e922459ecb823e5bd2c7192b528da8b9951403c74944e25f50d7cf6c1e83dc96",
+      "pdd105.jpg" : "b21a83ce7776a8a317a5d7ba78e324fdf476a37d575f08ffd8f93a6e9fe64298",
+      "pdd106.jpg" : "b2faed74898bfdfc59f76604f2439bbadbc03092896017358a5695f884a5d211",
+      "pdd107.jpg" : "d2aface8b29b400fe4a09e4686ef86b92632a122f45405330e295c4dfbf70e0b",
+      "pdd108.jpg" : "cc776fb6ef53ca6ffc3f2067e53cccc508b03c3b2f02e890615e593250cb3e8c",
+      "pdd109.jpg" : "dbcd8fa36a02d3c1dc2d35707482d2871354f8f73b17ad3d9d7e02b33bdfebaa",
+      "pdd110.jpg" : "325cdc22ee22b9599ff86d658e80d5c74be7e223842a6f4b5472cec5652b8af5",
+      "pdd111.jpg" : "9b2a7634aaaa3abe1d5c851275a662d00cf276cec7b520108a76596b4f93109a",
+      "pdd112.jpg" : "55a9e74a0bdce1d085b35f2f5e19bb289da00058eb530054e8d43f15abdd474d",
+      "pdd113.jpg" : "52e59c6ba482f468d3d5d33ee237f688e079289d7fa25e598cede3fb0bc9e2fa"
+   },
+   "manifest_sha256" : "01bedbc9b3689988c6e88718464f58c57990ac29bca18b5effde39d33400dba2"
+}

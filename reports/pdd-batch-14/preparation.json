@@ -1,0 +1,142 @@
+{
+   "batch" : 14,
+   "manifest" : {
+      "columns" : 5,
+      "composite_aspect_ratio" : "5:3",
+      "excluded_manifests" : [
+         "reports/pdd-batch-01/manifest.json",
+         "reports/pdd-batch-02/manifest.json",
+         "reports/pdd-batch-03/manifest.json",
+         "reports/pdd-batch-04/manifest.json",
+         "reports/pdd-batch-05/manifest.json",
+         "reports/pdd-batch-06/manifest.json",
+         "reports/pdd-batch-07/manifest.json",
+         "reports/pdd-batch-08/manifest.json",
+         "reports/pdd-batch-09/manifest.json",
+         "reports/pdd-batch-10/manifest.json",
+         "reports/pdd-batch-11/manifest.json",
+         "reports/pdd-batch-12/manifest.json",
+         "reports/pdd-batch-13/manifest.json"
+      ],
+      "panel_aspect_ratio" : "2:3",
+      "panels" : [
+         {
+            "column" : 1,
+            "description" : "Desde una ventana abierta llega música. Alguien ríe en el patio. No necesitas poseer el momento. Basta con vivirlo.",
+            "expected_filename" : "images/pdd155.jpg",
+            "pdd" : 155,
+            "position" : 1,
+            "row" : 1,
+            "short_definition" : "Disfrutar de algo placentero o beneficiarse de ello.",
+            "supabase_record_id" : 157,
+            "word" : "gozar"
+         },
+         {
+            "column" : 2,
+            "description" : "Cada vez que la jardinera entra en el comedor, cuenta una historia disparatada y consigue que todos sonrían. Incluso el viejo guardián, que nunca se ríe, acaba soltando una carcajada.\n\nDicen que es la alegría de la huerta, aunque trabaje dentro del castillo.",
+            "expected_filename" : "images/pdd156.jpg",
+            "pdd" : 156,
+            "position" : 2,
+            "row" : 1,
+            "short_definition" : "Ser una persona alegre que anima a quienes la rodean.",
+            "supabase_record_id" : 158,
+            "word" : "ser la alegría de la huerta"
+         },
+         {
+            "column" : 3,
+            "description" : "El cocinero saca del horno una tarta de almendras y miel. Su aroma llena el pasillo y atrae a los aprendices como si fuera un hechizo.\n\nTras probarla, la princesa sonríe: está tan deliciosa que es para chuparse los dedos.",
+            "expected_filename" : "images/pdd157.jpg",
+            "pdd" : 157,
+            "position" : 3,
+            "row" : 1,
+            "short_definition" : "Estar tan delicioso que provoca un gran placer al comerlo.",
+            "supabase_record_id" : 159,
+            "word" : "chupar los dedos"
+         },
+         {
+            "column" : 4,
+            "description" : "Una discusión por una silla termina con platos rotos, harina por el suelo y un ganso corriendo entre las mesas. Los guardias llegan cuando ya nadie recuerda cómo empezó todo.\n\n—Se ha liado parda —murmura la cocinera, contemplando el desastre.",
+            "expected_filename" : "images/pdd158.jpg",
+            "pdd" : 158,
+            "position" : 4,
+            "row" : 1,
+            "short_definition" : "Provocar un gran lío, escándalo o problema.",
+            "supabase_record_id" : 160,
+            "word" : "liarse parda (pardo)"
+         },
+         {
+            "column" : 5,
+            "description" : "La carreta de un anciano queda atrapada en el barro del camino. Un aprendiz deja sus libros, se acerca y empuja junto a él hasta liberar las ruedas.\n\nNo esperaba ninguna recompensa: solo quería echarle un cable.",
+            "expected_filename" : "images/pdd159.jpg",
+            "pdd" : 159,
+            "position" : 5,
+            "row" : 1,
+            "short_definition" : "Ayudar a alguien cuando lo necesita.",
+            "supabase_record_id" : 161,
+            "word" : "echar un cable"
+         },
+         {
+            "column" : 1,
+            "description" : "En la sala de oficios, cada joven debe elegir su futuro. Una muchacha prueba la espada y el telar, pero solo sonríe de verdad cuando cura la pata herida de un halcón.\n\nEl maestro comprende que su vocación es cuidar de los seres vivos.",
+            "expected_filename" : "images/pdd160.jpg",
+            "pdd" : 160,
+            "position" : 6,
+            "row" : 2,
+            "short_definition" : "Inclinación profunda hacia una profesión o actividad que da sentido personal.",
+            "supabase_record_id" : 162,
+            "word" : "vocación"
+         },
+         {
+            "column" : 2,
+            "description" : "El joven hortelano se levanta antes del alba para tirar de los brotes y hacerlos crecer más deprisa. Su abuela lo observa y le ofrece una taza de leche caliente.\n\n—No por mucho madrugar amanece más temprano. Algunas cosas necesitan su tiempo.",
+            "expected_filename" : "images/pdd161.jpg",
+            "pdd" : 161,
+            "position" : 7,
+            "row" : 2,
+            "short_definition" : "Esforzarse o empezar antes no siempre acelera lo que debe suceder.",
+            "supabase_record_id" : 163,
+            "word" : "No por mucho madrugar, amanece más temprano"
+         },
+         {
+            "column" : 3,
+            "description" : "En el observatorio, un espejo antiguo recoge la luz de una sola estrella y la transforma en cientos de pequeñas constelaciones sobre el techo.\n\nLa astrónoma contempla el espectáculo en silencio. Nunca había visto un artefacto tan prodigioso.",
+            "expected_filename" : "images/pdd162.jpg",
+            "pdd" : 162,
+            "position" : 8,
+            "row" : 2,
+            "short_definition" : "Tan extraordinario que parece un milagro.",
+            "supabase_record_id" : 164,
+            "word" : "Prodigioso"
+         },
+         {
+            "column" : 4,
+            "description" : "Dos aldeas llevan años discutiendo por el uso de un puente. Una tormenta destruye parte del camino y sus habitantes llegan con piedras, madera y cuerdas.\n\nPara reconstruirlo deben aunar esfuerzos y trabajar como un solo equipo.",
+            "expected_filename" : "images/pdd163.jpg",
+            "pdd" : 163,
+            "position" : 9,
+            "row" : 2,
+            "short_definition" : "Unir fuerzas, esfuerzos o elementos para conseguir un fin común.",
+            "supabase_record_id" : 165,
+            "word" : "aunar"
+         },
+         {
+            "column" : 5,
+            "description" : "Cada domingo, un noble sale del castillo con botas relucientes y un mapa enorme. Se detiene a fotografiar cada árbol dibujándolo en su cuaderno y bloquea el sendero sin darse cuenta.\n\nLos pastores sonríen al ver pasar al excursionista dominguero.",
+            "expected_filename" : "images/pdd165.jpg",
+            "pdd" : 165,
+            "position" : 10,
+            "row" : 2,
+            "short_definition" : "Persona que sale de excursión ocasionalmente y suele tener poca experiencia.",
+            "supabase_record_id" : 166,
+            "word" : "dominguero"
+         }
+      ],
+      "preferred_composite_pixels" : [
+         5000,
+         3000
+      ],
+      "rows" : 2,
+      "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+   },
+   "splitter_sha256" : "517a7b22ab4eecfb0b6335a640d85d957d57f3283fbae2af05dee0a02a9e16bb"
+}

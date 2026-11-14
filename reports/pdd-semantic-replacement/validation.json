@@ -1,0 +1,17 @@
+{
+  "rooms": 396,
+  "existing_rows": 1101,
+  "admissible_pairs": 235,
+  "proposed_pairs": 215,
+  "degree_histogram": {
+    "0": 138,
+    "1": 115,
+    "2": 114,
+    "3": 29
+  },
+  "existing_pairs_retained": 50,
+  "new_pairs": 165,
+  "existing_enabled_rows_proposed_disabled": 1051,
+  "max_degree": 3,
+  "mean_degree": 1.0858585858585859
+}

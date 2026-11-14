@@ -1,0 +1,924 @@
+{
+  "rules": [],
+  "limits": [
+    "Dashboard session is not the browser anon/authenticated role; role grants and policy definitions must be reviewed separately.",
+    "Direct catalog dependencies do not prove absence of dynamic SQL or external consumers.",
+    "Trigger/event-trigger bodies, rule bodies and dependent view definitions are omitted; names and hashes identify further review if present.",
+    "A schema fingerprint is a drift check, not compatibility confirmation or authorization to execute."
+  ],
+  "session": {
+    "superuser": false,
+    "bypass_rls": true,
+    "current_user": "postgres",
+    "session_user": "postgres",
+    "server_version": "17.11",
+    "server_encoding": "UTF8",
+    "row_security_setting": "off",
+    "transaction_isolation": "repeatable read",
+    "transaction_read_only": "on"
+  },
+  "schema_md5": "643d39bcaefd85cd99487efe7d4469bc",
+  "data_counts": {
+    "rooms_total": 396,
+    "connections_total": 1101,
+    "self_links_in_scope": 0,
+    "rooms_published_true": 396,
+    "invalid_endpoint_rows": 0,
+    "selected_incident_rows": 1101,
+    "selected_rooms_expected": 396,
+    "selected_rooms_resolved": 396,
+    "connections_enabled_true": 1101,
+    "connections_enabled_false": 0,
+    "unrelated_connection_rows": 0,
+    "maximum_connection_id_numeric": 1102,
+    "selected_incident_enabled_true": 1101,
+    "connections_enabled_non_boolean": 0,
+    "unresolved_endpoint_rows_in_scope": 0,
+    "connections_enabled_null_or_missing": 0,
+    "duplicate_enabled_pair_groups_in_scope": 0,
+    "duplicate_unordered_pair_groups_in_scope": 0
+  },
+  "domain_types": [],
+  "report_version": "pdd-production-inspection-v1",
+  "schema_details": {
+    "tables": [
+      {
+        "owner": "postgres",
+        "relkind": "r",
+        "relname": "room_connections",
+        "schema_name": "public",
+        "relrowsecurity": true,
+        "relforcerowsecurity": false
+      },
+      {
+        "owner": "postgres",
+        "relkind": "r",
+        "relname": "rooms",
+        "schema_name": "public",
+        "relrowsecurity": true,
+        "relforcerowsecurity": false
+      }
+    ],
+    "columns": [
+      {
+        "name": "id",
+        "type": "bigint",
+        "table": "room_connections",
+        "default": null,
+        "identity": "d",
+        "not_null": true,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "room_connections",
+        "default": "now()",
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "from_pdd",
+        "type": "integer",
+        "table": "room_connections",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "to_pdd",
+        "type": "integer",
+        "table": "room_connections",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "relationship",
+        "type": "text",
+        "table": "room_connections",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "strength",
+        "type": "smallint",
+        "table": "room_connections",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "reason",
+        "type": "text",
+        "table": "room_connections",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "featured",
+        "type": "boolean",
+        "table": "room_connections",
+        "default": "false",
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "enabled",
+        "type": "boolean",
+        "table": "room_connections",
+        "default": "true",
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "connection_type",
+        "type": "text",
+        "table": "room_connections",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "id",
+        "type": "bigint",
+        "table": "rooms",
+        "default": null,
+        "identity": "d",
+        "not_null": true,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "created_at",
+        "type": "timestamp with time zone",
+        "table": "rooms",
+        "default": "now()",
+        "identity": "",
+        "not_null": true,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "pdd",
+        "type": "integer",
+        "table": "rooms",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "word",
+        "type": "text",
+        "table": "rooms",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "title",
+        "type": "text",
+        "table": "rooms",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "description",
+        "type": "text",
+        "table": "rooms",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "image",
+        "type": "text",
+        "table": "rooms",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "room_type",
+        "type": "text",
+        "table": "rooms",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "puzzle",
+        "type": "jsonb",
+        "table": "rooms",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "published",
+        "type": "boolean",
+        "table": "rooms",
+        "default": "true",
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "chapter",
+        "type": "integer",
+        "table": "rooms",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "whatsapp_description",
+        "type": "text",
+        "table": "rooms",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      },
+      {
+        "name": "short_definition",
+        "type": "text",
+        "table": "rooms",
+        "default": null,
+        "identity": "",
+        "not_null": false,
+        "generated": "",
+        "enum_labels": null
+      }
+    ],
+    "indexes": [
+      {
+        "name": "room_connections_pkey",
+        "valid": true,
+        "unique": true,
+        "definition": "CREATE UNIQUE INDEX room_connections_pkey ON public.room_connections USING btree (id)"
+      },
+      {
+        "name": "rooms_pdd_unique",
+        "valid": true,
+        "unique": true,
+        "definition": "CREATE UNIQUE INDEX rooms_pdd_unique ON public.rooms USING btree (pdd)"
+      },
+      {
+        "name": "rooms_pkey",
+        "valid": true,
+        "unique": true,
+        "definition": "CREATE UNIQUE INDEX rooms_pkey ON public.rooms USING btree (id)"
+      }
+    ],
+    "policies": [
+      {
+        "cmd": "SELECT",
+        "qual": "true",
+        "roles": [
+          "public"
+        ],
+        "tablename": "room_connections",
+        "permissive": "PERMISSIVE",
+        "policyname": "Enable read access for all users",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "true",
+        "roles": [
+          "public"
+        ],
+        "tablename": "rooms",
+        "permissive": "PERMISSIVE",
+        "policyname": "Enable read access for all users",
+        "schemaname": "public",
+        "with_check": null
+      }
+    ],
+    "constraints": [
+      {
+        "name": "room_connections_pkey",
+        "type": "p",
+        "table": "room_connections",
+        "validated": true,
+        "deferrable": false,
+        "definition": "PRIMARY KEY (id)",
+        "referenced_table": null,
+        "initially_deferred": false
+      },
+      {
+        "name": "rooms_pdd_unique",
+        "type": "u",
+        "table": "rooms",
+        "validated": true,
+        "deferrable": false,
+        "definition": "UNIQUE (pdd)",
+        "referenced_table": null,
+        "initially_deferred": false
+      },
+      {
+        "name": "rooms_pkey",
+        "type": "p",
+        "table": "rooms",
+        "validated": true,
+        "deferrable": false,
+        "definition": "PRIMARY KEY (id)",
+        "referenced_table": null,
+        "initially_deferred": false
+      }
+    ],
+    "user_triggers": []
+  },
+  "dependent_views": [],
+  "owned_sequences": [
+    {
+      "max": 9223372036854775807,
+      "min": 1,
+      "type": "bigint",
+      "cache": 1,
+      "cycle": false,
+      "start": 1,
+      "table": "room_connections",
+      "column": "id",
+      "schema": "public",
+      "sequence": "room_connections_id_seq",
+      "increment": 1,
+      "last_value": 1102,
+      "current_role_usage": true
+    },
+    {
+      "max": 9223372036854775807,
+      "min": 1,
+      "type": "bigint",
+      "cache": 1,
+      "cycle": false,
+      "start": 1,
+      "table": "rooms",
+      "column": "id",
+      "schema": "public",
+      "sequence": "rooms_id_seq",
+      "increment": 1,
+      "last_value": 396,
+      "current_role_usage": true
+    }
+  ],
+  "generated_at_utc": "2026-10-31T20:50:36.96734+00:00",
+  "table_privileges": [
+    {
+      "role": "anon",
+      "table": "room_connections",
+      "delete": true,
+      "insert": true,
+      "select": true,
+      "update": true,
+      "public_schema_usage": true,
+      "public_schema_create": false
+    },
+    {
+      "role": "anon",
+      "table": "rooms",
+      "delete": true,
+      "insert": true,
+      "select": true,
+      "update": true,
+      "public_schema_usage": true,
+      "public_schema_create": false
+    },
+    {
+      "role": "authenticated",
+      "table": "room_connections",
+      "delete": true,
+      "insert": true,
+      "select": true,
+      "update": true,
+      "public_schema_usage": true,
+      "public_schema_create": false
+    },
+    {
+      "role": "authenticated",
+      "table": "rooms",
+      "delete": true,
+      "insert": true,
+      "select": true,
+      "update": true,
+      "public_schema_usage": true,
+      "public_schema_create": false
+    },
+    {
+      "role": "postgres",
+      "table": "room_connections",
+      "delete": true,
+      "insert": true,
+      "select": true,
+      "update": true,
+      "public_schema_usage": true,
+      "public_schema_create": true
+    },
+    {
+      "role": "postgres",
+      "table": "rooms",
+      "delete": true,
+      "insert": true,
+      "select": true,
+      "update": true,
+      "public_schema_usage": true,
+      "public_schema_create": true
+    },
+    {
+      "role": "service_role",
+      "table": "room_connections",
+      "delete": true,
+      "insert": true,
+      "select": true,
+      "update": true,
+      "public_schema_usage": true,
+      "public_schema_create": false
+    },
+    {
+      "role": "service_role",
+      "table": "rooms",
+      "delete": true,
+      "insert": true,
+      "select": true,
+      "update": true,
+      "public_schema_usage": true,
+      "public_schema_create": false
+    }
+  ],
+  "ddl_event_triggers": [
+    {
+      "name": "issue_graphql_placeholder",
+      "tags": [
+        "DROP EXTENSION"
+      ],
+      "event": "sql_drop",
+      "enabled": "O",
+      "function": "extensions.set_graphql_placeholder()",
+      "function_body_omitted": true,
+      "function_definition_md5": "8da9dff6b2ae47498209d341acaeb60b"
+    },
+    {
+      "name": "issue_pg_cron_access",
+      "tags": [
+        "CREATE EXTENSION"
+      ],
+      "event": "ddl_command_end",
+      "enabled": "O",
+      "function": "extensions.grant_pg_cron_access()",
+      "function_body_omitted": true,
+      "function_definition_md5": "53a44336da0ac1dd62d89dbd988e6d1d"
+    },
+    {
+      "name": "issue_pg_graphql_access",
+      "tags": [
+        "CREATE EXTENSION"
+      ],
+      "event": "ddl_command_end",
+      "enabled": "O",
+      "function": "extensions.grant_pg_graphql_access()",
+      "function_body_omitted": true,
+      "function_definition_md5": "4e6d7efe4aed1b3b92063b648aa7a0cf"
+    },
+    {
+      "name": "issue_pg_net_access",
+      "tags": [
+        "CREATE EXTENSION"
+      ],
+      "event": "ddl_command_end",
+      "enabled": "O",
+      "function": "extensions.grant_pg_net_access()",
+      "function_body_omitted": true,
+      "function_definition_md5": "1d06ef4fb47bb0ab6e6f8818a62013bb"
+    },
+    {
+      "name": "pgrst_ddl_watch",
+      "tags": null,
+      "event": "ddl_command_end",
+      "enabled": "O",
+      "function": "extensions.pgrst_ddl_watch()",
+      "function_body_omitted": true,
+      "function_definition_md5": "afaad7193dcf8f81e728d2bedb85e43e"
+    },
+    {
+      "name": "pgrst_drop_watch",
+      "tags": null,
+      "event": "sql_drop",
+      "enabled": "O",
+      "function": "extensions.pgrst_drop_watch()",
+      "function_body_omitted": true,
+      "function_definition_md5": "4357772baf5cfcd5c6d7049585b3a537"
+    }
+  ],
+  "default_privileges": [
+    {
+      "acl": "{postgres=rwU/supabase_admin,anon=rwU/supabase_admin,authenticated=rwU/supabase_admin,service_role=rwU/supabase_admin}",
+      "owner": "supabase_admin",
+      "schema": "public",
+      "object_type": "S"
+    },
+    {
+      "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}",
+      "owner": "supabase_admin",
+      "schema": "public",
+      "object_type": "f"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/supabase_admin,anon=arwdDxtm/supabase_admin,authenticated=arwdDxtm/supabase_admin,service_role=arwdDxtm/supabase_admin}",
+      "owner": "supabase_admin",
+      "schema": "public",
+      "object_type": "r"
+    },
+    {
+      "acl": "{postgres=rwU/postgres,anon=rwU/postgres,authenticated=rwU/postgres,service_role=rwU/postgres}",
+      "owner": "postgres",
+      "schema": "public",
+      "object_type": "S"
+    },
+    {
+      "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+      "owner": "postgres",
+      "schema": "public",
+      "object_type": "f"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "owner": "postgres",
+      "schema": "public",
+      "object_type": "r"
+    }
+  ],
+  "snapshot_comparison": {
+    "expected_rows": 1101,
+    "comparison_note": "Exact JSON comparison; timestamp-format-only differences still require normalization/review. No values are overwritten.",
+    "differences_sample": [],
+    "missing_expected_rows": 0,
+    "additional_incident_rows": 0,
+    "duplicate_selected_pdd_values": [],
+    "different_or_missing_expected_rows": 0,
+    "room_identity_or_word_or_publication_differences": []
+  },
+  "compatibility_status": "NOT CONFIRMED: return this complete report for comparison before any migration approval",
+  "proposal_assumptions": {
+    "pairs": 215,
+    "sha256": "05439a9e34968ce4be32041833944b2ba25fecb00fca73b8b41b73e275aca740",
+    "source": "proposed-network.csv",
+    "strengths": [
+      2,
+      3
+    ],
+    "unverified": "Observed old values do not establish that constraints permit the proposed new relationship labels.",
+    "degree_histogram": {
+      "0": 138,
+      "1": 115,
+      "2": 114,
+      "3": 29
+    },
+    "application_filter": "enabled=eq.true AND (from_pdd=current PDD OR to_pdd=current PDD); destination published=eq.true",
+    "coarse_connection_types": [
+      "Directa",
+      "Contraste"
+    ],
+    "maximum_reason_characters": 258,
+    "precise_relationship_values": [
+      "acepcion_compartida",
+      "antonimia",
+      "antonimia_de_actitud",
+      "antonimia_de_estado",
+      "antonimia_de_etapa",
+      "antonimia_de_funcion",
+      "antonimia_parcial",
+      "contraste_de_actitud",
+      "contraste_de_estado",
+      "contraste_de_modo",
+      "contraste_de_significado",
+      "contraste_de_transformacion",
+      "contraste_de_uso",
+      "contraste_de_valoracion",
+      "contraste_morfosemantico",
+      "equivalencia_nominal_verbal",
+      "expresiones_cercanas",
+      "expresiones_equivalentes",
+      "relacion_especificacion",
+      "significados_cercanos",
+      "sinonimia",
+      "sinonimia_parcial"
+    ],
+    "maximum_relationship_characters": 27
+  },
+  "room_type_distribution": [
+    {
+      "rows": 381,
+      "room_type": "vocabulary"
+    },
+    {
+      "rows": 15,
+      "room_type": null
+    }
+  ],
+  "direct_catalog_dependencies": [
+    {
+      "dependent": "constraint room_connections_pkey on table room_connections",
+      "referenced": "column id of table room_connections",
+      "dependency_type": "a"
+    },
+    {
+      "dependent": "constraint rooms_pdd_unique on table rooms",
+      "referenced": "column pdd of table rooms",
+      "dependency_type": "a"
+    },
+    {
+      "dependent": "constraint rooms_pkey on table rooms",
+      "referenced": "column id of table rooms",
+      "dependency_type": "a"
+    },
+    {
+      "dependent": "default value for column created_at of table room_connections",
+      "referenced": "column created_at of table room_connections",
+      "dependency_type": "a"
+    },
+    {
+      "dependent": "default value for column created_at of table rooms",
+      "referenced": "column created_at of table rooms",
+      "dependency_type": "a"
+    },
+    {
+      "dependent": "default value for column enabled of table room_connections",
+      "referenced": "column enabled of table room_connections",
+      "dependency_type": "a"
+    },
+    {
+      "dependent": "default value for column featured of table room_connections",
+      "referenced": "column featured of table room_connections",
+      "dependency_type": "a"
+    },
+    {
+      "dependent": "default value for column published of table rooms",
+      "referenced": "column published of table rooms",
+      "dependency_type": "a"
+    },
+    {
+      "dependent": "policy Enable read access for all users on table room_connections",
+      "referenced": "table room_connections",
+      "dependency_type": "a"
+    },
+    {
+      "dependent": "policy Enable read access for all users on table rooms",
+      "referenced": "table rooms",
+      "dependency_type": "a"
+    },
+    {
+      "dependent": "sequence room_connections_id_seq",
+      "referenced": "column id of table room_connections",
+      "dependency_type": "i"
+    },
+    {
+      "dependent": "sequence rooms_id_seq",
+      "referenced": "column id of table rooms",
+      "dependency_type": "i"
+    },
+    {
+      "dependent": "toast table pg_toast.pg_toast_17603",
+      "referenced": "table rooms",
+      "dependency_type": "i"
+    },
+    {
+      "dependent": "toast table pg_toast.pg_toast_17628",
+      "referenced": "table room_connections",
+      "dependency_type": "i"
+    },
+    {
+      "dependent": "type room_connections",
+      "referenced": "table room_connections",
+      "dependency_type": "i"
+    },
+    {
+      "dependent": "type rooms",
+      "referenced": "table rooms",
+      "dependency_type": "i"
+    }
+  ],
+  "connection_value_distributions": [
+    {
+      "rows": 2,
+      "value": "Amor",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 4,
+      "value": "Arte",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 3,
+      "value": "Camino",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 3,
+      "value": "Contraste",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 1,
+      "value": "Cuerpo",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 2,
+      "value": "Curiosa",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 15,
+      "value": "Directa",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 18,
+      "value": "Familia",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 150,
+      "value": "Familia/imagen",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 25,
+      "value": "Idea",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 8,
+      "value": "Imagen",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 2,
+      "value": "Lengua",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 1,
+      "value": "Música",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 2,
+      "value": "Narrativa",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 1,
+      "value": "Naturaleza",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 3,
+      "value": "Relación",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 9,
+      "value": "Situación",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 1,
+      "value": "Sospecha",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 849,
+      "value": "Tema/contexto",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 2,
+      "value": "Tiempo",
+      "column_name": "connection_type"
+    },
+    {
+      "rows": 1101,
+      "value": true,
+      "column_name": "enabled"
+    },
+    {
+      "rows": 1101,
+      "value": false,
+      "column_name": "featured"
+    },
+    {
+      "rows": 1101,
+      "value": null,
+      "column_name": "relationship"
+    },
+    {
+      "rows": 1101,
+      "value": null,
+      "column_name": "status"
+    },
+    {
+      "rows": 849,
+      "value": 1,
+      "column_name": "strength"
+    },
+    {
+      "rows": 83,
+      "value": 2,
+      "column_name": "strength"
+    },
+    {
+      "rows": 169,
+      "value": 3,
+      "column_name": "strength"
+    }
+  ],
+  "matching_relation_names_all_schemas": [
+    {
+      "kind": "r",
+      "name": "room_connections",
+      "schema": "public"
+    },
+    {
+      "kind": "r",
+      "name": "rooms",
+      "schema": "public"
+    }
+  ],
+  "prepared_backup_schema_already_exists": false,
+  "current_selected_enabled_degree_histogram": {
+    "0": 124,
+    "1": 24,
+    "2": 2,
+    "3": 3,
+    "4": 5,
+    "5": 89,
+    "6": 54,
+    "7": 19,
+    "8": 9,
+    "9": 8,
+    "10": 3,
+    "11": 5,
+    "12": 6,
+    "13": 4,
+    "14": 3,
+    "16": 4,
+    "18": 5,
+    "19": 6,
+    "20": 4,
+    "21": 5,
+    "22": 2,
+    "23": 3,
+    "24": 2,
+    "25": 1,
+    "26": 1,
+    "29": 1,
+    "31": 1,
+    "34": 1,
+    "37": 1,
+    "52": 1
+  }
+}

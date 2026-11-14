@@ -1,0 +1,175 @@
+{
+   "columns" : 5,
+   "composite_aspect_ratio" : "5:3",
+   "crop_layout" : {
+      "column_edges" : [
+         0,
+         324,
+         648,
+         972,
+         1296,
+         1619
+      ],
+      "method" : "Inspected Batch30 joins at324,648,972,1296 and y485; centered exact2:3 crops with1px seam inset,no resizing.",
+      "row_edges" : [
+         0,
+         485,
+         971
+      ],
+      "seam_inset_pixels" : 1,
+      "source_pixels" : [
+         1619,
+         971
+      ]
+   },
+   "excluded_manifests" : [
+      "reports/pdd-batch-01/manifest.json",
+      "reports/pdd-batch-02/manifest.json",
+      "reports/pdd-batch-03/manifest.json",
+      "reports/pdd-batch-04/manifest.json",
+      "reports/pdd-batch-05/manifest.json",
+      "reports/pdd-batch-06/manifest.json",
+      "reports/pdd-batch-07/manifest.json",
+      "reports/pdd-batch-08/manifest.json",
+      "reports/pdd-batch-09/manifest.json",
+      "reports/pdd-batch-10/manifest.json",
+      "reports/pdd-batch-11/manifest.json",
+      "reports/pdd-batch-12/manifest.json",
+      "reports/pdd-batch-13/manifest.json",
+      "reports/pdd-batch-14/manifest.json",
+      "reports/pdd-batch-15/manifest.json",
+      "reports/pdd-batch-16/manifest.json",
+      "reports/pdd-batch-17/manifest.json",
+      "reports/pdd-batch-18/manifest.json",
+      "reports/pdd-batch-19/manifest.json",
+      "reports/pdd-batch-20/manifest.json",
+      "reports/pdd-batch-21/manifest.json",
+      "reports/pdd-batch-22/manifest.json",
+      "reports/pdd-batch-23/manifest.json",
+      "reports/pdd-batch-24/manifest.json",
+      "reports/pdd-batch-25/manifest.json",
+      "reports/pdd-batch-26/manifest.json",
+      "reports/pdd-batch-27/manifest.json",
+      "reports/pdd-batch-28/manifest.json",
+      "reports/pdd-batch-29/manifest.json"
+   ],
+   "panel_aspect_ratio" : "2:3",
+   "panels" : [
+      {
+         "column" : 1,
+         "description" : "En el escritorio de la torre hay una carta que empieza con palabras de amor. El mensajero la lee con cuidado, consciente de que cada frase guarda una emoción difícil de confesar.\n\nFuera, el viento agita los rosales y parece llevarse el secreto hacia el jardín.",
+         "expected_filename" : "images/pdd317.jpg",
+         "pdd" : 317,
+         "position" : 1,
+         "row" : 1,
+         "short_definition" : "Expresión que indica relación con el cariño o sentimiento amoroso.",
+         "supabase_record_id" : 318,
+         "word" : "de amor"
+      },
+      {
+         "column" : 2,
+         "description" : "La exploradora promete llevar consigo la pequeña brújula dondequiera que vaya: al bosque, a las montañas o más allá del mar.\n\nNo sabe cuál será su próximo destino, pero quiere recordar siempre el camino de regreso.",
+         "expected_filename" : "images/pdd318.jpg",
+         "pdd" : 318,
+         "position" : 2,
+         "row" : 1,
+         "short_definition" : "En cualquier lugar al que se vaya o donde ocurra algo.",
+         "supabase_record_id" : 319,
+         "word" : "Dondequiera"
+      },
+      {
+         "column" : 3,
+         "description" : "El pergamino aún huele a tinta fresca. El escribano explica que la noticia es reciente: llegó esta misma mañana con un jinete del valle.\n\nEn el castillo nadie la conocía ayer, y ahora todos hablan de ella.",
+         "expected_filename" : "images/pdd319.jpg",
+         "pdd" : 319,
+         "position" : 3,
+         "row" : 1,
+         "short_definition" : "Que ocurrió o apareció hace poco tiempo.",
+         "supabase_record_id" : 320,
+         "word" : "Reciente"
+      },
+      {
+         "column" : 4,
+         "description" : "El refugio tiene techo, leña y mantas, pero carece de agua potable. Los viajeros pueden pasar allí la noche, aunque deberán buscar un manantial al amanecer.\n\nLa posadera señala la jarra vacía para mostrar lo que les falta.",
+         "expected_filename" : "images/pdd320.jpg",
+         "pdd" : 320,
+         "position" : 4,
+         "row" : 1,
+         "short_definition" : "No tener algo que se necesita o se considera importante.",
+         "supabase_record_id" : 321,
+         "word" : "Carecer"
+      },
+      {
+         "column" : 5,
+         "description" : "Al sonar la campana, los aprendices se apresuran a recoger sus herramientas. Si no se dan prisa, la puerta de la muralla se cerrará antes de que lleguen.\n\nUno tropieza por correr demasiado y descubre que apurarse no siempre ayuda.",
+         "expected_filename" : "images/pdd321.jpg",
+         "pdd" : 321,
+         "position" : 5,
+         "row" : 1,
+         "short_definition" : "Darse prisa o sentirse presionado por una situación.",
+         "supabase_record_id" : 322,
+         "word" : "apurarse"
+      },
+      {
+         "column" : 1,
+         "description" : "La plaza está llena de gente, pero un anciano caído permanece invisible entre los pasos apresurados. Solo una niña se detiene y le ofrece la mano.\n\nEl cronista se pregunta cómo puede haber cada vez más gente y, a veces, tan pocas personas dispuestas a mirar al otro.",
+         "expected_filename" : "images/pdd322.jpg",
+         "pdd" : 322,
+         "position" : 6,
+         "row" : 2,
+         "short_definition" : "Crítica a una sociedad con más habitantes pero menos humanidad.",
+         "supabase_record_id" : 323,
+         "word" : "¿ Y no será que en este mundo hay cada vez más gente y menos personas ?"
+      },
+      {
+         "column" : 2,
+         "description" : "Un barquero cree que conduce su embarcación con firmeza, hasta que una corriente inesperada lo arrastra río abajo. Lucha un momento y luego aprende a orientar el remo sin negar la fuerza del agua.\n\nSe pregunta si uno lleva la vida adelante o si, algunas veces, es la vida la que lo lleva a uno.",
+         "expected_filename" : "images/pdd323.jpg",
+         "pdd" : 323,
+         "position" : 7,
+         "row" : 2,
+         "short_definition" : "Pregunta sobre si dirigimos nuestra vida o nos dejamos arrastrar por ella.",
+         "supabase_record_id" : 324,
+         "word" : "Al final, ¿cómo es el asunto? ¿Uno va llevando su vida adelante o la vida se lo lleva por delante a uno?"
+      },
+      {
+         "column" : 3,
+         "description" : "El mayordomo pasa la mañana resolviendo mensajes, cerraduras y pequeños encargos. Cuando llega la noche, descubre que no visitó a su padre enfermo, como había prometido.\n\nComprende demasiado tarde que lo urgente no le dejó tiempo para lo importante.",
+         "expected_filename" : "images/pdd324.jpg",
+         "pdd" : 324,
+         "position" : 8,
+         "row" : 2,
+         "short_definition" : "Advertencia de que las tareas inmediatas pueden ocultar las verdaderas prioridades.",
+         "supabase_record_id" : 325,
+         "word" : "Lo urgente no deja tiempo para lo importante"
+      },
+      {
+         "column" : 4,
+         "description" : "En la ciudad hay un banco de mármol con puertas doradas y una biblioteca de madera con el techo gastado. Los mercaderes hacen fila ante el primero; en la segunda, una niña aprende a leer.\n\nEl bibliotecario imagina un mundo donde las bibliotecas recibieran tanta atención como los bancos.",
+         "expected_filename" : "images/pdd325.jpg",
+         "pdd" : 325,
+         "position" : 9,
+         "row" : 2,
+         "short_definition" : "Pregunta que defiende dar más valor al conocimiento que al dinero.",
+         "supabase_record_id" : 326,
+         "word" : "¿No sería hermoso el mundo si las bibliotecas fuesen más importantes que los bancos?"
+      },
+      {
+         "column" : 5,
+         "description" : "Tras una larga disputa, dos aldeas acuerdan reparar juntas el puente que las separa. Nadie olvida las heridas de inmediato, pero cada tabla colocada exige cooperación.\n\nLa paz no aparece por arte de magia: se construye con decisiones y trabajo compartido.",
+         "expected_filename" : "images/pdd326.jpg",
+         "pdd" : 326,
+         "position" : 10,
+         "row" : 2,
+         "short_definition" : "Idea de que la convivencia pacífica requiere acciones concretas.",
+         "supabase_record_id" : 327,
+         "word" : "La paz no nace, se hace"
+      }
+   ],
+   "preferred_composite_pixels" : [
+      5000,
+      3000
+   ],
+   "rows" : 2,
+   "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+}

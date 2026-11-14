@@ -1,0 +1,19 @@
+{
+  "composite_sha256": "5f2238fdfcf7a7bb1afb392b9bdbbea13baae7c6f07ba3a353be8233166ce1fd",
+  "manifest_sha256": "663a3cb2636cd8e79f0517c8c87d4a563d6483fba9f64dd76e36a2c4f6d0bd41",
+  "prompt_sha256": "ff1cc8428ac006de40a6c20d09f451fca52958751af03fb53e3edb0c26a31d67",
+  "positions_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visual_review_passed": true,
+  "issues": "All ten individual JPGs inspected against manifest identities, order and meanings. All320x480 exact2:3 without resizing, centered peripheral trim and1px seam inset. No neighboring-panel bleed, readable captions, outer frames or watermarks. PDD327 ongoing maintenance of peace requires temporal context, listening/gardening supports metaphor. PDD328 bridge model dialogue, PDD329 shared education funding and PDD330 difficult negotiation recognizable, political abstractions need captions. PDD331 interior unease versus scenery suggested, repeated relocations not demonstrable. PDD332 surreal clocks have small clock-face tick/numeral-like decorative markings, no readable prose; analogy with psychoanalysis depends on listening scene and caption. PDD333 same artistic style across landscapes clear. PDD334 depicts quill drawing loose sketches rather than literal writing; deliberate wordless adaptation captures exploratory form but writing-as-sketch metaphor requires caption. PDD336 successful selling clear. PDD337 bathing renewal suggested by expression, not a literal claim about cleansing soul. No blocking crop or subject issues found."
+}

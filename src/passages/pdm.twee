@@ -1,0 +1,73 @@
+:: PDMRoom
+<<nobr>>
+<<castleDoorTitle "Palabras de Maestría">>
+<p>Modo invitado. Las palabras que marques como desconocidas se guardan en este navegador.</p>
+<section aria-labelledby="pdm-current-chapter">
+    <h2 id="pdm-current-chapter">Capítulo actual</h2>
+    <p>Un misterio breve con palabras de tu repaso.</p>
+    <<button "Leer capítulo" "PDMGenerated">><<run setup.pdmReadRequested = true>><</button>>
+    <<button "Leer capítulo de ejemplo" "PDMChapter">><</button>>
+    <<button "Practicar vocabulario" "PDMReview">><</button>>
+    <<button "Diario de Maestría" "PDMDiary">><</button>>
+</section>
+<<castleDoorReturn>>
+<</nobr>>
+
+:: PDMChapter
+<<nobr>>
+<<castleDoorTitle "El misterio del archivo">>
+<article id="pdm-chapter">
+    <p>Selecciona una palabra subrayada para ver su significado y marcarla como desconocida.</p>
+    <p role="status"></p>
+    <button class="pdm-vocabulary-retry" type="button" hidden>Volver a cargar las definiciones</button>
+    <p>Cuando se apagó el último candil, Inés cruzó <button class="pdm-word" type="button" data-word="a tientas" disabled>a tientas</button> el archivo del castillo. Al fondo pudo <button class="pdm-word" type="button" data-word="atisbar" disabled>atisbar</button> un hilo de luz que se colaba por el <button class="pdm-word" type="button" data-word="resquicio" disabled>resquicio</button> de un armario. Allí guardaban el registro del puente. Esa tarde, alguien había arrancado la página donde figuraba el nombre del último encargado de repararlo.</p>
+    <p>Inés se puso a <button class="pdm-word" type="button" data-word="escudriñar" disabled>escudriñar</button> los estantes. En el polvo vio la marca de un libro que ya no estaba y, al agacharse, encontró un pliego doblado bajo el armario. La firma del cantero seguía allí. Al dorso, él había dibujado una grieta en el arco norte y anotado el día en que pidió madera para apuntalarlo.</p>
+    <p>Antes de tocar el pliego, Inés se detuvo a <button class="pdm-word" type="button" data-word="sopesar" disabled>sopesar</button> qué hacer. Podía llevarlo al consejo o dejarlo donde estaba y esperar a que alguien volviera a buscarlo. Decidió guardar el original <button class="pdm-word" type="button" data-word="a buen recaudo" disabled>a buen recaudo</button> y <button class="pdm-word" type="button" data-word="dejar constancia" disabled>dejar constancia</button> del hallazgo en el registro. Mientras mojaba la pluma, oyó pasos. Alguien se detuvo al otro lado de la puerta y probó la llave.</p>
+</article>
+<<button "Diario de Maestría" "PDMDiary">><</button>>
+<div class="castle-return castle-door-footer">[[← Volver a Palabras de Maestría->PDMRoom]]</div>
+<</nobr>>
+
+:: PDMReview
+<<nobr>>
+<<castleDoorTitle "Reconocimiento de palabras">>
+<section id="pdm-review">
+    <p>Elige el significado de cada palabra. Las palabras de tu diario tienen prioridad.</p>
+    <p class="pdm-review-status" role="status"></p>
+    <fieldset hidden>
+        <legend tabindex="-1"></legend>
+        <div class="pdm-review-choices"></div>
+    </fieldset>
+    <p class="pdm-review-feedback" role="status"></p>
+    <button class="pdm-review-mark" type="button" hidden>Marcar como desconocida</button>
+    <button class="pdm-review-next" type="button" hidden>Siguiente</button>
+    <button class="pdm-review-start" type="button" hidden>Otra ronda</button>
+</section>
+<<button "Diario de Maestría" "PDMDiary">><</button>>
+<div class="castle-return castle-door-footer">[[← Volver a Palabras de Maestría->PDMRoom]]</div>
+<</nobr>>
+
+:: PDMGenerated
+<<nobr>>
+<<castleDoorTitle "Capítulo de Maestría">>
+<section id="pdm-generated">
+    <p>Genera un misterio breve con palabras de práctica. Solo se envían las palabras seleccionadas.</p>
+    <button class="pdm-generate" type="button">Generar capítulo</button>
+    <p role="status"></p>
+    <article id="pdm-generated-story" hidden></article>
+</section>
+<<button "Leer capítulo de ejemplo" "PDMChapter">><</button>>
+<<button "Diario de Maestría" "PDMDiary">><</button>>
+<div class="castle-return castle-door-footer">[[← Volver a Palabras de Maestría->PDMRoom]]</div>
+<</nobr>>
+
+:: PDMDiary
+<<nobr>>
+<h1 class="castle-door-title">Diario de Maestría</h1>
+<section id="pdm-diary" aria-labelledby="pdm-unknown-title">
+    <h2 id="pdm-unknown-title">Palabras desconocidas</h2>
+    <p id="pdm-diary-status" role="status"></p>
+    <ul></ul>
+</section>
+<div class="castle-return castle-door-footer">[[← Volver a Palabras de Maestría->PDMRoom]]</div>
+<</nobr>>

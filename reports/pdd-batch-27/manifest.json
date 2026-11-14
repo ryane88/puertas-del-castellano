@@ -1,0 +1,172 @@
+{
+   "columns" : 5,
+   "composite_aspect_ratio" : "5:3",
+   "crop_layout" : {
+      "column_edges" : [
+         0,
+         324,
+         648,
+         972,
+         1296,
+         1619
+      ],
+      "method" : "Inspected Batch27 scene transitions at324,648,972,1296 and row485. Center equal exact2:3 crops within observed cells with1px seam inset,no resizing.",
+      "row_edges" : [
+         0,
+         485,
+         971
+      ],
+      "seam_inset_pixels" : 1,
+      "source_pixels" : [
+         1619,
+         971
+      ]
+   },
+   "excluded_manifests" : [
+      "reports/pdd-batch-01/manifest.json",
+      "reports/pdd-batch-02/manifest.json",
+      "reports/pdd-batch-03/manifest.json",
+      "reports/pdd-batch-04/manifest.json",
+      "reports/pdd-batch-05/manifest.json",
+      "reports/pdd-batch-06/manifest.json",
+      "reports/pdd-batch-07/manifest.json",
+      "reports/pdd-batch-08/manifest.json",
+      "reports/pdd-batch-09/manifest.json",
+      "reports/pdd-batch-10/manifest.json",
+      "reports/pdd-batch-11/manifest.json",
+      "reports/pdd-batch-12/manifest.json",
+      "reports/pdd-batch-13/manifest.json",
+      "reports/pdd-batch-14/manifest.json",
+      "reports/pdd-batch-15/manifest.json",
+      "reports/pdd-batch-16/manifest.json",
+      "reports/pdd-batch-17/manifest.json",
+      "reports/pdd-batch-18/manifest.json",
+      "reports/pdd-batch-19/manifest.json",
+      "reports/pdd-batch-20/manifest.json",
+      "reports/pdd-batch-21/manifest.json",
+      "reports/pdd-batch-22/manifest.json",
+      "reports/pdd-batch-23/manifest.json",
+      "reports/pdd-batch-24/manifest.json",
+      "reports/pdd-batch-25/manifest.json",
+      "reports/pdd-batch-26/manifest.json"
+   ],
+   "panel_aspect_ratio" : "2:3",
+   "panels" : [
+      {
+         "column" : 1,
+         "description" : "La niña mira el cielo cubierto de nubes antes del festival de las linternas. Ha preparado la suya durante toda la semana.\n\n—Ojalá deje de llover —susurra. No sabe si ocurrirá, pero desea con todas sus fuerzas que la noche sea clara.",
+         "expected_filename" : "images/pdd287.jpg",
+         "pdd" : 287,
+         "position" : 1,
+         "row" : 1,
+         "short_definition" : "Expresión de deseo de que suceda algo esperado.",
+         "supabase_record_id" : 288,
+         "word" : "Ójala"
+      },
+      {
+         "column" : 2,
+         "description" : "El alquimista destila hojas de menta en un pequeño recipiente. Tras horas de trabajo, obtiene unas gotas que concentran todo su aroma.\n\nDice que allí está la esencia de la planta, aquello que conserva su carácter más reconocible.",
+         "expected_filename" : "images/pdd288.jpg",
+         "pdd" : 288,
+         "position" : 2,
+         "row" : 1,
+         "short_definition" : "Naturaleza fundamental o rasgo más característico de algo.",
+         "supabase_record_id" : 289,
+         "word" : "esencia"
+      },
+      {
+         "column" : 3,
+         "description" : "En el salón de los inventores se exhiben cientos de relojes, pero uno combina precisión, belleza y una sencillez extraordinaria.\n\nLa maestra lo señala como la quintaesencia del oficio: la expresión más pura y perfecta de lo que buscan crear.",
+         "expected_filename" : "images/pdd289.jpg",
+         "pdd" : 289,
+         "position" : 3,
+         "row" : 1,
+         "short_definition" : "Lo más puro, perfecto o representativo de una cosa.",
+         "supabase_record_id" : 290,
+         "word" : "quintaesencia"
+      },
+      {
+         "column" : 4,
+         "description" : "Cada mañana, el portero abre las puertas, barre las hojas y saluda a los mismos vecinos. Nada parece extraordinario, pero sus pequeños gestos sostienen la vida del castillo.\n\nEn esa cotidianidad tranquila también hay historias que merecen contarse.",
+         "expected_filename" : "images/pdd290.jpg",
+         "pdd" : 290,
+         "position" : 4,
+         "row" : 1,
+         "short_definition" : "Conjunto de hechos y hábitos que forman la vida diaria.",
+         "supabase_record_id" : 291,
+         "word" : "cotidianidad"
+      },
+      {
+         "column" : 5,
+         "description" : "Una vieja inscripción recuerda a alguien que consiguió lo que parecía imposible. El nombre casi se ha borrado. La historia, no.",
+         "expected_filename" : "images/pdd291.jpg",
+         "pdd" : 291,
+         "position" : 5,
+         "row" : 1,
+         "short_definition" : "Acción extraordinaria que requiere valor o gran esfuerzo.",
+         "supabase_record_id" : 292,
+         "word" : "hazaña"
+      },
+      {
+         "column" : 1,
+         "description" : "La curandera escucha al viajero hablar de su dolor de cabeza, pero también le pregunta cómo duerme, qué come y qué preocupaciones lleva consigo.\n\nSu mirada es holística: intenta comprender a la persona entera, no solo un síntoma aislado.",
+         "expected_filename" : "images/pdd292.jpg",
+         "pdd" : 292,
+         "position" : 6,
+         "row" : 2,
+         "short_definition" : "Que considera un conjunto y las relaciones entre sus partes.",
+         "supabase_record_id" : 293,
+         "word" : "holistico"
+      },
+      {
+         "column" : 2,
+         "description" : "El juez asegura que todas las personas merecen el mismo trato. Cuando llega un campesino pobre, lo escucha con la misma atención que al duque.\n\nSus actos mantienen la coherencia con sus palabras: hace lo que dice defender.",
+         "expected_filename" : "images/pdd293.jpg",
+         "pdd" : 293,
+         "position" : 7,
+         "row" : 2,
+         "short_definition" : "Relación lógica entre las ideas, las palabras y las acciones.",
+         "supabase_record_id" : 294,
+         "word" : "coherencia"
+      },
+      {
+         "column" : 3,
+         "description" : "El escribano deja para mañana la carta que debía enviar hoy. Al día siguiente encuentra otra excusa y la aparta de nuevo.\n\nCuando por fin busca el sello, ya ha pasado una semana. Ha postergado tanto la tarea que el mensajero partió sin ella.",
+         "expected_filename" : "images/pdd294.jpg",
+         "pdd" : 294,
+         "position" : 8,
+         "row" : 2,
+         "short_definition" : "Dejar algo para más adelante en vez de hacerlo ahora.",
+         "supabase_record_id" : 295,
+         "word" : "postergar"
+      },
+      {
+         "column" : 4,
+         "description" : "La joven arquitecta construye una fuente que seguirá dando agua cuando ella ya no viva. Los niños que aún no han nacido beberán de ella.\n\nComprende que algunas obras pueden trascender a su creador y dejar huella más allá de una vida.",
+         "expected_filename" : "images/pdd295.jpg",
+         "pdd" : 295,
+         "position" : 9,
+         "row" : 2,
+         "short_definition" : "Ir más allá de los límites habituales o alcanzar importancia duradera.",
+         "supabase_record_id" : 296,
+         "word" : "trascender"
+      },
+      {
+         "column" : 5,
+         "description" : "Al caer la noche, un grupo de amigos sale de la taberna cantando. Recorren las calles entre risas, música y pasos de baile hasta que el cielo empieza a aclararse.\n\nLa parranda dura tanto que el panadero los encuentra todavía celebrando al abrir su tienda.",
+         "expected_filename" : "images/pdd296.jpg",
+         "pdd" : 296,
+         "position" : 10,
+         "row" : 2,
+         "short_definition" : "Fiesta animada con música, diversión y celebración.",
+         "supabase_record_id" : 297,
+         "word" : "parranda"
+      }
+   ],
+   "preferred_composite_pixels" : [
+      5000,
+      3000
+   ],
+   "rows" : 2,
+   "selection" : "Next ten missing PDDs in refreshed inventory order, excluding earlier assignments and current artwork"
+}

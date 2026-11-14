@@ -1,0 +1,19 @@
+{
+  "composite_sha256": "996b333fd0a65190de3dfbfce1d377f0a6ff9d8ead5ca5c4e2f8abd71572ca7f",
+  "manifest_sha256": "987271138b17d624266ba8ebf166ea97f5a735073f0636a574c208b21a7c6d07",
+  "prompt_sha256": "6f06bc9866ef19101b0c313cb8f622f0414b7cdcb7fb4be479a5705834aae9c9",
+  "positions_reviewed": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "visual_review_passed": true,
+  "issues": "All ten individual JPGs visually inspected against manifest in grid order; no visible neighbouring-panel bleed or text. Centered 320x480 exact 2:3 crops remove a few edge pixels without resizing. PDD125 shows lifting strength clearly, while the weakened/fraying-rope contrast is subtle. PDD129 adapts explicit versus implicit communication through gestures and expression because writing is prohibited; interpretation is contextual. PDD131 retains the oversized impractical horse and mounting difficulty, but the smaller alternative horse is not prominent. No installation or user approval is implied."
+}
